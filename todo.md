@@ -150,7 +150,7 @@ Repo renamed **`claude_trading_bot` → `calm_turtle`**. No local action (GitHub
 
 ### Still open after 2026-05-16
 
-- [ ] **Go live on Alpaca paper — Monday 2026-05-18.** Simple model adopted ([PR #20](https://github.com/pmehaboobkhan/calm_turtle/pull/20), Alpaca-authoritative mirror): Alpaca is the source of truth, no phantom fills, no false halt, zero PR-locked edits. Supersedes the MOC + per-strategy proposals. Fills next-open (≈−0.5pp/yr vs backtest — that's the real friction we're going live to observe). **Operator steps only:** merge PR #20; web env → `BROKER_PAPER=alpaca` + Alpaca paper keys + repo binding `pmehaboobkhan/calm_turtle` + keep Yahoo/Alpaca allowlist. Book flat/aligned from the 2026-05-15 reset — no re-reset.
+- [ ] **Go live on Alpaca paper — Monday 2026-05-18.** Simple model adopted ([PR #20](https://github.com/pmehaboobkhan/calm_turtle/pull/20), Alpaca-authoritative mirror): Alpaca is the source of truth, no phantom fills, no false halt, zero PR-locked edits. Supersedes the MOC + per-strategy proposals. Fills next-open (≈−0.5pp/yr vs backtest — that's the real friction we're going live to observe). **PR #20 merged to `main` 2026-05-16.** **Operator steps only (web env):** set `BROKER_PAPER=alpaca` + confirm Alpaca paper keys + repo binding `pmehaboobkhan/calm_turtle` + keep Yahoo/Alpaca allowlist. Book flat/aligned from the 2026-05-15 reset — no re-reset. First real order: Mon 16:30 ET → fills Tue open.
 - [ ] **Operator: confirm web-routine repo bindings → `pmehaboobkhan/calm_turtle`** and paste the two corrected web-instruction files into the web UI; add `finance.yahoo.com` to the agent allowlist (defensive).
 
 ---
