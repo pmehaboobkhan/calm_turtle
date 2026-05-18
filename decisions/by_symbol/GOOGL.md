@@ -53,3 +53,22 @@
 - Unrealized PnL (mark $401.68): +$56.56 (+0.95%)
 - Win rate: n/a (no closed trades)
 - Active strategies: large_cap_momentum_top5
+
+
+## 2026-05-18 — EOD ENTRY submitted (PAPER_BUY, large_cap_momentum_top5 rank 2)
+
+- Decision file: `decisions/2026-05-18/2041_GOOGL.json` (PAPER_BUY, final_status=PAPER_PROPOSED)
+- Routine: end_of_day_2026-05-18, mode PAPER_TRADING, cb_state=FULL, throttle=1.0.
+- Signal: large_cap_momentum_top5 ENTRY — rank 2/21, 6m +38.58%, SPY trend up. ~20.6pp clear of cut-off.
+- Order: BUY 38 @ submitted quote $396.78; stop $357.102 (−10%), TP $495.975 (+25%), R/R 2.5:1. ~14.71% of account; per-trade risk 1.471% < 1.5% cap.
+- BROKER_PAPER=alpaca: submitted to Alpaca paper sandbox, status PENDING_BROKER (order_id daaea20f…). Queues for next-open fill. Not filled today.
+- Prior pre-reset GOOGL position (qty 15 @ $397.9096) was archived by the 2026-05-15 fresh-start reset; this is a fresh post-reset entry.
+- Risk Manager: APPROVED. Compliance: APPROVED.
+
+**Cumulative stats (updated 2026-05-18 EOD):**
+
+- Open paper positions: 0 filled (1 BUY order PENDING_BROKER for next open)
+- Closed paper trades: 0 (post-reset; pre-reset history immutable above)
+- Realized PnL: $0.00 (post-reset)
+- Unrealized PnL: $0.00 (no filled position)
+- Win rate: n/a (no closed trades post-reset)

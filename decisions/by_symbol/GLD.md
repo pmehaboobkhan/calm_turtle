@@ -86,3 +86,22 @@
 - Unrealized PnL: $0.00 (no open position)
 - Win rate: n/a (no closed trades)
 - Active strategies: dual_momentum_taa (primary), gold_permanent_overlay (subsumed) — none held; data-blocked
+
+
+## 2026-05-18 — EOD ENTRY submitted (PAPER_BUY, dual_momentum_taa; subsumes gold_permanent_overlay)
+
+- Decision file: `decisions/2026-05-18/2041_GLD.json` (PAPER_BUY, final_status=PAPER_PROPOSED)
+- Subsumed note: `decisions/2026-05-18/2041_GLD_gold_permanent_overlay_subsumed.json` (NO_TRADE, Strategy-C absorbed by Strategy-A line item)
+- Routine: end_of_day_2026-05-18, mode PAPER_TRADING, cb_state=FULL, throttle=1.0.
+- Signal: dual_momentum_taa ENTRY — top-1 risk asset (12m +42.34% vs SPY +27.24% above MA, IEF +4.09% disqualified below MA, cash +3.98%); above 210d MA.
+- Order: BUY 36 @ submitted quote $417.29; stop $375.561 (−10%), TP $521.6125 (+25%), R/R 2.5:1. ~14.66% of account; per-trade risk 1.466% < 1.5% cap.
+- BROKER_PAPER=alpaca: order submitted to Alpaca paper sandbox, status PENDING_BROKER (order_id adb6c021…). Market closed at 16:41 ET → queues for next-open fill. Not filled today; positions.json mirror-owned; reconcile alpaca-authoritative (no divergence).
+- Risk Manager: APPROVED. Compliance: APPROVED.
+
+**Cumulative stats (updated 2026-05-18 EOD):**
+
+- Open paper positions: 0 filled (1 BUY order PENDING_BROKER for next open)
+- Closed paper trades: 0 (post-reset)
+- Realized PnL: $0.00 (post-reset)
+- Unrealized PnL: $0.00 (no filled position)
+- Win rate: n/a (no closed trades post-reset)

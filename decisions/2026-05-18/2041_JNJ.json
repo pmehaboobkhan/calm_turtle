@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-18T20:41:27Z",
+  "routine_id": "end_of_day_2026-05-18",
+  "symbol": "JNJ",
+  "decision": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "action": "NO_TRADE",
+  "reason": "max_trades_per_day_cap_reached",
+  "thesis_bull": "JNJ is a valid deterministic ENTRY: rank 5/21 by 6-month total return at +17.99% on the fresh 2026-05-15 close basis, SPY trend filter engaged, both confirmations passed. Health Care — a defensive sector diversifier.",
+  "thesis_bear": "JNJ occupies the rank-5 cut-off slot with the thinnest buffer in the basket: only ~14 bps above rank-6 UNH (+17.85%). One bar of relative weakness flips JNJ to NO_SIGNAL and promotes UNH — it is the highest rank-volatility / least durable of the six ENTRY candidates (flagged as such by today's pre-market). 6 ENTRY signals fired but risk_limits.max_trades_per_day=5; the daily trade budget is exhausted by the five higher-conviction opens (CSCO r1, GLD top-1 macro, GOOGL r2, XOM r3, WMT r4). Capital preservation: JNJ is the rational drop given its razor-thin buffer.",
+  "invalidation_condition": "If JNJ's rank improves and a trade slot opens at a future routine (e.g., a current open exits), re-evaluate JNJ ENTRY on the then-fresh bar. NO_TRADE is the correct conservative action when the per-day trade cap binds and JNJ is the marginal candidate.",
+  "risk_reward": {
+    "entry": 226.71,
+    "stop": 204.039,
+    "target": 283.3875,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0,
+    "intended_pct": 15.0,
+    "applied_cap": "max_trades_per_day=5 reached by the five higher-conviction opens. JNJ is the marginal sixth signal with the thinnest cut-off buffer (~14 bps over UNH). No shares opened.",
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.45,
+  "confidence_notes": "Signal is valid but the lowest-durability ENTRY (rank-5 cut-off, ~14 bps buffer). The binding constraint is the daily-trade cap; dropping the marginal name is the capital-preserving choice.",
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_notes": "NO_TRADE reduces no risk. The daily-trade-cap is a hard limit (max_trades_per_day=5). Selecting JNJ as the drop is correct: it has the weakest momentum buffer and highest rank-volatility of the six ENTRY names. Risk Manager APPROVES the NO_TRADE.",
+  "compliance_verdict": "APPROVED",
+  "compliance_notes": "NO_TRADE always permissible; respecting max_trades_per_day is mandatory. Bull/bear/invalidation present. Schema-compliant. No live path.",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "data_provenance": {
+    "signal_eval": "lib.signals.evaluate_all on lib.data.get_bars (yfinance daily), EOD 2026-05-18",
+    "signal_strategy": "large_cap_momentum_top5",
+    "signal_action": "ENTRY",
+    "signal_rationale": "large_cap_momentum_top5: ENTRY — in top-5, SPY trend up (rank 5/21, +17.99%; cut-off slot)",
+    "last_bar_ts": "2026-05-15T00:00:00+00:00",
+    "data_freshness_note": "Feed restored; uniform 2026-05-15 close basis. Signal valid; blocked only by the max_trades_per_day cap."
+  }
+}

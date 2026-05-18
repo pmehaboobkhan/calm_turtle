@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-18T20:41:27Z",
+  "routine_id": "end_of_day_2026-05-18",
+  "symbol": "CSCO",
+  "decision": "PAPER_BUY",
+  "strategy": "large_cap_momentum_top5",
+  "thesis_bull": "CSCO is rank 1/21 by 126-day (6-month) total return at +61.56% on the fresh 2026-05-15 close basis \u2014 the largest momentum buffer in the universe (~43.6pp above the rank-5 cut-off). SPY trend filter engaged (above 10m MA). Both required confirmations passed. The stale->fresh distortion that confounded the 2026-05-15 vs 2026-05-18 comparison does NOT recur at EOD \u2014 both signal runs use the same fresh basis, so this is the cleanest read of CSCO's momentum.",
+  "thesis_bear": "+61.56% over 6 months is an extreme single-name number and a textbook momentum-exhaustion / mean-reversion setup. CSCO printed earnings AMC 2026-05-13; the post-earnings gap is fully inside the fresh bars, so the move blends a real earnings reaction with the un-blackout basis change. Earnings-gap chasing is disallowed (single_stock_earnings_play, momentum_late_entry) \u2014 the deterministic signal is permitted but this name warrants the most caution. News connector OFFLINE \u2014 cannot verify the earnings outcome; treated as a risk factor. Note CSCO was previously closed for +$618.90 on a pre-earnings overnight-risk exit (2026-05-13); this is a fresh deterministic momentum entry, not a re-chase \u2014 the prior exit thesis (overnight earnings risk) no longer applies now the print is 5 sessions old and fully reflected in price.",
+  "invalidation_condition": "CSCO falls below rank 7 (out of the top-5+2 hold-zone) OR SPY 10m-MA trend breaks OR -10% drawdown from fill ($106.389). Target +25% ($147.7625).",
+  "risk_reward": {
+    "entry": 118.21,
+    "stop": 106.389,
+    "target": 147.7625,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 130,
+    "usd": 15367.3,
+    "pct_of_account": 14.99,
+    "intended_pct": 15.0,
+    "strategy_b_intended_pct": 6.0,
+    "applied_cap": "max_risk_per_trade_pct=1.5 with default_stop_loss_pct=10.0 caps the position at 15% of account; equal-weight Strategy-B 6% intent is the structural target but the per-trade risk budget allows up to 15% \u2014 sized to the risk cap (14.99%, per-trade risk 1.499% just under 1.5%).",
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.55,
+  "confidence_notes": "Rank-1 deterministic momentum, but lowest confidence of the five opens: extreme +61.56% 6m return + post-earnings-gap risk + offline news feed. Capital-preservation posture \u2014 sized at the cap but flagged elevated-monitoring.",
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_notes": "Position 14.99% < max_position_size_pct 15%; per-trade risk 1.499% < max_risk_per_trade_pct 1.5%. Sector Technology \u2014 only tech name among today's opens (no sector over-concentration). Not inside earnings caution window (CSCO earnings were 2026-05-13, 5 sessions back, > holding_earnings_caution_window_days=1). R/R 2.5:1 >= 1.5. Strategy ACTIVE_PAPER_TEST; symbol approved_for_paper_trading=true. CB FULL throttle 1.0. Elevated-monitoring flag carried per pre-market; risk limits all satisfied.",
+  "compliance_verdict": "APPROVED",
+  "compliance_notes": "PAPER_BUY permitted under PAPER_TRADING. Deterministic signal (not a discretionary earnings chase) \u2014 permitted; the disallowed strategies bar discretionary plays, not the systematic momentum signal. Bull/bear/invalidation present (bear explicitly surfaces the earnings-gap conflict, lowering confidence). Schema-compliant.",
+  "human_approval_required": false,
+  "final_status": "PAPER_PROPOSED",
+  "data_provenance": {
+    "signal_eval": "lib.signals.evaluate_all on lib.data.get_bars (yfinance daily), EOD 2026-05-18",
+    "signal_strategy": "large_cap_momentum_top5",
+    "signal_action": "ENTRY",
+    "signal_rationale": "large_cap_momentum_top5: ENTRY \u2014 in top-5, SPY trend up",
+    "last_bar_ts": "2026-05-15T00:00:00+00:00",
+    "data_freshness_note": "Feed restored; uniform 2026-05-15 close basis across all 25 symbols. Daily-bar momentum signal; 60s intraday staleness rule does not bind in PAPER_TRADING."
+  },
+  "execution": {
+    "broker": "alpaca_paper_sandbox",
+    "submitted": true,
+    "broker_status": "PENDING_BROKER",
+    "note": "Order submitted to Alpaca paper sandbox at EOD (16:41 ET, market closed). Queued for next-open fill. positions.json is mirror-owned; reconcile() is alpaca-authoritative. Not a divergence \u2014 'not a position yet'."
+  }
+}

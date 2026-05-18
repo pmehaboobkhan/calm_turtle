@@ -53,3 +53,23 @@
 - Unrealized PnL (mark $132.01): +$87.12 (+1.46%)
 - Win rate: n/a (no closed trades)
 - Active strategies: large_cap_momentum_top5
+
+
+## 2026-05-18 — EOD ENTRY submitted (PAPER_BUY, large_cap_momentum_top5 rank 4)
+
+- Decision file: `decisions/2026-05-18/2041_WMT.json` (PAPER_BUY, final_status=PAPER_PROPOSED)
+- Routine: end_of_day_2026-05-18, mode PAPER_TRADING, cb_state=FULL, throttle=1.0.
+- Signal: large_cap_momentum_top5 ENTRY — rank 4/21, 6m +27.84%, SPY trend up. Consumer Staples defensive diversifier.
+- Order: BUY 116 @ submitted quote $131.45; stop $118.305 (−10%), TP $164.3125 (+25%), R/R 2.5:1. ~14.88% of account; per-trade risk 1.488% < 1.5% cap.
+- BROKER_PAPER=alpaca: submitted to Alpaca paper sandbox, status PENDING_BROKER (order_id 3464ba97…). Queues for next-open fill. Not filled today.
+- **EARNINGS FLAG: WMT 2026-05-21 BMO** — 3 calendar days out today, OUTSIDE the 1-day caution window → entry permitted; enters the window ~2026-05-20. The 2026-05-20 pre_close/EOD routines MUST re-evaluate hold-through-earnings exposure (a future EOD may propose a pre-print exit).
+- Prior pre-reset WMT position (qty 46 @ $130.1160) archived by the 2026-05-15 fresh-start reset; this is a fresh post-reset entry.
+- Risk Manager: APPROVED (earnings forward-flagged). Compliance: APPROVED (not a single_stock_earnings_play — deterministic momentum, timing incidental).
+
+**Cumulative stats (updated 2026-05-18 EOD):**
+
+- Open paper positions: 0 filled (1 BUY order PENDING_BROKER for next open)
+- Closed paper trades: 0 (post-reset; pre-reset history immutable above)
+- Realized PnL: $0.00 (post-reset)
+- Unrealized PnL: $0.00 (no filled position)
+- Win rate: n/a (no closed trades post-reset)

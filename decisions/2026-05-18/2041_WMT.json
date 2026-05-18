@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-18T20:41:27Z",
+  "routine_id": "end_of_day_2026-05-18",
+  "symbol": "WMT",
+  "decision": "PAPER_BUY",
+  "strategy": "large_cap_momentum_top5",
+  "thesis_bull": "WMT is rank 4/21 by 6-month total return at +27.84% on the fresh 2026-05-15 close basis, stable rank with strengthening absolute return (+20.13% stale-08 -> +27.84% fresh-15). SPY trend filter engaged. Both confirmations passed. Consumer Staples \u2014 a defensive sector diversifier in the basket.",
+  "thesis_bear": "WMT earnings 2026-05-21 BMO (carried from memory; news_unavailable so unverifiable). Per strategy_rules.holding_earnings_caution_window_days=1, this is 3 calendar days out today \u2014 OUTSIDE today's 1-day caution window but it enters the window ~2026-05-20. WMT carries the only known near-horizon earnings event among today's opens; a position opened today will be held through the earnings print unless exited at a future routine. News connector OFFLINE \u2014 earnings date cannot be re-confirmed; treated as a risk factor.",
+  "invalidation_condition": "WMT falls below rank 7 (out of hold-zone) OR SPY 10m-MA trend breaks OR -10% drawdown from fill ($118.305) OR the earnings-caution-window rule binds at a future routine (enters window ~2026-05-20; pre_close/EOD on 2026-05-20 must re-evaluate hold-through-earnings risk). Target +25% ($164.3125).",
+  "risk_reward": {
+    "entry": 131.45,
+    "stop": 118.305,
+    "target": 164.3125,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 116,
+    "usd": 15248.2,
+    "pct_of_account": 14.88,
+    "intended_pct": 15.0,
+    "strategy_b_intended_pct": 6.0,
+    "applied_cap": "max_risk_per_trade_pct=1.5 with default_stop_loss_pct=10.0 caps at 15% of account; sized to the risk cap (14.88%, per-trade risk 1.488%).",
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.58,
+  "confidence_notes": "Stable rank-4 deterministic momentum, but reduced for the known WMT earnings on 2026-05-21 BMO (held-through-earnings risk materializes ~2026-05-20) and the offline news feed preventing date re-confirmation. Today is outside the 1-day caution window so the entry is permitted; the risk is forward-flagged for the 2026-05-20 routines.",
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_notes": "Position 14.88% < max 15%; per-trade risk 1.488% < 1.5%. Sector Consumer_Staples \u2014 distinct from the other four opens. Earnings 2026-05-21 BMO is 3 calendar days out, OUTSIDE holding_earnings_caution_window_days=1 today -> entry permitted; flagged for the 2026-05-20 routines to re-evaluate hold-through-earnings exposure (a future EOD may propose an exit before the print). R/R 2.5:1 >= 1.5. Strategy ACTIVE_PAPER_TEST; approved_for_paper_trading=true. CB FULL throttle 1.0.",
+  "compliance_verdict": "APPROVED",
+  "compliance_notes": "PAPER_BUY permitted under PAPER_TRADING. Bull/bear/invalidation present and the bear thesis explicitly surfaces the earnings-window conflict with a forward re-evaluation trigger (lowering confidence). Schema-compliant. No live path. Not a single_stock_earnings_play \u2014 deterministic momentum entry whose timing is incidental to the earnings date.",
+  "human_approval_required": false,
+  "final_status": "PAPER_PROPOSED",
+  "data_provenance": {
+    "signal_eval": "lib.signals.evaluate_all on lib.data.get_bars (yfinance daily), EOD 2026-05-18",
+    "signal_strategy": "large_cap_momentum_top5",
+    "signal_action": "ENTRY",
+    "signal_rationale": "large_cap_momentum_top5: ENTRY \u2014 in top-5, SPY trend up",
+    "last_bar_ts": "2026-05-15T00:00:00+00:00",
+    "data_freshness_note": "Feed restored; uniform 2026-05-15 close basis. Daily-bar momentum; 60s intraday rule does not bind in PAPER_TRADING.",
+    "earnings_flag": "WMT 2026-05-21 BMO \u2014 outside 1-day caution window today; re-evaluate at 2026-05-20 routines."
+  },
+  "execution": {
+    "broker": "alpaca_paper_sandbox",
+    "submitted": true,
+    "broker_status": "PENDING_BROKER",
+    "note": "Order submitted to Alpaca paper sandbox at EOD (16:41 ET, market closed). Queued for next-open fill. positions.json is mirror-owned; reconcile() is alpaca-authoritative. Not a divergence \u2014 'not a position yet'."
+  }
+}

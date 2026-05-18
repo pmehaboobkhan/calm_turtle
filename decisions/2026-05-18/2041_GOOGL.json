@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-18T20:41:27Z",
+  "routine_id": "end_of_day_2026-05-18",
+  "symbol": "GOOGL",
+  "decision": "PAPER_BUY",
+  "strategy": "large_cap_momentum_top5",
+  "thesis_bull": "GOOGL is rank 2/21 by 6-month total return at +38.58% on the fresh 2026-05-15 close basis, ~20.6pp clear of the rank-5 cut-off. SPY trend filter engaged (above 10m MA). Both confirmations passed. Communication Services sector \u2014 diversifies the basket away from the single tech name (CSCO).",
+  "thesis_bear": "GOOGL was rank 1 on the 2026-05-15 stale-08 basis (+34.55%) and slipped to rank 2 as CSCO overtook it; part of that rank change is a stale->fresh basis artefact, not pure relative weakness. Rank-2 momentum names can decay quickly. News connector OFFLINE \u2014 no catalyst awareness; treated as a risk factor, not bullish silence.",
+  "invalidation_condition": "GOOGL falls below rank 7 (out of hold-zone) OR SPY 10m-MA trend breaks OR -10% drawdown from fill ($357.102). Target +25% ($495.975).",
+  "risk_reward": {
+    "entry": 396.78,
+    "stop": 357.102,
+    "target": 495.975,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 38,
+    "usd": 15077.64,
+    "pct_of_account": 14.71,
+    "intended_pct": 15.0,
+    "strategy_b_intended_pct": 6.0,
+    "applied_cap": "max_risk_per_trade_pct=1.5 with default_stop_loss_pct=10.0 caps at 15% of account; sized to the risk cap (14.71%, per-trade risk 1.471%).",
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.62,
+  "confidence_notes": "Strong rank-2 deterministic momentum with a wide cut-off buffer. Reduced from ~0.75 for offline news feed and the residual stale->fresh basis ambiguity on the rank ordering vs CSCO.",
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_notes": "Position 14.71% < max 15%; per-trade risk 1.471% < 1.5%. Sector Communication_Services \u2014 distinct from the other four opens. No earnings caution window. R/R 2.5:1 >= 1.5. Strategy ACTIVE_PAPER_TEST; approved_for_paper_trading=true. CB FULL throttle 1.0.",
+  "compliance_verdict": "APPROVED",
+  "compliance_notes": "PAPER_BUY permitted under PAPER_TRADING. Bull/bear/invalidation present. Schema-compliant. No live path.",
+  "human_approval_required": false,
+  "final_status": "PAPER_PROPOSED",
+  "data_provenance": {
+    "signal_eval": "lib.signals.evaluate_all on lib.data.get_bars (yfinance daily), EOD 2026-05-18",
+    "signal_strategy": "large_cap_momentum_top5",
+    "signal_action": "ENTRY",
+    "signal_rationale": "large_cap_momentum_top5: ENTRY \u2014 in top-5, SPY trend up",
+    "last_bar_ts": "2026-05-15T00:00:00+00:00",
+    "data_freshness_note": "Feed restored; uniform 2026-05-15 close basis. Daily-bar momentum; 60s intraday rule does not bind in PAPER_TRADING."
+  },
+  "execution": {
+    "broker": "alpaca_paper_sandbox",
+    "submitted": true,
+    "broker_status": "PENDING_BROKER",
+    "note": "Order submitted to Alpaca paper sandbox at EOD (16:41 ET, market closed). Queued for next-open fill. positions.json is mirror-owned; reconcile() is alpaca-authoritative. Not a divergence \u2014 'not a position yet'."
+  }
+}

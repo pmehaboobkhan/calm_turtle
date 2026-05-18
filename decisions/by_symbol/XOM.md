@@ -55,3 +55,22 @@
 - Unrealized PnL (mark $152.55): +$156.01 (+2.62%)
 - Win rate: n/a (no closed trades)
 - Active strategies: large_cap_momentum_top5
+
+
+## 2026-05-18 — EOD ENTRY submitted (PAPER_BUY, large_cap_momentum_top5 rank 3)
+
+- Decision file: `decisions/2026-05-18/2041_XOM.json` (PAPER_BUY, final_status=PAPER_PROPOSED)
+- Routine: end_of_day_2026-05-18, mode PAPER_TRADING, cb_state=FULL, throttle=1.0.
+- Signal: large_cap_momentum_top5 ENTRY — rank 3/21, 6m +36.68%, SPY trend up. Energy = only commodity-sensitive sector in the basket (diversifier).
+- Order: BUY 97 @ submitted quote $157.92; stop $142.128 (−10%), TP $197.40 (+25%), R/R 2.5:1. ~14.95% of account; per-trade risk 1.495% < 1.5% cap.
+- BROKER_PAPER=alpaca: submitted to Alpaca paper sandbox, status PENDING_BROKER (order_id b65e42a2…). Queues for next-open fill. Not filled today.
+- Prior pre-reset XOM position (qty 40 @ $148.6497) archived by the 2026-05-15 fresh-start reset; this is a fresh post-reset entry.
+- Risk Manager: APPROVED. Compliance: APPROVED.
+
+**Cumulative stats (updated 2026-05-18 EOD):**
+
+- Open paper positions: 0 filled (1 BUY order PENDING_BROKER for next open)
+- Closed paper trades: 0 (post-reset; pre-reset history immutable above)
+- Realized PnL: $0.00 (post-reset)
+- Unrealized PnL: $0.00 (no filled position)
+- Win rate: n/a (no closed trades post-reset)

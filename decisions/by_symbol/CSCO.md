@@ -75,3 +75,21 @@
 - Realized PnL: +$618.90
 - Win rate: 100% (1/1)
 - Active strategies: none on CSCO (signal ENTRY both days but blocked at EOD)
+
+
+## 2026-05-18 — EOD ENTRY submitted (PAPER_BUY, large_cap_momentum_top5 rank 1)
+
+- Decision file: `decisions/2026-05-18/2041_CSCO.json` (PAPER_BUY, final_status=PAPER_PROPOSED)
+- Routine: end_of_day_2026-05-18, mode PAPER_TRADING, cb_state=FULL, throttle=1.0.
+- Signal: large_cap_momentum_top5 ENTRY — rank 1/21, 6m +61.56%, SPY trend up. Stale→fresh distortion does NOT recur at EOD (both runs fresh) — cleanest read; entry taken per the deterministic signal despite extreme-momentum / post-earnings caution (CSCO earnings 2026-05-13 AMC, now 5 sessions old, fully in fresh bars; > earnings-caution window).
+- Order: BUY 130 @ submitted quote $118.21; stop $106.389 (−10%), TP $147.7625 (+25%), R/R 2.5:1. ~14.99% of account; per-trade risk 1.499% < 1.5% cap.
+- BROKER_PAPER=alpaca: submitted to Alpaca paper sandbox, status PENDING_BROKER (order_id 378797e1…). Queues for next-open fill. Not filled today.
+- Note: prior +$618.90 close (2026-05-13 pre-earnings overnight-risk exit) is the all-time realized win; this is a fresh deterministic momentum re-entry, not a re-chase — prior exit thesis (overnight earnings risk) no longer applies.
+- Risk Manager: APPROVED (elevated-monitoring flag carried). Compliance: APPROVED.
+
+**Cumulative stats (updated 2026-05-18 EOD):**
+
+- Open paper positions: 0 filled (1 BUY order PENDING_BROKER for next open)
+- Closed paper trades (all-time): 1
+- Realized PnL (all-time): +$618.90
+- Win rate: 100% (1/1)
