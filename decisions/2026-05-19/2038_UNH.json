@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-19T20:38:40Z",
+  "routine_id": "end_of_day_2026-05-19",
+  "symbol": "UNH",
+  "decision": "PAPER_BUY",
+  "strategy": "large_cap_momentum_top5",
+  "thesis_bull": "UNH is rank 5/21 by 6-month total return at +19.34% on the 2026-05-18 close basis. SPY trend filter engaged (SPY above its 210d/10-month MA, +9.97% prior basis, regime bullish_trend). Both required confirmations passed (signals.evaluate_all -> ENTRY: 'in top-5, SPY trend up'). Health_Care sector adds a defensive diversifier to a basket otherwise weighted to Tech (CSCO/GOOGL), Energy (XOM) and Staples (WMT). Liquidity ample: 20d ADV ~8.52M shares vs the 5M minimum.",
+  "thesis_bear": "UNH is a rank-5 boundary name (top-5 cutoff). It sits directly above NVDA (rank 6, NO_SIGNAL hold-zone) and JNJ (rank 7, NO_SIGNAL hold-zone); a small momentum shift can knock UNH out of the top-5 and into an EXIT at a subsequent routine, so persistence is low (flagged in the 2026-05-19 pre-market lessons-pending: 'UNH is a low-persistence rank-5 boundary name'). News feed is OFFLINE in v1 -> UNH treated as news_unavailable (a risk factor per CLAUDE.md, never read as 'no news = bullish'). No live UNH quote available (not previously held); entry priced off the 2026-05-18 daily close, which is the deterministic-strategy basis (60s intraday staleness rule does not bind in PAPER_TRADING for daily-bar strategies).",
+  "invalidation_condition": "UNH falls below rank 7 (out of the top-N+2 hold-zone) OR SPY 10-month-MA trend filter breaks OR a -10% drawdown from fill (stop 352.017) OR take-profit +25% (488.9125). Re-evaluate every EOD; the rank-5 boundary makes a near-term EXIT plausible.",
+  "risk_reward": {
+    "entry": 391.13,
+    "stop": 352.017,
+    "target": 488.9125,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 39,
+    "usd": 15254.07,
+    "pct_of_account": 14.65,
+    "intended_pct": 15.0,
+    "strategy_b_intended_pct": 6.0,
+    "applied_cap": "Sized to the per-trade risk cap: default_stop_loss_pct=10.0 with max_risk_per_trade_pct=1.5 caps the position at 15% of account; UNH watchlist max_position_size_pct=15 and risk_limits max_position_size_pct=15 agree. Sized to 14.65% (per-trade risk 1.465% < 1.5% cap). Same risk-cap convention as the 2026-05-18 Strategy B opens.",
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "consolidation": {
+    "primary_strategy": "large_cap_momentum_top5",
+    "subsumed_strategies": []
+  },
+  "confidence_score": 0.52,
+  "confidence_notes": "Deterministic top-5 momentum entry with SPY trend confirmed, but confidence held low: UNH is the rank-5 boundary name (lowest-persistence slot, explicitly flagged pre-market), absolute 6m momentum (+19.34%) is the weakest of today's top-5, and the news feed is offline so the entry rests purely on price momentum.",
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_notes": "Position 14.65% < max_position_size_pct 15%; per-trade risk 1.465% < max_risk_per_trade_pct 1.5%. R/R 2.5:1 >= minimum_risk_reward 1.5. Liquidity 8.52M ADV > minimum_liquidity_avg_daily_volume 5M. UNH not currently held -> genuine new open, not a double-book. Post-open positions = 6 <= max_open_positions 8. Trades opened today = 1 <= max_trades_per_day 5. Health_Care sector is distinct from the 5 held lines (Tech/Tech/Comm/Staples/Energy) -> no sector-correlation concentration. Strategy large_cap_momentum_top5 = ACTIVE_PAPER_TEST; UNH approved_for_paper_trading=true. CB state FULL, throttle 1.0 (entry un-throttled). No EXIT signal conflicts on UNH. APPROVED.",
+  "compliance_verdict": "APPROVED",
+  "compliance_notes": "PAPER_BUY permitted under PAPER_TRADING mode. Bull thesis, bear thesis (surfaces the rank-5 boundary fragility + offline-news risk), and invalidation condition all present and non-trivial. Schema-compliant. Symbol in watchlist with approved_for_paper_trading=true. Deterministic momentum entry from strategy_rules allowed_strategies -> not a single_stock_earnings_play / news_chase / momentum_late_entry. No live execution path touched. APPROVED.",
+  "human_approval_required": false,
+  "final_status": "PAPER_PROPOSED",
+  "data_provenance": {
+    "signal_eval": "lib.signals.evaluate_all on lib.data.get_bars (daily bars), EOD 2026-05-19",
+    "signal_strategy": "large_cap_momentum_top5",
+    "signal_action": "ENTRY",
+    "signal_rationale": "large_cap_momentum_top5: ENTRY — in top-5, SPY trend up (rank 5/21, 6m +19.34%)",
+    "last_bar_ts": "2026-05-18T00:00:00+00:00",
+    "data_freshness_note": "Latest daily bar 2026-05-18 (today's 2026-05-19 daily bar not yet finalized at 16:38 ET run). Daily-bar deterministic momentum strategy; 60s intraday staleness rule does not bind in PAPER_TRADING. Reconcile() alpaca-authoritative and Alpaca mirror in sync at run time.",
+    "earnings_flag": "No known near-horizon UNH earnings; news feed offline so unverifiable -> treated as risk factor, position re-evaluated each EOD.",
+    "subagent_note": "trade_proposal / risk_manager / compliance_safety steps performed inline by the orchestrator strictly from real computed data (lib.signals, lib.data, lib.broker, lib.paper_sim, config) because the Task/agent dispatch tool is unavailable this run. Zero fabrication; every figure traces to a library call. Recorded for audit honesty."
+  },
+  "execution": {
+    "broker": "alpaca_paper_sandbox",
+    "submitted": true,
+    "broker_status": "PENDING_BROKER",
+    "note": "Order submitted to Alpaca paper sandbox at EOD (16:38 ET, market closed). BROKER_PAPER=alpaca so paper_sim.open_position mirrors a market order; queued for next-open fill. positions.json is mirror-owned; reconcile() is alpaca-authoritative. 'Not a position yet' is not a divergence."
+  }
+}

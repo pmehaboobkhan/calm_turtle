@@ -105,3 +105,22 @@
 - Realized PnL: $0.00 (post-reset)
 - Unrealized PnL: $0.00 (no filled position)
 - Win rate: n/a (no closed trades post-reset)
+
+## 2026-05-19 — EOD fill confirmed + ENTRY maintain (NO_TRADE, dual_momentum_taa; subsumes gold_permanent_overlay)
+
+- Decision file: `decisions/2026-05-19/2038_GLD.json` (NO_TRADE, reason=already_held_maintain)
+- Subsumed note: `decisions/2026-05-19/2038_GLD_gold_permanent_overlay_subsumed.json` (NO_TRADE, Strategy-C absorbed by Strategy-A line item)
+- Routine: end_of_day_2026-05-19, mode PAPER_TRADING, cb_state=FULL (recovered HALF→FULL this run; see risk event), throttle=1.0.
+- Fill: 2026-05-18 PENDING_BROKER order filled at 2026-05-19 open via Alpaca mirror — **36 sh @ $412.0419** (positions.json/reconcile alpaca-authoritative, mirror in sync).
+- Signal: dual_momentum_taa ENTRY re-confirmed — top-1 risk asset (12m +40.49% vs cash +3.97%; SPY 12m +26.53%; IEF disqualified below MA); above 210d MA. ENTRY = maintain (already held); no new shares.
+- Mark: quote $411.65 vs entry $412.0419 → uPnL **-$14.11 (-0.10%)** (flat; stop $375.561, 9.7% headroom).
+- Risk Manager: APPROVED (maintain, no new risk). Compliance: APPROVED.
+
+**Cumulative stats (updated 2026-05-19 EOD):**
+
+- Open paper positions: 1 (qty 36 @ $412.0419, filled 2026-05-19 open)
+- Closed paper trades: 0 (post 2026-05-15 reset)
+- Realized PnL: $0.00 (post-reset)
+- Unrealized PnL (mark $411.65): -$14.11 (-0.10%)
+- Win rate: n/a (no closed trades post-reset)
+- Active strategies: dual_momentum_taa (primary), gold_permanent_overlay (subsumed)

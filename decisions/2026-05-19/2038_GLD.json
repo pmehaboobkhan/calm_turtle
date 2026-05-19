@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-19T20:38:40Z",
+  "routine_id": "end_of_day_2026-05-19",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "strategy": "dual_momentum_taa",
+  "action": "NO_TRADE",
+  "reason": "already_held_maintain",
+  "thesis_bull": "dual_momentum_taa ENTRY: GLD is top-1 risk asset, 12m return +40.49% > cash (SHV) +3.97%, GLD above its 210d/10-month MA. Both confirmations passed. The Strategy A allocation continues to favor GLD as the single best-momentum risk asset.",
+  "thesis_bear": "GLD is ALREADY an open position (36 shares, entry 412.0419, filled today from the 2026-05-18 PENDING_BROKER order). The ENTRY signal is a 'maintain', not a new open. Opening a second GLD line would double-book single-symbol exposure; risk_manager already-held check blocks re-entry. Current GLD mark ~411.65 (uPnL ~-$14, -0.10%) — flat, no exit trigger.",
+  "invalidation_condition": "Exit GLD only if it drops below its 210d MA OR is outranked by another qualifying risk asset (SPY/IEF) at a future EOD, OR breaches its -10% stop (375.561) / +25% target (521.6125). Until then, hold the existing line. Re-evaluate every EOD.",
+  "risk_reward": {
+    "entry": 411.65,
+    "stop": 375.561,
+    "target": 521.6125,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0,
+    "intended_pct": 60.0,
+    "applied_cap": "No new shares — GLD already held (36 sh, ~14.2% of account). ENTRY signal is a maintain; risk_manager already-held check prevents re-opening. The existing position is retained.",
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "consolidation": {
+    "primary_strategy": "dual_momentum_taa",
+    "subsumed_strategies": ["gold_permanent_overlay"]
+  },
+  "confidence_score": 0.66,
+  "confidence_notes": "Deterministic top-1 momentum is unambiguous; this is NO_TRADE purely because the position already exists (maintain), not because the thesis weakened.",
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_notes": "Already-held position; ENTRY = maintain, no new shares. NO_TRADE adds no risk. Existing GLD line within all caps (~14.2% < 60% macro-ETF cap, < 15% generic). CB FULL. APPROVED.",
+  "compliance_verdict": "APPROVED",
+  "compliance_notes": "NO_TRADE always permissible; preserves capital and records the maintain outcome distinctly from a silent hold for the Self-Learning Agent. Schema-compliant. No live path.",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "data_provenance": {
+    "signal_eval": "lib.signals.evaluate_all on lib.data.get_bars (daily bars), EOD 2026-05-19",
+    "signal_strategy": "dual_momentum_taa",
+    "signal_action": "ENTRY",
+    "signal_rationale": "dual_momentum_taa: ENTRY — top-1 risk asset, all filters passed (12m +40.49% vs cash +3.97%)",
+    "last_bar_ts": "2026-05-18T00:00:00+00:00",
+    "related_decision": "decisions/2026-05-19/2038_GLD_gold_permanent_overlay_subsumed.json",
+    "position_status": "held since 2026-05-19 open fill (entry 412.0419, qty 36); mark 411.65"
+  }
+}

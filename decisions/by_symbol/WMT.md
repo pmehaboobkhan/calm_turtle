@@ -73,3 +73,22 @@
 - Realized PnL: $0.00 (post-reset)
 - Unrealized PnL: $0.00 (no filled position)
 - Win rate: n/a (no closed trades post-reset)
+
+## 2026-05-19 — EOD fill confirmed + ENTRY maintain (NO_TRADE, large_cap_momentum_top5 rank 4)
+
+- Decision file: `decisions/2026-05-19/2038_WMT.json` (NO_TRADE, reason=already_held_maintain)
+- Routine: end_of_day_2026-05-19, mode PAPER_TRADING, cb_state=FULL (recovered HALF→FULL this run), throttle=1.0.
+- Fill: 2026-05-18 PENDING_BROKER order filled at 2026-05-19 open via Alpaca mirror — **116 sh @ $132.5397** (reconcile alpaca-authoritative, mirror in sync).
+- Signal: large_cap_momentum_top5 ENTRY re-confirmed — rank 4/21, 6m +30.82%, SPY trend up. ENTRY = maintain (already held); no new shares.
+- Mark: quote $130.81 vs entry $132.5397 → uPnL **-$200.65 (-1.31%)** (small drawdown; stop $119.286 ≈ -10% from entry).
+- EARNINGS FLAG: WMT 2026-05-21 BMO. holding_earnings_caution_window_days=1 → today (2026-05-19) OUTSIDE the 1-day window; window opens 2026-05-20. The 2026-05-20 pre_close/EOD routines MUST re-evaluate hold-through-earnings risk and may propose a pre-print exit.
+- Risk Manager: APPROVED (maintain, no new risk; earnings flagged forward). Compliance: APPROVED.
+
+**Cumulative stats (updated 2026-05-19 EOD):**
+
+- Open paper positions: 1 (qty 116 @ $132.5397, filled 2026-05-19 open)
+- Closed paper trades: 0 (post 2026-05-15 reset)
+- Realized PnL: $0.00 (post-reset)
+- Unrealized PnL (mark $130.81): -$200.65 (-1.31%)
+- Win rate: n/a (no closed trades post-reset)
+- Active strategies: large_cap_momentum_top5

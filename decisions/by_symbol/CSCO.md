@@ -93,3 +93,21 @@
 - Closed paper trades (all-time): 1
 - Realized PnL (all-time): +$618.90
 - Win rate: 100% (1/1)
+
+## 2026-05-19 — EOD fill confirmed + ENTRY maintain (NO_TRADE, large_cap_momentum_top5 rank 1)
+
+- Decision file: `decisions/2026-05-19/2038_CSCO.json` (NO_TRADE, reason=already_held_maintain)
+- Routine: end_of_day_2026-05-19, mode PAPER_TRADING, cb_state=FULL (recovered HALF→FULL this run; see risk event), throttle=1.0.
+- Fill: 2026-05-18 PENDING_BROKER order filled at 2026-05-19 open via Alpaca mirror — **130 sh @ $117.6635** (positions.json/reconcile alpaca-authoritative, mirror in sync).
+- Signal: large_cap_momentum_top5 ENTRY re-confirmed — rank 1/21, 6m +55.29%, SPY trend up. ENTRY = maintain (already held); no new shares (already-held check). Elevated-monitoring flag carried (post Q3 FY26 earnings, cleared 2026-05-13).
+- Mark: quote $120.88 vs entry $117.6635 → uPnL **+$418.14 (+2.73%)**.
+- Risk Manager: APPROVED (maintain, no new risk). Compliance: APPROVED.
+
+**Cumulative stats (updated 2026-05-19 EOD):**
+
+- Open paper positions: 1 (qty 130 @ $117.6635, filled 2026-05-19 open)
+- Closed paper trades (all-time): 1
+- Realized PnL (all-time): +$618.90
+- Unrealized PnL (mark $120.88): +$418.14 (+2.73%)
+- Win rate: 100% (1/1)
+- Active strategies: large_cap_momentum_top5
