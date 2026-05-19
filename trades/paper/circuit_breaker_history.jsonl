@@ -1,0 +1,2 @@
+{"timestamp": "2026-05-19T20:36:14.375711+00:00", "from_state": "FULL", "to_state": "HALF", "dd_pct": 74.2465, "observed_equity": 26396.42, "peak_equity": 102496.62}
+{"timestamp": "2026-05-19T20:37:52.090492+00:00", "from_state": "HALF", "to_state": "FULL", "dd_pct": 0.0, "observed_equity": 104090.72, "peak_equity": 104090.72}
