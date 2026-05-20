@@ -92,3 +92,19 @@
 - Unrealized PnL (mark $169.50): +$879.99 (+5.65%)
 - Win rate: n/a (no closed trades post-reset)
 - Active strategies: large_cap_momentum_top5
+
+## 2026-05-20 — EOD maintain (NO_TRADE; large_cap_momentum_top5 rank 3)
+
+- Routine: end_of_day_2026-05-20, mode PAPER_TRADING, cb_state=FULL (DD 2.62%), throttle=1.0.
+- Signal: large_cap_momentum_top5 ENTRY re-confirmed — rank 3/21, 6m +38.10%, SPY trend up. ENTRY = maintain (already held); no new shares.
+- Mark: EOD close $149.56 vs entry $160.4279 → uPnL **-$1,054.19 (-6.77%)**. Sharp late-day move (pre_close mark $158.23; closing print -$8.67 below). Still above per-strategy default stop_loss_pct=-10% ($144.39).
+- Risk Manager: APPROVED (maintain — no stop breach, no invalidation; momentum thesis intact). Compliance: APPROVED.
+
+**Cumulative stats (updated 2026-05-20 EOD):**
+
+- Open paper positions: 1 (qty 97 @ $160.4279)
+- Closed paper trades (all-time): 0 (post 2026-05-15 reset)
+- Realized PnL (all-time): $0.00 (post-reset)
+- Unrealized PnL (mark $149.56): -$1,054.19 (-6.77%)
+- Win rate: n/a (no closed trades post-reset)
+- Active strategies: large_cap_momentum_top5

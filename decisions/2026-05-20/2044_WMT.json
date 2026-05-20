@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-20T20:44:00Z",
+  "routine_id": "end_of_day_2026-05-20",
+  "symbol": "WMT",
+  "decision": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "thesis_bull": "Deterministic EOD signal evaluator ranks WMT rank-4 in Strategy B universe with 6-month total return +31.74% — clears top-5 cutoff with SPY trend filter intact (SPY above 210d MA). WMT is in watchlist.yaml with approved_for_paper_trading=true (max_position_size_pct=15). Position was closed earlier today by pre_close at 19:37 UTC (decisions/2026-05-20/1935_WMT.json) realizing -$151.93 to take the earnings catalyst off the book. With the catalyst removed and the rank still strong, the deterministic engine produces an ENTRY signal at EOD close.",
+  "thesis_bear": "WMT Q1 FY27 earnings are scheduled for 2026-05-21 BMO (before market open) — TOMORROW. Re-entering at today's close (~$125.40 mark) would put the position inside the holding_earnings_caution_window_days=1 caution window and expose ~$15K of capital to an idiosyncratic single-stock overnight catalyst with no diversifying counterweight. This is precisely the asymmetric overnight risk the pre_close routine closed the prior position to avoid; re-entering at EOD would round-trip that decision and reintroduce the same exposure pattern hours after rejecting it. WMT typical earnings implied move 4-7% (historical proxy; no live implied-move feed); a 5% gap-down at EOD entry would consume more than half the per-trade stop budget overnight. The deterministic ENTRY signal does NOT incorporate the earnings calendar — the orchestrator must apply this overlay manually per strategy_rules.yaml > holding_earnings_caution_window_days=1.",
+  "invalidation_condition": "WMT postpones the Q1 FY27 earnings release (no postponement announced as of routine timestamp 20:44 UTC per the same source set used by today's pre_close decision — Walmart IR earnings calendar). If WMT postpones and the catalyst slips outside the 1-day window, the entry would become eligible at the next routine. Absent a postponement, re-entry remains blocked through 2026-05-21 EOD post-print (the tomorrow's EOD signal will re-evaluate with WMT print incorporated, per today's pre_close next-session-context).",
+  "risk_reward": {
+    "entry": 125.4,
+    "stop": 112.86,
+    "target": 156.75,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0
+  },
+  "confidence_score": 0.92,
+  "confidence_notes": "High confidence in REJECT: the earnings catalyst is the SAME catalyst that drove today's pre_close exit (well-documented in journal pre_market/market_open/midday/pre_close sections, decisions/2026-05-20/1935_WMT.json, and 2026-05-19 daily snapshot). Re-entering at EOD would unwind that decision within hours. The strategy_rules.yaml policy is explicit (holding_earnings_caution_window_days=1). 0.08 residual uncertainty covers the small possibility that the print is postponed or that some news between 19:35 UTC and 20:44 UTC has materially changed the catalyst — neither evidenced in this session.",
+  "risk_manager_verdict": "REJECTED",
+  "risk_manager_notes": "Inline risk-manager review at 20:44 UTC: while WMT is in watchlist.yaml (approved_for_paper_trading=true, max_position_size_pct=15) and large_cap_momentum_top5 is in allowed_strategies, the holding_earnings_caution_window_days=1 rule applies — WMT earnings 2026-05-21 BMO are within the 1-day caution window from this EOD timestamp. This is the SAME catalyst that drove the pre_close PAPER_CLOSE filled at 19:37 UTC; re-entry at 20:44 UTC would round-trip that decision and reintroduce the exact asymmetric overnight exposure the prior decision was designed to remove. Per the routine's overnight-risk policy and the strategy_rules confirmations check (the earnings-window rule is a hard guardrail, not a soft preference), this entry must be REJECTED with reason=earnings_window. Daily-loss/drawdown/CB/sizing checks not run because the threshold guardrail fails first. Verdict: REJECTED — earnings_window.",
+  "compliance_verdict": "REJECTED",
+  "compliance_notes": "Inline compliance review at 20:44 UTC: mode PAPER_TRADING permits PAPER_BUY in general but the strategy_rules.yaml policy (holding_earnings_caution_window_days=1) overlays a single-stock earnings caution window that this entry would violate. risk_manager_verdict=REJECTED. Bull/bear/invalidation present and non-empty (>40 chars each); R/R block populated with placeholder values reflecting the rank-4 sizing that WOULD apply if the rule did not block; position_size zeroed since no order will be placed; schema-compliant. No live execution class. Verdict: REJECTED.",
+  "human_approval_required": false,
+  "final_status": "REJECTED",
+  "rejection_reason": "earnings_window",
+  "data_provenance": {
+    "signal_source": "lib.signals.evaluate_all (deterministic EOD evaluator on 2026-05-20 close)",
+    "rank": 4,
+    "return_6m": 0.3173953952513029,
+    "quote_source": "lib.data.get_latest_quote (Alpaca IEX live)",
+    "quote": 125.4,
+    "quote_ts": "2026-05-20T20:00:03.955877+00:00",
+    "quote_staleness_seconds": 2653,
+    "earnings_catalyst_source_1": "Walmart Investor Relations — earnings calendar (Q1 FY27 release scheduled 2026-05-21 BMO; same catalyst that drove today's pre_close exit).",
+    "earnings_catalyst_source_2": "Internal: decisions/2026-05-20/1935_WMT.json (today's pre_close PAPER_CLOSE; carried catalyst since 2026-05-18 entry).",
+    "earnings_catalyst_source_3": "journals/daily/2026-05-20.md (pre_market/market_open/midday/pre_close sections all flag WMT 2026-05-21 BMO).",
+    "policy_source": "config/strategy_rules.yaml > holding_earnings_caution_window_days: 1",
+    "regime": "bullish_trend (medium confidence)",
+    "circuit_breaker_state": "FULL",
+    "circuit_breaker_dd_pct": 2.62
+  }
+}

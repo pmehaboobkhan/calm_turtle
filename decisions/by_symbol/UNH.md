@@ -19,3 +19,19 @@
 - Confidence 0.52 (low): rank-5 boundary name (lowest persistence; flagged pre-market), weakest 6m momentum of today's top-5, news feed offline.
 - Risk Manager: APPROVED. Compliance: APPROVED.
 - Watch: UNH ↔ NVDA (rank 6) ↔ JNJ (rank 7) boundary jitter — a small momentum shift can knock UNH out of top-5 → EXIT at a subsequent EOD. Verify fill + slippage at 2026-05-20 open.
+
+## 2026-05-20 — EOD maintain (NO_TRADE; large_cap_momentum_top5 rank 5)
+
+- Routine: end_of_day_2026-05-20, mode PAPER_TRADING, cb_state=FULL (DD 2.62%), throttle=1.0.
+- Signal: large_cap_momentum_top5 ENTRY re-confirmed — rank 5/21, 6m +22.69%, SPY trend up. ENTRY = maintain (already held); no new shares. Boundary rank persisted today (rank-5 at pre_market and EOD).
+- Mark: EOD close $401.42 vs entry $391.9044 → uPnL **+$371.11 (+2.43%)**. Recovery from -$315.68 at pre_close; bid/ask spread (bid 368.12 / ask 401.42) remains wide — last-trade print drives the mark.
+- Risk Manager: APPROVED (maintain). Compliance: APPROVED.
+
+**Cumulative stats (updated 2026-05-20 EOD):**
+
+- Open paper positions: 1 (qty 39 @ $391.9044)
+- Closed paper trades (all-time): 0
+- Realized PnL (all-time): $0.00
+- Unrealized PnL (mark $401.42): +$371.11 (+2.43%)
+- Win rate: n/a (no closed trades)
+- Active strategies: large_cap_momentum_top5

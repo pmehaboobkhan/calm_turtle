@@ -111,3 +111,21 @@
 - Closed paper trades: 1 (this close)
 - Realized PnL: -$151.93 (this close)
 - Active strategies: large_cap_momentum_top5 (eligible for re-entry post-print on EOD signal)
+
+### 2026-05-20 EOD — REJECTED (earnings_window; large_cap_momentum_top5 rank 4)
+
+- Routine: end_of_day_2026-05-20, mode PAPER_TRADING, cb_state=FULL (DD 2.62%), throttle=1.0.
+- Decision file: `decisions/2026-05-20/2044_WMT.json` (final_status=REJECTED, reason=earnings_window).
+- Deterministic signal: large_cap_momentum_top5 ENTRY — rank 4/21, 6m +31.74%, SPY trend up. Engine ENTRY because WMT is no longer held (closed by pre_close at 19:37).
+- Overlay block: `holding_earnings_caution_window_days=1` — WMT Q1 FY27 BMO 2026-05-21 (SAME catalyst that drove today's pre_close exit). Re-entering at EOD would round-trip the catalyst decision within hours and reintroduce the asymmetric overnight exposure the prior close was designed to remove.
+- Risk Manager: REJECTED (earnings_window). Compliance: REJECTED.
+- Re-eligibility: post-print on tomorrow's EOD signal (2026-05-21).
+
+**Cumulative stats (updated 2026-05-20 EOD):**
+
+- Open paper positions: 0 (closed pre-earnings)
+- Closed paper trades (all-time): 1
+- Realized PnL (all-time): -$151.93
+- Unrealized PnL: $0.00 (flat)
+- Win rate: 0% (0/1)
+- Active strategies: large_cap_momentum_top5 (re-eligible 2026-05-21 EOD)

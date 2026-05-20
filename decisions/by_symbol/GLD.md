@@ -124,3 +124,20 @@
 - Unrealized PnL (mark $411.65): -$14.11 (-0.10%)
 - Win rate: n/a (no closed trades post-reset)
 - Active strategies: dual_momentum_taa (primary), gold_permanent_overlay (subsumed)
+
+## 2026-05-20 — EOD maintain (NO_TRADE; dual_momentum_taa top-1, subsumes gold_permanent_overlay)
+
+- Routine: end_of_day_2026-05-20, mode PAPER_TRADING, cb_state=FULL (DD 2.62%), throttle=1.0.
+- Signal: dual_momentum_taa ENTRY re-confirmed — top-1 risk asset (12m +39.85% > cash +3.95%, above 210d MA). Subsumes gold_permanent_overlay ENTRY for same symbol per signal_consolidator.
+- ENTRY = maintain (already held); no new shares.
+- Mark: EOD close $417.58 vs entry $412.0419 → uPnL **+$199.37 (+1.34%)**.
+- Risk Manager: APPROVED (maintain, no new risk). Compliance: APPROVED.
+
+**Cumulative stats (updated 2026-05-20 EOD):**
+
+- Open paper positions: 1 (qty 36 @ $412.0419)
+- Closed paper trades (all-time): 0 (post 2026-05-15 reset)
+- Realized PnL (all-time): $0.00 (post-reset)
+- Unrealized PnL (mark $417.58): +$199.37 (+1.34%)
+- Win rate: n/a (no closed trades post-reset)
+- Active strategies: dual_momentum_taa, gold_permanent_overlay (subsumed)
