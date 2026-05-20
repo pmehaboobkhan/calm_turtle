@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-20T19:35:30Z",
+  "routine_id": "pre_close_2026-05-20",
+  "symbol": "WMT",
+  "decision": "PAPER_CLOSE",
+  "strategy": "large_cap_momentum_top5",
+  "thesis_bull": "Held since 2026-05-18 entry on rank-4 momentum (6m +27.84%). Position currently -0.99% unrealized (mark $131.23 vs entry $132.5397). Strategy B signal still confirms hold-zone (rank-4); SPY trend filter intact (above 10mo SMA per today's pre_market). Walmart fundamentals remain a defensive momentum carry — closing pre-emptively forfeits the next-day continuation of the trend. If the print is positive we re-establish on the EOD signal post-print.",
+  "thesis_bear": "Walmart Q1 FY27 earnings release is scheduled for 2026-05-21 BMO (Thursday before market open). This is a single-stock idiosyncratic catalyst with no diversifying counterweight in the book — the trade was sized as a momentum carry, NOT an earnings-window play. WMT's typical implied move on earnings is in the 4-7% range (per multiple historical earnings reports; live implied-move feed unavailable this session). At -1% pre-event a 5% gap-down would put the position at roughly -6% and consume more than half the per-trade stop budget on a single overnight catalyst we can see coming. The asymmetry of holding into the print without a thesis to bet on the direction violates the routine's overnight-risk policy. Pre-close is exactly the routine designed to refuse this kind of asymmetric overnight exposure (per strategy_rules.yaml > holding_earnings_caution_window_days=1 and pre_close.md step 9).",
+  "invalidation_condition": "Earnings catalyst removed: Walmart postpones the Q1 FY27 release. Per Walmart Investor Relations the release was originally communicated to fall in the 2026-05-21 BMO window; as of routine timestamp 19:35 UTC (15:35 ET, ~25 minutes pre-close) no postponement has been published. If WMT postpones, this overnight-risk close becomes unnecessary and we re-enter on the EOD ENTRY confirmation.",
+  "risk_reward": {
+    "entry": 132.5397,
+    "stop": 118.305,
+    "target": 164.3125,
+    "ratio": 2.23
+  },
+  "position_size": {
+    "shares": 116,
+    "usd": 15224.68,
+    "pct_of_account": 15.04
+  },
+  "confidence_score": 0.85,
+  "confidence_notes": "High confidence in the close: the catalyst (WMT Q1 FY27 BMO 2026-05-21) has been on the routine docket since 2026-05-18 (the day we entered the position with the caveat 'WMT earnings 2026-05-21 BMO outside 1d window today'), and was carried through pre_market, market_open, and midday sections of today's journal as the explicit pre_close decision item. The asymmetry is real (sized as momentum carry, exposed to earnings-window gap), and pre_close.md step 9 explicitly mandates this behaviour for any open position with material overnight catalyst exposure. The 0.15 residual uncertainty covers: (a) the possibility that WMT postpones the release, (b) general regret that we may close into a positive print and forgo upside — accepted by routine design — and (c) the absence of a live implied-move feed this session, which means our move-magnitude estimate is a historical-range proxy not a tape-implied number.",
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_notes": "Inline risk-manager review at 19:35 UTC: symbol WMT is in watchlist.yaml with approved_for_paper_trading=true (max_position_size_pct=15); strategy large_cap_momentum_top5 is in allowed_strategies; decision class PAPER_CLOSE is exit-side so per-trade R/R minimum, sizing caps, sector-correlation caps, and total-exposure caps do not apply (closing reduces exposure). Daily-loss check: realized loss from this close = approximately -$152 (mark $131.23 vs entry $132.5397 on 116 shares, less ~$2 round-trip slippage at 1bp slippage + 1bp half-spread per fills config). After this close the day's realized PnL is still well clear of the -2% daily_drawdown_halt_pct hard threshold (current day PnL was -0.728% at midday on unrealized basis; this close converts $152 of that drag from unrealized to realized but does not deepen aggregate PnL). Trades-today: 1/5 after this close, under the cap. Open positions after: 5/8, under the cap. Data freshness: 24s (quote 19:35:06 vs routine 19:35:30), well under 60s staleness limit. CB state FULL (DD 2.77%), no throttle on exits. No permission flags involved (no margin, options, shorts, leverage). Verdict: APPROVED.",
+  "compliance_verdict": "APPROVED",
+  "compliance_notes": "Inline compliance review at 19:35 UTC: mode PAPER_TRADING permits PAPER_CLOSE; WMT approved_for_paper_trading=true; strategy large_cap_momentum_top5 in allowed_strategies; risk_manager_verdict=APPROVED; bull/bear/invalidation all present and non-empty (>40 chars each); R/R block populated; position_size block populated and consistent with positions.json (116 shares @ entry 132.5397); sources cited in data_provenance; schema-compliant (all required fields present per tests/schemas/trade_decision.schema.json); no live execution class. Verdict: APPROVED.",
+  "human_approval_required": false,
+  "final_status": "PAPER_FILLED",
+  "fill": {
+    "timestamp": "2026-05-20T19:37:48.455505+00:00",
+    "simulated_price": 131.23,
+    "broker_status": "FILLED (Alpaca paper mirror)",
+    "broker_order_id": "5895f9df-727c-4b06-9848-d8b634cc9c39",
+    "quantity": 116,
+    "approximate_realized_pnl_usd": -151.93,
+    "log_row": "trades/paper/log.csv (appended at 2026-05-20T19:37:48Z)",
+    "positions_json_updated": true,
+    "open_positions_after": 5
+  },
+  "data_provenance": {
+    "quote_source": "lib.data.get_latest_quote (Alpaca IEX live)",
+    "quote": 131.23,
+    "quote_bid": 131.21,
+    "quote_ask": 131.23,
+    "quote_ts": "2026-05-20T19:35:06.658161+00:00",
+    "quote_staleness_seconds": 24,
+    "earnings_catalyst_source_1": "Walmart Investor Relations — earnings calendar (Q1 FY27 release historically falls in 2nd half of May; release date communicated for 2026-05-21 BMO; carried in our routine docket since 2026-05-18 entry).",
+    "earnings_catalyst_source_2": "Internal: journals/daily/2026-05-19.md and journals/daily/2026-05-20.md (pre_market, market_open, midday sections) all flagged WMT 2026-05-21 BMO as the known overnight catalyst.",
+    "earnings_catalyst_source_3": "memory/daily_snapshots/2026-05-19.md (Watch tomorrow: 'WMT earnings 05-21 BMO: window opens 05-20, re-eval hold-through').",
+    "earnings_catalyst_summary": "Walmart Q1 FY27 earnings release scheduled 2026-05-21 BMO (before market open). Catalyst has been on the routine docket since 2026-05-18 with the explicit pre_close re-evaluation deferred to today.",
+    "implied_move_source": "unavailable_this_session (no live options-implied-move feed; historical WMT earnings moves are typically in the 4-7% range — used as conservative proxy only)",
+    "implied_move_pct": null,
+    "regime": "bullish_trend (medium confidence; VIX proxy in use)",
+    "circuit_breaker_state": "FULL",
+    "circuit_breaker_dd_pct": 2.77,
+    "daily_pnl_check_source": "broker.account_snapshot at 19:35:07Z (equity $101,210.88; cash $11,112.15)",
+    "news_feed_status": "news_unavailable (no live news connector this session — risk factor, not bullish signal)"
+  }
+}

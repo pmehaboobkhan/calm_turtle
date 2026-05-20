@@ -92,3 +92,22 @@
 - Unrealized PnL (mark $130.81): -$200.65 (-1.31%)
 - Win rate: n/a (no closed trades post-reset)
 - Active strategies: large_cap_momentum_top5
+
+---
+
+### 2026-05-20 pre_close — PAPER_CLOSE (overnight_risk: WMT Q1 FY27 BMO 2026-05-21)
+
+- Routine: pre_close_2026-05-20, mode PAPER_TRADING, cb_state=FULL, dd=2.77%, throttle=1.0.
+- Decision: PAPER_CLOSE 116 shares — final_status=PAPER_FILLED (Alpaca paper mirror order_id 5895f9df-727c-4b06-9848-d8b634cc9c39, broker FILLED).
+- Reason: WMT Q1 FY27 earnings release scheduled 2026-05-21 BMO — within `holding_earnings_caution_window_days=1`. Single-stock idiosyncratic catalyst; trade was sized as a momentum carry, not an earnings play.
+- Quote: $131.23 (IEX, 2026-05-20T19:35:06Z; staleness 24s).
+- Approx realized PnL: -$151.93 (mark 131.23 vs entry 132.5397; round-trip slippage ~$2 per fills config).
+- Risk Manager: APPROVED (exit-side; no R/R or sizing cap applies; daily PnL well clear of -2% hard halt). Compliance: APPROVED (mode, watchlist, strategy, schema all green).
+- Decision file: `decisions/2026-05-20/1935_WMT.json`.
+
+**Cumulative stats (updated 2026-05-20 pre_close):**
+
+- Open paper positions: 0 (closed pre-earnings)
+- Closed paper trades: 1 (this close)
+- Realized PnL: -$151.93 (this close)
+- Active strategies: large_cap_momentum_top5 (eligible for re-entry post-print on EOD signal)
