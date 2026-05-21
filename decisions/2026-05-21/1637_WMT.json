@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-21T20:37:37+00:00",
+  "routine_id": "end_of_day_2026-05-21",
+  "symbol": "WMT",
+  "decision": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "thesis_bull": "Deterministic large_cap_momentum_top5 signal fired ENTRY: WMT ranks #4 of 21 by 126-day return (+27.86%) with the SPY 10-month trend filter passing (SPY above 210d MA, +26.04% 12m). WMT was held 2026-05-18 through 2026-05-20 on this same momentum thesis and was closed only to sidestep the earnings print, not because the trend broke. Q1 FY27 results (BMO 2026-05-21) beat: EPS $0.66 vs $0.65 est, revenue $177.75B vs ~$174.65B est, Walmart US comps +4.1% with the strongest transaction growth in six quarters; membership + advertising now ~1/3 of operating income.",
+  "thesis_bear": "The signal is computed on the 2026-05-20 daily close ($130.85), which is PRE-EARNINGS and PRE-REACTION. On today's Q1 FY27 print (BMO 2026-05-21) WMT fell ~8% DESPITE the revenue beat (sources below) — the market read guidance/margin commentary bearishly. Re-buying into a fresh -8% earnings gap, the same day, on a stale momentum signal, is the canonical retail mistake. Momentum signals computed on a pre-gap bar do not reflect the new information. CONFLICT: deterministic TA/momentum ENTRY vs fundamental/news reaction strongly bearish — per CLAUDE.md the bear thesis dominates and confidence is lowered. Additional caution: the portfolio is in a soft daily-loss breach today (-$1,727.72 / -1.71% vs the session open; cap -$500/-0.5%), a defensive posture that argues against adding fresh risk on the same session. Counter-evidence carried verbatim: an 8% earnings-day drop on a revenue beat can mean-revert, and the underlying 6-month momentum rank is still top-5 — but acting on a stale pre-gap price is not how this is captured; the next EOD will re-rank on the post-earnings bar.",
+  "technical_context": {
+    "signal_action": "ENTRY",
+    "confirmations_passed": [
+      "SPY trend filter passed (above 10m MA)",
+      "WMT in top-5 by 126d return (+27.86%)"
+    ],
+    "confidence_inputs": {
+      "spy_above_ma": true,
+      "return_6m": 0.2786455525938041,
+      "rank": 4,
+      "universe_size": 21
+    },
+    "note": "Signal evaluated on 2026-05-20 daily bar close 130.85 — pre-earnings, pre-gap."
+  },
+  "news_context": [
+    {
+      "headline": "WMT Q1 FY27: EPS $0.66 (beat $0.65), revenue $177.75B (beat ~$174.65B), US comps +4.1%; stock dropped ~8% on the print",
+      "source": "Quiver Quantitative / The Motley Fool / Seeking Alpha earnings coverage 2026-05-21",
+      "url": "https://www.quiverquant.com/news/WALMART+%28%24WMT%29+Releases+Q1+2027+Earnings"
+    },
+    {
+      "headline": "WMT stock falls as Walmart reports Q1 earnings; revenue exceeded but shares dropped ~8%",
+      "source": "ECIKS earnings coverage 2026-05-21",
+      "url": "https://eciks.org/4855-35961-wmt-stock-falls-as-walmart-reports-q1-earnings-ahead-of-schedule-revenue-misses"
+    }
+  ],
+  "macro_context": {
+    "regime": "bullish_trend",
+    "confidence": "medium",
+    "spy_above_10mo_sma": true,
+    "vix": null,
+    "proxy_vol_20d_annualized_pct": 10.71,
+    "note": "No FOMC/CPI/PCE next session (2026-05-22). VIX unavailable on IEX; proxy only — confidence capped at medium."
+  },
+  "risk_reward": {
+    "entry": 130.85,
+    "stop": 117.765,
+    "target": 163.5625,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0,
+    "intended_shares": 46,
+    "intended_pct_of_account": 6.05,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0,
+    "note": "Intended Strategy-B per-name ~6% sizing shown for audit; not executed — NO_TRADE."
+  },
+  "consolidation": {
+    "primary_strategy": "large_cap_momentum_top5",
+    "subsumed_strategies": []
+  },
+  "confidence_score": 0.25,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "reason": "signal_on_stale_pre_earnings_bar_contradicted_by_post_earnings_gap_down; entry not actionable on stale price; defensive posture (soft daily-loss breach). Re-evaluate on next EOD post-earnings bar.",
+  "reviews": {
+    "trade_proposal": "Documented deterministic ENTRY but surfaced strong fundamental/news bear: WMT -8% on today's beat. Signal price (130.85) is pre-gap and not actionable. Confidence lowered to 0.25.",
+    "risk_manager": "REJECTED — entry price is a stale pre-earnings bar contradicted by a same-day -8% earnings reaction; sizing on a pre-gap price violates the spirit of fresh-data requirements. Soft daily-loss cap (-$500/-0.5%) is breached intraday (-1.71%), reinforcing defensive posture. No new risk added.",
+    "compliance_safety": "APPROVED for persistence as NO_TRADE — mode PAPER_TRADING permits NO_TRADE; symbol on watchlist; bull/bear/invalidation present; sources cited. Concurs with NO_TRADE outcome."
+  },
+  "invalidation_condition": "Re-evaluate WMT ENTRY on the next end_of_day run once the post-earnings (2026-05-21) daily bar is finalized: take the signal only if WMT still ranks top-5 by 126d return on the POST-GAP close AND SPY remains above its 210d MA. Do not re-enter on the pre-gap 2026-05-20 price under any circumstances."
+}

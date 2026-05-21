@@ -129,3 +129,23 @@
 - Unrealized PnL: $0.00 (flat)
 - Win rate: 0% (0/1)
 - Active strategies: large_cap_momentum_top5 (re-eligible 2026-05-21 EOD)
+
+### 2026-05-21 EOD — NO_TRADE (signal vs post-earnings gap-down; large_cap_momentum_top5 rank 4)
+
+- Routine: end_of_day_2026-05-21, mode PAPER_TRADING, cb_state=FULL (DD 4.34%), throttle=1.0.
+- Decision file: `decisions/2026-05-21/1637_WMT.json` (final_status=NO_TRADE).
+- Deterministic signal: large_cap_momentum_top5 ENTRY — rank 4/21, 126d +27.86%, SPY trend up. Engine ENTRY because WMT is flat (closed 2026-05-20 pre-earnings).
+- BUT signal evaluated on the 2026-05-20 daily close ($130.85) — PRE-EARNINGS. WMT reported Q1 FY27 BMO 2026-05-21: EPS $0.66 (beat $0.65 est), revenue $177.75B (beat ~$174.65B), US comps +4.1% — yet the stock fell ~8% on the print. Sources: Quiver Quantitative, The Motley Fool, Seeking Alpha (2026-05-21).
+- Conflict: deterministic momentum ENTRY vs strongly bearish same-day earnings reaction. Per CLAUDE.md, bear thesis dominates; the signal price is stale (pre-gap) and not actionable. Re-buying into a fresh -8% earnings gap on a stale signal is the canonical retail mistake. Confidence lowered to 0.25.
+- Additional caution: portfolio in a soft daily-loss breach today (-1.77% vs prior close; cap -0.5%). Hard -2% halt NOT hit. Defensive posture argues against adding fresh risk same session.
+- Risk Manager: REJECTED (stale pre-earnings price contradicted by -8% gap; soft daily-loss breach). Compliance: APPROVED (NO_TRADE persistence; mode/watchlist/schema/sources green).
+- Re-eligibility: next EOD on the POST-GAP daily bar — take only if WMT still ranks top-5 on the post-earnings close AND SPY above 210d MA. Never re-enter on the 2026-05-20 pre-gap price.
+
+**Cumulative stats (updated 2026-05-21 EOD):**
+
+- Open paper positions: 0 (flat; declined re-entry post-earnings)
+- Closed paper trades (all-time): 1
+- Realized PnL (all-time): -$151.93
+- Unrealized PnL: $0.00 (flat)
+- Win rate: 0% (0/1)
+- Active strategies: large_cap_momentum_top5 (re-eligible next EOD on post-gap bar)
