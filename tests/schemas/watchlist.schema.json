@@ -18,6 +18,23 @@
         "secondary": { "type": "string", "minLength": 1 }
       }
     },
+    "blocked_symbols": {
+      "type": "array",
+      "description": "Compliance / employer / regulatory blocks. A symbol here is refused at every layer: data fetch, signal, trade. Adding or removing entries requires a human PR.",
+      "items": {
+        "type": "object",
+        "required": ["symbol", "reason", "scope", "added_on", "added_by"],
+        "additionalProperties": false,
+        "properties": {
+          "symbol": { "type": "string", "pattern": "^[A-Z]{1,5}$" },
+          "company_name": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string", "minLength": 1 },
+          "scope": { "type": "string", "enum": ["all"] },
+          "added_on": { "type": "string", "format": "date" },
+          "added_by": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
     "symbols": {
       "type": "array",
       "minItems": 1,

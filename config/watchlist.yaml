@@ -5,6 +5,17 @@ universe: multi_strategy_retail_portfolio
 benchmarks:
   primary: ABSOLUTE_RETURN_TARGET   # 8-10% annual, max DD <= 15%
   secondary: SPY                    # reported for context, not used as a hurdle
+# --------- Compliance blocklist (employer / regulatory restrictions) ---------
+# Symbols here are refused at every layer: research, data fetch, signal, trade.
+# The loader (lib.config.watchlist) raises ConfigError if any blocked symbol
+# also appears in `symbols[]`. Adding or removing entries requires a human PR.
+blocked_symbols:
+  - symbol: INTU
+    company_name: Intuit Inc.
+    reason: "Operator employed by Intuit — employer insider-trading policy prohibits any position, anytime."
+    scope: all
+    added_on: "2026-05-20"
+    added_by: human
 symbols:
   # --------- Strategy A: dual_momentum_taa universe (macro ETFs) ---------
   - symbol: SPY

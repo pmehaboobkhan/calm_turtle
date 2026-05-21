@@ -25,6 +25,7 @@ from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 
+from lib.config import ComplianceError, is_symbol_blocked
 from lib.fills import FillModel, commission, simulated_fill_price
 
 logger = logging.getLogger(__name__)
@@ -170,6 +171,11 @@ def open_position(*, symbol: str, side: str, quantity: float, quote_price: float
     broker fill price (when available) so positions.json + log.csv stay aligned
     with the actual broker-side state.
     """
+    if is_symbol_blocked(symbol):
+        raise ComplianceError(
+            f"refusing to open position in blocked symbol: {symbol} "
+            f"(see config/watchlist.yaml > blocked_symbols)"
+        )
     sim_price = simulated_fill_price(side=side, quote_price=quote_price, model=fill_model)
     fee = commission(model=fill_model)
 

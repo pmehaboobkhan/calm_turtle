@@ -24,6 +24,7 @@ from datetime import UTC, datetime
 from typing import Any
 
 from lib import indicators
+from lib.config import is_symbol_blocked
 
 # Strategy A universe (broad asset classes).
 # IEF (7-10y treasuries) replaced TLT (20+y treasuries) on 2026-05-10 — see
@@ -286,10 +287,12 @@ def evaluate_large_cap_momentum_top5(
     # Trend filter: only run the strategy when SPY is in a bullish trend.
     spy_above_ma = indicators.above_sma(spy_closes, ma_window) or False
 
-    # Identify the "momentum universe" — large-caps in watchlist excluding the macro ETFs.
+    # Identify the "momentum universe" — large-caps in watchlist excluding the macro ETFs
+    # and any symbol on the compliance blocklist (employer/regulatory restrictions).
     macro_etfs = set(TAA_RISK_ASSETS + [TAA_CASH_PROXY])
     universe = [s for s in watchlist_symbols
-                if s not in macro_etfs and s in bars_by_symbol and s != "SPY"]
+                if s not in macro_etfs and s in bars_by_symbol and s != "SPY"
+                and not is_symbol_blocked(s)]
     if not universe:
         return []
 
