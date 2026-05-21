@@ -47,6 +47,7 @@ The current mode lives in `config/approved_modes.yaml`. Read it on every routine
 4. **If `approved_modes.yaml` mode is `HALTED`**, all routines exit early after writing a record to `logs/routine_runs/`.
 5. **If data is stale** beyond `risk_limits.yaml > data > max_data_staleness_seconds`, produce `NO_TRADE` decisions and stamp the staleness in the journal.
 6. **Refuse live execution.** v1 produces only paper trades or live proposals. Any code path that would place a live order without `mode == LIVE_EXECUTION` is blocked by hook #1 and must not be circumvented.
+7. **Honor the compliance blocklist.** Never trade, research, fetch data for, or generate a signal/decision involving any symbol listed in `config/watchlist.yaml > blocked_symbols[]`. These are compliance blocks — employer restrictions, regulatory bars, insider-trading policy — and they override every other rule, mode, and strategy. **INTU** is currently blocked because the operator is employed by Intuit Inc. The block is enforced at six layers: schema, loader assertion (`lib.config.validate_watchlist_invariants`), signal universe filter, paper-sim/broker guards, Risk Manager + Compliance/Safety agents, and a PreToolUse hook. Documentation that *references* a blocked symbol (journals, learning notes, this file) is allowed — only trade artifacts are refused.
 
 ## Approved write paths
 
@@ -75,6 +76,7 @@ You **may not** write to:
 ## Prohibited actions
 
 - Trading any symbol not in `config/watchlist.yaml`.
+- Trading, researching, or fetching data for any symbol in `config/watchlist.yaml > blocked_symbols[]`, regardless of mode, strategy, or routine. (Currently: **INTU**.)
 - Running any strategy not in `config/strategy_rules.yaml > allowed_strategies`.
 - Raising any risk limit.
 - Activating live mode without explicit human PR.

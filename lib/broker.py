@@ -11,7 +11,7 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 
-from lib.config import current_mode
+from lib.config import ComplianceError, current_mode, is_symbol_blocked
 
 PAPER_MODES = {"PAPER_TRADING", "LIVE_PROPOSALS", "LIVE_EXECUTION"}
 LIVE_MODES = {"LIVE_EXECUTION"}
@@ -181,6 +181,11 @@ def submit_market_order(symbol: str, *, qty: float, side: str,
     Returns the broker's order acknowledgement as a plain dict. Does NOT wait
     for the fill — use the returned `id` to poll if a synchronous result is needed.
     """
+    if is_symbol_blocked(symbol):
+        raise ComplianceError(
+            f"refusing broker order on blocked symbol: {symbol} "
+            f"(see config/watchlist.yaml > blocked_symbols)"
+        )
     try:
         from alpaca.trading.client import TradingClient
         from alpaca.trading.enums import OrderSide, TimeInForce
