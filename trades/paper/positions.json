@@ -1,7 +1,7 @@
 {
   "CSCO": {
     "entry_price": 117.6635,
-    "entry_ts": "2026-05-21T20:43:13.952590+00:00",
+    "entry_ts": "2026-05-22T13:37:04.041749+00:00",
     "quantity": 130.0,
     "rationale_link": "alpaca-mirror",
     "side": "BUY",
@@ -10,7 +10,7 @@
   },
   "GLD": {
     "entry_price": 412.0419,
-    "entry_ts": "2026-05-21T20:43:13.952608+00:00",
+    "entry_ts": "2026-05-22T13:37:04.041773+00:00",
     "quantity": 36.0,
     "rationale_link": "alpaca-mirror",
     "side": "BUY",
@@ -19,7 +19,7 @@
   },
   "GOOGL": {
     "entry_price": 395.64,
-    "entry_ts": "2026-05-21T20:43:13.952612+00:00",
+    "entry_ts": "2026-05-22T13:37:04.041778+00:00",
     "quantity": 38.0,
     "rationale_link": "alpaca-mirror",
     "side": "BUY",
@@ -28,7 +28,7 @@
   },
   "UNH": {
     "entry_price": 391.9044,
-    "entry_ts": "2026-05-21T20:43:13.952615+00:00",
+    "entry_ts": "2026-05-22T13:37:04.041781+00:00",
     "quantity": 39.0,
     "rationale_link": "alpaca-mirror",
     "side": "BUY",
@@ -37,7 +37,7 @@
   },
   "XOM": {
     "entry_price": 160.4279,
-    "entry_ts": "2026-05-21T20:43:13.952618+00:00",
+    "entry_ts": "2026-05-22T13:37:04.041785+00:00",
     "quantity": 97.0,
     "rationale_link": "alpaca-mirror",
     "side": "BUY",
