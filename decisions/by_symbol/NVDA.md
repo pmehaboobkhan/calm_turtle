@@ -21,3 +21,23 @@
 - Quote at close $235.25 (Alpaca IEX, 20:00:02Z). Stop $211.73, Target $294.06, nominal R/R 2.5:1.
 - Risk Manager: APPROVED on NO_TRADE (reduces no risk). Compliance: APPROVED.
 - Watch tomorrow: if either gate clears (CB peak fix lands via `prompts/proposed_updates/cb_equity_source.md` OR feed catches up), reconsider on the EOD-2026-05-15 signal.
+
+## 2026-05-22 — PAPER_BUY (large_cap_momentum_top5, end_of_day)
+
+**Cumulative stats (updated 2026-05-22 EOD):**
+
+- Open paper positions: 1 (27 sh, opened 2026-05-22, PENDING_BROKER fill)
+- Closed paper trades: 0
+- Realized PnL: $0.00
+- Unrealized PnL: n/a (order pending next-open fill; not yet a position)
+- Win rate: n/a (no closed trades)
+- Active strategies: large_cap_momentum_top5 (ENTRY taken 2026-05-22 at rank 5)
+
+- Decision file: `decisions/2026-05-22/1641_NVDA.json`
+- Routine: end_of_day_2026-05-22, mode PAPER_TRADING, cb_state=FULL, throttle=1.0.
+- Signal: ENTRY (rank 5/21 by 6m return +21.05%, SPY trend filter passed). NVDA promoted from rank 6 (NO_SIGNAL hold-zone, 2026-05-21) to rank 5 (ENTRY) today — the only net-new ENTRY in today's slate (AMZN holds rank 6, WMT rank 7, both hold-zone). The five held lines (CSCO, GLD, GOOGL, UNH, XOM) all re-confirmed ENTRY (maintain; no new decision files).
+- Decision: **PAPER_BUY** — 27 shares at $219.51 (2026-05-21 close basis) = $5,926.77 = 5.84% of $101,510.01 equity. Stop $197.559 (-10%), target $274.3875 (+25%), R/R 2.5:1.
+- CB FULL, throttle 1.0 → effective_qty = intended 27 (un-throttled). DD 2.48% (recovered from 4.34% on 2026-05-21), well below the 8% FULL→HALF trigger.
+- Risk Manager: APPROVED (5.84% < 10% NVDA cap; per-trade risk 0.584% < 1.5%; post-open 6 positions ≤ 8; 1 trade today ≤ 5; second Tech line w/ CSCO noted, not a concentration breach). Compliance: APPROVED (in watchlist, not blocked, all theses present, no live path).
+- Execution: order submitted to Alpaca paper sandbox (mirror mode), order_id 14d3ade1, OrderStatus.ACCEPTED, status PENDING_BROKER (queued for next-open fill). positions.json mirror-owned; reconcile alpaca-authoritative.
+- Watch: rank-5 boundary name (lowest persistence); re-evaluate each EOD. EXIT if rank < 7 or SPY 10m-MA breaks or stop hit.

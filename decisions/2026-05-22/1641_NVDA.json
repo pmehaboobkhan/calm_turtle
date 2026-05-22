@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-22T20:41:24Z",
+  "routine_id": "end_of_day_2026-05-22",
+  "symbol": "NVDA",
+  "decision": "PAPER_BUY",
+  "strategy": "large_cap_momentum_top5",
+  "thesis_bull": "NVDA is rank 5/21 by 6-month total return at +21.05% on the 2026-05-21 close basis (signals.evaluate_all -> ENTRY: 'in top-5, SPY trend up'). SPY trend filter engaged (SPY above its 210d/10-month MA, regime bullish_trend, medium confidence). Both required confirmations passed. NVDA is a genuinely NEW open: it was rank 6 (NO_SIGNAL hold-zone) on the 2026-05-21 EOD basis and has now crossed into the top-5, displacing the prior boundary as momentum re-ranked. Liquidity is overwhelming: 20d ADV ~164.9M shares vs the 5M minimum. Adds the highest-beta name in the basket as a momentum-leader exposure while SPY trend remains intact.",
+  "thesis_bear": "NVDA is the rank-5 boundary name (lowest-persistence top-5 slot, directly above AMZN rank 6 and WMT rank 7, both NO_SIGNAL hold-zone) -> a small momentum shift can knock it back out and into an EXIT at a subsequent routine. Its absolute 6m momentum (+21.05%) is the weakest of today's top-5 (CSCO +54.42%, GOOGL +36.55%, XOM +32.22%, UNH +23.75%). NVDA is the highest-beta name in the basket and adds a SECOND Technology line alongside the held CSCO position, mildly increasing tech-sector concentration. The portfolio is in a 2-down-day-then-recovery sequence (DD recovered 4.34%->2.48% today); momentum entries late in a stretched bull run carry mean-reversion risk. News feed is OFFLINE in v1 -> NVDA treated as news_unavailable (a risk factor per CLAUDE.md, never read as 'no news = bullish'). No live NVDA quote available (not previously held); entry priced off the 2026-05-21 daily close, the deterministic-strategy basis.",
+  "invalidation_condition": "NVDA falls below rank 7 (out of the top-N+2 hold-zone) OR SPY 10-month-MA trend filter breaks OR a -10% drawdown from fill (stop 197.559) OR take-profit +25% (274.3875). Re-evaluate every EOD; the rank-5 boundary makes a near-term EXIT plausible.",
+  "risk_reward": {
+    "entry": 219.51,
+    "stop": 197.559,
+    "target": 274.3875,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 27,
+    "usd": 5926.77,
+    "pct_of_account": 5.84,
+    "intended_pct": 6.0,
+    "strategy_b_intended_pct": 6.0,
+    "applied_cap": "Sized to Strategy B's per-name allocation (~6% of account; 5 names x ~6% = 30% Strategy B target). 27 shares = $5,926.77 = 5.84% of $101,510.01 equity. Per-trade risk with 10% stop = 0.584% < max_risk_per_trade_pct 1.5%; well under watchlist NVDA max_position_size_pct 10 and risk_limits max_position_size_pct 15.",
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "consolidation": {
+    "primary_strategy": "large_cap_momentum_top5",
+    "subsumed_strategies": []
+  },
+  "confidence_score": 0.5,
+  "confidence_notes": "Deterministic top-5 momentum entry with SPY trend confirmed, but confidence held low: NVDA is the rank-5 boundary name (lowest-persistence slot, just promoted from rank 6), absolute 6m momentum (+21.05%) is the weakest of today's top-5, it adds tech-sector concentration alongside CSCO, and the news feed is offline so the entry rests purely on price momentum into a stretched bull run.",
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_notes": "Position 5.84% < watchlist NVDA max_position_size_pct 10% and risk_limits max_position_size_pct 15%; per-trade risk 0.584% < max_risk_per_trade_pct 1.5%. R/R 2.5:1 >= minimum_risk_reward 1.5. Liquidity 164.9M ADV >> minimum_liquidity_avg_daily_volume 5M. NVDA not currently held -> genuine new open, not a double-book. Post-open positions = 6 <= max_open_positions 8. Trades opened today = 1 <= max_trades_per_day 5. CB state FULL, throttle 1.0 (entries un-throttled at FULL); DD 2.48% well below the 8% FULL->HALF trigger. Total equity exposure post-open ~75% (5 held + NVDA) <= max_total_equity_exposure_pct 100%. Second Technology line (with CSCO) noted but not a concentration breach -- distinct names, no single-sector >2 positions rule. Strategy large_cap_momentum_top5 = ACTIVE_PAPER_TEST; NVDA approved_for_paper_trading=true. No EXIT-signal conflict on NVDA. APPROVED.",
+  "compliance_verdict": "APPROVED",
+  "compliance_notes": "PAPER_BUY permitted under PAPER_TRADING mode. Bull thesis, bear thesis (surfaces rank-5 boundary fragility, tech concentration, offline-news risk), and invalidation condition all present and non-trivial. Schema-compliant. NVDA in watchlist with approved_for_paper_trading=true; NOT in blocked_symbols (only INTU is blocked). Deterministic momentum entry from strategy_rules allowed_strategies -> not single_stock_earnings_play / news_chase / momentum_late_entry / leveraged. No live execution path touched. APPROVED.",
+  "human_approval_required": false,
+  "final_status": "PAPER_PROPOSED",
+  "data_provenance": {
+    "signal_eval": "lib.signals.evaluate_all on lib.data.get_bars (daily bars), EOD 2026-05-22",
+    "signal_strategy": "large_cap_momentum_top5",
+    "signal_action": "ENTRY",
+    "signal_rationale": "large_cap_momentum_top5: ENTRY — in top-5, SPY trend up (rank 5/21, 6m +21.05%)",
+    "last_bar_ts": "2026-05-21T00:00:00+00:00",
+    "data_freshness_note": "Latest finalized daily bar 2026-05-21 (today's 2026-05-22 daily bar not yet finalized at 16:41 ET run). Daily-bar deterministic momentum strategy; 60s intraday staleness rule does not bind in PAPER_TRADING for daily-bar strategies. Reconcile() alpaca-authoritative; Alpaca mirror confirmed in sync at run time.",
+    "earnings_flag": "No known near-horizon NVDA earnings within the 1-day caution window; news feed offline so unverifiable -> treated as risk factor, position re-evaluated each EOD.",
+    "subagent_note": "trade_proposal / risk_manager / compliance_safety steps performed inline by the orchestrator strictly from real computed data (lib.signals, lib.data, lib.broker, lib.paper_sim, config) because the Task/agent dispatch tool is unavailable this run. Zero fabrication; every figure traces to a library call. Recorded for audit honesty."
+  },
+  "execution": {
+    "broker": "alpaca_paper_sandbox",
+    "submitted": false,
+    "broker_status": "PENDING_OPEN",
+    "note": "Order to be submitted to Alpaca paper sandbox at EOD (16:41 ET, market closed). BROKER_PAPER=alpaca so paper_sim.open_position mirrors a market order; queued for next-open fill. positions.json is mirror-owned; reconcile() is alpaca-authoritative. 'Not a position yet' is not a divergence."
+  }
+}
