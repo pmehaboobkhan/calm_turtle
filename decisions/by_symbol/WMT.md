@@ -149,3 +149,30 @@
 - Unrealized PnL: $0.00 (flat)
 - Win rate: 0% (0/1)
 - Active strategies: large_cap_momentum_top5 (re-eligible next EOD on post-gap bar)
+
+---
+
+## Weekly Review 2026-W21 — Prediction outcome annotations (appended 2026-05-23)
+
+### Outcome: 2026-05-20 PAPER_CLOSE (pre-earnings) → CORRECT_POLICY + CORRECT_DOLLARS
+
+- WMT Q1 FY27 BMO 2026-05-21: EPS $0.66 (beat $0.65), revenue $177.75B (beat ~$174.65B), US comps +4.1%.
+- Despite the beat, WMT fell ~8% on the print (beat-and-fall pattern: high valuation / conservative forward guidance).
+- Had the position been held through the print, estimated MTM damage: ~$1,215 (8% of ~$15.2k position).
+- Realized exit cost: −$151.93. Net save: ~$1,063.
+- **Outcome tag: CORRECT_POLICY + CORRECT_DOLLARS.**
+- Source: Quiver Quantitative, The Motley Fool, Seeking Alpha (2026-05-21). Confirmed by 2026-05-21 EOD journal.
+
+### Outcome: 2026-05-21 NO_TRADE (post-print stale pre-gap signal) → CORRECT
+
+- WMT 6m momentum rank as of 2026-05-22 EOD: **rank 7, +20.40%** — below the top-5 ENTRY threshold (hold-zone only).
+- Declining re-entry on the stale 2026-05-20 pre-gap bar ($130.85) was correct: WMT is not a top-5 momentum name on the post-earnings bar.
+- **Outcome tag: CORRECT.** Hypothesis confirmed: the post-gap bar correctly demoted WMT to hold-zone.
+
+**Cumulative stats (updated 2026-05-23 weekly review):**
+
+- Open paper positions: 0 (flat; earnings-window + post-gap demotion)
+- Closed paper trades (all-time): 1
+- Realized PnL (all-time): -$151.93
+- Win rate: 0% (0/1)
+- Active strategies: large_cap_momentum_top5 (re-eligible when WMT re-enters top-5 momentum rank on a clean post-gap bar)
