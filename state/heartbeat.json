@@ -1,0 +1,6 @@
+{
+  "last_updated": "2026-05-23T00:00:00+00:00",
+  "status": "initialised",
+  "n_open_positions": 0,
+  "note": "Updated by each routine run. Hermes checks this to confirm worker liveness."
+}

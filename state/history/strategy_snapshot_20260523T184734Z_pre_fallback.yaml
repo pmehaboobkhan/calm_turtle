@@ -1,0 +1,59 @@
+schema_version: 1
+last_reviewed: '2026-05-11'
+last_reviewed_by: human
+allowed_strategies:
+- name: dual_momentum_taa
+  status: ACTIVE_PAPER_TEST
+  allocation_pct: 0.6
+  description: 'Trend-following + cross-asset momentum across SPY/TLT/GLD with SHV
+    as cash floor. Hold the single best-momentum asset that also clears its 10-month
+    MA; otherwise hold cash. ~4-8 trades per year. Capital allocation: 60% of portfolio.'
+- name: large_cap_momentum_top5
+  status: ACTIVE_PAPER_TEST
+  allocation_pct: 0.3
+  description: 'Hold top-5 large-caps by 6-month total return, equal-weighted, when
+    SPY is above its 10-month MA. Exit when stock falls out of top-7 OR SPY trend
+    breaks. Capital allocation: 30% of portfolio.'
+- name: gold_permanent_overlay
+  status: ACTIVE_PAPER_TEST
+  allocation_pct: 0.1
+  description: Permanent 10% allocation to GLD. Crisis/inflation insurance and a diversifier
+    that historically has near-zero correlation to both equities and bonds.
+- name: sector_relative_strength_rotation
+  status: REJECTED
+  description: REJECTED 2026-05-10. Lost to SPY by 50-78% across 2010-2015, 2019-2020,
+    and 2022-2026 backtests. See reports/learning/backtest_findings_2026-05-10.md.
+- name: regime_defensive_tilt
+  status: REJECTED
+  description: REJECTED 2026-05-10. Failed both SPY and equal-weight benchmarks in
+    the 2022-2026 backtest.
+- name: trend_pullback_in_leader
+  status: REJECTED
+  description: REJECTED 2026-05-10. Never backtested in isolation; structural problem
+    identified in the broader rotation family.
+- name: spy_neutral_default
+  status: REJECTED
+  description: REJECTED 2026-05-10. The "hold SPY when no edge" default is subsumed
+    by dual_momentum_taa, which can hold SPY as a risk-on asset when warranted.
+disallowed_strategies:
+- day_trading_scalp
+- news_chase
+- single_stock_earnings_play
+- momentum_late_entry
+- inverse_or_leveraged_etf_use
+- options_strategies
+- short_selling
+required_confirmations:
+  dual_momentum_taa:
+  - Risk asset's 12-month total return exceeds SHV's 12-month total return
+  - Risk asset above its 10-month moving average
+  - Selected as top-1 (or top-N by params) among qualifying risk assets
+  large_cap_momentum_top5:
+  - SPY above its 10-month moving average (trend filter)
+  - Stock in top-5 by 6-month total return on the watchlist large-cap subset
+  gold_permanent_overlay:
+  - "Permanent allocation policy \u2014 no per-period confirmations required"
+minimum_risk_reward_ratio: 1.5
+minimum_liquidity_avg_daily_volume: 5000000
+abnormal_volatility_threshold_atr_multiplier: 2.5
+holding_earnings_caution_window_days: 1
