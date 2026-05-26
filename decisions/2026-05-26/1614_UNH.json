@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-26T16:14:52+00:00",
+  "routine_id": "midday_2026-05-26",
+  "symbol": "UNH",
+  "decision": "PAPER_CLOSE",
+  "thesis_bull": "UNH large_cap_momentum_top5 thesis remains intact: midday $395.66 is +19.93% above the -10% rotation stop ($316.82) on the original 2026-05-18/19/22 entry basis ($352.017). No earnings preannouncement, regulatory action, or M&A retrieved on this name at midday.",
+  "thesis_bear": "Portfolio breached the daily-loss limit (-$569.77 / -0.563% vs -$500 / -0.5% caps) at midday; halts.halt_after_daily_limit_breach=true mandates proposing closure of all positions. Driver is a sector-wide energy decline on falling crude (US-Iran ceasefire / Strait of Hormuz reopening optimism) led by XOM; risk of a third consecutive down session and 05-28 GDP+PCE macro heavyweights two sessions out.",
+  "invalidation_condition": "De-risk proposal is invalidated (HOLD preferred) if the operator judges the daily-loss limit breach is a transient single-macro-move drawdown with all rotation stops intact and elects to let pre_close re-evaluate on closing prices. Close becomes mandatory if UNH breaks its -10% rotation stop ($316.82) or the -2.0% daily-drawdown halt triggers.",
+  "risk_reward": {
+    "entry": 395.66,
+    "stop": 316.82,
+    "target": 440.02,
+    "ratio": 0.0
+  },
+  "position_size": {
+    "shares": 39.0,
+    "usd": 15430.74,
+    "pct_of_account": 15.34
+  },
+  "confidence_score": 0.5,
+  "risk_manager_verdict": "APPROVED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "PAPER_PROPOSED",
+  "notes": "Proposed by midday routine on daily-loss-limit breach (logs/risk_events/20260526_161452_daily_loss.md). PAPER_CLOSE is a risk-REDUCING action permitted in PAPER_TRADING. NOT auto-executed: midday is monitoring-only; escalated to human via URGENT Telegram. RM check #9 (loss cap) protects opens, not risk-reducing closes; R/R ratio=0 is N/A for a close. Day P&L contribution: $146.47.",
+  "risk_manager_reasoning": "PAPER_CLOSE of a watchlist symbol (approved_for_paper_trading=true) reduces exposure; no limit is raised, no new position opened, data fresh (<60s). APPROVED.",
+  "compliance_reasoning": "PAPER_CLOSE permitted in PAPER_TRADING mode; symbol on watchlist & approved; not in blocked_symbols; bull/bear/invalidation present; news sources cited in data/news/2026-05-26/. APPROVED.",
+  "news_sources": [
+    "data/news/2026-05-26/UNH.md"
+  ]
+}

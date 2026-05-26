@@ -141,3 +141,11 @@
 - Unrealized PnL (mark $417.58): +$199.37 (+1.34%)
 - Win rate: n/a (no closed trades post-reset)
 - Active strategies: dual_momentum_taa, gold_permanent_overlay (subsumed)
+
+## 2026-05-26 — PAPER_CLOSE PROPOSED (midday daily-loss-limit breach)
+
+- Decision file: `decisions/2026-05-26/1614_GLD.json` (final_status `PAPER_PROPOSED` — NOT executed)
+- Trigger: portfolio daily-loss limit breached -$569.77 / -0.563% (vs -$500 / -0.5% caps); `halt_after_daily_limit_breach=true`. Risk event: `logs/risk_events/20260526_161452_daily_loss.md`.
+- Context: midday 413.48; day +$51.77; +18.25% above -10% rotation stop ($338.00). No material item.
+- Gates: Risk Manager APPROVED + Compliance APPROVED (PAPER_CLOSE reduces exposure; permitted in PAPER_TRADING).
+- Status: position remains OPEN; midday is monitoring-only (no fills). Close/hold escalated to human via URGENT notify; pre_close re-evaluates on close.

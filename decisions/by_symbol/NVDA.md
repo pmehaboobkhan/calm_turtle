@@ -41,3 +41,11 @@
 - Risk Manager: APPROVED (5.84% < 10% NVDA cap; per-trade risk 0.584% < 1.5%; post-open 6 positions ≤ 8; 1 trade today ≤ 5; second Tech line w/ CSCO noted, not a concentration breach). Compliance: APPROVED (in watchlist, not blocked, all theses present, no live path).
 - Execution: order submitted to Alpaca paper sandbox (mirror mode), order_id 14d3ade1, OrderStatus.ACCEPTED, status PENDING_BROKER (queued for next-open fill). positions.json mirror-owned; reconcile alpaca-authoritative.
 - Watch: rank-5 boundary name (lowest persistence); re-evaluate each EOD. EXIT if rank < 7 or SPY 10m-MA breaks or stop hit.
+
+## 2026-05-26 — PAPER_CLOSE PROPOSED (midday daily-loss-limit breach)
+
+- Decision file: `decisions/2026-05-26/1614_NVDA.json` (final_status `PAPER_PROPOSED` — NOT executed)
+- Trigger: portfolio daily-loss limit breached -$569.77 / -0.563% (vs -$500 / -0.5% caps); `halt_after_daily_limit_breach=true`. Risk event: `logs/risk_events/20260526_161452_daily_loss.md`.
+- Context: midday 212.75; day -$85.26; +16.43% above -10% rotation stop ($177.80). AI-chip competition narrative (mixed, not breaking).
+- Gates: Risk Manager APPROVED + Compliance APPROVED (PAPER_CLOSE reduces exposure; permitted in PAPER_TRADING).
+- Status: position remains OPEN; midday is monitoring-only (no fills). Close/hold escalated to human via URGENT notify; pre_close re-evaluates on close.

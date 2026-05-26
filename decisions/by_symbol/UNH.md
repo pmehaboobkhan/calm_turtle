@@ -35,3 +35,11 @@
 - Unrealized PnL (mark $401.42): +$371.11 (+2.43%)
 - Win rate: n/a (no closed trades)
 - Active strategies: large_cap_momentum_top5
+
+## 2026-05-26 — PAPER_CLOSE PROPOSED (midday daily-loss-limit breach)
+
+- Decision file: `decisions/2026-05-26/1614_UNH.json` (final_status `PAPER_PROPOSED` — NOT executed)
+- Trigger: portfolio daily-loss limit breached -$569.77 / -0.563% (vs -$500 / -0.5% caps); `halt_after_daily_limit_breach=true`. Risk event: `logs/risk_events/20260526_161452_daily_loss.md`.
+- Context: midday 395.66; day +$146.47; +19.93% above -10% rotation stop ($316.82). News bullish (Q1 beat, PT raises).
+- Gates: Risk Manager APPROVED + Compliance APPROVED (PAPER_CLOSE reduces exposure; permitted in PAPER_TRADING).
+- Status: position remains OPEN; midday is monitoring-only (no fills). Close/hold escalated to human via URGENT notify; pre_close re-evaluates on close.
