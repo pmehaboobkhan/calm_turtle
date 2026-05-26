@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-26T20:45:00+00:00",
+  "routine_id": "end_of_day_2026-05-26",
+  "symbol": "WMT",
+  "decision": "PAPER_BUY",
+  "thesis_bull": "WMT large_cap_momentum_top5 ENTRY: deterministic signal ranks WMT #5 by 126-day (6-month) total return (+20.26%) with the SPY 10-month-SMA trend filter passing (SPY +29.39% 12m, above 210d MA). This is the deferred rank-5 re-confirmation carried since 2026-05-21 (WMT had gapped down ~8% post-earnings and slipped out of top-5; it has since re-qualified, edging out AMZN which is rank 6 / NO_SIGNAL hold-zone). WMT is a defensive Consumer-Staples diversifier vs the current tech/energy-heavy book.",
+  "thesis_bear": "Opening WMT is EXPOSURE EXPANSION on a day that breached the daily-loss limit (broker day P&L -$598.81 / -0.592% vs the -$500 / -0.5% caps), with halts.halt_after_daily_limit_breach=true active and a de-risk mandate carried from the midday breach (6 PAPER_CLOSE proposals) and the pre_close NVDA de-risk close. The ENTRY signal itself rests on daily bars stamped 2026-05-22 (>60s past max_data_staleness_seconds=60) because the daily-bar feed is lagging the live quote feed; the 6-month momentum rank is therefore computed on stale closes. The day's loss was driven by a sector-wide energy decline on falling crude (US-Iran ceasefire / Strait-of-Hormuz reopening) — a real non-benign macro move two sessions ahead of the 2026-05-28 GDP 2nd release + PCE deflator heavyweights.",
+  "invalidation_condition": "This ENTRY is invalidated (do NOT open) while the daily-loss limit remains breached for the session (halt_after_daily_limit_breach=true) and/or the entry-driving daily bars remain stale beyond max_data_staleness_seconds. It re-qualifies for a fresh EOD entry only when: (a) a clean session with no daily-loss-limit breach, (b) fresh daily bars (<=60s) confirm WMT still ranks top-5, and (c) the circuit-breaker remains FULL with no de-risk flag active.",
+  "risk_reward": {
+    "entry": 120.27,
+    "stop": 108.24,
+    "target": 150.34,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0,
+    "intended_shares_at_30pct_per_5_slots": 122,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.4,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "REJECTED",
+  "reason": "daily_loss_limit_breach_active + stale_entry_bars",
+  "consolidation": {
+    "primary_strategy": "large_cap_momentum_top5",
+    "subsumed_strategies": [],
+    "conflict": false
+  },
+  "risk_manager_reasoning": "REJECTED on two independent hard checks. Check #9 (today's loss < max_daily_loss_*): broker day P&L is -$598.81 / -0.592%, breaching BOTH max_daily_loss_usd (-$500) and max_daily_loss_pct (-0.5%); with halts.halt_after_daily_limit_breach=true an OPENING trade that expands exposure is refused (closes/de-risking remain permitted). Check #11 (data freshness within max_data_staleness_seconds=60): the daily bars driving the WMT 6-month momentum rank are stamped 2026-05-22 (>60s stale) — per CLAUDE.md rule #5 a stale entry input forces NO_TRADE for the affected symbol. Note: checks #1 (WMT on watchlist, approved_for_paper_trading=true), #2 (large_cap_momentum_top5 is ACTIVE_PAPER_TEST/allowed), #3 (R/R 2.5 >= 1.5), #4 (~14.6% < 15% cap), #7 (1 trade today < 5), #8 (5 open < 8 max), #12 (no margin/options/short/leverage) would all PASS — the rejection is solely the daily-loss-limit breach and stale entry data. Capital preservation > clever trades.",
+  "compliance_reasoning": "REJECTED. PAPER_BUY is class-permitted in PAPER_TRADING mode and WMT is on the watchlist (approved_for_paper_trading=true) / not in blocked_symbols, but Compliance defers to the Risk Manager verdict (check #4): RM returned REJECTED, so the decision cannot be APPROVED. The daily-loss-limit breach + de-risk mandate make opening new exposure non-compliant with the conservative-on-missing/breach-data posture in CLAUDE.md. Bull/bear/invalidation theses present; signal source = lib.signals deterministic evaluation 2026-05-26 close; no live execution.",
+  "signal_source": "lib.signals.evaluate_all 2026-05-26 close (large_cap_momentum_top5 ENTRY, rank 5, 126d_ret=+20.26%)",
+  "notes": "EOD deterministic entry candidate (deferred WMT rank-5 re-confirmation). NOT opened. paper_sim.open_position NOT called. Recorded for backtest comparison and Self-Learning attribution as a signal-fired-but-risk-rejected outcome. AMZN remained rank 6 / NO_SIGNAL (hold zone) so no second candidate. The five open positions (CSCO/GLD/GOOGL/UNH/XOM) all re-confirmed ENTRY/hold this run — no EXIT triggered on any held name; NVDA EXIT signal is moot (already flat after pre_close de-risk close)."
+}

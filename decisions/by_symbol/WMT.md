@@ -176,3 +176,19 @@
 - Realized PnL (all-time): -$151.93
 - Win rate: 0% (0/1)
 - Active strategies: large_cap_momentum_top5 (re-eligible when WMT re-enters top-5 momentum rank on a clean post-gap bar)
+
+## 2026-05-26 — PAPER_BUY REJECTED (large_cap_momentum_top5 — EOD)
+
+- Decision file: `decisions/2026-05-26/1645_WMT.json` (final_status `REJECTED`).
+- Deterministic ENTRY signal fired: WMT rank **5** by 126d return (+20.26%), SPY 10mo-SMA trend filter passing. This is the deferred rank-5 re-confirmation carried since 2026-05-21 (re-qualified, edging out AMZN rank 6 / NO_SIGNAL).
+- **REJECTED by Risk Manager** (check #9 daily-loss-limit breach: broker day P&L -$614.25 / -0.607% vs -$500 / -0.5% caps; `halt_after_daily_limit_breach=true` — opening exposure refused) **and check #11 stale entry bars** (daily bars stamped 2026-05-22, >60s past max_data_staleness_seconds). Compliance deferred to RM REJECTED.
+- No `paper_sim.open_position` called. Recorded for backtest + Self-Learning attribution as signal-fired-but-risk-rejected. R/R 2.5 and ~14.6% size both PASS — rejection is purely the daily-loss-limit breach + stale entry data.
+- **Outcome tag: PENDING** (re-evaluate next clean session with fresh bars).
+
+**Cumulative stats (updated 2026-05-26 EOD):**
+
+- Open paper positions: 0 (flat; EOD ENTRY signal risk-rejected on daily-loss-limit breach + stale bars)
+- Closed paper trades (all-time): 1
+- Realized PnL (all-time): -$151.93
+- Win rate: 0% (0/1)
+- Active strategies: large_cap_momentum_top5 (re-eligible when daily-loss-limit clears AND fresh bars confirm top-5)
