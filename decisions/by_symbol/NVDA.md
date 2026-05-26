@@ -49,3 +49,11 @@
 - Context: midday 212.75; day -$85.26; +16.43% above -10% rotation stop ($177.80). AI-chip competition narrative (mixed, not breaking).
 - Gates: Risk Manager APPROVED + Compliance APPROVED (PAPER_CLOSE reduces exposure; permitted in PAPER_TRADING).
 - Status: position remains OPEN; midday is monitoring-only (no fills). Close/hold escalated to human via URGENT notify; pre_close re-evaluates on close.
+
+## 2026-05-26 — PAPER_CLOSE EXECUTED (pre_close)
+
+- Decision file: `decisions/2026-05-26/1614_NVDA.json` (final_status now `PAPER_FILLED`).
+- Executed by pre_close 2026-05-26 19:46:30Z at late-day quote 214.34, 27 shares. Reason: `daily_loss_limit_breach_midday`. `halt_after_daily_limit_breach=true` mandates de-risking; pre_close CAN execute approved closes (midday cannot).
+- Broker: Alpaca paper sandbox order_id 40f0f701, OrderStatus.FILLED; log row appended to `trades/paper/log.csv`. Reconcile clean: 5 open positions, 0 discrepancies (alpaca-authoritative).
+- Realized P&L: +$453.09 vs original 2026-05-22 entry basis ($197.559); -$42.33 vs alpaca-mirror reset basis ($215.9078).
+- Overnight-risk check: NVDA Q1 FY27 already reported 2026-05-20 AMC (rev $81.6B +85% y/y, Q2 guide $91B) — NO earnings catalyst tomorrow. Close was driven solely by the daily-loss-limit de-risking mandate, not by an overnight event.

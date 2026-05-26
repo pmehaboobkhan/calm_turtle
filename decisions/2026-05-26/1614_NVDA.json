@@ -22,8 +22,21 @@
   "risk_manager_verdict": "APPROVED",
   "compliance_verdict": "APPROVED",
   "human_approval_required": false,
-  "final_status": "PAPER_PROPOSED",
-  "notes": "Proposed by midday routine on daily-loss-limit breach (logs/risk_events/20260526_161452_daily_loss.md). PAPER_CLOSE is a risk-REDUCING action permitted in PAPER_TRADING. NOT auto-executed: midday is monitoring-only; escalated to human via URGENT Telegram. RM check #9 (loss cap) protects opens, not risk-reducing closes; R/R ratio=0 is N/A for a close. Day P&L contribution: $-85.26.",
+  "final_status": "PAPER_FILLED",
+  "executed": {
+    "executed_by": "pre_close_2026-05-26",
+    "executed_at": "2026-05-26T19:46:30.821732+00:00",
+    "execution_reason": "daily_loss_limit_breach_midday",
+    "close_quote_price": 214.34,
+    "quantity": 27.0,
+    "broker_order_id": "40f0f701-a856-4583-a3c8-434e2faadd81",
+    "broker_status": "FILLED",
+    "log_row": "trades/paper/log.csv@2026-05-26T19:46:30.821732+00:00",
+    "realized_pnl_vs_original_basis_197_559": 453.09,
+    "realized_pnl_vs_alpaca_mirror_basis_215_9078": -42.33,
+    "note": "pre_close executes the midday-approved risk-reducing close because halt_after_daily_limit_breach=true mandates de-risking; midday is monitoring-only. No overnight earnings catalyst on NVDA (Q1 FY27 already reported 2026-05-20 AMC)."
+  },
+  "notes": "Proposed by midday routine on daily-loss-limit breach (logs/risk_events/20260526_161452_daily_loss.md). PAPER_CLOSE is a risk-REDUCING action permitted in PAPER_TRADING. NOT auto-executed by midday (monitoring-only; escalated to human via URGENT Telegram). EXECUTED by pre_close 2026-05-26 19:46Z per halt_after_daily_limit_breach=true. RM check #9 (loss cap) protects opens, not risk-reducing closes; R/R ratio=0 is N/A for a close. Day P&L contribution: $-85.26.",
   "risk_manager_reasoning": "PAPER_CLOSE of a watchlist symbol (approved_for_paper_trading=true) reduces exposure; no limit is raised, no new position opened, data fresh (<60s). APPROVED.",
   "compliance_reasoning": "PAPER_CLOSE permitted in PAPER_TRADING mode; symbol on watchlist & approved; not in blocked_symbols; bull/bear/invalidation present; news sources cited in data/news/2026-05-26/. APPROVED.",
   "news_sources": [
