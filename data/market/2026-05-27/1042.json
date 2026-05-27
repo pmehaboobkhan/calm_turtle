@@ -1,0 +1,608 @@
+{
+  "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+  "max_data_staleness_seconds": 60,
+  "feed": "alpaca_iex_free",
+  "note": "Daily bars stamped 2026-05-26 (~34.7h stale vs 60s cap). Live IEX quotes also stamped 2026-05-26T20:00 (~14.7h stale, last regular-session prints) with erratic spreads (e.g. UNH ask=0.0 glitch, SPY ask 772.70 vs close 750.59). BOTH feeds breach the 60s cap -> NO_TRADE posture; research framed as conditional on a fresh-bar session. Per CLAUDE.md: stale data => be MORE conservative.",
+  "symbols": {
+    "SPY": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 750.59,
+        "open": 750.01,
+        "high": 752.13,
+        "low": 748.37,
+        "volume": 40962700
+      },
+      "latest_quote": {
+        "bid": 727.62,
+        "ask": 772.7,
+        "last_price": 772.7,
+        "volume": 80,
+        "quote_ts": "2026-05-26T20:00:00.010868+00:00",
+        "fetched_ts": "2026-05-27T10:43:04.163167+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52983.6,
+        "stale": true
+      }
+    },
+    "IEF": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 94.28,
+        "open": 94.34,
+        "high": 94.35,
+        "low": 94.13,
+        "volume": 5494400
+      },
+      "latest_quote": {
+        "bid": 94.27,
+        "ask": 94.31,
+        "last_price": 94.31,
+        "volume": 2800,
+        "quote_ts": "2026-05-26T20:28:28.606277+00:00",
+        "fetched_ts": "2026-05-27T10:43:04.231189+00:00",
+        "feed": "iex",
+        "staleness_seconds": 51275.0,
+        "stale": true
+      }
+    },
+    "TLT": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 85.1,
+        "open": 85.34,
+        "high": 85.38,
+        "low": 84.9,
+        "volume": 22488000
+      },
+      "latest_quote": {
+        "bid": 85.06,
+        "ask": 85.12,
+        "last_price": 85.12,
+        "volume": 3300,
+        "quote_ts": "2026-05-26T20:28:28.606572+00:00",
+        "fetched_ts": "2026-05-27T10:43:04.313821+00:00",
+        "feed": "iex",
+        "staleness_seconds": 51275.0,
+        "stale": true
+      }
+    },
+    "GLD": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 414.0,
+        "open": 415.16,
+        "high": 415.98,
+        "low": 411.5,
+        "volume": 5053200
+      },
+      "latest_quote": {
+        "bid": 413.88,
+        "ask": 414.25,
+        "last_price": 414.25,
+        "volume": 80,
+        "quote_ts": "2026-05-26T20:00:59.764697+00:00",
+        "fetched_ts": "2026-05-27T10:43:04.383845+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52923.9,
+        "stale": true
+      }
+    },
+    "SHV": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 110.32,
+        "open": 110.32,
+        "high": 110.33,
+        "low": 110.32,
+        "volume": 1886500
+      },
+      "latest_quote": {
+        "bid": 110.32,
+        "ask": 110.39,
+        "last_price": 110.39,
+        "volume": 13000,
+        "quote_ts": "2026-05-26T20:55:01.139482+00:00",
+        "fetched_ts": "2026-05-27T10:43:04.455099+00:00",
+        "feed": "iex",
+        "staleness_seconds": 49682.5,
+        "stale": true
+      }
+    },
+    "AAPL": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 308.33,
+        "open": 309.56,
+        "high": 311.82,
+        "low": 307.67,
+        "volume": 47956900
+      },
+      "latest_quote": {
+        "bid": 293.93,
+        "ask": 0.0,
+        "last_price": 293.93,
+        "volume": 40,
+        "quote_ts": "2026-05-26T20:00:02.287870+00:00",
+        "fetched_ts": "2026-05-27T10:43:04.522433+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52981.3,
+        "stale": true
+      }
+    },
+    "MSFT": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 416.03,
+        "open": 416.43,
+        "high": 419.77,
+        "low": 413.02,
+        "volume": 30356600
+      },
+      "latest_quote": {
+        "bid": 395.62,
+        "ask": 0.0,
+        "last_price": 395.62,
+        "volume": 40,
+        "quote_ts": "2026-05-26T20:00:03.260941+00:00",
+        "fetched_ts": "2026-05-27T10:43:04.595243+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52980.4,
+        "stale": true
+      }
+    },
+    "GOOGL": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 388.88,
+        "open": 384.51,
+        "high": 389.26,
+        "low": 382.6,
+        "volume": 27706400
+      },
+      "latest_quote": {
+        "bid": 364.99,
+        "ask": 403.57,
+        "last_price": 403.57,
+        "volume": 80,
+        "quote_ts": "2026-05-26T20:00:00.037122+00:00",
+        "fetched_ts": "2026-05-27T10:43:04.665047+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52983.6,
+        "stale": true
+      }
+    },
+    "AMZN": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 265.29,
+        "open": 267.94,
+        "high": 269.3,
+        "low": 262.07,
+        "volume": 37964400
+      },
+      "latest_quote": {
+        "bid": 248.97,
+        "ask": 276.08,
+        "last_price": 276.08,
+        "volume": 200,
+        "quote_ts": "2026-05-26T20:00:00.007418+00:00",
+        "fetched_ts": "2026-05-27T10:43:04.735261+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52983.6,
+        "stale": true
+      }
+    },
+    "NVDA": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 214.86,
+        "open": 216.54,
+        "high": 218.18,
+        "low": 212.0,
+        "volume": 186505600
+      },
+      "latest_quote": {
+        "bid": 214.71,
+        "ask": 229.07,
+        "last_price": 229.07,
+        "volume": 400,
+        "quote_ts": "2026-05-26T20:40:23.982832+00:00",
+        "fetched_ts": "2026-05-27T10:43:04.804537+00:00",
+        "feed": "iex",
+        "staleness_seconds": 50559.6,
+        "stale": true
+      }
+    },
+    "META": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 612.34,
+        "open": 608.89,
+        "high": 614.47,
+        "low": 605.3,
+        "volume": 12214300
+      },
+      "latest_quote": {
+        "bid": 577.88,
+        "ask": 638.91,
+        "last_price": 638.91,
+        "volume": 80,
+        "quote_ts": "2026-05-26T20:00:00.001773+00:00",
+        "fetched_ts": "2026-05-27T10:43:05.814426+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52983.6,
+        "stale": true
+      }
+    },
+    "TSLA": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 433.59,
+        "open": 430.26,
+        "high": 435.2,
+        "low": 426.12,
+        "volume": 45401300
+      },
+      "latest_quote": {
+        "bid": 433.2,
+        "ask": 0.0,
+        "last_price": 433.2,
+        "volume": 80,
+        "quote_ts": "2026-05-26T20:00:03.446717+00:00",
+        "fetched_ts": "2026-05-27T10:43:05.883628+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52980.2,
+        "stale": true
+      }
+    },
+    "JPM": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 306.74,
+        "open": 308.49,
+        "high": 309.93,
+        "low": 305.44,
+        "volume": 7725400
+      },
+      "latest_quote": {
+        "bid": 292.15,
+        "ask": 0.0,
+        "last_price": 292.15,
+        "volume": 40,
+        "quote_ts": "2026-05-26T20:00:03.008113+00:00",
+        "fetched_ts": "2026-05-27T10:43:05.954244+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52980.6,
+        "stale": true
+      }
+    },
+    "BAC": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 52.2,
+        "open": 52.22,
+        "high": 52.5,
+        "low": 51.88,
+        "volume": 27387200
+      },
+      "latest_quote": {
+        "bid": 49.3,
+        "ask": 54.8,
+        "last_price": 54.8,
+        "volume": 200,
+        "quote_ts": "2026-05-26T20:00:01.053959+00:00",
+        "fetched_ts": "2026-05-27T10:43:06.022288+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52982.6,
+        "stale": true
+      }
+    },
+    "V": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 326.48,
+        "open": 326.46,
+        "high": 328.5,
+        "low": 324.51,
+        "volume": 8705100
+      },
+      "latest_quote": {
+        "bid": 309.22,
+        "ask": 344.19,
+        "last_price": 344.19,
+        "volume": 80,
+        "quote_ts": "2026-05-26T20:00:00.008026+00:00",
+        "fetched_ts": "2026-05-27T10:43:06.090626+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52983.6,
+        "stale": true
+      }
+    },
+    "MA": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 493.01,
+        "open": 496.0,
+        "high": 496.85,
+        "low": 492.06,
+        "volume": 1947300
+      },
+      "latest_quote": {
+        "bid": 471.2,
+        "ask": 0.0,
+        "last_price": 471.2,
+        "volume": 40,
+        "quote_ts": "2026-05-26T20:00:04.468117+00:00",
+        "fetched_ts": "2026-05-27T10:43:06.161000+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52979.2,
+        "stale": true
+      }
+    },
+    "JNJ": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 230.18,
+        "open": 233.0,
+        "high": 233.24,
+        "low": 229.08,
+        "volume": 6619600
+      },
+      "latest_quote": {
+        "bid": 220.87,
+        "ask": 245.07,
+        "last_price": 245.07,
+        "volume": 200,
+        "quote_ts": "2026-05-26T20:00:00.003387+00:00",
+        "fetched_ts": "2026-05-27T10:43:06.233100+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52983.6,
+        "stale": true
+      }
+    },
+    "UNH": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 376.86,
+        "open": 386.0,
+        "high": 386.52,
+        "low": 376.41,
+        "volume": 6484900
+      },
+      "latest_quote": {
+        "bid": 359.67,
+        "ask": 0.0,
+        "last_price": 359.67,
+        "volume": 40,
+        "quote_ts": "2026-05-26T20:00:05.205048+00:00",
+        "fetched_ts": "2026-05-27T10:43:06.301639+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52978.4,
+        "stale": true
+      }
+    },
+    "PFE": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 25.85,
+        "open": 25.87,
+        "high": 25.9,
+        "low": 25.66,
+        "volume": 29064800
+      },
+      "latest_quote": {
+        "bid": 24.54,
+        "ask": 0.0,
+        "last_price": 24.54,
+        "volume": 100,
+        "quote_ts": "2026-05-26T20:00:01.410068+00:00",
+        "fetched_ts": "2026-05-27T10:43:06.371399+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52982.2,
+        "stale": true
+      }
+    },
+    "WMT": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 118.57,
+        "open": 120.69,
+        "high": 121.05,
+        "low": 117.92,
+        "volume": 28761500
+      },
+      "latest_quote": {
+        "bid": 112.18,
+        "ask": 124.47,
+        "last_price": 124.47,
+        "volume": 200,
+        "quote_ts": "2026-05-26T20:00:00.006941+00:00",
+        "fetched_ts": "2026-05-27T10:43:06.453031+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52983.6,
+        "stale": true
+      }
+    },
+    "COST": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 1002.93,
+        "open": 1026.13,
+        "high": 1027.5,
+        "low": 996.16,
+        "volume": 2704600
+      },
+      "latest_quote": {
+        "bid": 953.31,
+        "ask": 1043.07,
+        "last_price": 1043.07,
+        "volume": 160,
+        "quote_ts": "2026-05-26T20:00:00.009199+00:00",
+        "fetched_ts": "2026-05-27T10:43:06.528995+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52983.6,
+        "stale": true
+      }
+    },
+    "HD": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 310.54,
+        "open": 315.06,
+        "high": 316.79,
+        "low": 308.96,
+        "volume": 6978200
+      },
+      "latest_quote": {
+        "bid": 298.78,
+        "ask": 0.0,
+        "last_price": 298.78,
+        "volume": 40,
+        "quote_ts": "2026-05-26T20:00:02.825247+00:00",
+        "fetched_ts": "2026-05-27T10:43:06.599709+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52980.8,
+        "stale": true
+      }
+    },
+    "XOM": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 149.81,
+        "open": 153.5,
+        "high": 154.55,
+        "low": 149.47,
+        "volume": 13044700
+      },
+      "latest_quote": {
+        "bid": 142.24,
+        "ask": 158.17,
+        "last_price": 158.17,
+        "volume": 200,
+        "quote_ts": "2026-05-26T20:00:00.009208+00:00",
+        "fetched_ts": "2026-05-27T10:43:06.670605+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52983.6,
+        "stale": true
+      }
+    },
+    "ORCL": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 193.06,
+        "open": 193.3,
+        "high": 195.2,
+        "low": 190.56,
+        "volume": 12828900
+      },
+      "latest_quote": {
+        "bid": 183.63,
+        "ask": 203.16,
+        "last_price": 203.16,
+        "volume": 200,
+        "quote_ts": "2026-05-26T20:00:00.009350+00:00",
+        "fetched_ts": "2026-05-27T10:43:06.740661+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52983.6,
+        "stale": true
+      }
+    },
+    "CSCO": {
+      "daily_bar": {
+        "quote_ts": "2026-05-26T00:00:00+00:00",
+        "fetched_ts": "2026-05-27T10:42:24.299269+00:00",
+        "staleness_seconds": 124944.3,
+        "stale": true,
+        "close": 118.33,
+        "open": 120.54,
+        "high": 120.77,
+        "low": 117.1,
+        "volume": 26591300
+      },
+      "latest_quote": {
+        "bid": 111.77,
+        "ask": 124.34,
+        "last_price": 124.34,
+        "volume": 200,
+        "quote_ts": "2026-05-26T20:00:00.109105+00:00",
+        "fetched_ts": "2026-05-27T10:43:06.809443+00:00",
+        "feed": "iex",
+        "staleness_seconds": 52983.5,
+        "stale": true
+      }
+    }
+  }
+}
