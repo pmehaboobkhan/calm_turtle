@@ -57,7 +57,7 @@ You **may** write to:
 - `journals/weekly/`, `journals/monthly/` (current period only)
 - `decisions/<today>/<HHMM>_<SYM>.json`
 - `decisions/by_symbol/<SYM>.md` (append-only)
-- `trades/paper/log.csv` (append-only) and `trades/paper/positions.json`
+- `trades/paper/log.csv` (append-only), `trades/paper/positions.json`, and `trades/paper/position_meta.json`
 - `reports/pre_market/`, `reports/end_of_day/`, `reports/learning/`
 - `data/market/`, `data/news/`, `data/fundamentals/`
 - `logs/routine_runs/`, `logs/risk_events/`
