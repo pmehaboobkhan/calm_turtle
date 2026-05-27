@@ -28,3 +28,15 @@
 - Signal: NO_SIGNAL — rank 6/21 (+18.07% 6m), inside top-5+2 hold-zone buffer. AMZN slipped one rank (5→6) vs 2026-05-13; NVDA was promoted from rank 7→5 in the opposite direction.
 - Decision: continue watching; no decision file written (NO_SIGNAL has no asymmetric thesis to record).
 - Status unchanged: 0 positions; signal valid but in hold-zone, not in ENTRY cohort. If AMZN re-enters top-5 on the next routine AND the CB + staleness gates have cleared, it becomes a fresh entry candidate.
+
+## 2026-05-27 — REJECTED (large_cap_momentum_top5, end_of_day)
+
+- Decision file: `decisions/2026-05-27/0224_AMZN.json`
+- Routine: end_of_day_2026-05-27, mode PAPER_TRADING, cb_state=FULL (carried; CB write skipped — 2 stale pending broker rows), throttle=1.0.
+- Signal: ENTRY (rank 5/21 by 126d return +22.17%, SPY 10mo-SMA trend filter passed). AMZN re-enters the top-5 as NVDA slips to rank 6 / NO_SIGNAL hold-zone — the inverse of the 2026-05-14 rotation.
+- Decision: **REJECTED** with reason `daily_loss_limit_breach_cooloff_active + stale_entry_bars` (two independent hard checks).
+  - RM check #9/#10: the 2026-05-26 close breached the daily-loss limit (-$614.25 / -0.607%); `halt_after_daily_limit_breach=true` + `cool_off_days_after_halt=1` keep today inside the de-risk cool-off. No exposure expansion.
+  - RM check #11: daily bars driving the rank are stamped 2026-05-26 (~95,062 s / ~26 h stale vs the 60 s cap); live IEX quotes diverge >4% from those closes. Per CLAUDE.md rule #5, stale entry data forces NO_TRADE.
+- Intended sizing pre-rejection: 22 shares (~$5,836 ≈ 5.81% of $100,512, Strategy B target 6%). Actual: 0 shares. Entry $265.29, stop $238.76, target $331.61, R/R 2.5:1.
+- Risk Manager: REJECTED. Compliance: REJECTED (defers to RM).
+- Watch tomorrow: re-confirm AMZN rank-5 on fresh 2026-05-28 daily bars AND verify the daily-loss-breach cool-off has elapsed before any entry. 2026-05-28 GDP 2nd release + PCE deflator is a non-benign macro window.

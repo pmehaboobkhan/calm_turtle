@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-27T02:24:55+00:00",
+  "routine_id": "end_of_day_2026-05-27",
+  "symbol": "AMZN",
+  "decision": "PAPER_BUY",
+  "thesis_bull": "AMZN large_cap_momentum_top5 ENTRY: the deterministic signal ranks AMZN #5 by 126-day (6-month) total return (+22.17%) with the SPY 10-month-SMA trend filter passing (SPY +30.20% 12m, above 210d MA). AMZN edges into the top-5 as NVDA slips to rank 6 (NO_SIGNAL hold-zone), a clean rotation within Strategy B. AMZN is a Consumer-Discretionary diversifier vs the current tech/energy-heavy book (CSCO/GOOGL/XOM) and brings cloud (AWS) + retail exposure distinct from the held names.",
+  "thesis_bear": "Two independent disqualifiers, either alone fatal. (1) DAILY-LOSS-BREACH COOL-OFF: yesterday's 2026-05-26 close breached the daily-loss limit (-$614.25 / -0.607% vs the -$500 / -0.5% caps); halts.halt_after_daily_limit_breach=true with cool_off_days_after_halt=1 means today is still inside the de-risk cool-off window, and opening AMZN is EXPOSURE EXPANSION, the opposite of de-risking. (2) STALE ENTRY BARS: the daily bars driving the rank-5 momentum computation are stamped 2026-05-26 (~95,062s / ~26h old vs max_data_staleness_seconds=60) and the live IEX quotes diverge materially from those closes (AMZN daily $265.29 vs live $276.08, +4.1%; SPY $750.59 vs $772.70, +2.9%; XOM $149.81 vs $158.17, +5.6%). The 6-month rank is therefore computed on lagged closes. Macro context: 2026-05-28 GDP 2nd release + PCE deflator are one session out, a non-benign event window. Capital preservation > clever trades.",
+  "invalidation_condition": "This ENTRY is invalidated (do NOT open) while EITHER (a) the daily-loss-limit-breach cool-off remains active (one trading day after the 2026-05-26 breach) OR (b) the entry-driving daily bars remain stale beyond max_data_staleness_seconds=60. It re-qualifies for a fresh EOD entry only when ALL of: (a) a clean session with no daily-loss-limit breach and the cool-off elapsed, (b) fresh daily bars (<=60s) confirm AMZN still ranks top-5 by 126d return, and (c) the circuit-breaker remains FULL with no de-risk flag active.",
+  "risk_reward": {
+    "entry": 265.29,
+    "stop": 238.76,
+    "target": 331.61,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0,
+    "intended_shares_at_30pct_per_5_slots": 22,
+    "intended_usd": 5836.38,
+    "intended_pct_of_account": 5.81,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.35,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "REJECTED",
+  "reason": "daily_loss_limit_breach_cooloff_active + stale_entry_bars",
+  "consolidation": {
+    "primary_strategy": "large_cap_momentum_top5",
+    "subsumed_strategies": [],
+    "conflict": false
+  },
+  "risk_manager_reasoning": "REJECTED on two independent hard checks. Check #9/#10 (today's loss within limits AND consecutive-loss/cool-off elapsed): the 2026-05-26 close breached max_daily_loss_usd (-$614.25 vs -$500) and max_daily_loss_pct (-0.607% vs -0.5%); halts.halt_after_daily_limit_breach=true and cool_off_days_after_halt=1 keep the de-risk posture active through 2026-05-27 — an OPENING trade that expands exposure is refused (closes/de-risking remain permitted). Check #11 (data freshness within max_data_staleness_seconds=60): the daily bars driving AMZN's 6-month rank are stamped 2026-05-26 (~95,062s stale) and live quotes diverge >4% from those closes — per CLAUDE.md rule #5 a stale entry input forces NO_TRADE for the affected symbol. For completeness, the non-blocking checks would PASS: #1 (AMZN on watchlist, approved_for_paper_trading=true, not blocked), #2 (large_cap_momentum_top5 is ACTIVE_PAPER_TEST/allowed), #3 (R/R 2.5 >= 1.5), #4 (~5.81% < 15% cap), #7 (0 trades today < 5), #8 (5 open < 8 max), #12 (no margin/options/short/leverage). The rejection is solely the daily-loss-breach cool-off and stale entry data.",
+  "compliance_reasoning": "REJECTED. PAPER_BUY is class-permitted in PAPER_TRADING mode and AMZN is on the watchlist (approved_for_paper_trading=true) and NOT in blocked_symbols (INTU is the only block). But Compliance defers to the Risk Manager verdict (check #4): RM returned REJECTED, so the decision cannot be APPROVED. Opening new exposure during the daily-loss-breach cool-off and on stale entry data is non-compliant with CLAUDE.md's conservative-on-missing/breach-data posture. Bull/bear/invalidation theses present and non-empty; signal source = lib.signals deterministic evaluation on 2026-05-26 close; no live execution.",
+  "signal_source": "lib.signals.evaluate_all 2026-05-26 close (large_cap_momentum_top5 ENTRY, rank 5, 126d_ret=+22.17%)",
+  "notes": "EOD deterministic entry candidate (AMZN rank-5, replacing NVDA which slipped to rank 6 / NO_SIGNAL hold-zone). NOT opened. paper_sim.open_position NOT called. Recorded for backtest comparison and Self-Learning attribution as a signal-fired-but-risk-rejected outcome. The five open positions (CSCO/GLD/GOOGL/UNH/XOM) all re-confirmed ENTRY/hold this run — no EXIT triggered on any held name; none breached its -10% rotation stop (UNH thinnest, ~+1.97% above stop on live bid 359.67). Circuit-breaker equity write was SKIPPED this run: pending_broker_count()=2 (stale PENDING_BROKER rows for WMT and NVDA round-trips already FILLED+flat at broker); prior CB state FULL / throttle 1.0 carried forward per routine guard."
+}
