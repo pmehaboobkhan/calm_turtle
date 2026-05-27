@@ -161,6 +161,12 @@ routine's reading habits worth flagging in the routine_audit notes.
        }, indent=2))
    PYCB
    ```
+   If the output instead contains `"skipped": "pending_broker"` — a broker order
+   is in flight, so equity can't be read cleanly this run — do NOT treat it as a
+   transition: read the prior `state` from `trades/paper/circuit_breaker.json` and
+   use its `throttle` (`portfolio_risk.exposure_fraction(prior_state)`) for step 7.
+   Write NO risk event and NO Telegram; note "CB write skipped: N pending broker
+   order(s)" in the journal.
 
    If `result.transitioned` is true:
    - Write `logs/risk_events/<ts>_circuit_breaker.md` with: previous state, new state, current drawdown, peak equity, current equity, the relevant threshold(s), and the reasoning ("DD breached half_dd / out_dd" or "DD recovered below half_to_full_recover_dd / out_to_half_recover_dd").

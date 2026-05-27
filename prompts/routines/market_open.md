@@ -66,7 +66,7 @@ routine's reading habits worth flagging in the routine_audit notes.
    risk_cfg = config.risk_limits()
    cb_cfg = risk_cfg.get("circuit_breaker", {})
    thresholds = portfolio_risk.from_config(cb_cfg)
-      # Circuit-breaker equity (broker-authoritative under BROKER_PAPER=alpaca).
+   # Circuit-breaker equity (broker-authoritative under BROKER_PAPER=alpaca).
    from lib import broker
    acct = broker.account_snapshot()
    quotes = broker.latest_quotes_for_positions()
@@ -92,6 +92,12 @@ routine's reading habits worth flagging in the routine_audit notes.
    PYCB
    ```
    If `result.transitioned` is true → write `logs/risk_events/<ts>_circuit_breaker.md`, notify URGENT Telegram.
+
+   If the output instead contains `"skipped": "pending_broker"`: a broker order is
+   in flight, so the CB refresh was skipped this run — carry the prior
+   `circuit_breaker.json` state forward, write NO risk event / NO Telegram, and
+   note "CB refresh skipped: N pending broker order(s)" in the journal.
+
 7. **Health check on every open position** via `lib.portfolio_health`:
    ```bash
    python3 - <<'PYHEALTH'
