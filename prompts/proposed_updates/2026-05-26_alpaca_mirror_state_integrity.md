@@ -92,6 +92,62 @@ mis-calibrated*. Evidence is now repeated and quantified (W21 weekly review +
    sim-vs-broker basis gap (currently ~$1,549) is surfaced as a standing reconciliation item
    rather than silently diverging.
 
+## Concrete routine inserts (companion PR — `prompts/routines/*.md` is PR-only)
+
+Only two routines persist circuit-breaker equity — verified with
+`grep -rln "portfolio_risk.advance" prompts/routines/` → **`market_open.md`** and
+**`end_of_day.md`**. midday/pre_close read CB state read-only (no `advance()` call) and
+need no change. Both target routines use the same shape, so apply the same edit to each:
+
+- `prompts/routines/market_open.md` — around lines **50** and **70–71**
+- `prompts/routines/end_of_day.md` — around lines **132–135**
+
+**Current** (end_of_day; market_open is identical in shape):
+```python
+acct = broker.account_snapshot()
+quotes = ...
+equity = paper_sim.portfolio_equity(quotes, cash_balance=acct["cash"])
+result = portfolio_risk.advance(equity, thresholds)
+```
+
+**Replace with:**
+```python
+# Guard 1 — orders in flight: the broker has debited cash for a pending order
+# but the position isn't mirrored back yet, so any equity read is skewed.
+# Skip the CB write this run (root cause of the 2026-05-19 spurious-HALF).
+if paper_sim.pending_broker_count() > 0:
+    # journal: "CB equity write skipped: N pending broker order(s) in flight";
+    # do NOT call portfolio_risk.advance() — carry the prior CB state forward.
+    pass
+else:
+    acct = broker.account_snapshot()
+    quotes = ...
+    sim_equity = paper_sim.portfolio_equity(quotes, cash_balance=acct["cash"])
+    # Guard 2 — basis truth: under BROKER_PAPER=alpaca the broker account is
+    # authoritative. Feeding sim equity understated drawdown on 2026-05-26
+    # (CB read 1.93% vs broker 3.42%; ~$1,549 gap).
+    equity = acct["equity"] if paper_sim.broker_mode() == "alpaca" else sim_equity
+    result = portfolio_risk.advance(equity, thresholds)
+    # Surface the basis gap as a standing reconciliation item, not a silent drift.
+    if abs(sim_equity - equity) > 500:
+        # journal/log: f"sim-vs-broker basis gap = ${sim_equity - equity:,.0f}"
+        ...
+```
+
+Reviewer notes:
+- `pending_broker_count()` and `broker_mode()` already exist in `lib/paper_sim.py` (PR #38).
+- `broker.account_snapshot()` exposes both `equity` and `cash` (see `market_open.md:50`;
+  equity figures already appear in the daily journals).
+- No change to midday/pre_close (read-only CB) and no change to the sim-only path.
+
+## CLAUDE.md approved-write-path addition
+
+`lib.paper_sim` now writes `trades/paper/position_meta.json` beside `positions.json`. Add it
+to the "Approved write paths" list so the write is explicitly sanctioned:
+```
+- `trades/paper/log.csv` (append-only), `trades/paper/positions.json`, and `trades/paper/position_meta.json`
+```
+
 ## Test plan
 
 - **Unit:** `open_position` → `position_meta.json` has the key with correct stop/target;
