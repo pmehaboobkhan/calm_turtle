@@ -15,6 +15,10 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 POSITIONS_PATH = REPO_ROOT / "trades" / "paper" / "positions.json"
+# Risk-metadata side-file written by lib.paper_sim. Used as a fallback for
+# stop_loss/take_profit when positions.json carries null (the Alpaca mirror
+# wipes them on reconcile), keeping the deterministic stop check armed.
+POSITION_META_PATH = REPO_ROOT / "trades" / "paper" / "position_meta.json"
 
 
 @dataclass(frozen=True)
@@ -96,30 +100,67 @@ def _assess_one(symbol: str, pos: dict, quote: float) -> PositionHealth:
     )
 
 
+def _read_meta(path: Path | None = None) -> dict[str, dict]:
+    p = path or POSITION_META_PATH
+    if not p.exists():
+        return {}
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def _with_meta(symbol: str, pos: dict, meta: dict[str, dict]) -> dict:
+    """Return pos, filling stop_loss/take_profit from the side-file ONLY when
+    the live position value is null/blank. The live positions.json value is
+    authoritative when present; meta is a recovery fallback for the Alpaca
+    mirror wiping stops to null.
+    """
+    m = meta.get(symbol)
+    if not m:
+        return pos
+    merged = dict(pos)
+    if merged.get("stop_loss") in (None, "", 0) and m.get("stop_loss") is not None:
+        merged["stop_loss"] = m["stop_loss"]
+    if merged.get("take_profit") in (None, "", 0) and m.get("take_profit") is not None:
+        merged["take_profit"] = m["take_profit"]
+    return merged
+
+
 def assess_positions(
-    quotes: dict[str, float], *, positions_path: Path | None = None
+    quotes: dict[str, float], *, positions_path: Path | None = None,
+    meta_path: Path | None = None,
 ) -> list[PositionHealth]:
     """Assess every open paper position against current quotes.
 
     Raises KeyError if any open position has no quote — callers must surface
     a stale-data alert rather than silently ignoring positions.
+
+    When a position's stop_loss/take_profit is null (the Alpaca mirror wipes
+    them on reconcile), the value is recovered from the position_meta.json
+    side-file so the deterministic stop check stays armed.
     """
-    pos = _read_positions(positions_path)
+    pos_path = positions_path or POSITIONS_PATH
+    pos = _read_positions(pos_path)
+    # Default the side-file to sit beside the positions file in use, so a test
+    # that isolates positions_path also isolates the meta lookup (no real-repo read).
+    if meta_path is None:
+        meta_path = pos_path.parent / "position_meta.json"
+    meta = _read_meta(meta_path)
     out: list[PositionHealth] = []
     for symbol, p in pos.items():
         if symbol not in quotes:
             raise KeyError(
                 f"no quote provided for open position {symbol}; cannot assess health"
             )
-        out.append(_assess_one(symbol, p, float(quotes[symbol])))
+        out.append(_assess_one(symbol, _with_meta(symbol, p, meta), float(quotes[symbol])))
     return out
 
 
 def positions_to_close(
-    quotes: dict[str, float], *, positions_path: Path | None = None
+    quotes: dict[str, float], *, positions_path: Path | None = None,
+    meta_path: Path | None = None,
 ) -> list[PositionHealth]:
     """Filter helper: positions with one or more invalidation triggers."""
-    return [h for h in assess_positions(quotes, positions_path=positions_path)
+    return [h for h in assess_positions(
+                quotes, positions_path=positions_path, meta_path=meta_path)
             if h.should_close()]
 
 

@@ -34,6 +34,12 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 PAPER_DIR = REPO_ROOT / "trades" / "paper"
 LOG_PATH = PAPER_DIR / "log.csv"
 POSITIONS_PATH = PAPER_DIR / "positions.json"
+# Side-file of risk metadata (stop_loss / take_profit) keyed by symbol. The
+# Alpaca mirror does NOT carry stops, so reconcile() would otherwise rebuild
+# positions.json with null stops and silently disable the deterministic stop
+# check. This file survives reconcile and is merged back in. See
+# prompts/proposed_updates/2026-05-26_alpaca_mirror_state_integrity.md.
+POSITION_META_PATH = PAPER_DIR / "position_meta.json"
 
 # How long to wait for a market order to fill before falling back to sim price.
 # Alpaca paper market orders typically fill in <1s during regular hours.
@@ -138,6 +144,89 @@ def _write_positions(pos: dict[str, dict]) -> None:
     POSITIONS_PATH.write_text(json.dumps(pos, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
+def _meta_path() -> Path:
+    """Resolve the side-file at call time, co-located with the active
+    positions.json. Deriving from POSITIONS_PATH (rather than the module-load
+    POSITION_META_PATH constant) means any test or caller that redirects
+    POSITIONS_PATH automatically isolates the meta file too — no real-repo leak.
+    """
+    return POSITIONS_PATH.parent / "position_meta.json"
+
+
+def _read_position_meta() -> dict[str, dict]:
+    p = _meta_path()
+    if not p.exists():
+        return {}
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def _write_position_meta(meta: dict[str, dict]) -> None:
+    p = _meta_path()
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(meta, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def upsert_position_meta(symbol: str, *, stop_loss: float | None,
+                         take_profit: float | None, entry_basis: float,
+                         rationale_link: str) -> None:
+    """Record a position's risk metadata so it survives the Alpaca-mirror
+    reconcile (which rebuilds positions.json without stops)."""
+    meta = _read_position_meta()
+    meta[symbol] = {
+        "stop_loss": stop_loss,
+        "take_profit": take_profit,
+        "entry_basis": entry_basis,
+        "opened_at": datetime.now(UTC).isoformat(),
+        "rationale_link": rationale_link,
+    }
+    _write_position_meta(meta)
+
+
+def remove_position_meta(symbol: str) -> None:
+    """Drop a symbol's risk metadata when its position is closed."""
+    meta = _read_position_meta()
+    if symbol in meta:
+        del meta[symbol]
+        _write_position_meta(meta)
+
+
+def pending_broker_count(positions: dict[str, dict] | None = None) -> int:
+    """Count broker orders in flight but not yet reflected in positions.json.
+
+    This is the window where the broker cash snapshot disagrees with the
+    mirrored position set: an *open* (BUY/SELL) PENDING_BROKER row counts while
+    its symbol is NOT yet in positions.json; a *close* PENDING_BROKER row counts
+    while its symbol IS still in positions.json. Only rows after the latest
+    RESET marker are considered.
+
+    Routines use this to skip the circuit-breaker equity write when > 0,
+    avoiding the 2026-05-19 spurious-HALF artifact (cash debited for a pending
+    order, position not yet mirrored back).
+    """
+    if not LOG_PATH.exists():
+        return 0
+    pos = positions if positions is not None else _read_positions()
+    with LOG_PATH.open("r", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+    last_reset_idx = -1
+    for i, row in enumerate(rows):
+        if _is_reset_row(row):
+            last_reset_idx = i
+    live = rows[last_reset_idx + 1:] if last_reset_idx >= 0 else rows
+    in_flight: set[str] = set()
+    for row in live:
+        if row.get("status") != "PENDING_BROKER":
+            continue
+        sym = row["symbol"]
+        side = (row.get("side") or "").strip().upper()
+        if side == "CLOSE":
+            if sym in pos:
+                in_flight.add(sym)
+        elif sym not in pos:  # an open order (BUY / SELL) not yet mirrored
+            in_flight.add(sym)
+    return len(in_flight)
+
+
 def append_fill(fill: PaperFill) -> None:
     """Append a single fill row to log.csv. Append-only by construction."""
     _ensure_log()
@@ -178,6 +267,14 @@ def open_position(*, symbol: str, side: str, quantity: float, quote_price: float
         )
     sim_price = simulated_fill_price(side=side, quote_price=quote_price, model=fill_model)
     fee = commission(model=fill_model)
+
+    # Persist risk metadata up front (before the mode branch) so the stop/target
+    # survive the Alpaca-mirror reconcile, which rebuilds positions.json without
+    # them. Keyed by symbol; merged back by sync_positions_from_broker().
+    upsert_position_meta(
+        symbol, stop_loss=stop_loss, take_profit=take_profit,
+        entry_basis=round(sim_price, 4), rationale_link=rationale_link,
+    )
 
     if broker_mode() == "alpaca":
         # Alpaca is the source of truth. Submit + journal only — NEVER
@@ -257,6 +354,7 @@ def close_position(symbol: str, *, quote_price: float, rationale_link: str,
     if symbol not in pos:
         raise KeyError(f"no open paper position for {symbol}")
     p = pos.pop(symbol)
+    remove_position_meta(symbol)  # risk metadata no longer needed once closing
     sim_price = simulated_fill_price(side="CLOSE", quote_price=quote_price, model=fill_model)
     fee = commission(model=fill_model)
 
@@ -498,6 +596,15 @@ def sync_positions_from_broker() -> int:
         }
         for p in broker.get_positions()
     }
+    # The Alpaca mirror carries no stop/target — restore them from the side-file
+    # so the deterministic portfolio_health stop check is not silently disabled.
+    meta = _read_position_meta()
+    for sym, p in mirrored.items():
+        m = meta.get(sym)
+        if m:
+            p["stop_loss"] = m.get("stop_loss")
+            p["take_profit"] = m.get("take_profit")
+            p["rationale_link"] = m.get("rationale_link") or p["rationale_link"]
     _write_positions(mirrored)
     return len(mirrored)
 
