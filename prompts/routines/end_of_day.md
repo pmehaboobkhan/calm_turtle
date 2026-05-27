@@ -131,7 +131,22 @@ routine's reading habits worth flagging in the routine_audit notes.
        # Today's close quotes for each open position; cash balance from Alpaca paper.
        acct = broker.account_snapshot()        # populated by lib/broker via alpaca-py
        quotes = broker.latest_quotes_for_positions()
-       equity = paper_sim.portfolio_equity(quotes, cash_balance=acct["cash"])
+       sim_equity = paper_sim.portfolio_equity(quotes, cash_balance=acct["cash"])
+       # Guard 1 — orders in flight: the broker has debited cash for a pending
+       # order but the position is not mirrored back yet, so any equity read is
+       # skewed. Skip the CB write this run and carry the prior state forward —
+       # this was the root cause of the 2026-05-19 spurious-HALF artifact.
+       if paper_sim.pending_broker_count() > 0:
+           import sys
+           print(json.dumps({"enabled": True, "skipped": "pending_broker",
+                             "pending": paper_sim.pending_broker_count()}, indent=2))
+           sys.exit(0)
+       # Guard 2 — basis truth: under BROKER_PAPER=alpaca the broker account is
+       # authoritative. Feeding sim equity understated drawdown on 2026-05-26
+       # (CB read 1.93% vs broker 3.42%; ~$1,549 gap).
+       equity = acct["equity"] if paper_sim.broker_mode() == "alpaca" else sim_equity
+       if abs(sim_equity - equity) > 500:
+           print(json.dumps({"sim_vs_broker_basis_gap": round(sim_equity - equity, 2)}, indent=2))
        result = portfolio_risk.advance(equity, thresholds)
        throttle = portfolio_risk.exposure_fraction(result.new_state.state)
        print(json.dumps({

@@ -66,8 +66,22 @@ routine's reading habits worth flagging in the routine_audit notes.
    risk_cfg = config.risk_limits()
    cb_cfg = risk_cfg.get("circuit_breaker", {})
    thresholds = portfolio_risk.from_config(cb_cfg)
-   # equity from step 5
-   equity = ...   # paper_sim.portfolio_equity(quotes, cash_balance=acct["cash"])
+      # Circuit-breaker equity (broker-authoritative under BROKER_PAPER=alpaca).
+   from lib import broker
+   acct = broker.account_snapshot()
+   quotes = broker.latest_quotes_for_positions()
+   sim_equity = paper_sim.portfolio_equity(quotes, cash_balance=acct["cash"])
+   # Guard 1 — orders in flight: skip the CB write while a broker order is pending
+   # (cash debited, position not yet mirrored) — the 2026-05-19 spurious-HALF cause.
+   if paper_sim.pending_broker_count() > 0:
+       import sys
+       print(json.dumps({"skipped": "pending_broker",
+                         "pending": paper_sim.pending_broker_count()}, indent=2))
+       sys.exit(0)
+   # Guard 2 — basis truth: use broker equity, not sim (sim understated DD 2026-05-26).
+   equity = acct["equity"] if paper_sim.broker_mode() == "alpaca" else sim_equity
+   if abs(sim_equity - equity) > 500:
+       print(json.dumps({"sim_vs_broker_basis_gap": round(sim_equity - equity, 2)}, indent=2))
    result = portfolio_risk.advance(equity, thresholds)
    print(json.dumps({
        "state": result.new_state.state,
