@@ -40,3 +40,9 @@
 - Intended sizing pre-rejection: 22 shares (~$5,836 ≈ 5.81% of $100,512, Strategy B target 6%). Actual: 0 shares. Entry $265.29, stop $238.76, target $331.61, R/R 2.5:1.
 - Risk Manager: REJECTED. Compliance: REJECTED (defers to RM).
 - Watch tomorrow: re-confirm AMZN rank-5 on fresh 2026-05-28 daily bars AND verify the daily-loss-breach cool-off has elapsed before any entry. 2026-05-28 GDP 2nd release + PCE deflator is a non-benign macro window.
+
+## 2026-05-28 — NO_TRADE (REJECTED — stale bars) (large_cap_momentum_top5)
+
+- Routine: end_of_day_2026-05-28, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (carried; CB write skipped on pending_broker guard), throttle=1.0.
+- ENTRY signal (top-5 candidate) — NOT opened. REJECTED on stale daily bars (~44.8h, dated 2026-05-27) for the 2nd consecutive session per CLAUDE.md rule #5 / RM check #11. paper_sim.open_position NOT called. Re-qualifies only on fresh bars + still-top-5 + SPY>210d SMA.
+- Decision file: `decisions/2026-05-28/1630_AMZN.json`

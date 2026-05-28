@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-28T20:50:00+00:00",
+  "routine_id": "end_of_day_2026-05-28",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "strategy": "dual_momentum_taa",
+  "thesis_bull": "ENTRY signal re-fired for GLD (TAA top-1 (12m +31.88%)); position already held (36 sh). In a fresh-data session this would be a maintain (no new shares). Live monitoring mark $412.47, uPnL $15.41, ~11.23% above the -10% rotation stop $370.84.",
+  "thesis_bear": "Two independent NO_TRADE reasons. (1) Daily bars are ~44.8h stale (latest bar 2026-05-27 vs now 2026-05-28; max_data_staleness_seconds=60). Per CLAUDE.md rule #5 and Risk Manager check #11, a stale entry input forces NO_TRADE. (2) ALREADY-HELD: re-opening would double-book; the risk_manager already-held check blocks a new fill regardless of data freshness. Momentum can reverse and a SPY 10-month-SMA break would exit the equity legs.",
+  "invalidation_condition": "Re-qualifies for action only on FRESH daily bars (<=60s). Once open, exit on: rank<7 (rotation) OR SPY closes below 210d SMA OR -10% from entry ($370.84).",
+  "risk_reward": {
+    "entry": 412.0419,
+    "stop": 370.84,
+    "target": 515.05,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 36,
+    "usd": 14833.51,
+    "pct_of_account": 14.76,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.6,
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_reasoning": "NO_TRADE on two grounds: check #11 data freshness FAILS (bars ~44.8h stale >> 60s cap) and an ENTRY on an already-held position is a no-op maintain. No new exposure; no stop breach (mark $412.47 vs stop $370.84, +11.23%). GLD on watchlist/approved/not-blocked; strategy active; CB FULL/throttle 1.0 (carried, write skipped on pending_broker guard).",
+  "compliance_verdict": "APPROVED",
+  "compliance_reasoning": "NO_TRADE permitted in all modes. GLD on watchlist, not in blocked_symbols. RM APPROVED (NO_TRADE adds no risk). Bull/bear/invalidation present. Schema validates. No live execution (BROKER_PAPER=alpaca paper only).",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "reason": "stale_entry_bars + already_held_maintain",
+  "consolidation": {
+    "primary_strategy": "dual_momentum_taa",
+    "subsumed_strategies": [
+      "gold_permanent_overlay"
+    ],
+    "conflict": false
+  },
+  "signal_source": "lib.signals.evaluate_all 2026-05-28 run (bars dated 2026-05-27)",
+  "notes": "Held-position re-confirm under stale bars; no fill, no close. uPnL $15.41 at live mark $412.47. Position maintained."
+}

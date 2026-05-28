@@ -43,3 +43,9 @@
 - Context: midday 395.66; day +$146.47; +19.93% above -10% rotation stop ($316.82). News bullish (Q1 beat, PT raises).
 - Gates: Risk Manager APPROVED + Compliance APPROVED (PAPER_CLOSE reduces exposure; permitted in PAPER_TRADING).
 - Status: position remains OPEN; midday is monitoring-only (no fills). Close/hold escalated to human via URGENT notify; pre_close re-evaluates on close.
+
+## 2026-05-28 — NO_TRADE (maintain — stale bars + already-held) (large_cap_momentum_top5)
+
+- Routine: end_of_day_2026-05-28, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (carried; CB write skipped on pending_broker guard), throttle=1.0.
+- ENTRY re-fired (rank 5, 6m +21.76%); 39 sh held. Blocked by stale bars + already-held. Live mark $404.04, uPnL +$473.29 (+14.8% above stop; recovered off prior thin cushion).
+- Decision file: `decisions/2026-05-28/1630_UNH.json`

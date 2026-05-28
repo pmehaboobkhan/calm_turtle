@@ -116,3 +116,9 @@
 - Context: midday 151.59; day -$857.28 (dominant loss); +15.62% above -10% rotation stop ($127.92). Sector energy selloff on falling crude (US-Iran ceasefire / Strait reopening). Macro driver, not thesis break.
 - Gates: Risk Manager APPROVED + Compliance APPROVED (PAPER_CLOSE reduces exposure; permitted in PAPER_TRADING).
 - Status: position remains OPEN; midday is monitoring-only (no fills). Close/hold escalated to human via URGENT notify; pre_close re-evaluates on close.
+
+## 2026-05-28 — NO_TRADE (maintain — stale bars + already-held) (large_cap_momentum_top5)
+
+- Routine: end_of_day_2026-05-28, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (carried; CB write skipped on pending_broker guard), throttle=1.0.
+- ENTRY re-fired (rank 3, 6m +28.03%); 97 sh held. Blocked by stale bars + already-held. Live mark $154.55, uPnL -$570.16 (+6.8% above stop).
+- Decision file: `decisions/2026-05-28/1630_XOM.json`

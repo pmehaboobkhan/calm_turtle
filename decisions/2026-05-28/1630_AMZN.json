@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-28T20:50:00+00:00",
+  "routine_id": "end_of_day_2026-05-28",
+  "symbol": "AMZN",
+  "decision": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "thesis_bull": "large_cap_momentum_top5 signal ranks AMZN in the top-5 by 126d return on the evaluator run; SPY 10-month-SMA trend filter passing. AMZN would be a Consumer-Discretionary diversifier vs the held tech/energy/healthcare book.",
+  "thesis_bear": "REJECTED. Daily bars are ~44.8h stale (latest bar 2026-05-27 vs now 2026-05-28; max_data_staleness_seconds=60). Per CLAUDE.md rule #5 and Risk Manager check #11, a stale entry input forces NO_TRADE. The 2026-05-27 EOD refused this same AMZN entry for the identical stale-bar reason; the bars have NOT refreshed since (still dated 2026-05-27). The momentum rank itself is computed on stale closes and is unreliable; live quotes diverge from the stale daily bar (AMZN stale close $271.85). Capital preservation > clever trades \u2014 NO_TRADE.",
+  "invalidation_condition": "Re-qualifies for a fresh EOD entry only when ALL of: (a) fresh daily bars (<=60s) confirm AMZN ranks top-5 by 126d return, (b) SPY remains above its 210d SMA, and (c) CB remains FULL with no de-risk flag.",
+  "risk_reward": {
+    "entry": 271.85,
+    "stop": 244.67,
+    "target": 339.81,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.3,
+  "risk_manager_verdict": "REJECTED",
+  "risk_manager_reasoning": "REJECTED on check #11 (data freshness): entry-driving daily bars are ~44.8h stale (2026-05-27) vs the 60s cap; CLAUDE.md rule #5 forces NO_TRADE for the affected symbol. The non-blocking checks would otherwise pass (AMZN on watchlist/approved/not-blocked; strategy active; 5 open < 8; 0 fills today < 5; no margin/leverage). Opening a NEW position on stale, unreliable rank data is exactly the entry we must refuse.",
+  "compliance_verdict": "REJECTED",
+  "compliance_reasoning": "REJECTED. PAPER_BUY is class-permitted in PAPER_TRADING and AMZN is on the watchlist (not blocked), but Compliance defers to the RM REJECTED verdict (stale data). Opening new exposure on stale entry bars is non-compliant with the conservative-on-missing-data posture. No live execution.",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "reason": "stale_entry_bars",
+  "consolidation": {
+    "primary_strategy": "large_cap_momentum_top5",
+    "subsumed_strategies": [],
+    "conflict": false
+  },
+  "signal_source": "lib.signals.evaluate_all 2026-05-28 run (large_cap_momentum_top5, bars dated 2026-05-27 \u2014 STALE)",
+  "notes": "EOD new-entry candidate refused on stale bars (2nd consecutive session; see decisions/2026-05-27/0224_AMZN.json). paper_sim.open_position NOT called. Recorded for backtest comparison + Self-Learning attribution as signal-fired-but-data-rejected."
+}

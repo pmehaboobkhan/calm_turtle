@@ -149,3 +149,9 @@
 - Context: midday 413.48; day +$51.77; +18.25% above -10% rotation stop ($338.00). No material item.
 - Gates: Risk Manager APPROVED + Compliance APPROVED (PAPER_CLOSE reduces exposure; permitted in PAPER_TRADING).
 - Status: position remains OPEN; midday is monitoring-only (no fills). Close/hold escalated to human via URGENT notify; pre_close re-evaluates on close.
+
+## 2026-05-28 — NO_TRADE (maintain — stale bars + already-held) (dual_momentum_taa (primary); gold_permanent_overlay (subsumed))
+
+- Routine: end_of_day_2026-05-28, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (carried; CB write skipped on pending_broker guard), throttle=1.0.
+- ENTRY re-fired (TAA top-1; subsumes gold_permanent_overlay); 36 sh held. Blocked by stale daily bars (~44.8h) AND already-held check. Live mark $412.47, uPnL +$15.41 (+11.2% above stop).
+- Decision file: `decisions/2026-05-28/1630_GLD.json (+ 1630_GLD_gold_permanent_overlay_subsumed.json)`

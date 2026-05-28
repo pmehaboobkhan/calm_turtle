@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-28T20:50:00+00:00",
+  "routine_id": "end_of_day_2026-05-28",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "strategy": "gold_permanent_overlay",
+  "thesis_bull": "gold_permanent_overlay permanent 10% GLD policy; fully covered by the dual_momentum_taa GLD line (36 sh held). No additional shares.",
+  "thesis_bear": "Subsumed by dual_momentum_taa on the same symbol; also blocked by stale bars. If TAA exits GLD the overlay floor needs standalone re-entry evaluation.",
+  "invalidation_condition": "dual_momentum_taa exits GLD, at which point the permanent overlay floor is re-evaluated.",
+  "risk_reward": {
+    "entry": 412.0419,
+    "stop": 370.84,
+    "target": 515.05,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.6,
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_reasoning": "Subsumed NO_TRADE \u2014 represented by the primary dual_momentum_taa GLD line; adds no risk.",
+  "compliance_verdict": "APPROVED",
+  "compliance_reasoning": "NO_TRADE permitted in all modes; GLD on watchlist, not blocked; subsumed bookkeeping only.",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "reason": "subsumed_by_dual_momentum_taa",
+  "consolidation": {
+    "primary_strategy": "dual_momentum_taa",
+    "subsumed_strategies": [
+      "gold_permanent_overlay"
+    ],
+    "conflict": false
+  },
+  "signal_source": "lib.signal_consolidator.consolidate 2026-05-28 (GLD convergence)",
+  "notes": "Journaling-only subsumed note; primary decision is 1630_GLD.json.",
+  "subsumed_under": "decisions/2026-05-28/1630_GLD.json"
+}
