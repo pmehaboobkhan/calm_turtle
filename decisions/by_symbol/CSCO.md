@@ -141,3 +141,9 @@
 - Routine: end_of_day_2026-05-28, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (carried; CB write skipped on pending_broker guard), throttle=1.0.
 - ENTRY re-fired (rank 1, 6m +58.95%); 130 sh held. Blocked by stale bars + already-held. Live mark $124.17, uPnL +$845.85 (+17.3% above stop).
 - Decision file: `decisions/2026-05-28/1630_CSCO.json`
+
+## 2026-05-29 — PAPER_CLOSE (pre_close de-risk)
+- Routine: pre_close_2026-05-29, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (DD 3.36%, no transition).
+- CLOSE all positions per daily-loss-limit breach (logs/risk_events/20260529_160920_daily_loss.md; halt_after_daily_limit_breach=true). RM+Compliance APPROVED at midday (1609), executed at pre_close on late-day fill.
+- Fill ~$121.17 vs entry $117.6635; realized ~$+455.85 (pre-fee, vs entry basis). Broker flat (0 open), reconcile clean.
+- Decision file: decisions/2026-05-29/1609_CSCO.json (final_status=PAPER_CLOSE).

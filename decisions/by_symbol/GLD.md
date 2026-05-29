@@ -155,3 +155,9 @@
 - Routine: end_of_day_2026-05-28, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (carried; CB write skipped on pending_broker guard), throttle=1.0.
 - ENTRY re-fired (TAA top-1; subsumes gold_permanent_overlay); 36 sh held. Blocked by stale daily bars (~44.8h) AND already-held check. Live mark $412.47, uPnL +$15.41 (+11.2% above stop).
 - Decision file: `decisions/2026-05-28/1630_GLD.json (+ 1630_GLD_gold_permanent_overlay_subsumed.json)`
+
+## 2026-05-29 — PAPER_CLOSE (pre_close de-risk)
+- Routine: pre_close_2026-05-29, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (DD 3.36%, no transition).
+- CLOSE all positions per daily-loss-limit breach (logs/risk_events/20260529_160920_daily_loss.md; halt_after_daily_limit_breach=true). RM+Compliance APPROVED at midday (1609), executed at pre_close on late-day fill.
+- Fill ~$418.02 vs entry $412.0419; realized ~$+215.21 (pre-fee, vs entry basis). Broker flat (0 open), reconcile clean.
+- Decision file: decisions/2026-05-29/1609_GLD.json (final_status=PAPER_CLOSE).

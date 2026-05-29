@@ -49,3 +49,9 @@
 - Routine: end_of_day_2026-05-28, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (carried; CB write skipped on pending_broker guard), throttle=1.0.
 - ENTRY re-fired (rank 5, 6m +21.76%); 39 sh held. Blocked by stale bars + already-held. Live mark $404.04, uPnL +$473.29 (+14.8% above stop; recovered off prior thin cushion).
 - Decision file: `decisions/2026-05-28/1630_UNH.json`
+
+## 2026-05-29 — PAPER_CLOSE (pre_close de-risk)
+- Routine: pre_close_2026-05-29, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (DD 3.36%, no transition).
+- CLOSE all positions per daily-loss-limit breach (logs/risk_events/20260529_160920_daily_loss.md; halt_after_daily_limit_breach=true). RM+Compliance APPROVED at midday (1609), executed at pre_close on late-day fill.
+- Fill ~$380.89 vs entry $391.9044; realized ~$-429.56 (pre-fee, vs entry basis). Broker flat (0 open), reconcile clean.
+- Decision file: decisions/2026-05-29/1609_UNH.json (final_status=PAPER_CLOSE).

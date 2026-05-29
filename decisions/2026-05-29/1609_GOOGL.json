@@ -22,11 +22,14 @@
   "risk_manager_verdict": "APPROVED",
   "compliance_verdict": "APPROVED",
   "human_approval_required": false,
-  "final_status": "PAPER_PROPOSED",
+  "final_status": "PAPER_CLOSE",
   "notes": "Proposed by midday routine on daily-loss-limit breach (logs/risk_events/20260529_160920_daily_loss.md). PAPER_CLOSE is a risk-REDUCING action permitted in PAPER_TRADING. NOT auto-executed by midday (monitoring-only; escalated to pre_close + URGENT Telegram). RM check #9 (loss cap) protects opens, not risk-reducing closes; R/R ratio=0 is N/A for a close.",
   "risk_manager_reasoning": "PAPER_CLOSE of a watchlist symbol (approved_for_paper_trading=true) reduces exposure; no limit raised, no new position opened, data fresh (<60s, live IEX). Daily-loss breach + halt_after_daily_limit_breach=true supports de-risking. APPROVED.",
   "compliance_reasoning": "PAPER_CLOSE permitted in PAPER_TRADING mode; symbol on watchlist & approved_for_paper_trading; not in blocked_symbols (INTU not involved); bull/bear/invalidation present; news sources cited in data/news/2026-05-29/GOOGL.md. APPROVED.",
   "news_sources": [
     "data/news/2026-05-29/GOOGL.md"
-  ]
+  ],
+  "executed_at": "2026-05-29T19:39:23.692359+00:00",
+  "executed_by": "pre_close_2026-05-29",
+  "execution_note": "Executed at pre_close on late-day broker fill ~382.62. Daily-loss-limit breach de-risk (halt_after_daily_limit_breach=true). Broker confirmed 0 open positions; reconcile clean (alpaca-authoritative). Order submitted as market close; fill returned PENDING_BROKER on submit poll, confirmed flat at broker."
 }
