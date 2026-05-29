@@ -161,3 +161,15 @@
 - CLOSE all positions per daily-loss-limit breach (logs/risk_events/20260529_160920_daily_loss.md; halt_after_daily_limit_breach=true). RM+Compliance APPROVED at midday (1609), executed at pre_close on late-day fill.
 - Fill ~$418.02 vs entry $412.0419; realized ~$+215.21 (pre-fee, vs entry basis). Broker flat (0 open), reconcile clean.
 - Decision file: decisions/2026-05-29/1609_GLD.json (final_status=PAPER_CLOSE).
+
+## 2026-05-29 — EOD ENTRY re-fired, routed NO_TRADE (daily-loss halt active) (dual_momentum_taa primary; gold_permanent_overlay subsumed)
+- Routine: end_of_day_2026-05-29, mode PAPER_TRADING, cb_state=FULL (CB write skipped, pending_broker=7), throttle=1.0.
+- Signal: dual_momentum_taa ENTRY re-confirmed — GLD top-1 risk asset (12m +35.56% vs cash +3.94%, above 10m MA); subsumes gold_permanent_overlay.
+- Decision: **NO_TRADE / REJECTED** (`decisions/2026-05-29/2042_GLD.json` + `_gold_permanent_overlay_subsumed.json`), reason `daily_loss_halt_active`. Open question flagged for weekly review: should the permanent GLD overlay be exempt from daily-loss de-risk? (see memory/prediction_reviews/2026-05-29.md). Re-entry resets next session (2026-06-01).
+
+**Cumulative stats (updated 2026-05-29 EOD):**
+
+- Open paper positions: 0 (closed at pre_close de-risk)
+- Closed paper trades (since 2026-05-18 re-entry): 1 (2026-05-29)
+- Realized PnL (2026-05-29 close): +$215.21 (vs entry $412.0419 basis)
+- Active strategies: dual_momentum_taa + gold_permanent_overlay (signal ENTRY today, blocked by daily-loss halt)

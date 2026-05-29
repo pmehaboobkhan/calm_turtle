@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-29T20:42:00+00:00",
+  "routine_id": "end_of_day_2026-05-29",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "thesis_bull": "gold_permanent_overlay would ENTER GLD as the permanent 10% allocation (crisis/inflation diversifier).",
+  "thesis_bear": "This ENTRY is subsumed by dual_momentum_taa, which holds GLD as its top-1 risk asset on the same symbol. Per signal consolidation (lib/signal_consolidator), the larger allocation absorbs the overlay; only one GLD position would ever be routed. Moreover today's session is under a daily-loss halt, so neither strategy opens a position.",
+  "invalidation_condition": "Not applicable — journaling-only NO_TRADE. The overlay's intent is carried by the primary dual_momentum_taa decision (2042_GLD.json).",
+  "risk_reward": {
+    "entry": 412.77,
+    "stop": 371.49,
+    "target": 515.96,
+    "ratio": 0.0
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0
+  },
+  "confidence_score": 0.0,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "notes": "reason=subsumed_by_dual_momentum_taa. subsumed_under=decisions/2026-05-29/2042_GLD.json. strategy=gold_permanent_overlay. Journaling-only per end_of_day step 7; RM + Compliance skip subsumed files (represented by the primary decision). Also moot today: daily-loss halt blocks any GLD open."
+}

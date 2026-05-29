@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-29T20:42:00+00:00",
+  "routine_id": "end_of_day_2026-05-29",
+  "symbol": "GOOGL",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY fired: GOOGL rank 3 by 126d return (+22.63%), SPY above its 10-month MA. News neutral (routine dividend).",
+  "thesis_bear": "Daily-loss limit breached today (-$1,480.68 / -1.473%; logs/risk_events/20260529_160920_daily_loss.md); halts.halt_after_daily_limit_breach=true de-risked the book to cash at pre_close. Re-opening on the same session as the halt defeats its purpose. GOOGL was one of the names just closed (~-$495 realized).",
+  "invalidation_condition": "Re-entry gated until next session (2026-06-01) when the daily-loss limit resets. Momentum ENTRY itself remains valid.",
+  "risk_reward": {
+    "entry": 390.13,
+    "stop": 351.12,
+    "target": 487.66,
+    "ratio": 0.0
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.6,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "REJECTED",
+  "notes": "reason=daily_loss_halt_active. EOD ran after pre_close de-risked the book. No re-entry same session. CB write skipped (pending_broker=7); FULL carried. No paper_sim.open_position. No LIVE_* path."
+}

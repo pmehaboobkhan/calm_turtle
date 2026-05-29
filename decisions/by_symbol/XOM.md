@@ -128,3 +128,15 @@
 - CLOSE all positions per daily-loss-limit breach (logs/risk_events/20260529_160920_daily_loss.md; halt_after_daily_limit_breach=true). RM+Compliance APPROVED at midday (1609), executed at pre_close on late-day fill.
 - Fill ~$145.37 vs entry $160.4279; realized ~$-1,460.62 (pre-fee, vs entry basis). Broker flat (0 open), reconcile clean.
 - Decision file: decisions/2026-05-29/1609_XOM.json (final_status=PAPER_CLOSE).
+
+## 2026-05-29 — EOD ENTRY re-fired, routed NO_TRADE (daily-loss halt active)
+- Routine: end_of_day_2026-05-29, mode PAPER_TRADING, cb_state=FULL (CB write skipped, pending_broker=7), throttle=1.0.
+- Signal: large_cap_momentum_top5 ENTRY re-confirmed — rank 2/21, 6m +28.43%, SPY trend up. XOM was the dominant driver of today's daily-loss breach.
+- Decision: **NO_TRADE / REJECTED** (`decisions/2026-05-29/2042_XOM.json`), reason `daily_loss_halt_active` — re-buying the name that caused the breach on the same session is the revenge-trade mistake; refused. Re-entry resets next session (2026-06-01) and only if the energy selloff has not worsened.
+
+**Cumulative stats (updated 2026-05-29 EOD):**
+
+- Open paper positions: 0 (closed at pre_close de-risk)
+- Closed paper trades (since 2026-05-18 re-entry): 1 (2026-05-29)
+- Realized PnL (2026-05-29 close): -$1,460.62 (vs entry $160.4279 basis)
+- Active strategies: large_cap_momentum_top5 (signal ENTRY today, blocked by daily-loss halt)

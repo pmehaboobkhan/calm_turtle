@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-29T20:42:00+00:00",
+  "routine_id": "end_of_day_2026-05-29",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "thesis_bull": "dual_momentum_taa ENTRY fired: GLD is the top-1 risk asset (12m +35.56% vs SHV cash +3.94%), above its 10-month MA. Consolidated as primary over gold_permanent_overlay (subsumes the 10% overlay on the same GLD ENTRY). Crisis/inflation hedge.",
+  "thesis_bear": "Daily-loss limit breached today (-$1,480.68 / -1.473%; logs/risk_events/20260529_160920_daily_loss.md); halt_after_daily_limit_breach=true de-risked the entire book to cash at pre_close. GLD was one of the names just closed (~+$215 realized). Re-opening on the same session as the halt defeats its purpose. (Whether the permanent GLD overlay should be exempt from daily-loss de-risk is flagged for weekly review — see memory/prediction_reviews/2026-05-29.md.)",
+  "invalidation_condition": "Re-entry gated until next session (2026-06-01) when the daily-loss limit resets. GLD's TAA top-1 standing remains valid.",
+  "risk_reward": {
+    "entry": 412.77,
+    "stop": 371.49,
+    "target": 515.96,
+    "ratio": 0.0
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.6,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "REJECTED",
+  "notes": "reason=daily_loss_halt_active. EOD ran after pre_close de-risked the book. Consolidated primary=dual_momentum_taa, subsumes gold_permanent_overlay (see _gold_permanent_overlay_subsumed.json). No re-entry same session. CB write skipped (pending_broker=7); FULL carried. No paper_sim.open_position. No LIVE_* path."
+}
