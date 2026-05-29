@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-05-29T16:09:20+00:00",
+  "routine_id": "midday_2026-05-29",
+  "symbol": "GOOGL",
+  "decision": "PAPER_CLOSE",
+  "thesis_bull": "GOOGL (rank 2, 6m +38.58%) momentum intact: midday $383.19 is ~7.5% above its -10% stop ($356.08). Only news is a routine $0.22 dividend declaration. No single-name invalidation.",
+  "thesis_bear": "Portfolio breached the daily-loss limit at midday: today's P&L -$1,480.68 / -1.473% vs the -$500 / -0.5% caps. halts.halt_after_daily_limit_breach=true mandates proposing closure of ALL open positions to de-risk. Driver is an energy/commodity-led selloff (XOM -9.06%, WTI -~5% on US-Iran diplomacy / Strait of Hormuz reopening) with secondary equity-beta drag (GOOGL -3.21%, UNH -2.89%). Risk of a third+ consecutive down session and of the -2.0% hard daily-drawdown halt triggering. This name's contribution: $-473.10 (-3.15%).",
+  "invalidation_condition": "De-risk proposal is invalidated (HOLD preferred) if pre_close/operator judges the daily-loss breach a transient single-macro-move drawdown with all rotation stops intact, and elects to let pre_close re-evaluate on closing prices. Close becomes mandatory if this name breaks its -10% rotation stop ($356.08) or the portfolio -2.0% daily-drawdown hard halt triggers.",
+  "risk_reward": {
+    "entry": 383.19,
+    "stop": 356.08,
+    "target": 494.55,
+    "ratio": 0.0
+  },
+  "position_size": {
+    "shares": 38.0,
+    "usd": 14561.22,
+    "pct_of_account": 14.7
+  },
+  "confidence_score": 0.5,
+  "risk_manager_verdict": "APPROVED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "PAPER_PROPOSED",
+  "notes": "Proposed by midday routine on daily-loss-limit breach (logs/risk_events/20260529_160920_daily_loss.md). PAPER_CLOSE is a risk-REDUCING action permitted in PAPER_TRADING. NOT auto-executed by midday (monitoring-only; escalated to pre_close + URGENT Telegram). RM check #9 (loss cap) protects opens, not risk-reducing closes; R/R ratio=0 is N/A for a close.",
+  "risk_manager_reasoning": "PAPER_CLOSE of a watchlist symbol (approved_for_paper_trading=true) reduces exposure; no limit raised, no new position opened, data fresh (<60s, live IEX). Daily-loss breach + halt_after_daily_limit_breach=true supports de-risking. APPROVED.",
+  "compliance_reasoning": "PAPER_CLOSE permitted in PAPER_TRADING mode; symbol on watchlist & approved_for_paper_trading; not in blocked_symbols (INTU not involved); bull/bear/invalidation present; news sources cited in data/news/2026-05-29/GOOGL.md. APPROVED.",
+  "news_sources": [
+    "data/news/2026-05-29/GOOGL.md"
+  ]
+}
