@@ -57,3 +57,13 @@
 - Broker: Alpaca paper sandbox order_id 40f0f701, OrderStatus.FILLED; log row appended to `trades/paper/log.csv`. Reconcile clean: 5 open positions, 0 discrepancies (alpaca-authoritative).
 - Realized P&L: +$453.09 vs original 2026-05-22 entry basis ($197.559); -$42.33 vs alpaca-mirror reset basis ($215.9078).
 - Overnight-risk check: NVDA Q1 FY27 already reported 2026-05-20 AMC (rev $81.6B +85% y/y, Q2 guide $91B) — NO earnings catalyst tomorrow. Close was driven solely by the daily-loss-limit de-risking mandate, not by an overnight event.
+
+**Cumulative stats (updated 2026-05-29 EOD):**
+
+- Open paper positions: 0
+- Closed paper trades: 1 (2026-05-26 pre_close de-risk)
+- Realized PnL (this trade): +$453.09
+- All-time realized PnL: +$453.09
+- Win rate: 100% (1/1)
+- Active strategies: large_cap_momentum_top5 (trade closed per daily-loss halt)
+- Last updated: 2026-05-29 EOD
