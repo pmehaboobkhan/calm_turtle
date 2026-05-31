@@ -16,3 +16,12 @@
 - This is the second consecutive week CSCO led the Strategy-B slate (W20 rank 3 cash-only via reset; W21 rank 1, the durable leader). Old-tier networking-tech leadership noted descriptively in the regime narrative.
 - Stop/target fields recorded as null on the position all week under the alpaca-mirror reconcile (stop_loss=null, take_profit=null in positions.json) — stop monitoring was advisory/manual; descriptive standing observation (HIGH severity in the cycle report).
 - No earnings catalyst in the window (Q3 FY26 print was 2026-05-13, pre-reset). No EXIT signal fired.
+
+## Week 2026-W22 observations
+- Strategy: large_cap_momentum_top5. Carried 130 sh from the W21 entry @ $117.6635 into the W22 window (holiday Mon 2026-05-25).
+- Closed 2026-05-29 pre_close @ $121.17. Realized PnL: +$456 (+2.98% vs entry). Closed by the all-positions daily-loss halt, NOT by a stop or rotation signal.
+- Momentum rank: remained #1 throughout W22 (6m +57–61%) — the strongest and most persistent name in the book for a third consecutive week.
+- The single-name thesis was intact at exit; the position was liquidated by the system-level halt while leading the Strategy-B slate.
+- News: BofA price-target raise to $135 (2026-05-29) confirmed ongoing analyst bullishness — closed mid-upgrade cycle.
+- No earnings catalyst in the W22 window (Q3 FY26 print was 2026-05-13; next ~2026-08-12).
+- Pattern (descriptive): rank-1 persistence is high; CSCO did not rotate out of the top-5 in any W22 session. It held through the crude/energy selloff without adverse impact (CSCO is networking/tech, not energy-correlated) and was one of three W22 winners alongside GLD and the prior NVDA close. The W20/W21 open question on whether CSCO rank-1 momentum durably persists or reverts late in the hold remains open — three weeks of leadership with no mean-reversion toward the stop, but the position was always closed by exogenous events (reset, then halt), never allowed to run to a natural rotation.

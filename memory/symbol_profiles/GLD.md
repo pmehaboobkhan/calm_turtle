@@ -16,3 +16,11 @@
 - IEF stayed below its 10m MA all week (only ~+3.89%, ~matching cash), so the dual-momentum cash floor was NOT active; GLD held the top risk-asset slot uncontested.
 - Most stable line in the book again this week (commodity-gold diversifier behavior consistent with the thesis); did not approach the −10% stop ($375.561).
 - Stop/target fields recorded as null on the position all week under the alpaca-mirror reconcile; descriptive standing observation.
+
+## Week 2026-W22 observations
+- Strategy: dual_momentum_taa (Strategy A, TAA top-1) subsuming gold_permanent_overlay (Strategy C). Carried 36 sh from the W21 entry @ $412.0419 into the W22 window (holiday Mon 2026-05-25).
+- Closed 2026-05-29 pre_close @ $418.02. Realized PnL: +$215 (+1.45% vs entry). Closed by the all-positions daily-loss halt, NOT by a stop or rotation signal.
+- TAA top-1 maintained all week (12m momentum still leading SPY and IEF; GLD above its 10mo MA throughout).
+- The crisis-hedge thesis was intact at exit: gold moved inversely to equities during the energy-led selloff — GLD was modestly positive while XOM/GOOGL/UNH were negative on both loss days.
+- 2026-05-29 specifically: midday mark $419.22 (+$258 unrealized, +1.74%) while the portfolio was in daily-loss-halt mode — the hedge was working as designed at the moment it was liquidated.
+- Open policy question flagged this cycle (descriptive, no recommendation): GLD as the permanent overlay was the only genuinely defensive asset in the book during the macro shock, yet the all-positions daily-loss halt closed it alongside the loss names. Whether a permanent-overlay exemption from the halt is warranted is recorded here as an observation for future review; v1 makes no proposal.

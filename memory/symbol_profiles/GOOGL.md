@@ -15,3 +15,11 @@
 - Flagged on 2026-05-20 as one of two late-day-weakness names (intraday mark −6.89%, approaching but NOT breaching the −10% stop $357.102); recovered into week-end as portfolio DD fell from 4.34% (05-21) to 2.36% (05-22). The thin-cushion-name watch did not progress to a stop event.
 - Stop/target fields recorded as null on the position all week under the alpaca-mirror reconcile; stop cushion was monitored as an advisory mark only — descriptive standing observation (HIGH severity in the cycle report).
 - No earnings or single-stock catalyst in the window. No EXIT signal fired.
+
+## Week 2026-W22 observations
+- Strategy: large_cap_momentum_top5. Carried 38 sh from the W21 entry @ $395.64 into the W22 window (holiday Mon 2026-05-25).
+- Closed 2026-05-29 pre_close @ $382.62. Realized PnL: −$495 (−3.29% vs entry). Closed by the all-positions daily-loss halt, NOT by a stop or rotation signal.
+- Momentum rank: 2/21 through most of W22 (briefly rank 3 on some sessions).
+- Weakest-held name on 2026-05-28 EOD (−$1,040 unrealized, +3.4% above stop); flagged as the GOOGL-DRAWDOWN-WATCH name. The stop ($356.08) was never breached — at the 05-29 close GOOGL sat +7.5% above the stop.
+- News backdrop: DOJ antitrust behavioral remedies (announced 09-2025) with no new 05-26→05-29 development; Q1 2026 earnings past (April); TPU monetization noted as bullish background. No name-specific invalidation event in W22.
+- Pattern (descriptive): GOOGL has been a persistent rank-2 name across W20–W22. The −3.29% W22 loss is well below the thesis-invalidating level; the stop was never close to breaching. The drawdown-watch flag tracked relative weakness correctly (GOOGL was the 2nd-largest dollar loss this week) but did not become the operative exit trigger — the halt did.
