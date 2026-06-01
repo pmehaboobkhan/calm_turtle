@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-01T20:39:36+00:00",
+  "routine_id": "end_of_day_2026-06-01",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "thesis_bull": "dual_momentum_taa ENTRY: GLD is top-1 risk asset, all filters passed. 12m return +37.30% > SPY +30.19% > IEF +4.72% > cash +3.95%; above 210d MA. Only genuinely defensive asset in the slate (consolidator subsumes gold_permanent_overlay 10% into this 60% TAA allocation).",
+  "thesis_bear": "Gold's outsized lead may signal latent macro stress; signal computed on a stale 2026-05-29 close. Today's close unavailable.",
+  "invalidation_condition": "GLD loses its 12m lead over SPY; OR GLD breaks its 210d MA. Re-evaluate on a fresh close.",
+  "risk_reward": {
+    "entry": 417.12,
+    "stop": 375.408,
+    "target": 521.4,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.55,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "dual_momentum_taa",
+  "data_freshness": {
+    "latest_bar": "2026-05-29",
+    "age_hours": 92.7,
+    "max_staleness_seconds": 60,
+    "status": "STALE"
+  },
+  "consolidation": {
+    "primary_strategy": "dual_momentum_taa",
+    "subsumed_strategies": [
+      "gold_permanent_overlay"
+    ]
+  },
+  "notes": "reason=data_stale. Latest available daily bar for all symbols is 2026-05-29 (Friday close), ~92.7h / 3.86 days old at this EOD run (16:39 ET 2026-06-01). Exceeds risk_limits.data.max_data_staleness_seconds=60 by ~5,500x. Today's (2026-06-01) close bar is not present in the data feed, so the EOD decision point has no fresh close to act on. Per CLAUDE.md hard rule #5 (stale data -> NO_TRADE) the ENTRY is refused. Secondary factor: circuit-breaker equity write skipped this run (pending_broker=7 stale PENDING_BROKER open rows since 2026-05-18); FULL carried, throttle=1.0, but the portfolio-DD safety control could not mark equity. No paper_sim.open_position called. No LIVE_* path. RM rejected on freshness check #11; Compliance rejected because RM != APPROVED."
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-01T20:39:36+00:00",
+  "routine_id": "end_of_day_2026-06-01",
+  "symbol": "AMZN",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: AMZN rank 5 by 126d return (+17.84%); SPY above its 10-month MA. Fresh top-5 entry, reclaimed slot from GOOGL (now rank 6 hold-zone).",
+  "thesis_bear": "Rank-5 boundary is fragile (+0.09pp over GOOGL at rank 6); a single fresh session could reverse it. Signal computed on a stale 05-29 close \u2014 exactly the kind of boundary that a missing fresh close cannot validate.",
+  "invalidation_condition": "SPY close below its 10-month SMA; OR AMZN drops below rank 5 vs GOOGL on fresh bars.",
+  "risk_reward": {
+    "entry": 270.64,
+    "stop": 243.576,
+    "target": 338.3,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.55,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "data_freshness": {
+    "latest_bar": "2026-05-29",
+    "age_hours": 92.7,
+    "max_staleness_seconds": 60,
+    "status": "STALE"
+  },
+  "consolidation": {
+    "primary_strategy": "large_cap_momentum_top5",
+    "subsumed_strategies": []
+  },
+  "notes": "reason=data_stale. Latest available daily bar for all symbols is 2026-05-29 (Friday close), ~92.7h / 3.86 days old at this EOD run (16:39 ET 2026-06-01). Exceeds risk_limits.data.max_data_staleness_seconds=60 by ~5,500x. Today's (2026-06-01) close bar is not present in the data feed, so the EOD decision point has no fresh close to act on. Per CLAUDE.md hard rule #5 (stale data -> NO_TRADE) the ENTRY is refused. Secondary factor: circuit-breaker equity write skipped this run (pending_broker=7 stale PENDING_BROKER open rows since 2026-05-18); FULL carried, throttle=1.0, but the portfolio-DD safety control could not mark equity. No paper_sim.open_position called. No LIVE_* path. RM rejected on freshness check #11; Compliance rejected because RM != APPROVED."
+}

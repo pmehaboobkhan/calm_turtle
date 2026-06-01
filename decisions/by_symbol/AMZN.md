@@ -46,3 +46,11 @@
 - Routine: end_of_day_2026-05-28, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (carried; CB write skipped on pending_broker guard), throttle=1.0.
 - ENTRY signal (top-5 candidate) — NOT opened. REJECTED on stale daily bars (~44.8h, dated 2026-05-27) for the 2nd consecutive session per CLAUDE.md rule #5 / RM check #11. paper_sim.open_position NOT called. Re-qualifies only on fresh bars + still-top-5 + SPY>210d SMA.
 - Decision file: `decisions/2026-05-28/1630_AMZN.json`
+
+## 2026-06-01 — NO_TRADE (data_stale)
+
+- Decision file: `decisions/2026-06-01/1639_AMZN.json`
+- Signal: large_cap_momentum_top5 ENTRY (rank 5, +17.84% 6m).
+- Outcome: NO_TRADE. RM REJECTED (freshness check #11), Compliance REJECTED (RM != APPROVED).
+- Reason: latest daily bar = 2026-05-29 (~92.7h stale); no 2026-06-01 close in feed. CLAUDE.md rule #5 → NO_TRADE.
+- Book flat; no position opened. CB write skipped (pending_broker=7); FULL carried, throttle 1.0.

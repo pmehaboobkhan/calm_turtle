@@ -67,3 +67,11 @@
 - Closed paper trades (since 2026-05-19 entry): 1 (2026-05-29)
 - Realized PnL (2026-05-29 close): -$429.56 (vs entry $391.9044 basis)
 - Active strategies: large_cap_momentum_top5 (signal ENTRY today, blocked by daily-loss halt)
+
+## 2026-06-01 — NO_TRADE (data_stale)
+
+- Decision file: `decisions/2026-06-01/1639_UNH.json`
+- Signal: large_cap_momentum_top5 ENTRY (rank 4, +18.26% 6m).
+- Outcome: NO_TRADE. RM REJECTED (freshness check #11), Compliance REJECTED (RM != APPROVED).
+- Reason: latest daily bar = 2026-05-29 (~92.7h stale); no 2026-06-01 close in feed. CLAUDE.md rule #5 → NO_TRADE.
+- Book flat; no position opened. CB write skipped (pending_broker=7); FULL carried, throttle 1.0.
