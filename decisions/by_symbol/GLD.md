@@ -181,3 +181,11 @@
 - Outcome: NO_TRADE. RM REJECTED (freshness check #11), Compliance REJECTED (RM != APPROVED).
 - Reason: latest daily bar = 2026-05-29 (~92.7h stale); no 2026-06-01 close in feed. CLAUDE.md rule #5 → NO_TRADE.
 - Book flat; no position opened. CB write skipped (pending_broker=7); FULL carried, throttle 1.0.
+
+## 2026-06-02 — NO_TRADE (data_stale)
+
+- Decision file: `decisions/2026-06-02/2040_GLD.json` + `_gold_permanent_overlay_subsumed.json`
+- Signal: dual_momentum_taa ENTRY (top-1, subsumes gold_permanent_overlay).
+- Outcome: NO_TRADE. RM REJECTED (freshness hard-check #11), Compliance REJECTED (RM != APPROVED).
+- Reason: latest daily bar = 2026-06-01 (~44.68h stale, ~2,680x over 60s cap); no 2026-06-02 close in daily feed at EOD (live IEX quote exists; daily-bar provider lags). CLAUDE.md rule #5 -> NO_TRADE.
+- Book flat; no position opened. CB write skipped (pending_broker=7); FULL carried, throttle 1.0.

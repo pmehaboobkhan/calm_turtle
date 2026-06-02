@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-02T20:40:17+00:00",
+  "routine_id": "end_of_day_2026-06-02",
+  "symbol": "ORCL",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: ORCL rank 4 of 21 by 126d return (+21.82%), SPY trend filter passed.",
+  "thesis_bear": "New name entering the top-5 (was rank 20 on 05-22); momentum-chasing risk. Signal on stale 06-01 close.",
+  "invalidation_condition": "ORCL falls out of top-7; OR SPY loses its 10-month MA. Re-evaluate on a fresh close.",
+  "risk_reward": {
+    "entry": 248.15,
+    "stop": 223.335,
+    "target": 310.187,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.55,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "data_freshness": {
+    "latest_bar": "2026-06-01",
+    "age_hours": 44.68,
+    "max_staleness_seconds": 60,
+    "status": "STALE"
+  },
+  "consolidation": {
+    "primary_strategy": "large_cap_momentum_top5",
+    "subsumed_strategies": []
+  },
+  "notes": "reason=data_stale. Latest available daily bar for all symbols is 2026-06-01 (Monday close), ~44.68h / 1.86 days old at this EOD run (16:40 ET 2026-06-02, a trading day). Exceeds risk_limits.data.max_data_staleness_seconds=60 by ~2,680x. Today's (2026-06-02) close bar is not present in the daily-bar feed at run time, so the EOD decision point has no fresh close to act on. A live IEX quote for 2026-06-02 IS available (feed is alive; the daily-bar provider lags the session), but the signal/decision basis is the stale 2026-06-01 daily close. Per CLAUDE.md hard rule #5 (stale data -> NO_TRADE) the ENTRY is refused. Secondary factor: circuit-breaker equity write skipped this run (pending_broker=7 stale PENDING_BROKER open rows since 2026-05-18); FULL carried, throttle=1.0, but the portfolio-DD safety control could not mark equity. No paper_sim.open_position called. No LIVE_* path. RM REJECTED on freshness hard-check #11; Compliance REJECTED because RM != APPROVED."
+}

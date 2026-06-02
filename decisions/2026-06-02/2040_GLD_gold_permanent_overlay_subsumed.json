@@ -1,0 +1,7 @@
+{
+  "action": "NO_TRADE",
+  "reason": "subsumed_by_dual_momentum_taa",
+  "subsumed_under": "decisions/2026-06-02/2040_GLD.json",
+  "symbol": "GLD",
+  "strategy": "gold_permanent_overlay"
+}
