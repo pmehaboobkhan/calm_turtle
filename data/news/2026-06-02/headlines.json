@@ -1,0 +1,7 @@
+{
+  "generated_at": "2026-06-02T10:41:00Z",
+  "feed_status": "news_unavailable",
+  "rationale": "No live news connector is wired in v1 (per CLAUDE.md > Handling missing data, treat as a risk factor, not as 'no news = bullish'). Symbol-level sentiment is marked unavailable for this run; downstream report flags the gap.",
+  "headlines_by_symbol": {},
+  "macro_calendar_note": "ISM Manufacturing PMI was a watch-item from 2026-05-29 EOD snapshot (10:00 ET 2026-06-01). No live feed result available pre-open 2026-06-02 from automated source."
+}
