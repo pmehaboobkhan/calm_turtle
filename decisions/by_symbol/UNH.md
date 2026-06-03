@@ -75,3 +75,15 @@
 - Outcome: NO_TRADE. RM REJECTED (freshness check #11), Compliance REJECTED (RM != APPROVED).
 - Reason: latest daily bar = 2026-05-29 (~92.7h stale); no 2026-06-01 close in feed. CLAUDE.md rule #5 → NO_TRADE.
 - Book flat; no position opened. CB write skipped (pending_broker=7); FULL carried, throttle 1.0.
+
+## 2026-06-03 — Pre-market RESEARCH-ONLY NO_TRADE (routine scope), NEW top-5 entrant via boundary swap
+
+- Decision file: `decisions/2026-06-03/0642_UNH.json`
+- Signal basis: `data/market/2026-06-03/0630.json`, last bar 2026-06-02.
+- Signal: large_cap_momentum_top5 ENTRY (rank 5/21, 6m +16.27%, SPY trend up). **UNH replaced GOOGL at rank 5 today** — the 06-02 prediction (`memory/prediction_reviews/2026-06-02.md` GOOGL conf 0.5 fragile) materialized on a single fresh bar.
+- Outcome: **NO_TRADE / REJECTED on routine scope** (pre_market is RESEARCH_ONLY in v1).
+- Background bear-factors carried from `memory/symbol_profiles/UNH.md`:
+  - Berkshire Q1 13F fully exited UNH (smart-money sell signal; predates this entry).
+  - DOJ Medicare-Advantage probe + Optum antitrust probe — ongoing background risk.
+- Boundary fragility: a single bad UNH session or strong GOOGL session can swap the rank-5 slot back; EOD should re-confirm rank on the 06-03 close.
+- Prior UNH paper hold (W21-W22) closed at small realized loss via daily-loss halt despite firming rank 5 -> rank 4 within the hold; the halt, not signal/stop, determined the exit.

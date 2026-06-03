@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-03T10:42:00+00:00",
+  "routine_id": "pre_market_2026-06-03",
+  "symbol": "CSCO",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY (research-only): CSCO rank 1/21 in 126d return basket (+68.16% 6m on 06-02 basis, up from +61.22% on 06-01). SPY trend filter PASSED (above 10m MA). Fourth consecutive paper-week as Strategy-B leader; rank-1 cushion widened materially over the past 5 sessions.",
+  "thesis_bear": "Late-cycle momentum risk: +68% 6m run raises mean-reversion probability vs the never-tested late-rank-1 decay path (prior CSCO holds were always closed by exogenous events \u2014 earnings exit, daily-loss halt, never a natural rotation). News feed unavailable this run (`news_unavailable`) \u2014 single-name catalysts cannot be screened. No live VIX feed.",
+  "invalidation_condition": "Drops below rank 7 in Strategy-B basket OR SPY falls below 10-month MA OR -10% stop at $115.20 OR a pre-announcement/guide-cut. Re-evaluate at EOD against the 06-03 close.",
+  "risk_reward": {
+    "entry": 128.0,
+    "stop": 115.2,
+    "target": 160.0,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.7,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "signal_basis": {
+    "deterministic_source": "data/market/2026-06-03/0630.json",
+    "latest_bar": "2026-06-02",
+    "rank": 1,
+    "return_6m": 0.6816,
+    "return_12m": null
+  },
+  "data_freshness": {
+    "latest_bar": "2026-06-02",
+    "age_hours": 34.7,
+    "max_staleness_seconds": 60,
+    "status": "EXPECTED_FOR_PRE_MARKET_RESEARCH",
+    "comment": "Daily-bar 06-02 close is the correct basis for pre-market research; EOD will re-evaluate against the 06-03 close at 16:40 ET. The 60s staleness gate applies to EOD execution decisions, not pre-market research."
+  },
+  "routine_scope": {
+    "routine": "pre_market",
+    "decision_class_allowed": false,
+    "comment": "Pre-market v1 is RESEARCH_ONLY. No trade-execution decisions are produced in this routine per prompts/routines/pre_market.md."
+  },
+  "notes": "reason=pre_market_research_scope. Pre-market routine is RESEARCH_ONLY in v1 per prompts/routines/pre_market.md ('NO trade decisions in this routine \u2014 only candidates and theses'). No paper_sim.open_position called. Position-size fields are zero placeholders. RM and Compliance verdicts are REJECTED specifically because the pre_market routine does not produce trade-execution decisions; this is the correct, expected behavior, not a risk-rule failure. The end_of_day routine is the only one in v1 that opens paper positions and will re-evaluate at 16:40 ET against today's close."
+}

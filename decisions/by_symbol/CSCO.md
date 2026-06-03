@@ -176,3 +176,12 @@
 - Outcome: NO_TRADE. RM REJECTED (freshness hard-check #11), Compliance REJECTED (RM != APPROVED).
 - Reason: latest daily bar = 2026-06-01 (~44.68h stale, ~2,680x over 60s cap); no 2026-06-02 close in daily feed at EOD (live IEX quote exists; daily-bar provider lags). CLAUDE.md rule #5 -> NO_TRADE.
 - Book flat; no position opened. CB write skipped (pending_broker=7); FULL carried, throttle 1.0.
+
+## 2026-06-03 — Pre-market RESEARCH-ONLY NO_TRADE (routine scope)
+
+- Decision file: `decisions/2026-06-03/0642_CSCO.json`
+- Signal basis: `data/market/2026-06-03/0630.json`, last bar 2026-06-02.
+- Signal: large_cap_momentum_top5 ENTRY (rank 1/21, 6m return +68.16%, SPY trend up). Rank-1 cushion *widened* — 6m return expanded from +61.22% (06-01 basis) to +68.16% (06-02 basis) in 5 sessions. Fourth consecutive paper-week as Strategy-B leader.
+- Outcome: **NO_TRADE / REJECTED on routine scope** (not on freshness or risk; pre_market is RESEARCH_ONLY in v1). RM REJECTED + Compliance REJECTED specifically because the pre_market routine does not produce trade-execution decisions.
+- Book flat; no position opened. EOD 2026-06-03 will re-evaluate against the 06-03 close.
+- Watch: late-cycle momentum risk now elevated — first paper-trading observation of CSCO >+65% 6m, post-peak decay path unobserved.

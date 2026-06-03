@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-03T10:42:00+00:00",
+  "routine_id": "pre_market_2026-06-03",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "thesis_bull": "gold_permanent_overlay (research-only): GLD permanent 10% allocation policy. Subsumed by the dual_momentum_taa ENTRY today (Strategy A top-1) per the consolidator rule \u2014 no separate overlay position is opened when Strategy A already holds GLD.",
+  "thesis_bear": "If the Strategy-A consolidator rule changes such that the overlay produces an independent position, double-allocation to GLD becomes possible. The current rule prevents this.",
+  "invalidation_condition": "Consolidator rule change; OR Strategy A exits GLD (then the overlay re-asserts a 10% standalone slot at EOD).",
+  "risk_reward": {
+    "entry": 411.95,
+    "stop": 370.755,
+    "target": 514.9375,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.7,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "gold_permanent_overlay",
+  "consolidation": {
+    "primary_strategy": "dual_momentum_taa",
+    "subsumed_strategies": [
+      "gold_permanent_overlay"
+    ],
+    "primary_decision_file": "decisions/2026-06-03/0642_GLD.json"
+  },
+  "routine_scope": {
+    "routine": "pre_market",
+    "decision_class_allowed": false,
+    "comment": "Pre-market v1 is RESEARCH_ONLY. No trade-execution decisions are produced in this routine."
+  },
+  "notes": "reason=pre_market_research_scope + overlay_subsumed. Documented for audit completeness \u2014 every signal is recorded per CLAUDE.md."
+}

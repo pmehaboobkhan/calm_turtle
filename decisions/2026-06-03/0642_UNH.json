@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-03T10:42:00+00:00",
+  "routine_id": "pre_market_2026-06-03",
+  "symbol": "UNH",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY (research-only): UNH rank 5/21 (+16.27% 6m). Healthcare-services momentum; replaces GOOGL at rank 5 today via single-bar boundary swap.",
+  "thesis_bear": "Rank-5 boundary fragile \u2014 UNH only just edged above GOOGL on the 06-02 close; single-bar slip could swap them back. Background bear factors per memory/symbol_profiles/UNH.md: (a) Berkshire Q1 13F fully exited UNH (smart-money sell signal); (b) DOJ Medicare-Advantage probe + Optum antitrust probe ongoing. Prior UNH hold (W21-W22) closed at a small realized loss via daily-loss halt despite firming from rank 5 to rank 4.",
+  "invalidation_condition": "Drops below rank 7 OR SPY breaks 10-month MA OR -10% stop at $340.13 OR a renewed DOJ disclosure.",
+  "risk_reward": {
+    "entry": 377.92,
+    "stop": 340.128,
+    "target": 472.4,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.45,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "signal_basis": {
+    "deterministic_source": "data/market/2026-06-03/0630.json",
+    "latest_bar": "2026-06-02",
+    "rank": 5,
+    "return_6m": 0.1627,
+    "return_12m": null
+  },
+  "data_freshness": {
+    "latest_bar": "2026-06-02",
+    "age_hours": 34.7,
+    "max_staleness_seconds": 60,
+    "status": "EXPECTED_FOR_PRE_MARKET_RESEARCH",
+    "comment": "Daily-bar 06-02 close is the correct basis for pre-market research; EOD will re-evaluate against the 06-03 close at 16:40 ET. The 60s staleness gate applies to EOD execution decisions, not pre-market research."
+  },
+  "routine_scope": {
+    "routine": "pre_market",
+    "decision_class_allowed": false,
+    "comment": "Pre-market v1 is RESEARCH_ONLY. No trade-execution decisions are produced in this routine per prompts/routines/pre_market.md."
+  },
+  "notes": "reason=pre_market_research_scope. See CSCO decision for routine-scope rationale. UNH is the new top-5 entrant via boundary swap with GOOGL; the 2026-06-02 prediction (GOOGL #5 fragile, conf 0.5) materialized on a single fresh bar. Confidence here is intentionally low: boundary-name + smart-money sell signal + recent realized-loss precedent."
+}

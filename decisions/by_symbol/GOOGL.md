@@ -146,3 +146,11 @@
 - Outcome: NO_TRADE. RM REJECTED (freshness hard-check #11), Compliance REJECTED (RM != APPROVED).
 - Reason: latest daily bar = 2026-06-01 (~44.68h stale, ~2,680x over 60s cap); no 2026-06-02 close in daily feed at EOD (live IEX quote exists; daily-bar provider lags). CLAUDE.md rule #5 -> NO_TRADE.
 - Book flat; no position opened. CB write skipped (pending_broker=7); FULL carried, throttle 1.0.
+
+## 2026-06-03 — Pre-market NO_SIGNAL (rank-5 boundary swap fired against)
+
+- No decision file (NO_SIGNAL not in the v1 trade-decision schema enum; recorded for outcome tracking in `memory/prediction_reviews/2026-06-03.md`).
+- Signal basis: `data/market/2026-06-03/0630.json`, last bar 2026-06-02.
+- Signal: large_cap_momentum_top5 NO_SIGNAL (rank 6 or 7 in hold buffer; **fell out of top-5**). SPY trend filter PASSED; failed "GOOGL in top-5 by 126d return".
+- 06-02 basis had GOOGL rank 5 (+17.79% 6m); 06-03 basis has UNH at rank 5 with GOOGL slipping to the buffer. The boundary swap predicted on 06-02 (conf 0.5) materialized.
+- Outcome: no action (book flat; nothing held to EXIT). Watch: re-entry to top-5 possible on a single bar.

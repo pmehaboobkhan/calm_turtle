@@ -83,3 +83,10 @@
 - Outcome: NO_TRADE. RM REJECTED (freshness hard-check #11), Compliance REJECTED (RM != APPROVED).
 - Reason: latest daily bar = 2026-06-01 (~44.68h stale, ~2,680x over 60s cap); no 2026-06-02 close in daily feed at EOD (live IEX quote exists; daily-bar provider lags). CLAUDE.md rule #5 -> NO_TRADE.
 - Book flat; no position opened. CB write skipped (pending_broker=7); FULL carried, throttle 1.0.
+
+## 2026-06-03 — Pre-market RESEARCH-ONLY NO_TRADE (routine scope)
+
+- Decision file: `decisions/2026-06-03/0642_NVDA.json`
+- Signal basis: `data/market/2026-06-03/0630.json`, last bar 2026-06-02.
+- Signal: large_cap_momentum_top5 ENTRY (rank 3/21, 6m +25.90%, SPY trend up). 6m return improved modestly vs the 06-01 reading (+24.48% -> +25.90%); rank 3 cushion to rank 4 (ORCL +21.85%) is +4.05pp — durable.
+- Outcome: **NO_TRADE / REJECTED on routine scope** (pre_market is RESEARCH_ONLY in v1).

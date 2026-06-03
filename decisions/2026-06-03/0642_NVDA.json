@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-03T10:42:00+00:00",
+  "routine_id": "pre_market_2026-06-03",
+  "symbol": "NVDA",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY (research-only): NVDA rank 3/21 (+25.90% 6m, up from +24.48%). AI/datacenter capex cycle intact. SPY trend filter PASSED.",
+  "thesis_bear": "Highest beta in the basket; prior open closed at loss via daily-loss halt in W22 (not thesis break). News feed unavailable \u2014 cannot screen for fresh hyperscaler-capex / customer guidance items.",
+  "invalidation_condition": "Drops below rank 7 OR SPY breaks 10-month MA OR -10% stop at $200.54.",
+  "risk_reward": {
+    "entry": 222.82,
+    "stop": 200.538,
+    "target": 278.525,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.65,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "signal_basis": {
+    "deterministic_source": "data/market/2026-06-03/0630.json",
+    "latest_bar": "2026-06-02",
+    "rank": 3,
+    "return_6m": 0.259,
+    "return_12m": null
+  },
+  "data_freshness": {
+    "latest_bar": "2026-06-02",
+    "age_hours": 34.7,
+    "max_staleness_seconds": 60,
+    "status": "EXPECTED_FOR_PRE_MARKET_RESEARCH",
+    "comment": "Daily-bar 06-02 close is the correct basis for pre-market research; EOD will re-evaluate against the 06-03 close at 16:40 ET. The 60s staleness gate applies to EOD execution decisions, not pre-market research."
+  },
+  "routine_scope": {
+    "routine": "pre_market",
+    "decision_class_allowed": false,
+    "comment": "Pre-market v1 is RESEARCH_ONLY. No trade-execution decisions are produced in this routine per prompts/routines/pre_market.md."
+  },
+  "notes": "reason=pre_market_research_scope. See CSCO decision for routine-scope rationale."
+}

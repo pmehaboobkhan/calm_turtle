@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-03T10:42:00+00:00",
+  "routine_id": "pre_market_2026-06-03",
+  "symbol": "XOM",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY (research-only): XOM rank 2/21 (+30.76% 6m). Energy momentum diversifier vs tech-heavy basket; commodity tailwind; rank 2-3 sustained across the paper-trading history.",
+  "thesis_bear": "XOM drove BOTH daily-loss-halt breaches in the last fortnight (2026-05-26 and 2026-05-29) \u2014 single-name macro-energy beta concentration risk. Any adverse crude move >=5% intraday consumes the entire $500 daily-loss budget on its own. News feed unavailable \u2014 cannot screen for fresh crude headlines.",
+  "invalidation_condition": "Drops below rank 7 OR SPY breaks 10-month MA OR -10% stop at $134.60 OR a fresh adverse crude shock. Operational guidance: size small at EOD.",
+  "risk_reward": {
+    "entry": 149.56,
+    "stop": 134.604,
+    "target": 186.95,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.55,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "signal_basis": {
+    "deterministic_source": "data/market/2026-06-03/0630.json",
+    "latest_bar": "2026-06-02",
+    "rank": 2,
+    "return_6m": 0.3076,
+    "return_12m": null
+  },
+  "data_freshness": {
+    "latest_bar": "2026-06-02",
+    "age_hours": 34.7,
+    "max_staleness_seconds": 60,
+    "status": "EXPECTED_FOR_PRE_MARKET_RESEARCH",
+    "comment": "Daily-bar 06-02 close is the correct basis for pre-market research; EOD will re-evaluate against the 06-03 close at 16:40 ET. The 60s staleness gate applies to EOD execution decisions, not pre-market research."
+  },
+  "routine_scope": {
+    "routine": "pre_market",
+    "decision_class_allowed": false,
+    "comment": "Pre-market v1 is RESEARCH_ONLY. No trade-execution decisions are produced in this routine per prompts/routines/pre_market.md."
+  },
+  "notes": "reason=pre_market_research_scope. See CSCO decision for routine-scope rationale. Pre-market is RESEARCH_ONLY. The XOM 'size small' caveat will be carried into the EOD decision per `memory/daily_snapshots/2026-05-29.md` and consistent flagging since W22."
+}

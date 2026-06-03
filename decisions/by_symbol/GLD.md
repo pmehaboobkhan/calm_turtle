@@ -189,3 +189,12 @@
 - Outcome: NO_TRADE. RM REJECTED (freshness hard-check #11), Compliance REJECTED (RM != APPROVED).
 - Reason: latest daily bar = 2026-06-01 (~44.68h stale, ~2,680x over 60s cap); no 2026-06-02 close in daily feed at EOD (live IEX quote exists; daily-bar provider lags). CLAUDE.md rule #5 -> NO_TRADE.
 - Book flat; no position opened. CB write skipped (pending_broker=7); FULL carried, throttle 1.0.
+
+## 2026-06-03 — Pre-market RESEARCH-ONLY NO_TRADE (routine scope)
+
+- Decision file: `decisions/2026-06-03/0642_GLD.json` (+ overlay subsumption stub `0642_GLD_gold_permanent_overlay_subsumed.json`)
+- Signal basis: `data/market/2026-06-03/0630.json`, last bar 2026-06-02.
+- Signal: dual_momentum_taa ENTRY (top-1 risk asset). 12m return +35.69% > SPY +30.35% > IEF +3.87% > cash +3.94%; above 210d MA. Gap vs SPY *widened* by +0.80pp on the fresh 06-02 close (now +5.34pp).
+- Consolidation: subsumes gold_permanent_overlay overlay slot.
+- Outcome: **NO_TRADE / REJECTED on routine scope** (pre_market is RESEARCH_ONLY in v1).
+- Watch: persistent GLD lead can signal latent macro stress or be a head-fake; sharp SPY rally is the standard reversion path.

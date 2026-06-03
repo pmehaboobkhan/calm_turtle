@@ -156,3 +156,11 @@
 - Outcome: NO_TRADE. RM REJECTED (freshness hard-check #11), Compliance REJECTED (RM != APPROVED).
 - Reason: latest daily bar = 2026-06-01 (~44.68h stale, ~2,680x over 60s cap); no 2026-06-02 close in daily feed at EOD (live IEX quote exists; daily-bar provider lags). CLAUDE.md rule #5 -> NO_TRADE.
 - Book flat; no position opened. CB write skipped (pending_broker=7); FULL carried, throttle 1.0.
+
+## 2026-06-03 — Pre-market RESEARCH-ONLY NO_TRADE (routine scope)
+
+- Decision file: `decisions/2026-06-03/0642_XOM.json`
+- Signal basis: `data/market/2026-06-03/0630.json`, last bar 2026-06-02.
+- Signal: large_cap_momentum_top5 ENTRY (rank 2/21, 6m +30.76%, SPY trend up). Rank held vs the 06-01 basis (+31.91% -> +30.76%, no rank change).
+- Outcome: **NO_TRADE / REJECTED on routine scope** (pre_market is RESEARCH_ONLY in v1).
+- Operational guidance carried: **size small** — XOM drove BOTH daily-loss-halt breaches (05-26, 05-29). EOD must respect the $500 daily-loss budget.

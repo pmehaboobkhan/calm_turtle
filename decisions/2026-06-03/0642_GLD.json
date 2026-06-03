@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-03T10:42:00+00:00",
+  "routine_id": "pre_market_2026-06-03",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "thesis_bull": "dual_momentum_taa ENTRY (research-only): GLD is top-1 risk asset. 12m return +35.69% > SPY +30.35% > IEF +3.87% > cash +3.94%; above 210d MA. Dual-momentum lookback unambiguous. Subsumes gold_permanent_overlay (per consolidator rule).",
+  "thesis_bear": "Gold's persistent SPY-lead has widened to +5.34pp on the 06-02 basis \u2014 either intensifying flight-to-safety bid (could resolve sharply) or a head-fake. No live VIX/news feed to corroborate. The 06-01 EOD prediction reviews flagged GLD as the highest-conviction re-entry; that conviction holds if the 06-03 close confirms the rank.",
+  "invalidation_condition": "Another risk asset outranks GLD on 12m return AND clears its 10-month MA OR GLD breaks its own 10-month MA OR -10% stop at $370.76.",
+  "risk_reward": {
+    "entry": 411.95,
+    "stop": 370.755,
+    "target": 514.9375,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.7,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "dual_momentum_taa",
+  "signal_basis": {
+    "deterministic_source": "data/market/2026-06-03/0630.json",
+    "latest_bar": "2026-06-02",
+    "rank": null,
+    "return_6m": null,
+    "return_12m": 0.3569
+  },
+  "data_freshness": {
+    "latest_bar": "2026-06-02",
+    "age_hours": 34.7,
+    "max_staleness_seconds": 60,
+    "status": "EXPECTED_FOR_PRE_MARKET_RESEARCH",
+    "comment": "Daily-bar 06-02 close is the correct basis for pre-market research; EOD will re-evaluate against the 06-03 close at 16:40 ET. The 60s staleness gate applies to EOD execution decisions, not pre-market research."
+  },
+  "routine_scope": {
+    "routine": "pre_market",
+    "decision_class_allowed": false,
+    "comment": "Pre-market v1 is RESEARCH_ONLY. No trade-execution decisions are produced in this routine per prompts/routines/pre_market.md."
+  },
+  "notes": "reason=pre_market_research_scope. See CSCO decision for routine-scope rationale. GLD entry from dual_momentum_taa subsumes the gold_permanent_overlay 10% slot per the consolidator rule (a separate stub decision file records the subsumption for audit completeness)."
+}
