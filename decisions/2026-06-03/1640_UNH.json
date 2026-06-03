@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-03T20:40:00+00:00",
+  "routine_id": "end_of_day_2026-06-03",
+  "symbol": "UNH",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: UNH rank 5/21, +16.27% 6m. SPY trend filter PASSED. Healthcare-services momentum; held the rank-5 boundary against GOOGL (rank 7).",
+  "thesis_bear": "Fragile rank-5 boundary entrant (swapped with GOOGL on a single bar). Bear factors: Berkshire Q1 13F exit; DOJ Medicare-Advantage probe. News feed unavailable. STALE DATA: latest daily bar 2026-06-02 (~44.7h); no 06-03 close.",
+  "invalidation_condition": "Drops below rank 7 in Strategy-B basket OR SPY falls below 10-month MA OR -10% stop at $340.128 OR adverse single-name catalyst.",
+  "risk_reward": {
+    "entry": 377.92,
+    "stop": 340.128,
+    "target": 472.4,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.55,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "signal_basis": {
+    "deterministic_source": "lib.signals.evaluate_all (EOD run)",
+    "latest_bar": "2026-06-02",
+    "rank": 5,
+    "return_6m": 0.1627,
+    "return_12m": null
+  },
+  "data_freshness": {
+    "latest_bar": "2026-06-02",
+    "age_hours": 44.7,
+    "max_staleness_seconds": 60,
+    "status": "STALE",
+    "comment": "EOD execution gate: daily-bar 06-02 close is ~44.7h old; no 06-03 daily close in feed. Exceeds the 60s staleness limit. Per CLAUDE.md rule #5, ENTRY refused as NO_TRADE (data_stale). Third consecutive session of daily-bar provider lag (06-01, 06-02, 06-03)."
+  },
+  "reason": "data_stale",
+  "notes": "reason=data_stale. EOD is the v1 execution routine, but the only available daily close is 2026-06-02 (~44.7h stale, >60s gate). RM REJECTED (rule #5 stale-data) and Compliance REJECTED (stale-data NO_TRADE) \u2014 both deterministic, not a strategy/risk-rule failure. No paper_sim.open_position called. CB write skipped this run: 7 pending broker order(s); FULL/throttle 1.0 carried forward."
+}

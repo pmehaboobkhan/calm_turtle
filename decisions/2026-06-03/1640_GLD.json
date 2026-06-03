@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-03T20:40:00+00:00",
+  "routine_id": "end_of_day_2026-06-03",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "thesis_bull": "dual_momentum_taa ENTRY: GLD top-1 risk asset, +35.69% 12m vs cash +3.94%, above 210d MA. Subsumes gold_permanent_overlay (no separate overlay position).",
+  "thesis_bear": "GLD's +35.69% 12m lead may be a macro-uncertainty hedge being accumulated; an unwind could reverse sharply. News feed unavailable. STALE DATA: latest daily bar 2026-06-02 (~44.7h); no 06-03 close \u2014 momentum basis is stale.",
+  "invalidation_condition": "GLD outranked by SPY/IEF in dual_momentum_taa OR GLD falls below 210d MA OR -10% stop at $370.755. Overlay re-asserts standalone 10% slot if Strategy A exits GLD.",
+  "risk_reward": {
+    "entry": 411.95,
+    "stop": 370.755,
+    "target": 514.9375,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.55,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "dual_momentum_taa",
+  "signal_basis": {
+    "deterministic_source": "lib.signals.evaluate_all (EOD run)",
+    "latest_bar": "2026-06-02",
+    "rank": null,
+    "return_6m": null,
+    "return_12m": 0.35688407090009266
+  },
+  "data_freshness": {
+    "latest_bar": "2026-06-02",
+    "age_hours": 44.7,
+    "max_staleness_seconds": 60,
+    "status": "STALE",
+    "comment": "EOD execution gate: daily-bar 06-02 close is ~44.7h old; no 06-03 daily close in feed. Exceeds the 60s staleness limit. Per CLAUDE.md rule #5, ENTRY refused as NO_TRADE (data_stale). Third consecutive session of daily-bar provider lag (06-01, 06-02, 06-03)."
+  },
+  "reason": "data_stale",
+  "consolidation": {
+    "primary_strategy": "dual_momentum_taa",
+    "subsumed_strategies": [
+      "gold_permanent_overlay"
+    ],
+    "comment": "GLD ENTRY subsumes gold_permanent_overlay; both refused as data_stale at EOD."
+  },
+  "notes": "reason=data_stale. EOD is the v1 execution routine, but the only available daily close is 2026-06-02 (~44.7h stale, >60s gate). RM REJECTED (rule #5 stale-data) and Compliance REJECTED (stale-data NO_TRADE) \u2014 both deterministic, not a strategy/risk-rule failure. No paper_sim.open_position called. CB write skipped this run: 7 pending broker order(s); FULL/throttle 1.0 carried forward."
+}
