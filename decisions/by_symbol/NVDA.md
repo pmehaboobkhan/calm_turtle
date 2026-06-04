@@ -90,3 +90,11 @@
 - Signal basis: `data/market/2026-06-03/0630.json`, last bar 2026-06-02.
 - Signal: large_cap_momentum_top5 ENTRY (rank 3/21, 6m +25.90%, SPY trend up). 6m return improved modestly vs the 06-01 reading (+24.48% -> +25.90%); rank 3 cushion to rank 4 (ORCL +21.85%) is +4.05pp — durable.
 - Outcome: **NO_TRADE / REJECTED on routine scope** (pre_market is RESEARCH_ONLY in v1).
+
+## 2026-06-04 — EOD NO_TRADE (data_stale)
+
+- Decision file: `decisions/2026-06-04/2040_NVDA.json`
+- Signal: large_cap_momentum_top5 ENTRY (rank 3/21, 6m +19.37%, SPY trend up).
+- Outcome: NO_TRADE. RM REJECTED (rule #5 stale-data), Compliance REJECTED.
+- Reason: latest daily bar = 2026-06-03 (~44.7h stale, >60s cap); no 06-04 close at EOD. 4th consecutive stale EOD. CLAUDE.md rule #5 -> NO_TRADE.
+- Book flat; no position opened. CB wrote this run: FULL, DD 0.00%, throttle 1.0, no transition.

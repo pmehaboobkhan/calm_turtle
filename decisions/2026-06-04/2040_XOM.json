@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-04T20:40:00+00:00",
+  "routine_id": "end_of_day_2026-06-04",
+  "symbol": "XOM",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: XOM rank 2/21, +32.55% 6m (deterministic, 06-03 close basis). SPY trend filter PASSED. Energy momentum leader; second-widest cushion in the basket.",
+  "thesis_bear": "XOM drove two daily-loss-limit breaches (2026-05-26, 2026-05-29); operator guidance is to SIZE SMALL on re-entry. Energy is commodity-beta sensitive; a crude reversal hits hard. News feed unavailable. No live VIX. STALE DATA: latest daily bar 2026-06-03 (~44.7h); no 06-04 close - momentum basis is stale.",
+  "invalidation_condition": "Drops below rank 7 OR SPY falls below 10-month MA OR -10% stop at $137.28 OR crude/energy reversal catalyst.",
+  "risk_reward": {
+    "entry": 152.53,
+    "stop": 137.277,
+    "target": 190.6625,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.5,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "signal_basis": {
+    "deterministic_source": "lib.signals.evaluate_all (EOD run)",
+    "latest_bar": "2026-06-03",
+    "rank": 2,
+    "return_6m": 0.3255,
+    "return_12m": null
+  },
+  "data_freshness": {
+    "latest_bar": "2026-06-03",
+    "age_hours": 44.7,
+    "max_staleness_seconds": 60,
+    "status": "STALE",
+    "comment": "EOD execution gate: daily-bar 06-03 close ~44.7h old; no 06-04 daily close at the 20:40Z decision point. Exceeds 60s gate. Per CLAUDE.md rule #5, ENTRY refused as NO_TRADE (data_stale). Fourth consecutive stale EOD."
+  },
+  "reason": "data_stale",
+  "notes": "reason=data_stale. Carries the 05-29 operator size-small guidance for the eventual fresh-data re-entry. RM REJECTED (rule #5) + Compliance REJECTED (stale-data). No paper_sim.open_position called. CB wrote this run: FULL, DD 0.00%, throttle 1.0, no transition."
+}

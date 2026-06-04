@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-04T20:40:00+00:00",
+  "routine_id": "end_of_day_2026-06-04",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "thesis_bull": "gold_permanent_overlay permanent 10% GLD allocation. Subsumed by dual_momentum_taa GLD ENTRY per consolidator - no separate overlay position.",
+  "thesis_bear": "If the consolidator rule changed, double-allocation to GLD could occur; the rule prevents this. Also data_stale today.",
+  "invalidation_condition": "Consolidator rule change; OR Strategy A exits GLD (overlay re-asserts standalone 10% slot at next fresh EOD).",
+  "risk_reward": {
+    "entry": 407.87,
+    "stop": 367.083,
+    "target": 509.8375,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.55,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "gold_permanent_overlay",
+  "reason": "subsumed_by_dual_momentum_taa + data_stale",
+  "subsumed_under": "decisions/2026-06-04/2040_GLD.json",
+  "consolidation": {
+    "primary_strategy": "dual_momentum_taa",
+    "subsumed_strategies": [
+      "gold_permanent_overlay"
+    ],
+    "primary_decision_file": "decisions/2026-06-04/2040_GLD.json"
+  },
+  "notes": "Journaling-only: every signal recorded per CLAUDE.md. Both the primary GLD ENTRY and this subsumed overlay are NO_TRADE (data_stale) today."
+}

@@ -185,3 +185,11 @@
 - Outcome: **NO_TRADE / REJECTED on routine scope** (not on freshness or risk; pre_market is RESEARCH_ONLY in v1). RM REJECTED + Compliance REJECTED specifically because the pre_market routine does not produce trade-execution decisions.
 - Book flat; no position opened. EOD 2026-06-03 will re-evaluate against the 06-03 close.
 - Watch: late-cycle momentum risk now elevated — first paper-trading observation of CSCO >+65% 6m, post-peak decay path unobserved.
+
+## 2026-06-04 — EOD NO_TRADE (data_stale)
+
+- Decision file: `decisions/2026-06-04/2040_CSCO.json`
+- Signal: large_cap_momentum_top5 ENTRY (rank 1/21, 6m +68.16%, SPY trend up). Still basket leader.
+- Outcome: NO_TRADE. RM REJECTED (rule #5 stale-data), Compliance REJECTED.
+- Reason: latest daily bar = 2026-06-03 (~44.7h stale, >60s cap); no 06-04 close in daily feed at the 20:40Z EOD decision point (intraday IEX quote IS fresh; daily-bar provider lags). 4th consecutive stale EOD. CLAUDE.md rule #5 -> NO_TRADE.
+- Book flat; no position opened. CB wrote this run (pending_broker cleared via overnight sync_alpaca_state reset): FULL, DD 0.00%, throttle 1.0, no transition.

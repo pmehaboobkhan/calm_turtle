@@ -87,3 +87,11 @@
   - DOJ Medicare-Advantage probe + Optum antitrust probe — ongoing background risk.
 - Boundary fragility: a single bad UNH session or strong GOOGL session can swap the rank-5 slot back; EOD should re-confirm rank on the 06-03 close.
 - Prior UNH paper hold (W21-W22) closed at small realized loss via daily-loss halt despite firming rank 5 -> rank 4 within the hold; the halt, not signal/stop, determined the exit.
+
+## 2026-06-04 — EOD NO_TRADE (data_stale)
+
+- Decision file: `decisions/2026-06-04/2040_UNH.json`
+- Signal: large_cap_momentum_top5 ENTRY (rank 4/21, 6m +18.34%, SPY trend up). Boundary rank; GOOGL rank 6 (+14.16%), JNJ rank 7 (+9.92%) in hold-zone buffer.
+- Outcome: NO_TRADE. RM REJECTED (rule #5 stale-data), Compliance REJECTED.
+- Reason: latest daily bar = 2026-06-03 (~44.7h stale, >60s cap); no 06-04 close at EOD. Stale basis compounds rank-4/5/6 boundary fragility. 4th consecutive stale EOD. CLAUDE.md rule #5 -> NO_TRADE.
+- Book flat; no position opened. CB wrote this run: FULL, DD 0.00%, throttle 1.0, no transition.

@@ -198,3 +198,12 @@
 - Consolidation: subsumes gold_permanent_overlay overlay slot.
 - Outcome: **NO_TRADE / REJECTED on routine scope** (pre_market is RESEARCH_ONLY in v1).
 - Watch: persistent GLD lead can signal latent macro stress or be a head-fake; sharp SPY rally is the standard reversion path.
+
+## 2026-06-04 — EOD NO_TRADE (data_stale)
+
+- Decision file: `decisions/2026-06-04/2040_GLD.json` (+ overlay subsumption stub `2040_GLD_gold_permanent_overlay_subsumed.json`)
+- Signal: dual_momentum_taa ENTRY (top-1 risk asset). 12m +30.87% > SPY +28.71% > IEF +3.96% (below MA) > cash +3.92%; above 210d MA.
+- Consolidation: subsumes gold_permanent_overlay overlay slot.
+- Outcome: NO_TRADE. RM REJECTED (rule #5 stale-data), Compliance REJECTED.
+- Reason: latest daily bar = 2026-06-03 (~44.7h stale, >60s cap); no 06-04 close at EOD. 4th consecutive stale EOD. CLAUDE.md rule #5 -> NO_TRADE.
+- Book flat; no position opened. CB wrote this run: FULL, DD 0.00%, throttle 1.0, no transition.

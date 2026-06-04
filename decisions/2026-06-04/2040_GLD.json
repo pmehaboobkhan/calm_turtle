@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-04T20:40:00+00:00",
+  "routine_id": "end_of_day_2026-06-04",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "thesis_bull": "dual_momentum_taa ENTRY: GLD top-1 risk asset, +30.87% 12m vs cash +3.92%, above 210d MA (06-03 close basis). Outranks SPY (+28.71%) and IEF (+3.96%, below MA). Subsumes gold_permanent_overlay (no separate overlay position).",
+  "thesis_bear": "GLD's +30.87% 12m lead may be a macro-uncertainty hedge being accumulated; an unwind could reverse sharply. News feed unavailable. STALE DATA: latest daily bar 2026-06-03 (~44.7h); no 06-04 close - momentum basis is stale.",
+  "invalidation_condition": "GLD outranked by SPY/IEF in dual_momentum_taa OR GLD falls below 210d MA OR -10% stop at $367.08. Overlay re-asserts standalone 10% slot if Strategy A exits GLD.",
+  "risk_reward": {
+    "entry": 407.87,
+    "stop": 367.083,
+    "target": 509.8375,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.55,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "dual_momentum_taa",
+  "signal_basis": {
+    "deterministic_source": "lib.signals.evaluate_all (EOD run)",
+    "latest_bar": "2026-06-03",
+    "rank": null,
+    "return_6m": null,
+    "return_12m": 0.3086597283821102
+  },
+  "data_freshness": {
+    "latest_bar": "2026-06-03",
+    "age_hours": 44.7,
+    "max_staleness_seconds": 60,
+    "status": "STALE",
+    "comment": "EOD execution gate: daily-bar 06-03 close ~44.7h old; no 06-04 daily close at the 20:40Z decision point. Exceeds 60s gate. Per CLAUDE.md rule #5, ENTRY refused as NO_TRADE (data_stale). Fourth consecutive stale EOD."
+  },
+  "reason": "data_stale",
+  "consolidation": {
+    "primary_strategy": "dual_momentum_taa",
+    "subsumed_strategies": [
+      "gold_permanent_overlay"
+    ],
+    "comment": "GLD ENTRY subsumes gold_permanent_overlay; both refused as data_stale at EOD."
+  },
+  "notes": "reason=data_stale. RM REJECTED (rule #5) + Compliance REJECTED (stale-data). No paper_sim.open_position called. CB wrote this run: FULL, DD 0.00%, throttle 1.0, no transition."
+}

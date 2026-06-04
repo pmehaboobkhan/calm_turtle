@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-04T20:40:00+00:00",
+  "routine_id": "end_of_day_2026-06-04",
+  "symbol": "UNH",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: UNH rank 4/21, +18.34% 6m (deterministic, 06-03 close basis). SPY trend filter PASSED. Healthcare-services momentum.",
+  "thesis_bear": "Rank-4 sits at the top-5 boundary (GOOGL rank 6 +14.16%, JNJ rank 7 +9.92% in the hold-zone buffer); a single down day can re-rank UNH out. News feed unavailable. No live VIX. STALE DATA: latest daily bar 2026-06-03 (~44.7h); no 06-04 close - momentum basis is stale, which makes the boundary rank even less reliable.",
+  "invalidation_condition": "Drops below rank 7 OR SPY falls below 10-month MA OR -10% stop at $339.30 OR adverse healthcare-policy catalyst.",
+  "risk_reward": {
+    "entry": 377.0,
+    "stop": 339.3,
+    "target": 471.25,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.48,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "signal_basis": {
+    "deterministic_source": "lib.signals.evaluate_all (EOD run)",
+    "latest_bar": "2026-06-03",
+    "rank": 4,
+    "return_6m": 0.1834,
+    "return_12m": null
+  },
+  "data_freshness": {
+    "latest_bar": "2026-06-03",
+    "age_hours": 44.7,
+    "max_staleness_seconds": 60,
+    "status": "STALE",
+    "comment": "EOD execution gate: daily-bar 06-03 close ~44.7h old; no 06-04 daily close at the 20:40Z decision point. Exceeds 60s gate. Per CLAUDE.md rule #5, ENTRY refused as NO_TRADE (data_stale). Fourth consecutive stale EOD."
+  },
+  "reason": "data_stale",
+  "notes": "reason=data_stale. Rank-4/5/6 cluster is fragile; stale basis compounds the boundary risk. RM REJECTED (rule #5) + Compliance REJECTED (stale-data). No paper_sim.open_position called. CB wrote this run: FULL, DD 0.00%, throttle 1.0, no transition."
+}

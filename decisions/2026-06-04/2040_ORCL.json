@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-04T20:40:00+00:00",
+  "routine_id": "end_of_day_2026-06-04",
+  "symbol": "ORCL",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: ORCL rank 5/21, +15.33% 6m (deterministic, 06-03 close basis). SPY trend filter PASSED. Enterprise-software momentum, top-5 boundary.",
+  "thesis_bear": "Rank-5 (lowest in top-5) AND a mid-June earnings window flagged by pre_market - holding into an earnings print violates the holding_earnings_caution_window_days=1 rule. The earnings calendar is not wired into this pipeline (news_unavailable), so the date cannot be confirmed deterministically; that uncertainty is itself a refusal reason. No live VIX. STALE DATA: latest daily bar 2026-06-03 (~44.7h); no 06-04 close - momentum basis is stale.",
+  "invalidation_condition": "Drops below rank 7 OR SPY falls below 10-month MA OR -10% stop at $207.30 OR earnings print within 1 trading day OR adverse software-spend catalyst.",
+  "risk_reward": {
+    "entry": 230.33,
+    "stop": 207.297,
+    "target": 287.9125,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.42,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "signal_basis": {
+    "deterministic_source": "lib.signals.evaluate_all (EOD run)",
+    "latest_bar": "2026-06-03",
+    "rank": 5,
+    "return_6m": 0.1533,
+    "return_12m": null
+  },
+  "data_freshness": {
+    "latest_bar": "2026-06-03",
+    "age_hours": 44.7,
+    "max_staleness_seconds": 60,
+    "status": "STALE",
+    "comment": "EOD execution gate: daily-bar 06-03 close ~44.7h old; no 06-04 daily close at the 20:40Z decision point. Exceeds 60s gate. Per CLAUDE.md rule #5, ENTRY refused as NO_TRADE (data_stale). Fourth consecutive stale EOD."
+  },
+  "reason": "data_stale",
+  "notes": "reason=data_stale. Compound caution: stale basis + unconfirmed mid-June earnings window + rank-5 boundary. Even on a fresh-data session, ORCL must be re-screened against a confirmed earnings calendar before any open. RM REJECTED (rule #5) + Compliance REJECTED (stale-data). No paper_sim.open_position called. CB wrote this run: FULL, DD 0.00%, throttle 1.0, no transition."
+}

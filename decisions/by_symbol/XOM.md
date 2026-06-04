@@ -164,3 +164,12 @@
 - Signal: large_cap_momentum_top5 ENTRY (rank 2/21, 6m +30.76%, SPY trend up). Rank held vs the 06-01 basis (+31.91% -> +30.76%, no rank change).
 - Outcome: **NO_TRADE / REJECTED on routine scope** (pre_market is RESEARCH_ONLY in v1).
 - Operational guidance carried: **size small** — XOM drove BOTH daily-loss-halt breaches (05-26, 05-29). EOD must respect the $500 daily-loss budget.
+
+## 2026-06-04 — EOD NO_TRADE (data_stale)
+
+- Decision file: `decisions/2026-06-04/2040_XOM.json`
+- Signal: large_cap_momentum_top5 ENTRY (rank 2/21, 6m +32.55%, SPY trend up).
+- Outcome: NO_TRADE. RM REJECTED (rule #5 stale-data), Compliance REJECTED.
+- Reason: latest daily bar = 2026-06-03 (~44.7h stale, >60s cap); no 06-04 close at EOD. 4th consecutive stale EOD. CLAUDE.md rule #5 -> NO_TRADE.
+- Operational guidance carried: **size small** on eventual re-entry — XOM drove both daily-loss-halt breaches (05-26, 05-29).
+- Book flat; no position opened. CB wrote this run: FULL, DD 0.00%, throttle 1.0, no transition.
