@@ -199,6 +199,13 @@ def pending_broker_count(positions: dict[str, dict] | None = None) -> int:
     while its symbol IS still in positions.json. Only rows after the latest
     RESET marker are considered.
 
+    A PENDING_BROKER row is also excluded if a later row carries a
+    ``broker_confirmed`` or ``broker_rejected`` marker for the same
+    ``order_id`` — that means ``confirm_broker_fills()`` has already resolved
+    it and the position-state delta no longer applies (a canceled BUY, for
+    example, will never appear in positions.json, but is no longer "in
+    flight").
+
     Routines use this to skip the circuit-breaker equity write when > 0,
     avoiding the 2026-05-19 spurious-HALF artifact (cash debited for a pending
     order, position not yet mirrored back).
@@ -213,9 +220,24 @@ def pending_broker_count(positions: dict[str, dict] | None = None) -> int:
         if _is_reset_row(row):
             last_reset_idx = i
     live = rows[last_reset_idx + 1:] if last_reset_idx >= 0 else rows
+
+    # Collect order_ids that confirm_broker_fills has already finalized; their
+    # PENDING_BROKER rows should no longer count as in-flight regardless of
+    # what positions.json currently says.
+    finalized_oids: set[str] = set()
+    for row in live:
+        notes = row.get("notes", "") or ""
+        if "broker_confirmed" in notes or "broker_rejected" in notes:
+            oid = _parse_order_id(notes)
+            if oid:
+                finalized_oids.add(oid)
+
     in_flight: set[str] = set()
     for row in live:
         if row.get("status") != "PENDING_BROKER":
+            continue
+        oid = _parse_order_id(row.get("notes", "") or "")
+        if oid and oid in finalized_oids:
             continue
         sym = row["symbol"]
         side = (row.get("side") or "").strip().upper()
@@ -555,6 +577,163 @@ def confirm_moc_fills() -> dict:
                 stop_loss=None, take_profit=None,
                 status="REJECTED", realized_pnl=0.0,
                 notes=f"moc_rejected order_id={oid} status={status} — NO_TRADE",
+            )
+            append_fill(fill)
+            finalized.add(oid)
+            summary["rejected"].append(symbol)
+        else:
+            summary["still_pending"].append(symbol)
+
+    _write_positions(pos)
+    return summary
+
+
+def confirm_broker_fills() -> dict:
+    """Resolve PENDING_BROKER rows by querying the broker for terminal status.
+
+    Symmetric to ``confirm_moc_fills()`` but for the legacy DAY-market
+    Alpaca-mirror path (``status='PENDING_BROKER'``), which had no finalizer
+    until now — that gap let breadcrumb rows accumulate (7 on 2026-05-18 →
+    2026-05-22) and held ``pending_broker_count()`` above zero permanently,
+    blocking the Guard-1 CB equity write on every routine since.
+
+    For each PENDING_BROKER row after the latest RESET marker that hasn't
+    been finalized yet (no later ``broker_confirmed`` / ``broker_rejected``
+    marker carrying the same ``order_id``), look up the order at the broker
+    and, if terminal, append a terminal mirror-back row:
+
+    - **filled, open side (BUY/SELL):** append an ``OPEN`` row at the broker
+      fill price; insert the symbol into ``positions.json`` if absent
+      (idempotent — if the mirror already added it, the row is still written
+      but ``positions.json`` is left untouched).
+    - **filled, close side (CLOSE):** append a ``CLOSED`` row with realized
+      PnL computed against the entry recorded in ``positions.json`` and drop
+      the symbol from ``positions.json``. If the mirror already dropped the
+      symbol (``reconcile()`` ran first), the CLOSED row is still written
+      with ``realized_pnl=0.0`` and a "already reconciled by mirror" note so
+      that ``pending_broker_count()`` decays.
+    - **rejected / canceled / expired:** append a ``REJECTED`` row; do NOT
+      touch ``positions.json`` (the order never landed).
+    - **still pending:** leave the breadcrumb row in place; the symbol is
+      reported under ``summary['still_pending']``.
+
+    Idempotent: re-running on the same log produces no additional rows
+    because the marker scan above excludes already-finalized ``order_id``s.
+
+    In sim mode (``BROKER_PAPER != 'alpaca'``) this is a no-op returning an
+    empty summary — safe to call unconditionally from routines.
+
+    Returns ``{'confirmed': [...], 'rejected': [...], 'still_pending': [...]}``.
+    """
+    summary: dict = {"confirmed": [], "rejected": [], "still_pending": []}
+    if broker_mode() != "alpaca":
+        return summary
+    from lib import broker
+
+    _ensure_log()
+    with LOG_PATH.open("r", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+    last_reset_idx = -1
+    for i, row in enumerate(rows):
+        if _is_reset_row(row):
+            last_reset_idx = i
+    live = rows[last_reset_idx + 1 :] if last_reset_idx >= 0 else rows
+
+    finalized: set[str] = set()
+    for row in live:
+        notes = row.get("notes", "") or ""
+        if "broker_confirmed" in notes or "broker_rejected" in notes:
+            oid = _parse_order_id(notes)
+            if oid:
+                finalized.add(oid)
+
+    pos = _read_positions()
+    for row in live:
+        if row.get("status") != "PENDING_BROKER":
+            continue
+        oid = _parse_order_id(row.get("notes", "") or "")
+        if not oid or oid in finalized:
+            continue
+        symbol = row["symbol"]
+        side = (row.get("side") or "").strip().upper()
+        qty = float(row["quantity"])
+        try:
+            o = broker.get_order(oid)
+        except broker.BrokerError as exc:
+            logger.warning("confirm_broker: get_order failed for %s: %s", oid, exc)
+            summary["still_pending"].append(symbol)
+            continue
+        status = (o.get("status") or "").lower()
+        price = o.get("filled_avg_price")
+
+        if status == "filled" and price is not None:
+            price = float(price)
+            if side in ("BUY", "SELL"):
+                sl = float(row["stop_loss"]) if row.get("stop_loss") else None
+                tp = float(row["take_profit"]) if row.get("take_profit") else None
+                fill = PaperFill(
+                    timestamp=datetime.now(UTC).isoformat(),
+                    symbol=symbol, side=side, quantity=qty,
+                    simulated_price=round(price, 4),
+                    rationale_link=row.get("rationale_link", ""),
+                    stop_loss=sl, take_profit=tp,
+                    status="OPEN", realized_pnl=0.0,
+                    notes=f"broker_confirmed order_id={oid} fill={price:.4f}",
+                )
+                append_fill(fill)
+                if symbol not in pos:
+                    pos[symbol] = {
+                        "side": side,
+                        "quantity": qty,
+                        "entry_price": round(price, 4),
+                        "entry_ts": fill.timestamp,
+                        "stop_loss": sl,
+                        "take_profit": tp,
+                        "rationale_link": row.get("rationale_link", ""),
+                    }
+                finalized.add(oid)
+                summary["confirmed"].append(symbol)
+            elif side == "CLOSE":
+                if symbol in pos:
+                    entry = float(pos[symbol].get("entry_price") or 0.0)
+                    orig_side = (pos[symbol].get("side") or "BUY").upper()
+                    direction = 1 if orig_side == "BUY" else -1
+                    pnl = (price - entry) * qty * direction
+                    note = f"broker_confirmed order_id={oid} fill={price:.4f}"
+                    del pos[symbol]
+                else:
+                    pnl = 0.0
+                    note = (
+                        f"broker_confirmed order_id={oid} fill={price:.4f}; "
+                        f"position already reconciled by mirror"
+                    )
+                fill = PaperFill(
+                    timestamp=datetime.now(UTC).isoformat(),
+                    symbol=symbol, side="CLOSE", quantity=qty,
+                    simulated_price=round(price, 4),
+                    rationale_link=row.get("rationale_link", ""),
+                    stop_loss=None, take_profit=None,
+                    status="CLOSED", realized_pnl=round(pnl, 2),
+                    notes=note,
+                )
+                append_fill(fill)
+                finalized.add(oid)
+                summary["confirmed"].append(symbol)
+            else:
+                logger.warning(
+                    "confirm_broker: unknown side %r for %s oid=%s — leaving pending",
+                    side, symbol, oid,
+                )
+                summary["still_pending"].append(symbol)
+        elif status in ("rejected", "canceled", "cancelled", "expired"):
+            fill = PaperFill(
+                timestamp=datetime.now(UTC).isoformat(),
+                symbol=symbol, side=side, quantity=qty,
+                simulated_price=0.0,
+                rationale_link=row.get("rationale_link", ""),
+                stop_loss=None, take_profit=None,
+                status="REJECTED", realized_pnl=0.0,
+                notes=f"broker_rejected order_id={oid} status={status}",
             )
             append_fill(fill)
             finalized.add(oid)

@@ -248,5 +248,229 @@ def test_pending_broker_count_ignores_pre_reset(isolated):
     assert paper_sim.pending_broker_count() == 0
 
 
+# ===========================================================================
+# Defect 2b — confirm_broker_fills() finalizes PENDING_BROKER breadcrumbs
+# ===========================================================================
+#
+# Without a finalizer, PENDING_BROKER rows accumulated 2026-05-18 → 2026-05-22
+# while BROKER_PAPER=alpaca was active and never decayed — pending_broker_count()
+# stayed at 7 for weeks, permanently blocking the Guard-1 CB equity write.
+# confirm_broker_fills() is the symmetric companion to confirm_moc_fills():
+# poll the broker for terminal status, write a terminal mirror-back row,
+# update positions.json. See 2026-06-03_eod_stale_data_and_pending_broker_finalizer.md.
+
+@pytest.fixture
+def alpaca_mode(monkeypatch):
+    monkeypatch.setenv("BROKER_PAPER", "alpaca")
+
+
+def _read_log_rows(tmp_path: Path) -> list[dict]:
+    import csv as _csv
+    with (tmp_path / "log.csv").open("r", encoding="utf-8") as f:
+        return list(_csv.DictReader(f))
+
+
+def test_confirm_broker_fills_noop_in_sim_mode(isolated):
+    """sim mode → returns empty summary, writes nothing, regardless of breadcrumbs."""
+    _write_log(isolated, [
+        "2026-05-18T20:45:00+00:00,GLD,BUY,36,0.0,d.json,375,521,PENDING_BROKER,0,broker_pending order_id=abc",
+    ])
+    _write_positions(isolated, {})
+    before_rows = _read_log_rows(isolated)
+    summary = paper_sim.confirm_broker_fills()
+    assert summary == {"confirmed": [], "rejected": [], "still_pending": []}
+    assert _read_log_rows(isolated) == before_rows  # no row written
+
+
+def test_confirm_broker_fills_open_side_filled(isolated, alpaca_mode, monkeypatch):
+    """A PENDING_BROKER BUY whose broker order reports 'filled' → OPEN row
+    written, symbol inserted into positions.json, pending count drops to 0."""
+    _write_log(isolated, [
+        "2026-05-15T00:31:53+00:00,_RESET_,RESET,0,0,scripts/sync_alpaca_state.py,,,RESET,0,fresh-start",
+        "2026-05-18T20:45:00+00:00,GLD,BUY,36,0.0,d.json,375,521,PENDING_BROKER,0,broker_pending order_id=abc",
+    ])
+    _write_positions(isolated, {})
+
+    from lib import broker
+    monkeypatch.setattr(broker, "get_order", lambda oid: {
+        "id": oid, "status": "FILLED", "filled_avg_price": 412.0419, "filled_qty": 36,
+    })
+
+    summary = paper_sim.confirm_broker_fills()
+    assert summary["confirmed"] == ["GLD"]
+    assert summary["rejected"] == []
+    assert summary["still_pending"] == []
+
+    rows = _read_log_rows(isolated)
+    open_rows = [r for r in rows if r["status"] == "OPEN" and r["symbol"] == "GLD"]
+    assert len(open_rows) == 1
+    assert "broker_confirmed" in open_rows[0]["notes"]
+    assert "order_id=abc" in open_rows[0]["notes"]
+    assert float(open_rows[0]["simulated_price"]) == 412.0419
+
+    pos = json.loads((isolated / "positions.json").read_text())
+    assert pos["GLD"]["entry_price"] == 412.0419
+    assert pos["GLD"]["quantity"] == 36
+    # Stops carried over from the PENDING_BROKER row.
+    assert pos["GLD"]["stop_loss"] == 375
+    assert pos["GLD"]["take_profit"] == 521
+
+    # pending_broker_count drops because GLD is now mirrored.
+    assert paper_sim.pending_broker_count() == 0
+
+
+def test_confirm_broker_fills_open_side_canceled(isolated, alpaca_mode, monkeypatch):
+    """A PENDING_BROKER BUY whose order was canceled → REJECTED row, no position."""
+    _write_log(isolated, [
+        "2026-05-15T00:31:53+00:00,_RESET_,RESET,0,0,scripts/sync_alpaca_state.py,,,RESET,0,fresh-start",
+        "2026-05-18T20:45:00+00:00,XOM,BUY,97,0.0,d.json,142,197,PENDING_BROKER,0,broker_pending order_id=xx",
+    ])
+    _write_positions(isolated, {})
+
+    from lib import broker
+    monkeypatch.setattr(broker, "get_order", lambda oid: {
+        "id": oid, "status": "CANCELED", "filled_avg_price": None, "filled_qty": 0,
+    })
+
+    summary = paper_sim.confirm_broker_fills()
+    assert summary["rejected"] == ["XOM"]
+    assert summary["confirmed"] == []
+
+    rows = _read_log_rows(isolated)
+    rejected_rows = [r for r in rows if r["status"] == "REJECTED" and r["symbol"] == "XOM"]
+    assert len(rejected_rows) == 1
+    assert "broker_rejected" in rejected_rows[0]["notes"]
+    assert "status=canceled" in rejected_rows[0]["notes"]
+
+    pos = json.loads((isolated / "positions.json").read_text())
+    assert "XOM" not in pos
+    assert paper_sim.pending_broker_count() == 0
+
+
+def test_confirm_broker_fills_close_side_filled_with_position(isolated, alpaca_mode, monkeypatch):
+    """A CLOSE PENDING_BROKER whose order fills while positions.json still
+    has the symbol → CLOSED row with computed PnL, symbol dropped."""
+    _write_log(isolated, [
+        "2026-05-15T00:31:53+00:00,_RESET_,RESET,0,0,scripts/sync_alpaca_state.py,,,RESET,0,fresh-start",
+        "2026-05-26T19:46:30+00:00,NVDA,CLOSE,27,0.0,d.json,,,PENDING_BROKER,0,broker_close_pending order_id=cl",
+    ])
+    _write_positions(isolated, {
+        "NVDA": {"side": "BUY", "quantity": 27, "entry_price": 200.0,
+                 "entry_ts": "x", "stop_loss": None, "take_profit": None,
+                 "rationale_link": "decisions/.../NVDA.json"},
+    })
+
+    from lib import broker
+    monkeypatch.setattr(broker, "get_order", lambda oid: {
+        "id": oid, "status": "FILLED", "filled_avg_price": 210.0, "filled_qty": 27,
+    })
+
+    summary = paper_sim.confirm_broker_fills()
+    assert summary["confirmed"] == ["NVDA"]
+
+    rows = _read_log_rows(isolated)
+    closed_rows = [r for r in rows if r["status"] == "CLOSED" and r["symbol"] == "NVDA"]
+    assert len(closed_rows) == 1
+    # PnL = (210 - 200) * 27 * (+1 for BUY closed) = 270
+    assert float(closed_rows[0]["realized_pnl"]) == 270.0
+    assert "broker_confirmed" in closed_rows[0]["notes"]
+
+    pos = json.loads((isolated / "positions.json").read_text())
+    assert "NVDA" not in pos
+
+
+def test_confirm_broker_fills_close_side_filled_mirror_already_dropped(
+    isolated, alpaca_mode, monkeypatch,
+):
+    """The case actually observed in production: by the time the finalizer
+    runs, ``reconcile()`` / ``sync_positions_from_broker()`` has already
+    rebuilt positions.json without the symbol. The CLOSED row still gets
+    written (so pending count decays) but with realized_pnl=0 and an
+    explicit 'already reconciled by mirror' note."""
+    _write_log(isolated, [
+        "2026-05-15T00:31:53+00:00,_RESET_,RESET,0,0,scripts/sync_alpaca_state.py,,,RESET,0,fresh-start",
+        "2026-05-29T19:38:32+00:00,XOM,CLOSE,97,0.0,d.json,,,PENDING_BROKER,0,broker_close_pending order_id=zz",
+    ])
+    _write_positions(isolated, {})  # mirror dropped it already
+
+    from lib import broker
+    monkeypatch.setattr(broker, "get_order", lambda oid: {
+        "id": oid, "status": "FILLED", "filled_avg_price": 145.0, "filled_qty": 97,
+    })
+
+    summary = paper_sim.confirm_broker_fills()
+    assert summary["confirmed"] == ["XOM"]
+
+    rows = _read_log_rows(isolated)
+    closed_rows = [r for r in rows if r["status"] == "CLOSED" and r["symbol"] == "XOM"]
+    assert len(closed_rows) == 1
+    assert float(closed_rows[0]["realized_pnl"]) == 0.0
+    assert "already reconciled by mirror" in closed_rows[0]["notes"]
+
+
+def test_confirm_broker_fills_is_idempotent(isolated, alpaca_mode, monkeypatch):
+    """Second call must be a no-op: the broker_confirmed/broker_rejected
+    marker in the first run's appended row excludes the order from re-processing."""
+    _write_log(isolated, [
+        "2026-05-15T00:31:53+00:00,_RESET_,RESET,0,0,scripts/sync_alpaca_state.py,,,RESET,0,fresh-start",
+        "2026-05-18T20:45:00+00:00,GLD,BUY,36,0.0,d.json,375,521,PENDING_BROKER,0,broker_pending order_id=abc",
+    ])
+    _write_positions(isolated, {})
+
+    from lib import broker
+    monkeypatch.setattr(broker, "get_order", lambda oid: {
+        "id": oid, "status": "FILLED", "filled_avg_price": 412.0419, "filled_qty": 36,
+    })
+
+    first = paper_sim.confirm_broker_fills()
+    assert first["confirmed"] == ["GLD"]
+    rows_after_first = _read_log_rows(isolated)
+
+    second = paper_sim.confirm_broker_fills()
+    assert second == {"confirmed": [], "rejected": [], "still_pending": []}
+    assert _read_log_rows(isolated) == rows_after_first  # no new row
+
+
+def test_confirm_broker_fills_still_pending(isolated, alpaca_mode, monkeypatch):
+    """A non-terminal status leaves the breadcrumb row alone and reports the symbol."""
+    _write_log(isolated, [
+        "2026-05-15T00:31:53+00:00,_RESET_,RESET,0,0,scripts/sync_alpaca_state.py,,,RESET,0,fresh-start",
+        "2026-05-18T20:45:00+00:00,GLD,BUY,36,0.0,d.json,375,521,PENDING_BROKER,0,broker_pending order_id=qq",
+    ])
+    _write_positions(isolated, {})
+
+    from lib import broker
+    monkeypatch.setattr(broker, "get_order", lambda oid: {
+        "id": oid, "status": "ACCEPTED", "filled_avg_price": None, "filled_qty": 0,
+    })
+
+    summary = paper_sim.confirm_broker_fills()
+    assert summary["still_pending"] == ["GLD"]
+    assert summary["confirmed"] == [] and summary["rejected"] == []
+    assert paper_sim.pending_broker_count() == 1
+
+
+def test_confirm_broker_fills_ignores_pre_reset_rows(isolated, alpaca_mode, monkeypatch):
+    """A PENDING_BROKER row before the latest reset is stale — must not be
+    re-queried at the broker (the order may be long gone)."""
+    _write_log(isolated, [
+        "2026-05-12T20:45:00+00:00,GLD,BUY,34,0.0,old.json,387,538,PENDING_BROKER,0,broker_pending order_id=old",
+        "2026-05-15T00:31:53+00:00,_RESET_,RESET,0,0,scripts/sync_alpaca_state.py,,,RESET,0,fresh-start",
+    ])
+    _write_positions(isolated, {})
+
+    from lib import broker
+    calls = []
+
+    def _spy(oid):  # would raise if called
+        calls.append(oid)
+        return {"id": oid, "status": "FILLED", "filled_avg_price": 0.0, "filled_qty": 0}
+    monkeypatch.setattr(broker, "get_order", _spy)
+
+    summary = paper_sim.confirm_broker_fills()
+    assert summary == {"confirmed": [], "rejected": [], "still_pending": []}
+    assert calls == []  # pre-reset row not queried
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
