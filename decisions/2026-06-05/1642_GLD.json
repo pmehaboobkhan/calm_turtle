@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-05T20:42:00Z",
+  "routine_id": "end_of_day_2026-06-05",
+  "symbol": "GLD",
+  "decision": "PAPER_BUY",
+  "strategy": "dual_momentum_taa",
+  "thesis_bull": "GLD is the top-1 risk asset for dual_momentum_taa on the fresh 2026-06-05 close basis: 12-month total return +33.14% (vs SPY +28.47% above its 210d MA, IEF +4.19% disqualified below its 210d MA) and cash (SHV) 12m +3.91%. GLD is above its 210d MA and both required confirmations passed. gold_permanent_overlay (Strategy C) independently fires ENTRY on the same symbol; the Strategy-A 60% allocation subsumes the Strategy-C 10% overlay (one line item, larger allocation governs). Feed fresh and consistent at EOD (06-05 close), no stale->fresh basis distortion.",
+  "thesis_bear": "Gold at +33.14% 12m has stretched momentum; a USD-strength or real-yield repricing is the structural reversal trigger. News connector OFFLINE (news_unavailable) — macro/catalyst awareness absent, treated as a risk factor per CLAUDE.md, not bullish silence. No live VIX feed; effective_vix is a backward-looking 20d realized-vol proxy (8.89%) that may understate latent risk.",
+  "invalidation_condition": "GLD closes below its 210-day MA OR is outranked by SPY/IEF on 12-month total return at a future routine. Hard stop also at -10% from fill price ($370.14). Target +25% ($514.09).",
+  "risk_reward": {
+    "entry": 411.27,
+    "stop": 370.14,
+    "target": 514.09,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 36,
+    "usd": 14805.72,
+    "pct_of_account": 14.72,
+    "intended_pct": 15.0,
+    "strategy_a_intended_pct": 60.0,
+    "strategy_c_intended_pct": 10.0,
+    "applied_cap": "max_risk_per_trade_pct=1.5 with default_stop_loss_pct=10.0 binds the position to 15% of account (below macro_etf cap of 60%). Strategy A's 60% intent reduced to satisfy the per-trade risk budget; Strategy C's 10% overlay subsumed by this same line item (no double-count).",
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "consolidation": {
+    "primary_strategy": "dual_momentum_taa",
+    "subsumed_strategies": [
+      "gold_permanent_overlay"
+    ]
+  },
+  "confidence_score": 0.64,
+  "confidence_notes": "Deterministic top-1 by 12m + 210d MA confirmation, two-strategy convergence. Reduced because news connector is offline (no catalyst awareness) and no live VIX feed.",
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_notes": "Position 14.72% < macro_etf cap 60% AND < max_position_size_pct 15%; per-trade risk = 14.72% * 10% stop = 1.472% < max_risk_per_trade_pct 1.5%. Sector Commodity_Gold unique among today's opens. No earnings risk (commodity ETF). R/R 2.5:1 >= min 1.5. Strategy dual_momentum_taa ACTIVE_PAPER_TEST; symbol approved_for_paper_trading=true. CB FULL, throttle 1.0 -> no scaling. Total post-fill exposure ~36.4% < 100% cap; 5/8 open positions; 5/5 daily trades.",
+  "compliance_verdict": "APPROVED",
+  "compliance_notes": "PAPER_BUY permitted under mode PAPER_TRADING. No live order path. Bull/bear/invalidation present. Schema-compliant. Subsumed Strategy-C overlay documented in a paired NO_TRADE file. GLD not in blocked_symbols (only INTU blocked).",
+  "human_approval_required": false,
+  "final_status": "PAPER_PROPOSED",
+  "data_provenance": {
+    "signal_eval": "lib.signals.evaluate_all on lib.data.get_bars (yfinance daily), EOD 2026-06-05",
+    "signal_strategy": "dual_momentum_taa",
+    "signal_action": "ENTRY",
+    "signal_rationale": "dual_momentum_taa: ENTRY — top-1 risk asset, all filters passed",
+    "data_freshness_note": "Fresh 06-05 daily close. 60s intraday staleness rule governs live tick execution and does not bind daily-bar momentum in PAPER_TRADING mode."
+  },
+  "execution": {
+    "broker": "alpaca_paper_sandbox",
+    "submitted": false,
+    "note": "Filled via lib.paper_sim.open_position at EOD; reconcile() is alpaca-authoritative under BROKER_PAPER=alpaca."
+  }
+}

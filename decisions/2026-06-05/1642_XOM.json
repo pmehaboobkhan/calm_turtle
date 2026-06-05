@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-05T20:42:00Z",
+  "routine_id": "end_of_day_2026-06-05",
+  "symbol": "XOM",
+  "decision": "PAPER_BUY",
+  "strategy": "large_cap_momentum_top5",
+  "thesis_bull": "XOM is rank-2 in large_cap_momentum_top5 by 6-month total return (+33.55%). SPY trend filter passed (above 10-month MA). Both required confirmations passed on the fresh 2026-06-05 close. Provides energy / commodity diversification against the tech-heavy top of the slate.",
+  "thesis_bear": "Crude-price sensitive. Per memory profile (memory/symbol_profiles/XOM.md), XOM was the dominant contributor to TWO daily-loss-limit breaches in the prior paper window (2026-05-26 and 2026-05-29) on US-Iran de-escalation / WTI -10% — single-name macro beta concentrated daily-loss risk even while rank-2. Sized at the LOW end of the per-position cap accordingly. News connector OFFLINE; no live VIX.",
+  "invalidation_condition": "XOM falls out of top-7 by 6-month return OR SPY closes below its 10-month SMA. Hard stop at -10% from fill ($136.84). Target +25% ($190.05).",
+  "risk_reward": {
+    "entry": 152.04,
+    "stop": 136.84,
+    "target": 190.05,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 26,
+    "usd": 3953.04,
+    "pct_of_account": 3.93,
+    "intended_pct": 4.0,
+    "applied_cap": "Sized at the LOW end (~4% vs Strategy B's ~6% default) per memory/symbol_profiles/XOM.md: energy-sector beta drove two daily-loss-limit breaches in the prior window. 3.93% < max_position_size_pct 15%; per-trade risk 0.393% < 1.5%.",
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "consolidation": {
+    "primary_strategy": "large_cap_momentum_top5",
+    "subsumed_strategies": []
+  },
+  "confidence_score": 0.56,
+  "confidence_notes": "Deterministic rank-2 with SPY trend confirmation. Reduced for documented energy-beta daily-loss-limit history (size discipline applied), offline news feed, and no live VIX.",
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_notes": "Position 3.93% < max_position_size_pct 15%; per-trade risk 0.393% < 1.5%. Sector Energy (unique diversifier in today's basket). R/R 2.5 >= min 1.5. Strategy ACTIVE_PAPER_TEST; approved_for_paper_trading=true. CB FULL throttle 1.0. Low-end sizing honors the XOM memory caution. Next earnings 2026-07-31 — outside caution window. 5/8 positions; 5/5 daily trades.",
+  "compliance_verdict": "APPROVED",
+  "compliance_notes": "PAPER_BUY permitted under PAPER_TRADING. No live order path. Bull/bear/invalidation present. Schema-compliant. XOM not in blocked_symbols (only INTU blocked).",
+  "human_approval_required": false,
+  "final_status": "PAPER_PROPOSED",
+  "data_provenance": {
+    "signal_eval": "lib.signals.evaluate_all on lib.data.get_bars (yfinance daily), EOD 2026-06-05",
+    "signal_strategy": "large_cap_momentum_top5",
+    "signal_action": "ENTRY",
+    "signal_rationale": "large_cap_momentum_top5: ENTRY — in top-5, SPY trend up (rank 2, +33.55% 6m)",
+    "data_freshness_note": "Fresh 06-05 daily close."
+  },
+  "execution": {
+    "broker": "alpaca_paper_sandbox",
+    "submitted": false,
+    "note": "Filled via lib.paper_sim.open_position at EOD; reconcile() is alpaca-authoritative under BROKER_PAPER=alpaca."
+  }
+}

@@ -207,3 +207,22 @@
 - Outcome: NO_TRADE. RM REJECTED (rule #5 stale-data), Compliance REJECTED.
 - Reason: latest daily bar = 2026-06-03 (~44.7h stale, >60s cap); no 06-04 close at EOD. 4th consecutive stale EOD. CLAUDE.md rule #5 -> NO_TRADE.
 - Book flat; no position opened. CB wrote this run: FULL, DD 0.00%, throttle 1.0, no transition.
+
+## 2026-06-05 — EOD ENTRY submitted (PAPER_BUY, dual_momentum_taa; subsumes gold_permanent_overlay)
+
+- Decision file: `decisions/2026-06-05/1642_GLD.json` (PAPER_BUY, final_status=PAPER_PROPOSED)
+- Subsumed note: `decisions/2026-06-05/1642_GLD_gold_permanent_overlay_subsumed.json` (NO_TRADE, Strategy-C absorbed by Strategy-A line item)
+- Routine: end_of_day_2026-06-05, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (no transition, DD 0.00%), throttle=1.0.
+- Signal: dual_momentum_taa ENTRY — top-1 risk asset (12m +33.14% vs SPY +28.47% above MA, IEF +4.19% disqualified below MA, cash +3.91%); above 210d MA. Fresh 06-05 close (feed recovered, no stale->fresh distortion).
+- Order: BUY 36 @ ref $411.27; stop $370.14 (-10%), TP $514.09 (+25%), R/R 2.5:1. ~14.72% of account; per-trade risk 1.472% < 1.5% cap.
+- Submitted to Alpaca paper sandbox, status PENDING_BROKER (order_id 6ea08607…). Market closed at 16:46 ET -> queues for next-open fill. Not filled today; positions.json mirror-owned; reconcile alpaca-authoritative (no divergence, mirror in sync).
+- Risk Manager: APPROVED. Compliance: APPROVED.
+
+**Cumulative stats (updated 2026-06-05 EOD):**
+
+- Open paper positions: 0 filled (1 BUY order PENDING_BROKER for next open)
+- Closed paper trades (since 2026-05-18 re-entry): 1 (2026-05-29, +$215.21)
+- Realized PnL (all-time post-reset): +$215.21
+- Unrealized PnL: $0.00 (no filled position; order pending)
+- Win rate: 100% (1/1 closed, post-reset)
+- Active strategies: dual_momentum_taa (primary), gold_permanent_overlay (subsumed)

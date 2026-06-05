@@ -173,3 +173,18 @@
 - Reason: latest daily bar = 2026-06-03 (~44.7h stale, >60s cap); no 06-04 close at EOD. 4th consecutive stale EOD. CLAUDE.md rule #5 -> NO_TRADE.
 - Operational guidance carried: **size small** on eventual re-entry — XOM drove both daily-loss-halt breaches (05-26, 05-29).
 - Book flat; no position opened. CB wrote this run: FULL, DD 0.00%, throttle 1.0, no transition.
+
+## 2026-06-05 — EOD ENTRY submitted (PAPER_BUY, large_cap_momentum_top5 — LOW-end size)
+
+- Decision file: `decisions/2026-06-05/1642_XOM.json` (PAPER_BUY, final_status=PAPER_PROPOSED)
+- Routine: end_of_day_2026-06-05, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (no transition, DD 0.00%), throttle=1.0.
+- Signal: large_cap_momentum_top5 ENTRY — rank 2 by 126d return (+33.55%), SPY trend filter passed. Fresh 06-05 close.
+- Order: BUY 26 @ ref $152.04; stop $136.84 (-10%), TP $190.05 (+25%), R/R 2.5:1. **~3.93% of account (LOW end vs Strategy B ~6% default)** per this symbol profile's energy-beta daily-loss-limit history (2026-05-26, 2026-05-29). Per-trade risk 0.393% < 1.5% cap.
+- Submitted to Alpaca paper sandbox, PENDING_BROKER (order_id 178039b7…). Market closed -> next-open fill. reconcile alpaca-authoritative, mirror in sync.
+- Risk Manager: APPROVED (low-end sizing honors XOM memory caution). Compliance: APPROVED. Next earnings 2026-07-31 (outside caution window).
+
+**Cumulative stats (updated 2026-06-05 EOD):**
+
+- Open paper positions: 0 filled (1 BUY order PENDING_BROKER for next open)
+- Closed paper trades (post-reset): 1 (2026-05-29, -$1,461 / -9.35%, daily-loss halt)
+- Active strategies: large_cap_momentum_top5

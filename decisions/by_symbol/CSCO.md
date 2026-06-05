@@ -193,3 +193,18 @@
 - Outcome: NO_TRADE. RM REJECTED (rule #5 stale-data), Compliance REJECTED.
 - Reason: latest daily bar = 2026-06-03 (~44.7h stale, >60s cap); no 06-04 close in daily feed at the 20:40Z EOD decision point (intraday IEX quote IS fresh; daily-bar provider lags). 4th consecutive stale EOD. CLAUDE.md rule #5 -> NO_TRADE.
 - Book flat; no position opened. CB wrote this run (pending_broker cleared via overnight sync_alpaca_state reset): FULL, DD 0.00%, throttle 1.0, no transition.
+
+## 2026-06-05 — EOD ENTRY submitted (PAPER_BUY, large_cap_momentum_top5)
+
+- Decision file: `decisions/2026-06-05/1642_CSCO.json` (PAPER_BUY, final_status=PAPER_PROPOSED)
+- Routine: end_of_day_2026-06-05, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (no transition, DD 0.00%), throttle=1.0.
+- Signal: large_cap_momentum_top5 ENTRY — rank 1 by 126d return (+70.94%), SPY trend filter passed (above 10m MA). Fresh 06-05 close.
+- Order: BUY 46 @ ref $130.00; stop $117.00 (-10%), TP $162.50 (+25%), R/R 2.5:1. ~5.95% of account; per-trade risk 0.595% < 1.5% cap.
+- Submitted to Alpaca paper sandbox, PENDING_BROKER (order_id 1c9d619e…). Market closed -> next-open fill. reconcile alpaca-authoritative, mirror in sync.
+- Risk Manager: APPROVED. Compliance: APPROVED.
+- Note: +70.94% 6m is a stretched move (mean-reversion / elastic-snap risk in bear thesis); rank-1 amplifies any reversal.
+
+**Cumulative stats (updated 2026-06-05 EOD):**
+
+- Open paper positions: 0 filled (1 BUY order PENDING_BROKER for next open)
+- Active strategies: large_cap_momentum_top5

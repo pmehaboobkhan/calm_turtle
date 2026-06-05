@@ -98,3 +98,17 @@
 - Outcome: NO_TRADE. RM REJECTED (rule #5 stale-data), Compliance REJECTED.
 - Reason: latest daily bar = 2026-06-03 (~44.7h stale, >60s cap); no 06-04 close at EOD. 4th consecutive stale EOD. CLAUDE.md rule #5 -> NO_TRADE.
 - Book flat; no position opened. CB wrote this run: FULL, DD 0.00%, throttle 1.0, no transition.
+
+## 2026-06-05 — EOD ENTRY submitted (PAPER_BUY, large_cap_momentum_top5)
+
+- Decision file: `decisions/2026-06-05/1642_NVDA.json` (PAPER_BUY, final_status=PAPER_PROPOSED)
+- Routine: end_of_day_2026-06-05, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (no transition, DD 0.00%), throttle=1.0.
+- Signal: large_cap_momentum_top5 ENTRY — rank 4 by 126d return (+20.65%), SPY trend filter passed. Fresh 06-05 close.
+- Order: BUY 27 @ ref $218.66; stop $196.79 (-10%), TP $273.33 (+25%), R/R 2.5:1. ~5.87% of account; per-trade risk 0.587% < 1.5% cap.
+- Submitted to Alpaca paper sandbox, PENDING_BROKER (order_id d3e17805…). Market closed -> next-open fill. reconcile alpaca-authoritative, mirror in sync.
+- Risk Manager: APPROVED. Compliance: APPROVED. Highest beta in basket; prior daily-loss-limit involvement (2026-05-26) noted in bear thesis.
+
+**Cumulative stats (updated 2026-06-05 EOD):**
+
+- Open paper positions: 0 filled (1 BUY order PENDING_BROKER for next open)
+- Active strategies: large_cap_momentum_top5

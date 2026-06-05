@@ -1,0 +1,37 @@
+{
+  "CSCO": {
+    "entry_basis": 130.026,
+    "opened_at": "2026-06-05T20:46:38.764781+00:00",
+    "rationale_link": "decisions/2026-06-05/1642_CSCO.json",
+    "stop_loss": 117.0,
+    "take_profit": 162.5
+  },
+  "GLD": {
+    "entry_basis": 411.3523,
+    "opened_at": "2026-06-05T20:46:32.860433+00:00",
+    "rationale_link": "decisions/2026-06-05/1642_GLD.json",
+    "stop_loss": 370.14,
+    "take_profit": 514.09
+  },
+  "NVDA": {
+    "entry_basis": 218.7037,
+    "opened_at": "2026-06-05T20:46:54.637168+00:00",
+    "rationale_link": "decisions/2026-06-05/1642_NVDA.json",
+    "stop_loss": 196.79,
+    "take_profit": 273.33
+  },
+  "UNH": {
+    "entry_basis": 396.5493,
+    "opened_at": "2026-06-05T20:46:49.367699+00:00",
+    "rationale_link": "decisions/2026-06-05/1642_UNH.json",
+    "stop_loss": 356.82,
+    "take_profit": 495.59
+  },
+  "XOM": {
+    "entry_basis": 152.0704,
+    "opened_at": "2026-06-05T20:46:44.070073+00:00",
+    "rationale_link": "decisions/2026-06-05/1642_XOM.json",
+    "stop_loss": 136.84,
+    "take_profit": 190.05
+  }
+}

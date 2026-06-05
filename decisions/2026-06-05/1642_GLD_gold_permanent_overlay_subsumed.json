@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-05T20:42:00Z",
+  "routine_id": "end_of_day_2026-06-05",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "strategy": "gold_permanent_overlay",
+  "action": "NO_TRADE",
+  "reason": "subsumed_by_dual_momentum_taa",
+  "subsumed_under": "decisions/2026-06-05/1642_GLD.json",
+  "thesis_bull": "gold_permanent_overlay policy mandates a permanent 10% GLD allocation as a crisis/inflation diversifier. Deterministic ENTRY fired (Permanent allocation policy confirmation passed).",
+  "thesis_bear": "Strategy A (dual_momentum_taa) already opens a ~14.72% GLD line item this routine (decisions/2026-06-05/1642_GLD.json). Stacking a second GLD trade would double-count single-symbol exposure; the larger allocation (Strategy A's 60% intent, capped to 15%) governs and already exceeds Strategy C's 10% target.",
+  "invalidation_condition": "If Strategy A exits GLD on a future routine (GLD drops below 210d MA or is outranked), the 10% Strategy C overlay must be re-opened standalone. Monitor at next EOD.",
+  "risk_reward": {
+    "entry": 411.27,
+    "stop": 370.14,
+    "target": 514.09,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0,
+    "intended_pct": 10.0,
+    "applied_cap": "Subsumed by Strategy A's GLD position at ~14.72% of account — single GLD line item already exceeds Strategy C's 10% target. No additional shares opened.",
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.64,
+  "confidence_notes": "Policy is unambiguous; the only reason this is NO_TRADE is the deterministic consolidation overlap with Strategy A on the same symbol.",
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_notes": "Journaling-only record per end_of_day step 7; risk_manager skips subsumed files (already represented by the primary GLD decision). Recorded APPROVED for audit clarity — NO_TRADE adds no risk.",
+  "compliance_verdict": "APPROVED",
+  "compliance_notes": "NO_TRADE always permissible; preserves capital and audit clarity. Documents the Strategy-C absorbed-ENTRY outcome distinctly from 'silent' for the Self-Learning Agent.",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "data_provenance": {
+    "signal_eval": "lib.signals.evaluate_all on lib.data.get_bars (yfinance daily), EOD 2026-06-05",
+    "signal_strategy": "gold_permanent_overlay",
+    "signal_action": "ENTRY",
+    "signal_rationale": "gold_permanent_overlay: ENTRY — permanent 10% GLD allocation (subsumed by Strategy A's GLD position)",
+    "related_decision": "decisions/2026-06-05/1642_GLD.json"
+  }
+}
