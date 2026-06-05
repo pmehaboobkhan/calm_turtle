@@ -1,0 +1,581 @@
+{
+  "asof": "2026-06-05T10:40:00Z",
+  "regime": {
+    "regime": "bullish_trend",
+    "confidence": "medium",
+    "indicators": {
+      "spy_above_50dma": true,
+      "spy_above_200dma": true,
+      "spy_pct_from_50dma": 0.06348223573409162,
+      "vix": null,
+      "proxy_vol_20d_annualized_pct": 8.894545097842316,
+      "effective_vix_used": 8.894545097842316
+    },
+    "counter_evidence": [
+      "Trend can break on macro shocks"
+    ]
+  },
+  "signals": [
+    {
+      "symbol": "SPY",
+      "action": "EXIT",
+      "strategy": "dual_momentum_taa",
+      "confidence_inputs": {
+        "cash_return_12m": 0.03911296748491755,
+        "candidates": [
+          {
+            "symbol": "SPY",
+            "ret_12m": 0.2846533376831182,
+            "above_10m_ma": true,
+            "vs_cash": 0.24554037019820063
+          },
+          {
+            "symbol": "IEF",
+            "ret_12m": 0.04194610054966019,
+            "above_10m_ma": false,
+            "vs_cash": 0.0028331330647426434
+          },
+          {
+            "symbol": "GLD",
+            "ret_12m": 0.33135859680195234,
+            "above_10m_ma": true,
+            "vs_cash": 0.2922456293170348
+          }
+        ],
+        "winners": [
+          "GLD"
+        ],
+        "this_symbol_ret_12m": 0.2846533376831182
+      },
+      "confirmations_passed": [
+        "SPY above 210d MA",
+        "SPY 12m return +28.47% > cash +3.91%"
+      ],
+      "confirmations_failed": [],
+      "rationale": "dual_momentum_taa: EXIT \u2014 outranked by another asset",
+      "timestamp": "2026-06-05T10:40:01.495333+00:00"
+    },
+    {
+      "symbol": "IEF",
+      "action": "EXIT",
+      "strategy": "dual_momentum_taa",
+      "confidence_inputs": {
+        "cash_return_12m": 0.03911296748491755,
+        "candidates": [
+          {
+            "symbol": "SPY",
+            "ret_12m": 0.2846533376831182,
+            "above_10m_ma": true,
+            "vs_cash": 0.24554037019820063
+          },
+          {
+            "symbol": "IEF",
+            "ret_12m": 0.04194610054966019,
+            "above_10m_ma": false,
+            "vs_cash": 0.0028331330647426434
+          },
+          {
+            "symbol": "GLD",
+            "ret_12m": 0.33135859680195234,
+            "above_10m_ma": true,
+            "vs_cash": 0.2922456293170348
+          }
+        ],
+        "winners": [
+          "GLD"
+        ],
+        "this_symbol_ret_12m": 0.04194610054966019
+      },
+      "confirmations_passed": [
+        "IEF 12m return +4.19% > cash +3.91%"
+      ],
+      "confirmations_failed": [
+        "IEF below 210d MA"
+      ],
+      "rationale": "dual_momentum_taa: EXIT \u2014 IEF below 210d MA",
+      "timestamp": "2026-06-05T10:40:01.495376+00:00"
+    },
+    {
+      "symbol": "GLD",
+      "action": "ENTRY",
+      "strategy": "dual_momentum_taa",
+      "confidence_inputs": {
+        "cash_return_12m": 0.03911296748491755,
+        "candidates": [
+          {
+            "symbol": "SPY",
+            "ret_12m": 0.2846533376831182,
+            "above_10m_ma": true,
+            "vs_cash": 0.24554037019820063
+          },
+          {
+            "symbol": "IEF",
+            "ret_12m": 0.04194610054966019,
+            "above_10m_ma": false,
+            "vs_cash": 0.0028331330647426434
+          },
+          {
+            "symbol": "GLD",
+            "ret_12m": 0.33135859680195234,
+            "above_10m_ma": true,
+            "vs_cash": 0.2922456293170348
+          }
+        ],
+        "winners": [
+          "GLD"
+        ],
+        "this_symbol_ret_12m": 0.33135859680195234
+      },
+      "confirmations_passed": [
+        "GLD above 210d MA",
+        "GLD 12m return +33.14% > cash +3.91%"
+      ],
+      "confirmations_failed": [],
+      "rationale": "dual_momentum_taa: ENTRY \u2014 top-1 risk asset, all filters passed",
+      "timestamp": "2026-06-05T10:40:01.495404+00:00"
+    },
+    {
+      "symbol": "SHV",
+      "action": "EXIT",
+      "strategy": "dual_momentum_taa",
+      "confidence_inputs": {
+        "cash_return_12m": 0.03911296748491755,
+        "candidates": [
+          {
+            "symbol": "SPY",
+            "ret_12m": 0.2846533376831182,
+            "above_10m_ma": true,
+            "vs_cash": 0.24554037019820063
+          },
+          {
+            "symbol": "IEF",
+            "ret_12m": 0.04194610054966019,
+            "above_10m_ma": false,
+            "vs_cash": 0.0028331330647426434
+          },
+          {
+            "symbol": "GLD",
+            "ret_12m": 0.33135859680195234,
+            "above_10m_ma": true,
+            "vs_cash": 0.2922456293170348
+          }
+        ],
+        "winners": [
+          "GLD"
+        ]
+      },
+      "confirmations_passed": [],
+      "confirmations_failed": [
+        "A risk asset is qualifying; cash exit"
+      ],
+      "rationale": "dual_momentum_taa: EXIT \u2014 risk asset qualifying",
+      "timestamp": "2026-06-05T10:40:01.495410+00:00"
+    },
+    {
+      "symbol": "TLT",
+      "action": "EXIT",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": -0.01524471177559017,
+        "rank": 16,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)"
+      ],
+      "confirmations_failed": [
+        "TLT not in top-5 (rank by ret)"
+      ],
+      "rationale": "large_cap_momentum_top5: EXIT \u2014 trend filter broke OR fell out of top-N+2 buffer",
+      "timestamp": "2026-06-05T10:40:01.820551+00:00"
+    },
+    {
+      "symbol": "AAPL",
+      "action": "EXIT",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": 0.08951482524993626,
+        "rank": 9,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)"
+      ],
+      "confirmations_failed": [
+        "AAPL not in top-5 (rank by ret)"
+      ],
+      "rationale": "large_cap_momentum_top5: EXIT \u2014 trend filter broke OR fell out of top-N+2 buffer",
+      "timestamp": "2026-06-05T10:40:01.820615+00:00"
+    },
+    {
+      "symbol": "MSFT",
+      "action": "EXIT",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": -0.12253835344764707,
+        "rank": 21,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)"
+      ],
+      "confirmations_failed": [
+        "MSFT not in top-5 (rank by ret)"
+      ],
+      "rationale": "large_cap_momentum_top5: EXIT \u2014 trend filter broke OR fell out of top-N+2 buffer",
+      "timestamp": "2026-06-05T10:40:01.820625+00:00"
+    },
+    {
+      "symbol": "GOOGL",
+      "action": "NO_SIGNAL",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": 0.1801261841252466,
+        "rank": 7,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)"
+      ],
+      "confirmations_failed": [
+        "GOOGL not in top-5 (rank by ret)"
+      ],
+      "rationale": "large_cap_momentum_top5: NO_SIGNAL \u2014 hold zone (rank within buffer)",
+      "timestamp": "2026-06-05T10:40:01.820634+00:00"
+    },
+    {
+      "symbol": "AMZN",
+      "action": "EXIT",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": 0.08262944829147068,
+        "rank": 10,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)"
+      ],
+      "confirmations_failed": [
+        "AMZN not in top-5 (rank by ret)"
+      ],
+      "rationale": "large_cap_momentum_top5: EXIT \u2014 trend filter broke OR fell out of top-N+2 buffer",
+      "timestamp": "2026-06-05T10:40:01.820641+00:00"
+    },
+    {
+      "symbol": "NVDA",
+      "action": "ENTRY",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": 0.20654080225888416,
+        "rank": 5,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)",
+        "NVDA in top-5 by 126d return (+20.65%)"
+      ],
+      "confirmations_failed": [],
+      "rationale": "large_cap_momentum_top5: ENTRY \u2014 in top-5, SPY trend up",
+      "timestamp": "2026-06-05T10:40:01.820655+00:00"
+    },
+    {
+      "symbol": "META",
+      "action": "ENTRY",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": NaN,
+        "rank": 1,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)",
+        "META in top-5 by 126d return (+nan%)"
+      ],
+      "confirmations_failed": [],
+      "rationale": "large_cap_momentum_top5: ENTRY \u2014 in top-5, SPY trend up",
+      "timestamp": "2026-06-05T10:40:01.820664+00:00"
+    },
+    {
+      "symbol": "TSLA",
+      "action": "EXIT",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": -0.025137401623395284,
+        "rank": 18,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)"
+      ],
+      "confirmations_failed": [
+        "TSLA not in top-5 (rank by ret)"
+      ],
+      "rationale": "large_cap_momentum_top5: EXIT \u2014 trend filter broke OR fell out of top-N+2 buffer",
+      "timestamp": "2026-06-05T10:40:01.820671+00:00"
+    },
+    {
+      "symbol": "JPM",
+      "action": "EXIT",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": 0.019522482199065383,
+        "rank": 15,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)"
+      ],
+      "confirmations_failed": [
+        "JPM not in top-5 (rank by ret)"
+      ],
+      "rationale": "large_cap_momentum_top5: EXIT \u2014 trend filter broke OR fell out of top-N+2 buffer",
+      "timestamp": "2026-06-05T10:40:01.820678+00:00"
+    },
+    {
+      "symbol": "BAC",
+      "action": "EXIT",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": 0.02950423235731181,
+        "rank": 14,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)"
+      ],
+      "confirmations_failed": [
+        "BAC not in top-5 (rank by ret)"
+      ],
+      "rationale": "large_cap_momentum_top5: EXIT \u2014 trend filter broke OR fell out of top-N+2 buffer",
+      "timestamp": "2026-06-05T10:40:01.820684+00:00"
+    },
+    {
+      "symbol": "V",
+      "action": "EXIT",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": -0.02461813187272921,
+        "rank": 17,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)"
+      ],
+      "confirmations_failed": [
+        "V not in top-5 (rank by ret)"
+      ],
+      "rationale": "large_cap_momentum_top5: EXIT \u2014 trend filter broke OR fell out of top-N+2 buffer",
+      "timestamp": "2026-06-05T10:40:01.820690+00:00"
+    },
+    {
+      "symbol": "MA",
+      "action": "EXIT",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": -0.11466573824123127,
+        "rank": 20,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)"
+      ],
+      "confirmations_failed": [
+        "MA not in top-5 (rank by ret)"
+      ],
+      "rationale": "large_cap_momentum_top5: EXIT \u2014 trend filter broke OR fell out of top-N+2 buffer",
+      "timestamp": "2026-06-05T10:40:01.820696+00:00"
+    },
+    {
+      "symbol": "JNJ",
+      "action": "EXIT",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": 0.12307547412273845,
+        "rank": 8,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)"
+      ],
+      "confirmations_failed": [
+        "JNJ not in top-5 (rank by ret)"
+      ],
+      "rationale": "large_cap_momentum_top5: EXIT \u2014 trend filter broke OR fell out of top-N+2 buffer",
+      "timestamp": "2026-06-05T10:40:01.820702+00:00"
+    },
+    {
+      "symbol": "UNH",
+      "action": "ENTRY",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": 0.2394116473620096,
+        "rank": 4,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)",
+        "UNH in top-5 by 126d return (+23.94%)"
+      ],
+      "confirmations_failed": [],
+      "rationale": "large_cap_momentum_top5: ENTRY \u2014 in top-5, SPY trend up",
+      "timestamp": "2026-06-05T10:40:01.820709+00:00"
+    },
+    {
+      "symbol": "PFE",
+      "action": "EXIT",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": 0.05572553153265569,
+        "rank": 12,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)"
+      ],
+      "confirmations_failed": [
+        "PFE not in top-5 (rank by ret)"
+      ],
+      "rationale": "large_cap_momentum_top5: EXIT \u2014 trend filter broke OR fell out of top-N+2 buffer",
+      "timestamp": "2026-06-05T10:40:01.820716+00:00"
+    },
+    {
+      "symbol": "WMT",
+      "action": "EXIT",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": 0.0537118372640939,
+        "rank": 13,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)"
+      ],
+      "confirmations_failed": [
+        "WMT not in top-5 (rank by ret)"
+      ],
+      "rationale": "large_cap_momentum_top5: EXIT \u2014 trend filter broke OR fell out of top-N+2 buffer",
+      "timestamp": "2026-06-05T10:40:01.820721+00:00"
+    },
+    {
+      "symbol": "COST",
+      "action": "EXIT",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": 0.0575481848467001,
+        "rank": 11,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)"
+      ],
+      "confirmations_failed": [
+        "COST not in top-5 (rank by ret)"
+      ],
+      "rationale": "large_cap_momentum_top5: EXIT \u2014 trend filter broke OR fell out of top-N+2 buffer",
+      "timestamp": "2026-06-05T10:40:01.820728+00:00"
+    },
+    {
+      "symbol": "HD",
+      "action": "EXIT",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": -0.10630220471353158,
+        "rank": 19,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)"
+      ],
+      "confirmations_failed": [
+        "HD not in top-5 (rank by ret)"
+      ],
+      "rationale": "large_cap_momentum_top5: EXIT \u2014 trend filter broke OR fell out of top-N+2 buffer",
+      "timestamp": "2026-06-05T10:40:01.820734+00:00"
+    },
+    {
+      "symbol": "XOM",
+      "action": "ENTRY",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": 0.3355195493159513,
+        "rank": 3,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)",
+        "XOM in top-5 by 126d return (+33.55%)"
+      ],
+      "confirmations_failed": [],
+      "rationale": "large_cap_momentum_top5: ENTRY \u2014 in top-5, SPY trend up",
+      "timestamp": "2026-06-05T10:40:01.820745+00:00"
+    },
+    {
+      "symbol": "ORCL",
+      "action": "NO_SIGNAL",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": 0.18245823375356274,
+        "rank": 6,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)"
+      ],
+      "confirmations_failed": [
+        "ORCL not in top-5 (rank by ret)"
+      ],
+      "rationale": "large_cap_momentum_top5: NO_SIGNAL \u2014 hold zone (rank within buffer)",
+      "timestamp": "2026-06-05T10:40:01.820751+00:00"
+    },
+    {
+      "symbol": "CSCO",
+      "action": "ENTRY",
+      "strategy": "large_cap_momentum_top5",
+      "confidence_inputs": {
+        "spy_above_ma": true,
+        "return_6m": 0.70942925089776,
+        "rank": 2,
+        "universe_size": 21
+      },
+      "confirmations_passed": [
+        "SPY trend filter passed (above 10m MA)",
+        "CSCO in top-5 by 126d return (+70.94%)"
+      ],
+      "confirmations_failed": [],
+      "rationale": "large_cap_momentum_top5: ENTRY \u2014 in top-5, SPY trend up",
+      "timestamp": "2026-06-05T10:40:01.820757+00:00"
+    },
+    {
+      "symbol": "GLD",
+      "action": "ENTRY",
+      "strategy": "gold_permanent_overlay",
+      "confidence_inputs": {},
+      "confirmations_passed": [
+        "Permanent allocation policy"
+      ],
+      "confirmations_failed": [],
+      "rationale": "gold_permanent_overlay: ENTRY \u2014 permanent 10% GLD allocation",
+      "timestamp": "2026-06-05T10:40:01.820777+00:00"
+    }
+  ]
+}
