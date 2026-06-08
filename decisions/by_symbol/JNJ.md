@@ -46,3 +46,12 @@
 - Closed paper trades: 0 (post-reset)
 - Realized PnL: $0.00 (post-reset)
 - Win rate: n/a (no closed trades post-reset)
+
+## 2026-06-08 — PAPER_BUY (large_cap_momentum_top5)
+
+- Decision file: `decisions/2026-06-08/1638_JNJ.json`
+- Signal: ENTRY — rank 5 of 21 by 6m (126d) return +14.62% (top-5 boundary); SPY trend filter passed.
+- Order: 26 shares @ quote $232.77 — PENDING_BROKER (fills at next open).
+- Stop: $209.49, Target: $290.96, R/R: 2.5:1. Sized ~6% of account (Strategy B equal-weight top-5). Defensive Health_Care diversifier vs energy/tech tilt.
+- Routine: end_of_day_2026-06-08, mode PAPER_TRADING, cb_state=FULL, throttle=1.0.
+- Risk Manager: APPROVED. Compliance: APPROVED.

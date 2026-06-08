@@ -154,3 +154,12 @@
 - Signal: large_cap_momentum_top5 NO_SIGNAL (rank 6 or 7 in hold buffer; **fell out of top-5**). SPY trend filter PASSED; failed "GOOGL in top-5 by 126d return".
 - 06-02 basis had GOOGL rank 5 (+17.79% 6m); 06-03 basis has UNH at rank 5 with GOOGL slipping to the buffer. The boundary swap predicted on 06-02 (conf 0.5) materialized.
 - Outcome: no action (book flat; nothing held to EXIT). Watch: re-entry to top-5 possible on a single bar.
+
+## 2026-06-08 — PAPER_BUY (large_cap_momentum_top5)
+
+- Decision file: `decisions/2026-06-08/1637_GOOGL.json`
+- Signal: ENTRY — rank 4 of 21 by 6m (126d) return +15.46%; SPY trend filter passed.
+- Order: 16 shares @ quote $368.53 — PENDING_BROKER (fills at next open).
+- Stop: $331.68, Target: $460.66, R/R: 2.5:1. Sized ~6% of account (Strategy B equal-weight top-5).
+- Routine: end_of_day_2026-06-08, mode PAPER_TRADING, cb_state=FULL, throttle=1.0.
+- Risk Manager: APPROVED. Compliance: APPROVED.

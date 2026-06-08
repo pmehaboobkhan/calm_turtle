@@ -226,3 +226,13 @@
 - Unrealized PnL: $0.00 (no filled position; order pending)
 - Win rate: 100% (1/1 closed, post-reset)
 - Active strategies: dual_momentum_taa (primary), gold_permanent_overlay (subsumed)
+
+## 2026-06-08 — PAPER_CLOSE (dual_momentum_taa)
+
+- Decision file: `decisions/2026-06-08/1635_GLD.json`
+- Signal: EXIT — GLD below its 210d (10-month) MA; SPY now top-1 risk asset. 12m ret +27.45% (> cash) but MA filter failed.
+- Closed: 36 shares (entry $397.87) at quote $397.04 — PENDING_BROKER (markets closed; fills at next open, alpaca-authoritative).
+- Realized PnL at quote: -$29.88 (-0.21% on position); final realized PnL set on broker fill.
+- Same-symbol CONFLICT this run: gold_permanent_overlay ENTRY vs dual_momentum_taa EXIT. v1 executes EXIT; overlay re-entry blocked as just-closed. See `logs/risk_events/2026-06-08_203250_signal_conflict.md` and `decisions/2026-06-08/1635_GLD_gold_permanent_overlay_subsumed.json`.
+- Routine: end_of_day_2026-06-08, mode PAPER_TRADING, cb_state=FULL (EXITs never throttled).
+- Risk Manager: APPROVED (position exists; close reduces risk). Compliance: APPROVED.

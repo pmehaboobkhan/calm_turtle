@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-08T20:35:00+00:00",
+  "routine_id": "end_of_day_2026-06-08",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "strategy": "gold_permanent_overlay",
+  "thesis_bull": "gold_permanent_overlay would ENTER GLD as the permanent 10% allocation (crisis/inflation diversifier, near-zero correlation to equities and bonds).",
+  "thesis_bear": "Same-symbol conflict this run: dual_momentum_taa fired EXIT (GLD below its 210d MA) while the overlay fired ENTRY. Per v1 routine policy (end_of_day step 4a) the EXIT executes and closes the open GLD position; the overlay re-entry is then blocked as just-closed/already-flat this session. v1 does NOT auto-resolve direction. See logs/risk_events/2026-06-08_203250_signal_conflict.md.",
+  "invalidation_condition": "Not applicable — journaling-only NO_TRADE. The overlay would re-assert its standalone 10% GLD slot on a future session once the conflict clears (GLD reclaims its 210d MA so dual_momentum_taa and the overlay agree again).",
+  "risk_reward": {
+    "entry": 397.04,
+    "stop": 357.34,
+    "target": 496.3,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0
+  },
+  "confidence_score": 0.0,
+  "confidence_notes": "Journaling-only. Conflict-blocked overlay re-entry; carried as a distinct outcome for the Self-Learning Agent.",
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "notes": "reason=conflict_blocked_overlay_reentry_after_dual_momentum_taa_exit. subsumed_under=decisions/2026-06-08/1635_GLD.json. strategy=gold_permanent_overlay. Journaling-only per end_of_day step 4a; RM + Compliance skip subsumed/conflict files (represented by the primary close decision). dual_momentum_taa EXIT closed the GLD position; overlay ENTRY blocked as just-closed this session."
+}

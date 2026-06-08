@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-08T20:35:00Z",
+  "routine_id": "end_of_day_2026-06-08",
+  "symbol": "GLD",
+  "decision": "PAPER_CLOSE",
+  "strategy": "dual_momentum_taa",
+  "thesis_bull": "N/A for a close. The original bull case (GLD top-1 risk asset by 12m return, above its 210d MA) has degraded: GLD's 12m return is still +27.45% (> cash +3.93%) but it has fallen BELOW its 210-day (10-month) moving average, which is the dual_momentum_taa hold condition. The leadership has rotated to SPY (12m +25.18%, above its 210d MA), now the top-1 risk asset.",
+  "thesis_bear": "GLD below its 10m MA is the documented invalidation for the dual_momentum_taa GLD hold. A same-symbol conflict fired this run: gold_permanent_overlay (Strategy C) still wants GLD on permanent-policy grounds, while dual_momentum_taa (Strategy A, larger allocation, the line item that actually held the position) says EXIT. Per v1 routine policy the EXIT executes and the overlay re-entry is blocked as just-closed (see logs/risk_events/2026-06-08_203250_signal_conflict.md). News connector OFFLINE (news_unavailable) and no live VIX feed — both treated as risk factors favoring de-risking, not as bullish silence.",
+  "invalidation_condition": "EXIT is the risk-reducing action; no invalidation to track. Re-entry would require GLD to reclaim its 210d MA AND outrank SPY/IEF on 12m total return (dual_momentum_taa) or a clean overlay re-entry on a session with no conflict.",
+  "risk_reward": {
+    "entry": 397.87,
+    "stop": 370.14,
+    "target": 514.09,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 36,
+    "usd": 14293.44,
+    "pct_of_account": 14.2,
+    "close_quote": 397.04,
+    "realized_pnl_usd": -29.88,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": "n/a (EXITs never throttled)"
+  },
+  "consolidation": {
+    "primary_strategy": "dual_momentum_taa",
+    "subsumed_strategies": [],
+    "conflict": true,
+    "conflict_note": "gold_permanent_overlay ENTRY vs dual_momentum_taa EXIT on GLD; v1 executes EXIT, blocks overlay re-entry as just-closed. See risk event 2026-06-08_203250_signal_conflict.md."
+  },
+  "confidence_score": 0.7,
+  "confidence_notes": "Deterministic EXIT: GLD below 210d MA is an unambiguous dual_momentum_taa hold-condition failure. Confidence not higher because news/VIX feeds are offline (reduced catalyst awareness).",
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_notes": "Position exists in positions.json (36 sh GLD, entry 397.87). Closing reduces risk; EXITs are never throttled and never blocked by the risk manager when the position exists. Realized PnL -$29.88 (-0.21% on position) is immaterial vs daily/weekly/monthly loss limits. Frees ~$14,294 cash. No limit breached by closing.",
+  "compliance_verdict": "APPROVED",
+  "compliance_notes": "PAPER_CLOSE permitted under mode PAPER_TRADING. No live order path. GLD not in blocked_symbols (only INTU blocked). Schema-compliant. Conflict documented in paired risk event.",
+  "human_approval_required": false,
+  "final_status": "PAPER_PROPOSED",
+  "data_provenance": {
+    "signal_eval": "lib.signals.evaluate_all on lib.data.get_bars (daily), EOD 2026-06-08",
+    "signal_strategy": "dual_momentum_taa",
+    "signal_action": "EXIT",
+    "signal_rationale": "dual_momentum_taa: EXIT — GLD below 210d MA",
+    "data_freshness_note": "Fresh 06-08 daily close. Daily-bar momentum; 60s intraday staleness rule does not bind in PAPER_TRADING."
+  },
+  "execution": {
+    "broker": "alpaca_paper_sandbox",
+    "submitted": false,
+    "note": "Filled via lib.paper_sim.close_position at EOD; reconcile() is alpaca-authoritative under BROKER_PAPER=alpaca."
+  }
+}

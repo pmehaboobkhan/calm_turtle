@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-08T20:37:00Z",
+  "routine_id": "end_of_day_2026-06-08",
+  "symbol": "GOOGL",
+  "decision": "PAPER_BUY",
+  "strategy": "large_cap_momentum_top5",
+  "thesis_bull": "GOOGL is rank 4 of 21 in the large_cap_momentum_top5 universe by 6-month (126d) total return at +15.46%, and the SPY trend filter is satisfied (SPY above its 10-month MA). Both required confirmations passed. It joins the top-5 book (CSCO rank1, XOM rank2, UNH rank3, GOOGL rank4, JNJ rank5), replacing names that fell out of the buffer (AMZN, NVDA dropped to rank6 hold-zone).",
+  "thesis_bear": "Momentum-rank entries are mean-reversion-prone if the leader cools; GOOGL at +15.46% is mid-pack, not a runaway. News connector OFFLINE (news_unavailable) — no catalyst/earnings-window awareness, treated as a risk factor. No live VIX feed. Communication_Services sector also represented by no other open position, so no concentration offset.",
+  "invalidation_condition": "GOOGL falls out of the top-7 buffer by 6m total return OR SPY closes below its 10-month MA (trend filter breaks). Hard stop at -10% from fill ($331.68). Target +25% ($460.66).",
+  "risk_reward": {
+    "entry": 368.53,
+    "stop": 331.68,
+    "target": 460.66,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 16,
+    "usd": 5896.48,
+    "pct_of_account": 5.86,
+    "intended_pct": 6.0,
+    "strategy_b_intended_pct": 30.0,
+    "applied_cap": "Strategy B equal-weights top-5 at ~6% each (30% allocation / 5). 16 sh = 5.86% < max_position_size_pct 15%. Consistent with 06-05 B sizing (CSCO/UNH/NVDA each ~6%).",
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "consolidation": {
+    "primary_strategy": "large_cap_momentum_top5",
+    "subsumed_strategies": [],
+    "conflict": false
+  },
+  "confidence_score": 0.6,
+  "confidence_notes": "Deterministic top-5 rank (4 of 21) + SPY trend filter. Reduced for offline news (no earnings-window check) and no live VIX feed.",
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_notes": "Position 5.86% < max_position_size_pct 15%. Per-trade risk = 5.86% * 10% stop = 0.586% < max_risk_per_trade_pct 1.5%. R/R 2.5:1 >= min 1.5. Strategy large_cap_momentum_top5 ACTIVE_PAPER_TEST; GOOGL approved_for_paper_trading=true. CB FULL, throttle 1.0. Cash ample after GLD close. Post-fill 7/8 open positions; total exposure ~70% < 100%. Trade 3 of <=5 today. No earnings flagged (news offline -> flagged as risk, no confirmed earnings date in window).",
+  "compliance_verdict": "APPROVED",
+  "compliance_notes": "PAPER_BUY permitted under mode PAPER_TRADING. No live order path. Bull/bear/invalidation present. Schema-compliant. GOOGL not in blocked_symbols (only INTU blocked).",
+  "human_approval_required": false,
+  "final_status": "PAPER_PROPOSED",
+  "data_provenance": {
+    "signal_eval": "lib.signals.evaluate_all on lib.data.get_bars (daily), EOD 2026-06-08",
+    "signal_strategy": "large_cap_momentum_top5",
+    "signal_action": "ENTRY",
+    "signal_rationale": "large_cap_momentum_top5: ENTRY — in top-5, SPY trend up",
+    "data_freshness_note": "Fresh 06-08 daily close. 60s intraday staleness rule does not bind daily-bar momentum in PAPER_TRADING."
+  },
+  "execution": {
+    "broker": "alpaca_paper_sandbox",
+    "submitted": false,
+    "note": "Filled via lib.paper_sim.open_position at EOD; reconcile() is alpaca-authoritative under BROKER_PAPER=alpaca."
+  }
+}
