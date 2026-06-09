@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-09T20:37:00+00:00",
+  "routine_id": "end_of_day_2026-06-09",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "thesis_bull": "gold_permanent_overlay (Strategy C) signals a permanent 10% GLD allocation ENTRY; GLD 12m return +28.43% still leads cash by a wide margin (+24.5pp) and gold remains the strongest YTD asset and crisis diversifier.",
+  "thesis_bear": "dual_momentum_taa (Strategy A) signals EXIT because GLD lost its 210d (10-month) MA, so GLD no longer qualifies as the Strategy-A top-1 risk asset (SPY took the slot). The same A-EXIT vs C-ENTRY conflict was resolved on 2026-06-08 by executing the A EXIT and blocking the C overlay re-entry; GLD has been flat since that close.",
+  "invalidation_condition": "GLD reclaims its 210d MA (restoring Strategy-A qualification) OR the consolidator stops flagging conflict because one leg drops out. While GLD remains below its 210d MA, the overlay re-entry stays blocked per the v1 conflict rule.",
+  "risk_reward": { "entry": 0, "stop": 0, "target": 0, "ratio": 0 },
+  "position_size": { "shares": 0, "usd": 0, "pct_of_account": 0 },
+  "confidence_score": 0.0,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "reason": "signal_conflict_recurring_gld_overlay_blocked",
+  "conflict": {
+    "type": "ENTRY_vs_EXIT_same_symbol",
+    "entry_strategy": "gold_permanent_overlay",
+    "exit_strategy": "dual_momentum_taa",
+    "v1_resolution": "EXIT precedence; overlay re-entry blocked. GLD already flat since 2026-06-08 close, so neither leg is actionable at EOD (no open position to EXIT, overlay ENTRY blocked). No new URGENT alert fired — this is the identical, already-handled 2026-06-08 conflict recurring while GLD stays below its 210d MA.",
+    "prior_resolution_ref": "memory/daily_snapshots/2026-06-08.md"
+  },
+  "notes": "Documented for audit trail per end_of_day step 4a. EOD took no GLD action: position flat, overlay blocked, A-EXIT moot. Strategy-C GLD slot remains empty until GLD reclaims its 210d MA."
+}
