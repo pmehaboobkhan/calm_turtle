@@ -1,34 +1,52 @@
 {
   "CSCO": {
     "entry_price": 123.7893,
-    "entry_ts": "2026-06-08T20:41:30.935111+00:00",
+    "entry_ts": "2026-06-09T13:39:18.132998+00:00",
     "quantity": 46.0,
     "rationale_link": "decisions/2026-06-05/1642_CSCO.json",
     "side": "BUY",
     "stop_loss": 117.0,
     "take_profit": 162.5
   },
-  "GLD": {
-    "entry_price": 397.87,
-    "entry_ts": "2026-06-08T20:41:30.935138+00:00",
-    "quantity": 36.0,
-    "rationale_link": "alpaca-mirror",
+  "GOOGL": {
+    "entry_price": 369.8012,
+    "entry_ts": "2026-06-09T13:39:18.133022+00:00",
+    "quantity": 16.0,
+    "rationale_link": "decisions/2026-06-08/1637_GOOGL.json",
     "side": "BUY",
-    "stop_loss": null,
-    "take_profit": null
+    "stop_loss": 331.68,
+    "take_profit": 460.66
+  },
+  "JNJ": {
+    "entry_price": 232.75,
+    "entry_ts": "2026-06-09T13:39:18.133026+00:00",
+    "quantity": 26.0,
+    "rationale_link": "decisions/2026-06-08/1638_JNJ.json",
+    "side": "BUY",
+    "stop_loss": 209.49,
+    "take_profit": 290.96
   },
   "NVDA": {
     "entry_price": 208.9985,
-    "entry_ts": "2026-06-08T20:41:30.935143+00:00",
+    "entry_ts": "2026-06-09T13:39:18.133030+00:00",
     "quantity": 27.0,
     "rationale_link": "decisions/2026-06-05/1642_NVDA.json",
     "side": "BUY",
     "stop_loss": 196.79,
     "take_profit": 273.33
   },
+  "SPY": {
+    "entry_price": 743.78,
+    "entry_ts": "2026-06-09T13:39:18.133033+00:00",
+    "quantity": 20.0,
+    "rationale_link": "decisions/2026-06-08/1636_SPY.json",
+    "side": "BUY",
+    "stop_loss": 663.79,
+    "take_profit": 921.94
+  },
   "UNH": {
     "entry_price": 398.674,
-    "entry_ts": "2026-06-08T20:41:30.935147+00:00",
+    "entry_ts": "2026-06-09T13:39:18.133036+00:00",
     "quantity": 15.0,
     "rationale_link": "decisions/2026-06-05/1642_UNH.json",
     "side": "BUY",
@@ -37,7 +55,7 @@
   },
   "XOM": {
     "entry_price": 152.0058,
-    "entry_ts": "2026-06-08T20:41:30.935151+00:00",
+    "entry_ts": "2026-06-09T13:39:18.133039+00:00",
     "quantity": 26.0,
     "rationale_link": "decisions/2026-06-05/1642_XOM.json",
     "side": "BUY",
