@@ -1,0 +1,35 @@
+{
+    "schema_version": 1,
+    "timestamp": "2026-06-10T20:38:10+00:00",
+    "routine_id": "end_of_day_2026-06-10",
+    "symbol": "GLD",
+    "decision": "NO_TRADE",
+    "thesis_bull": "gold_permanent_overlay (Strategy C) signals a permanent 10% GLD allocation ENTRY; GLD remains a strong YTD diversifier and crisis hedge (12m return still well above cash), and Strategy C is currently 0% vs its 10% target.",
+    "thesis_bear": "dual_momentum_taa (Strategy A) signals EXIT because GLD remains below its 210d (10-month) MA, so GLD does not qualify as the Strategy-A top-1 risk asset (SPY holds the slot, 12m +26.08% above 210d MA). The identical A-EXIT vs C-ENTRY conflict was resolved on 2026-06-08 by executing the A EXIT and blocking the C overlay re-entry; GLD has been flat since that close.",
+    "invalidation_condition": "GLD reclaims its 210d MA (restoring Strategy-A qualification) OR the consolidator stops flagging conflict because one leg drops out. While GLD remains below its 210d MA, the overlay re-entry stays blocked per the v1 conflict rule.",
+    "risk_reward": {
+        "entry": 0,
+        "stop": 0,
+        "target": 0,
+        "ratio": 0
+    },
+    "position_size": {
+        "shares": 0,
+        "usd": 0,
+        "pct_of_account": 0
+    },
+    "confidence_score": 0.0,
+    "risk_manager_verdict": "REJECTED",
+    "compliance_verdict": "APPROVED",
+    "human_approval_required": false,
+    "final_status": "NO_TRADE",
+    "reason": "signal_conflict_recurring_gld_overlay_blocked",
+    "conflict": {
+        "type": "ENTRY_vs_EXIT_same_symbol",
+        "entry_strategy": "gold_permanent_overlay",
+        "exit_strategy": "dual_momentum_taa",
+        "v1_resolution": "EXIT precedence; overlay re-entry blocked. GLD already flat since 2026-06-08 close, so neither leg is actionable at EOD (no open position to EXIT, overlay ENTRY blocked). URGENT signal-conflict risk event written per step 4a (logs/risk_events/2026-06-10_203810_signal_conflict.md) for the recurring conflict while GLD stays below its 210d MA.",
+        "prior_resolution_ref": "logs/risk_events/2026-06-08_203250_signal_conflict.md"
+    },
+    "notes": "Documented for audit trail per end_of_day step 4a. EOD took no GLD action: position flat, overlay blocked, A-EXIT moot. Strategy-C GLD slot remains empty until GLD reclaims its 210d MA. 06-10 daily bar landed clean (06-09 corrupt-bar concern did not persist)."
+}

@@ -236,3 +236,13 @@
 - Same-symbol CONFLICT this run: gold_permanent_overlay ENTRY vs dual_momentum_taa EXIT. v1 executes EXIT; overlay re-entry blocked as just-closed. See `logs/risk_events/2026-06-08_203250_signal_conflict.md` and `decisions/2026-06-08/1635_GLD_gold_permanent_overlay_subsumed.json`.
 - Routine: end_of_day_2026-06-08, mode PAPER_TRADING, cb_state=FULL (EXITs never throttled).
 - Risk Manager: APPROVED (position exists; close reduces risk). Compliance: APPROVED.
+
+## 2026-06-10 — NO_TRADE (gold_permanent_overlay — conflict-blocked)
+
+- Decision file: `decisions/2026-06-10/1638_GLD.json`
+- Recurring same-symbol CONFLICT: gold_permanent_overlay ENTRY vs dual_momentum_taa EXIT. GLD remains below its 210d (10-month) MA → Strategy A disqualifies it (SPY is top-1 risk asset); Strategy C still wants it on policy.
+- GLD is flat (closed 2026-06-08), so the A EXIT is a no-op and the C overlay ENTRY is blocked per v1 conflict rule. Overlay slot stays empty (Strategy C 0% vs 10% target).
+- Risk event: `logs/risk_events/2026-06-10_203810_signal_conflict.md` (URGENT). Prior precedent: `logs/risk_events/2026-06-08_203250_signal_conflict.md`.
+- Routine: end_of_day_2026-06-10, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (CB write skipped — 1 pending broker order; throttle 1.0 carried forward).
+- Risk Manager: REJECTED (already-flat / conflict). Compliance: APPROVED.
+- Invalidation / unblock: GLD reclaims its 210d MA, at which point A and C agree and the overlay re-entry is re-evaluated.
