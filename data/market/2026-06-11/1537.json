@@ -1,0 +1,208 @@
+{
+  "fetch_time_et": "2026-06-11T15:37:05.784742-04:00",
+  "fetch_time_utc": "2026-06-11T19:37:05.784766+00:00",
+  "routine": "pre_close",
+  "market_hours_phase": "15:30_ET_pre_close",
+  "quotes": {
+    "CSCO": {
+      "last_price": 122.49,
+      "bid": 122.48,
+      "ask": 122.49,
+      "volume": 300,
+      "quote_ts": "2026-06-11T19:36:28.675541+00:00",
+      "staleness_seconds": 0.1,
+      "stale": false
+    },
+    "GOOGL": {
+      "last_price": 367.5,
+      "bid": 358.13,
+      "ask": 367.5,
+      "volume": 120,
+      "quote_ts": "2026-06-11T19:36:28.671063+00:00",
+      "staleness_seconds": 0.2,
+      "stale": false
+    },
+    "JNJ": {
+      "last_price": 251.5,
+      "bid": 240.34,
+      "ask": 251.5,
+      "volume": 200,
+      "quote_ts": "2026-06-11T19:36:28.871243+00:00",
+      "staleness_seconds": 0.1,
+      "stale": false
+    },
+    "NVDA": {
+      "last_price": 205.21,
+      "bid": 204.84,
+      "ask": 205.21,
+      "volume": 300,
+      "quote_ts": "2026-06-11T19:36:29.011643+00:00",
+      "staleness_seconds": 0.0,
+      "stale": false
+    },
+    "SPY": {
+      "last_price": 739.95,
+      "bid": 739.91,
+      "ask": 739.95,
+      "volume": 320,
+      "quote_ts": "2026-06-11T19:36:29.131026+00:00",
+      "staleness_seconds": 0.0,
+      "stale": false
+    },
+    "UNH": {
+      "last_price": 407.26,
+      "bid": 406.49,
+      "ask": 407.26,
+      "volume": 80,
+      "quote_ts": "2026-06-11T19:36:19.008148+00:00",
+      "staleness_seconds": 10.2,
+      "stale": false
+    },
+    "XOM": {
+      "last_price": 147.22,
+      "bid": 147.09,
+      "ask": 147.22,
+      "volume": 300,
+      "quote_ts": "2026-06-11T19:36:29.264875+00:00",
+      "staleness_seconds": 0.0,
+      "stale": false
+    }
+  },
+  "account": {
+    "equity": 100329.87,
+    "cash": 52448.12,
+    "buying_power": 343861.37,
+    "portfolio_value": 100329.87,
+    "account_number": "PA30OPOOJGMY",
+    "status": "ACTIVE",
+    "is_paper": true
+  },
+  "positions_analysis": {
+    "CSCO": {
+      "entry_price": 123.7893,
+      "current_price": 122.49,
+      "quantity": 46.0,
+      "entry_value": 5694.31,
+      "current_value": 5634.54,
+      "unrealized_pnl": -59.77,
+      "pnl_pct": -1.05,
+      "stop_loss": 117.0,
+      "distance_to_stop": 5.49,
+      "distance_to_stop_pct": 4.5,
+      "target": 162.5,
+      "distance_to_target": 40.01,
+      "distance_to_target_pct": 32.7
+    },
+    "GOOGL": {
+      "entry_price": 369.8012,
+      "current_price": 367.5,
+      "quantity": 16.0,
+      "entry_value": 5916.82,
+      "current_value": 5880.0,
+      "unrealized_pnl": -36.82,
+      "pnl_pct": -0.62,
+      "stop_loss": 331.68,
+      "distance_to_stop": 35.82,
+      "distance_to_stop_pct": 9.7,
+      "target": 460.66,
+      "distance_to_target": 93.16,
+      "distance_to_target_pct": 25.3
+    },
+    "JNJ": {
+      "entry_price": 232.75,
+      "current_price": 251.5,
+      "quantity": 26.0,
+      "entry_value": 6051.5,
+      "current_value": 6539.0,
+      "unrealized_pnl": 487.5,
+      "pnl_pct": 8.06,
+      "stop_loss": 209.49,
+      "distance_to_stop": 42.01,
+      "distance_to_stop_pct": 16.7,
+      "target": 290.96,
+      "distance_to_target": 39.46,
+      "distance_to_target_pct": 15.7
+    },
+    "NVDA": {
+      "entry_price": 209.0,
+      "current_price": 205.21,
+      "quantity": 27.0,
+      "entry_value": 5642.96,
+      "current_value": 5540.67,
+      "unrealized_pnl": -102.29,
+      "pnl_pct": -1.81,
+      "stop_loss": 196.79,
+      "distance_to_stop": 8.42,
+      "distance_to_stop_pct": 4.1,
+      "target": 273.33,
+      "distance_to_target": 68.12,
+      "distance_to_target_pct": 33.2
+    },
+    "SPY": {
+      "entry_price": 743.78,
+      "current_price": 739.95,
+      "quantity": 20.0,
+      "entry_value": 14875.6,
+      "current_value": 14799.0,
+      "unrealized_pnl": -76.6,
+      "pnl_pct": -0.51,
+      "stop_loss": 663.79,
+      "distance_to_stop": 76.16,
+      "distance_to_stop_pct": 10.3,
+      "target": 921.94,
+      "distance_to_target": 181.99,
+      "distance_to_target_pct": 24.6
+    },
+    "UNH": {
+      "entry_price": 398.67,
+      "current_price": 407.26,
+      "quantity": 15.0,
+      "entry_value": 5980.11,
+      "current_value": 6108.9,
+      "unrealized_pnl": 128.79,
+      "pnl_pct": 2.15,
+      "stop_loss": 356.82,
+      "distance_to_stop": 50.44,
+      "distance_to_stop_pct": 12.4,
+      "target": 495.59,
+      "distance_to_target": 88.33,
+      "distance_to_target_pct": 21.7
+    },
+    "XOM": {
+      "entry_price": 152.01,
+      "current_price": 147.22,
+      "quantity": 26.0,
+      "entry_value": 3952.15,
+      "current_value": 3827.72,
+      "unrealized_pnl": -124.43,
+      "pnl_pct": -3.15,
+      "stop_loss": 136.84,
+      "distance_to_stop": 10.38,
+      "distance_to_stop_pct": 7.1,
+      "target": 190.05,
+      "distance_to_target": 42.83,
+      "distance_to_target_pct": 29.1
+    }
+  },
+  "portfolio_summary": {
+    "total_entry_value": 48113.45,
+    "total_current_value": 48329.83,
+    "total_unrealized_pnl": 216.38,
+    "total_pnl_pct": 0.45,
+    "position_value_pct_of_equity": 48.2,
+    "open_positions_count": 7
+  },
+  "pending_orders": {
+    "GLD_CLOSE": {
+      "symbol": "GLD",
+      "side": "CLOSE",
+      "quantity": 36.0,
+      "status": "PENDING_BROKER",
+      "issued_at": "2026-06-08T20:36:10.194491+00:00",
+      "order_id": "ebef6e53-d97b-4cff-bd3d-0dc4fc8ee843",
+      "note": "GLD CLOSE order from 2026-06-08 still pending as of this fetch; position no longer exists in positions.json (already closed/reconciled)"
+    }
+  },
+  "data_source": "Alpaca IEX (free tier) for quotes; lib.data.get_latest_quote() + lib.broker.account_snapshot()",
+  "data_freshness_note": "All quotes < 11s old; UNH oldest at 10.2s. Max staleness threshold = 60s per risk_limits.yaml. All quotes FRESH."
+}
