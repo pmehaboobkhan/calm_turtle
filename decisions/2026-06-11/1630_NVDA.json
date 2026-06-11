@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-11T20:36:00+00:00",
+  "routine_id": "end_of_day_2026-06-11",
+  "symbol": "NVDA",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 NO_SIGNAL hold-zone (rank 7, within top-7 buffer); bullish catalysts: 25x dividend raise + record Q1 FY27 ($81.6B, +85% YoY).",
+  "thesis_bear": "MtM below per-position stop (191.33 < 196.79, -12.52% vs entry); rank 7 is at the demotion boundary (rank >=8 flips to EXIT).",
+  "invalidation_condition": "NVDA falls to rank >=8 by 6m return (engine EXITs) OR SPY trend filter breaks.",
+  "risk_reward": {
+    "entry": 191.33,
+    "stop": 196.79,
+    "target": 273.33,
+    "ratio": 1.8
+  },
+  "position_size": {
+    "shares": 27.0,
+    "usd": 5165.91,
+    "pct_of_account": 5.15
+  },
+  "confidence_score": 0.55,
+  "risk_manager_verdict": "APPROVED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "reason": "hold_zone_no_signal",
+  "strategy": "large_cap_momentum_top5",
+  "circuit_breaker_state": "FULL",
+  "throttle_applied": 1.0,
+  "notes": "EOD 2026-06-11 maintenance run; 0 opens / 0 closes. Position already held / no actionable signal."
+}

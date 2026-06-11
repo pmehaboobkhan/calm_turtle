@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-11T20:36:00+00:00",
+  "routine_id": "end_of_day_2026-06-11",
+  "symbol": "CSCO",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 rank-1 by 6m return (+52.27%); bullish news flow (AI Cloud Control, Cisco Live, BofA conf); SPY trend filter passed.",
+  "thesis_bear": "MtM is below the per-position stop (last 115.94 < 117.00, -10.83% vs entry); stretched +52% 6m move is mean-reversion-prone.",
+  "invalidation_condition": "CSCO falls out of the top-7 momentum buffer (rank >=8) OR SPY trend filter breaks; engine would then EXIT.",
+  "risk_reward": {
+    "entry": 115.94,
+    "stop": 117.0,
+    "target": 162.5,
+    "ratio": 3.0
+  },
+  "position_size": {
+    "shares": 46.0,
+    "usd": 5333.24,
+    "pct_of_account": 5.32
+  },
+  "confidence_score": 0.58,
+  "risk_manager_verdict": "APPROVED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "reason": "entry_signal_already_held",
+  "strategy": "large_cap_momentum_top5",
+  "circuit_breaker_state": "FULL",
+  "throttle_applied": 1.0,
+  "notes": "EOD 2026-06-11 maintenance run; 0 opens / 0 closes. Position already held / no actionable signal."
+}

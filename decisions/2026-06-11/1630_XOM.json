@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-11T20:36:00+00:00",
+  "routine_id": "end_of_day_2026-06-11",
+  "symbol": "XOM",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 rank-2 by 6m return (+31.62%); energy momentum intact; SPY trend filter passed; earnings 07-31 outside caution window.",
+  "thesis_bear": "Commodity-linked; oil price reversal could cut momentum; -3.15% intraday.",
+  "invalidation_condition": "XOM falls out of top-7 momentum buffer OR SPY trend filter breaks.",
+  "risk_reward": {
+    "entry": 154.19,
+    "stop": 136.84,
+    "target": 190.05,
+    "ratio": 2.0
+  },
+  "position_size": {
+    "shares": 26.0,
+    "usd": 4008.94,
+    "pct_of_account": 4.0
+  },
+  "confidence_score": 0.65,
+  "risk_manager_verdict": "APPROVED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "reason": "entry_signal_already_held",
+  "strategy": "large_cap_momentum_top5",
+  "circuit_breaker_state": "FULL",
+  "throttle_applied": 1.0,
+  "notes": "EOD 2026-06-11 maintenance run; 0 opens / 0 closes. Position already held / no actionable signal."
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-11T20:36:00+00:00",
+  "routine_id": "end_of_day_2026-06-11",
+  "symbol": "SPY",
+  "decision": "NO_TRADE",
+  "thesis_bull": "dual_momentum_taa top-1 risk asset: SPY above 10m/210d SMA, 12m +22.36% vs cash +3.89%; bullish_trend regime intact.",
+  "thesis_bear": "Trend can break on a macro shock; FOMC 06-16/17 ahead; proxy vol rising to 13.99%.",
+  "invalidation_condition": "SPY closes below its 210d/10m SMA, or another risk asset overtakes it as dual_momentum_taa top-1.",
+  "risk_reward": {
+    "entry": 738.09,
+    "stop": 663.79,
+    "target": 921.94,
+    "ratio": 2.4
+  },
+  "position_size": {
+    "shares": 20.0,
+    "usd": 14761.8,
+    "pct_of_account": 14.73
+  },
+  "confidence_score": 0.72,
+  "risk_manager_verdict": "APPROVED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "reason": "entry_signal_already_held",
+  "strategy": "dual_momentum_taa",
+  "circuit_breaker_state": "FULL",
+  "throttle_applied": 1.0,
+  "notes": "EOD 2026-06-11 maintenance run; 0 opens / 0 closes. Position already held / no actionable signal."
+}

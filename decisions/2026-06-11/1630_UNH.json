@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-11T20:36:00+00:00",
+  "routine_id": "end_of_day_2026-06-11",
+  "symbol": "UNH",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 rank-3 by 6m return (+26.89%); book's anchor at +8.30% vs entry; healthcare defensive; SPY trend filter passed.",
+  "thesis_bear": "Insurance/healthcare headline risk; single-name concentration.",
+  "invalidation_condition": "UNH falls out of top-7 momentum buffer OR SPY trend filter breaks.",
+  "risk_reward": {
+    "entry": 429.45,
+    "stop": 356.82,
+    "target": 495.59,
+    "ratio": 2.8
+  },
+  "position_size": {
+    "shares": 15.0,
+    "usd": 6441.75,
+    "pct_of_account": 6.43
+  },
+  "confidence_score": 0.74,
+  "risk_manager_verdict": "APPROVED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "reason": "entry_signal_already_held",
+  "strategy": "large_cap_momentum_top5",
+  "circuit_breaker_state": "FULL",
+  "throttle_applied": 1.0,
+  "notes": "EOD 2026-06-11 maintenance run; 0 opens / 0 closes. Position already held / no actionable signal."
+}

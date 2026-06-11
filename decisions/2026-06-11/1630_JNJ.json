@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-11T20:36:00+00:00",
+  "routine_id": "end_of_day_2026-06-11",
+  "symbol": "JNJ",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 rank-4 by 6m return (+19.60%, rose from rank 9 on 06-08); SPY trend filter passed; earnings ~07-14.",
+  "thesis_bear": "MtM -2.40% vs entry; ongoing talc litigation overhang (known/priced).",
+  "invalidation_condition": "JNJ falls out of top-7 momentum buffer OR SPY trend filter breaks.",
+  "risk_reward": {
+    "entry": 227.24,
+    "stop": 209.49,
+    "target": 290.96,
+    "ratio": 2.3
+  },
+  "position_size": {
+    "shares": 26.0,
+    "usd": 5908.24,
+    "pct_of_account": 5.9
+  },
+  "confidence_score": 0.66,
+  "risk_manager_verdict": "APPROVED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "reason": "entry_signal_already_held",
+  "strategy": "large_cap_momentum_top5",
+  "circuit_breaker_state": "FULL",
+  "throttle_applied": 1.0,
+  "notes": "EOD 2026-06-11 maintenance run; 0 opens / 0 closes. Position already held / no actionable signal."
+}

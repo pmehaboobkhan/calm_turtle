@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-11T20:36:00+00:00",
+  "routine_id": "end_of_day_2026-06-11",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "thesis_bull": "gold_permanent_overlay policy ENTRY (permanent 10% diversifier/crisis hedge).",
+  "thesis_bear": "dual_momentum_taa simultaneously signals EXIT (GLD below 210d MA); A-EXIT vs C-ENTRY conflict; macro leadership in equities not gold.",
+  "invalidation_condition": "GLD reclaims its 210d MA, clearing the A-EXIT vs C-ENTRY conflict and allowing overlay re-entry.",
+  "risk_reward": {
+    "entry": 413.38,
+    "stop": 0.0,
+    "target": 0.0,
+    "ratio": 0.0
+  },
+  "position_size": {
+    "shares": 0.0,
+    "usd": 0.0,
+    "pct_of_account": 0.0
+  },
+  "confidence_score": 0.52,
+  "risk_manager_verdict": "APPROVED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "reason": "signal_conflict_overlay_blocked",
+  "strategy": "gold_permanent_overlay",
+  "circuit_breaker_state": "FULL",
+  "throttle_applied": 1.0,
+  "notes": "EOD 2026-06-11 maintenance run; 0 opens / 0 closes. Position already held / no actionable signal."
+}
