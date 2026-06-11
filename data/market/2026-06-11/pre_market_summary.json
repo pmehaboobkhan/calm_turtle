@@ -1,0 +1,90 @@
+{
+  "data_freshness": {
+    "signal_fetch_ts": "2026-06-11T10:31:44.141632+00:00",
+    "pre_market_summary_ts": "2026-06-11T10:32:44.886256+00:00",
+    "source": "data/market/2026-06-11/1031.json via lib.signals (yfinance bars)",
+    "quote_fetch_status": "Pre-market; price data not yet available via IEX/yfinance",
+    "staleness_seconds": 0,
+    "note": "Signal analysis complete at 10:31 ET this morning. Watchlist is current."
+  },
+  "regime_indicators": {
+    "regime": "bullish_trend",
+    "confidence": "medium",
+    "spy_above_50dma": true,
+    "spy_above_200dma": true,
+    "spy_pct_from_50dma": 0.008490198852854736,
+    "annualized_vol_pct": 13.989988801129961,
+    "counter_evidence": [
+      "Trend can break on macro shocks"
+    ]
+  },
+  "signal_summary": {
+    "total_signals": 26,
+    "entry_signals": 7,
+    "exit_signals": 17,
+    "hold_signals": 2,
+    "entry_symbols": [
+      "SPY",
+      "GOOGL",
+      "JNJ",
+      "UNH",
+      "XOM",
+      "CSCO",
+      "GLD"
+    ],
+    "exit_symbols": [
+      "IEF",
+      "GLD",
+      "SHV",
+      "TLT",
+      "AAPL",
+      "MSFT",
+      "AMZN",
+      "META",
+      "TSLA",
+      "JPM",
+      "BAC",
+      "V",
+      "MA",
+      "PFE",
+      "WMT",
+      "HD",
+      "ORCL"
+    ],
+    "hold_symbols": [
+      "NVDA",
+      "COST"
+    ]
+  },
+  "current_positions": 7,
+  "positions_nearest_to_stops": [
+    {
+      "symbol": "SPY",
+      "entry_price": 743.78,
+      "stop_loss": 663.79,
+      "distance_pct": -10.75,
+      "notes": "Nearest to stop-loss level"
+    },
+    {
+      "symbol": "UNH",
+      "entry_price": 398.674,
+      "stop_loss": 356.82,
+      "distance_pct": -10.5,
+      "notes": "Nearest to stop-loss level"
+    },
+    {
+      "symbol": "GOOGL",
+      "entry_price": 369.8012,
+      "stop_loss": 331.68,
+      "distance_pct": -10.31,
+      "notes": "Nearest to stop-loss level"
+    }
+  ],
+  "data_quality": {
+    "watchlist_symbols_total": 25,
+    "signals_received": 26,
+    "missing_symbols": [],
+    "corrupt_bars": "None detected",
+    "issue_flags": "None"
+  }
+}
