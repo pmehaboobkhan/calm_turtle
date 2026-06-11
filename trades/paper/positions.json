@@ -1,7 +1,7 @@
 {
   "CSCO": {
     "entry_price": 123.7893,
-    "entry_ts": "2026-06-11T13:37:19.159811+00:00",
+    "entry_ts": "2026-06-11T16:13:17.330739+00:00",
     "quantity": 46.0,
     "rationale_link": "decisions/2026-06-05/1642_CSCO.json",
     "side": "BUY",
@@ -10,7 +10,7 @@
   },
   "GOOGL": {
     "entry_price": 369.8012,
-    "entry_ts": "2026-06-11T13:37:19.159829+00:00",
+    "entry_ts": "2026-06-11T16:13:17.330771+00:00",
     "quantity": 16.0,
     "rationale_link": "decisions/2026-06-08/1637_GOOGL.json",
     "side": "BUY",
@@ -19,7 +19,7 @@
   },
   "JNJ": {
     "entry_price": 232.75,
-    "entry_ts": "2026-06-11T13:37:19.159832+00:00",
+    "entry_ts": "2026-06-11T16:13:17.330776+00:00",
     "quantity": 26.0,
     "rationale_link": "decisions/2026-06-08/1638_JNJ.json",
     "side": "BUY",
@@ -28,7 +28,7 @@
   },
   "NVDA": {
     "entry_price": 208.9985,
-    "entry_ts": "2026-06-11T13:37:19.159836+00:00",
+    "entry_ts": "2026-06-11T16:13:17.330780+00:00",
     "quantity": 27.0,
     "rationale_link": "decisions/2026-06-05/1642_NVDA.json",
     "side": "BUY",
@@ -37,7 +37,7 @@
   },
   "SPY": {
     "entry_price": 743.78,
-    "entry_ts": "2026-06-11T13:37:19.159838+00:00",
+    "entry_ts": "2026-06-11T16:13:17.330785+00:00",
     "quantity": 20.0,
     "rationale_link": "decisions/2026-06-08/1636_SPY.json",
     "side": "BUY",
@@ -46,7 +46,7 @@
   },
   "UNH": {
     "entry_price": 398.674,
-    "entry_ts": "2026-06-11T13:37:19.159841+00:00",
+    "entry_ts": "2026-06-11T16:13:17.330789+00:00",
     "quantity": 15.0,
     "rationale_link": "decisions/2026-06-05/1642_UNH.json",
     "side": "BUY",
@@ -55,7 +55,7 @@
   },
   "XOM": {
     "entry_price": 152.0058,
-    "entry_ts": "2026-06-11T13:37:19.159844+00:00",
+    "entry_ts": "2026-06-11T16:13:17.330793+00:00",
     "quantity": 26.0,
     "rationale_link": "decisions/2026-06-05/1642_XOM.json",
     "side": "BUY",
