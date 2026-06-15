@@ -1,0 +1,87 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/Users/mehaboob.khan.perur/gitrepos/claude_trading_bot/.codex/hooks/block_live.sh'"
+          },
+          {
+            "type": "command",
+            "command": "'/Users/mehaboob.khan.perur/gitrepos/claude_trading_bot/.codex/hooks/journal_immutability.sh'"
+          },
+          {
+            "type": "command",
+            "command": "'/Users/mehaboob.khan.perur/gitrepos/claude_trading_bot/.codex/hooks/block_prompt_overwrites.sh'"
+          },
+          {
+            "type": "command",
+            "command": "'/Users/mehaboob.khan.perur/gitrepos/claude_trading_bot/.codex/hooks/halt_audit.sh'"
+          },
+          {
+            "type": "command",
+            "command": "'/Users/mehaboob.khan.perur/gitrepos/claude_trading_bot/.codex/hooks/append_only.sh'"
+          },
+          {
+            "type": "command",
+            "command": "'/Users/mehaboob.khan.perur/gitrepos/claude_trading_bot/.codex/hooks/require_strategy_tests.sh'"
+          },
+          {
+            "type": "command",
+            "command": "'/Users/mehaboob.khan.perur/gitrepos/claude_trading_bot/.codex/hooks/safe_mode_writes.sh'"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/Users/mehaboob.khan.perur/gitrepos/claude_trading_bot/.codex/hooks/scan_secrets.sh'"
+          },
+          {
+            "type": "command",
+            "command": "'/Users/mehaboob.khan.perur/gitrepos/claude_trading_bot/.codex/hooks/block_broker_calls.sh'"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/Users/mehaboob.khan.perur/gitrepos/claude_trading_bot/.codex/hooks/validate_yaml_schema.sh'"
+          },
+          {
+            "type": "command",
+            "command": "'/Users/mehaboob.khan.perur/gitrepos/claude_trading_bot/.codex/hooks/validate_decision_schema.sh'"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/Users/mehaboob.khan.perur/gitrepos/claude_trading_bot/.codex/hooks/log_session_start.sh'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/Users/mehaboob.khan.perur/gitrepos/claude_trading_bot/.codex/hooks/log_session_end.sh'"
+          }
+        ]
+      }
+    ]
+  }
+}
