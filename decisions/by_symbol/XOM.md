@@ -188,3 +188,19 @@
 - Open paper positions: 0 filled (1 BUY order PENDING_BROKER for next open)
 - Closed paper trades (post-reset): 1 (2026-05-29, -$1,461 / -9.35%, daily-loss halt)
 - Active strategies: large_cap_momentum_top5
+
+## 2026-06-30 — EOD NO_TRADE (HELD; stop-breach deferred — data staleness)
+
+- Decision file: `decisions/2026-06-30/2039_XOM.json` (NO_TRADE, final_status=NO_TRADE)
+- Routine: end_of_day_2026-06-30, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (Guard-1 skip on pending broker order; carried forward; DD 0.56%), throttle=1.0.
+- Position: BUY 26 @ entry $152.0058, stop $136.84, TP $190.05. Broker unrealized ≈ −$415.65 (implied mark ≈ $136.02 — BELOW the $136.84 stop).
+- **Outcome: HELD overnight, stop-breach NOT actioned.** No trustworthy close price: latest quote ~37 min stale + degraded (bid 129.20 / ask 143.28, ~10% spread); daily bars 13 trading days stale (latest 06-11; yfinance fresh source unreachable via proxy TLS). v1 has no forced-close-on-stop path; portfolio CB (FULL, DD 0.56%) is the true loss limit and is not engaged. Resolve on next fresh close.
+- Risk Manager: APPROVED. Compliance: APPROVED. Risk event: `logs/risk_events/2026-06-30_203914_data_staleness.md`.
+
+**Cumulative stats (updated 2026-06-30 EOD):**
+
+- Open paper positions: 1 (BUY 26 @ $152.0058; held; below stop on stale marks)
+- Closed paper trades (post-reset): 1 (2026-05-29, -$1,461 / -9.35%, daily-loss halt)
+- Unrealized PnL (broker mark, stale): ≈ −$415.65
+- Win rate: n/a (no new closed trades)
+- Active strategies: large_cap_momentum_top5

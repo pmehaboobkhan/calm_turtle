@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-30T20:39:14Z",
+  "routine_id": "end_of_day_2026-06-30",
+  "symbol": "XOM",
+  "decision": "NO_TRADE",
+  "thesis_bull": "XOM is a held large_cap_momentum_top5 position (rank ~3 by 6m return, +23.95% on the last fresh 06-11 evaluation), energy-sector momentum leader. SPY trend filter intact (above 10m MA). Position thesis (momentum leadership) is not deterministically invalidated by the strategy's own exit rule (still in top-5 on last-available data).",
+  "thesis_bear": "XOM is trading below its per-position stop ($136.84): pre_close marked it $136.61 intraday (-10.13%), and broker unrealized PnL of -$415.65 at EOD implies a mark of ~$136.02. A clean stop-close would normally be evaluated here against today's close.",
+  "invalidation_condition": "On the NEXT session with FRESH data: if XOM's confirmed close is below the $136.84 stop, process the PAPER_CLOSE; if it has reclaimed the stop, hold. The momentum thesis additionally invalidates if XOM falls out of the top-7 buffer or SPY breaks its 10m MA.",
+  "risk_reward": { "entry": 152.005769, "stop": 136.84, "target": 190.05, "ratio": 2.5 },
+  "position_size": { "shares": 26, "usd": 3536.15, "pct_of_account": 3.53 },
+  "confidence_score": 0.3,
+  "risk_manager_verdict": "APPROVED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "no_trade_reason": "data_staleness_no_clean_close_price",
+  "notes": "EOD 2026-06-30: daily bars 13 trading days stale (latest 06-11; yfinance fresh source unreachable via proxy TLS); latest quote ~37 min stale and degraded (XOM bid 129.20 / ask 143.28, ~10% spread). No trustworthy close price to execute a stop-close. v1 has no forced-close-on-stop path at a routine; portfolio circuit-breaker is FULL (DD 0.56%) — the true loss limit is not engaged. Held overnight, stop-breach to be resolved next session on fresh data. See logs/risk_events/2026-06-30_203914_data_staleness.md."
+}

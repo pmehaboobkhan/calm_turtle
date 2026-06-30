@@ -208,3 +208,18 @@
 
 - Open paper positions: 0 filled (1 BUY order PENDING_BROKER for next open)
 - Active strategies: large_cap_momentum_top5
+
+## 2026-06-30 — EOD NO_TRADE (HELD; stop status indeterminate — data staleness)
+
+- Decision file: `decisions/2026-06-30/2039_CSCO.json` (NO_TRADE, final_status=NO_TRADE)
+- Routine: end_of_day_2026-06-30, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (Guard-1 skip; carried forward; DD 0.56%), throttle=1.0.
+- Position: BUY 46 @ entry $123.7893, stop $117.00, TP $162.50. Broker unrealized ≈ −$291.15.
+- **Outcome: HELD overnight.** Stale EOD quote read $112.76 (would be below $117.00 stop) but is unreliable (ask 0.0, ~37 min stale); last fresh read (pre_close 19:37Z) was $117.58 — 0.50% ABOVE stop. Cannot confirm a true breach on stale data. Daily bars 13 trading days stale (latest 06-11). Engine still ranks CSCO #1 momentum. Resolve stop status on next fresh close.
+- Risk Manager: APPROVED. Compliance: APPROVED. Risk event: `logs/risk_events/2026-06-30_203914_data_staleness.md`.
+
+**Cumulative stats (updated 2026-06-30 EOD):**
+
+- Open paper positions: 1 (BUY 46 @ $123.7893; held; stop status indeterminate on stale marks)
+- Unrealized PnL (broker mark, stale): ≈ −$291.15
+- Win rate: n/a (no new closed trades)
+- Active strategies: large_cap_momentum_top5

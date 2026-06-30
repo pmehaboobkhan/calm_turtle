@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-30T20:39:14Z",
+  "routine_id": "end_of_day_2026-06-30",
+  "symbol": "CSCO",
+  "decision": "NO_TRADE",
+  "thesis_bull": "CSCO is the held rank-1 large_cap_momentum_top5 position (+53.19% 6m return on the last fresh 06-11 evaluation), the strongest momentum name in the book. SPY trend filter intact. The strategy's own exit rule is NOT triggered on last-available data (still top-1), so the momentum thesis is intact.",
+  "thesis_bear": "CSCO is near/through its per-position stop ($117.00): pre_close marked it $117.58 (-5.02%, 0.50% above stop) at 19:37 UTC; the EOD stale quote read $112.76 which would be below the stop. A clean stop-close would normally be evaluated here against today's close.",
+  "invalidation_condition": "On the NEXT session with FRESH data: if CSCO's confirmed close is below the $117.00 stop, process the PAPER_CLOSE; otherwise hold. Momentum thesis additionally invalidates if CSCO falls out of the top-7 buffer or SPY breaks its 10m MA.",
+  "risk_reward": { "entry": 123.7893, "stop": 117.00, "target": 162.50, "ratio": 5.7 },
+  "position_size": { "shares": 46, "usd": 5694.31, "pct_of_account": 5.68 },
+  "confidence_score": 0.3,
+  "risk_manager_verdict": "APPROVED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "no_trade_reason": "data_staleness_no_clean_close_price",
+  "notes": "EOD 2026-06-30: daily bars 13 trading days stale (latest 06-11; yfinance fresh source unreachable via proxy TLS); latest quote ~37 min stale and degraded (CSCO ask=0.0, last 112.76). No trustworthy close price to execute a stop-close. The stale quote suggests CSCO may be below its 117.00 stop, but it was 0.50% ABOVE stop at the last fresh read (pre_close 19:37 UTC, 117.58). Held overnight; stop status to be confirmed next session on fresh data. See logs/risk_events/2026-06-30_203914_data_staleness.md."
+}
