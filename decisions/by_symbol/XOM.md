@@ -204,3 +204,18 @@
 - Unrealized PnL (broker mark, stale): ≈ −$415.65
 - Win rate: n/a (no new closed trades)
 - Active strategies: large_cap_momentum_top5
+
+## 2026-07-01 — PAPER_CLOSE (stop-loss exit; large_cap_momentum_top5)
+
+- Decision file: `decisions/2026-07-01/1534_XOM.json` (PAPER_CLOSE, final_status=PAPER_FILLED)
+- Routine: pre_close_2026-07-01, mode PAPER_TRADING, BROKER_PAPER=alpaca. CB state FULL (Guard-1 skip on 3 pending broker orders; carried forward; refresh irrelevant to EXIT — EXITs never CB-throttled).
+- **Deterministic stop-loss EXIT.** `lib.portfolio_health.assess_positions` returned stop_breached=TRUE, positions_to_close=[XOM]. Fresh Alpaca IEX quote bid 135.89 / ask 135.93 — BOTH below the 136.84 stop, ~0.69% under, tight ~0.03% clean spread (not a dislocated tick). Held just above stop all session (137.05 midday); broke clean at pre-close. The 06-30 sub-stop read was a STALE quote (correctly not actioned); today's live tight-spread print IS actionable.
+- Execution: full 26-share close @ 135.89 (conservative bid) via `lib.paper_sim.close_position`. Alpaca order `7f66896f-4342-4c0f-831c-7c61d51c84f9` status FILLED. reconcile() discrepancies=[] (alpaca-authoritative, open_count=4). Est. realized **−$419.01 (−10.6%)**.
+- Gate chain: trade_proposal → risk_manager(APPROVED) → compliance_safety(APPROVED). Overnight-risk overlay (earnings NONE, macro NONE next session) was confirmatory only; the stop-breach was the governing trigger.
+
+**Cumulative stats (updated 2026-07-01 pre_close):**
+
+- Open paper positions: 0 (XOM fully closed on stop-loss)
+- Closed paper trades (post-reset): 2 (2026-05-29 −$1,461 / −9.35% daily-loss halt; 2026-07-01 −$419.01 / −10.6% stop-loss)
+- Win rate: 0% (0 of 2 closed profitable)
+- Active strategies: large_cap_momentum_top5

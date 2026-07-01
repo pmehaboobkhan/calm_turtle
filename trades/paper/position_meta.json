@@ -26,12 +26,5 @@
     "rationale_link": "decisions/2026-06-05/1642_UNH.json",
     "stop_loss": 356.82,
     "take_profit": 495.59
-  },
-  "XOM": {
-    "entry_basis": 152.0704,
-    "opened_at": "2026-06-05T20:46:44.070073+00:00",
-    "rationale_link": "decisions/2026-06-05/1642_XOM.json",
-    "stop_loss": 136.84,
-    "take_profit": 190.05
   }
 }

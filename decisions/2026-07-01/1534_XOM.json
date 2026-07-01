@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-01T19:34:00+00:00",
+  "routine_id": "pre_close_2026-07-01",
+  "symbol": "XOM",
+  "decision": "PAPER_CLOSE",
+  "strategy": "large_cap_momentum_top5",
+  "action_source": "lib.portfolio_health.assess_positions (deterministic stop-loss trigger); positions_to_close=[XOM]",
+  "thesis_bull": "Reason to hold (subordinate): XOM is an active large_cap_momentum_top5 position entered at 152.0058 on 2026-07-01, with an original take_profit of 190.05 (~25% above entry). The stop at 136.84 sits 10.0% below entry, the strategy's default per-position stop giving the momentum thesis room. XOM had held just above this stop all session (137.05 at midday), so a case could have been made that the level was acting as support and that a bounce back above 136.84 would preserve the remaining upside toward 190.05. Energy also carries a commodity/inflation-hedge role in the book. That thesis is now void: the stop broke clean at pre-close.",
+  "thesis_bear": "Reason to exit (governing): The deterministic stop-loss rule has fired and is decisive. lib.portfolio_health.assess_positions returned stop_breached=TRUE for XOM with current=135.8900 < stop=136.8400 (~0.69% below), and positions_to_close=[XOM]. The breach is durable, not a dislocated tick: the fresh Alpaca IEX quote (quote_ts 2026-07-01T19:33:58Z, well inside the 60s staleness cap, market OPEN) shows bid 135.89 / ask 135.93 with a tight ~0.03% spread, and BOTH sides sit below the 136.84 stop. Counter-evidence to holding: the pre-committed invalidation condition (trade below the 136.84 stop) has been met on clean two-sided pricing; the mid-session 'holding above stop' support read failed at pre-close. Per strategy risk discipline a breached stop is a mechanical exit; hoping for mean reversion or averaging down is a prohibited action. Reinforcing (not primary): NFP prints tomorrow 2026-07-02 ~08:30 ET pre-market, an overnight macro catalyst, and XOM carries energy/commodity overnight gap risk. The stop-breach alone is sufficient; overnight risk is confirmatory. Realized loss estimate at the 135.89 bid is approximately -$419.01 (-10.6%).",
+  "technical_context": {
+    "entry_price": 152.0058,
+    "stop_loss": 136.84,
+    "take_profit": 190.05,
+    "current_price": 135.89,
+    "pct_from_entry": -10.6,
+    "invalidation_triggers": [
+      "stop_loss breached: BUY entered at 152.0058, stop=136.8400, current=135.8900"
+    ],
+    "trigger_source": "lib.portfolio_health.assess_positions",
+    "stop_breached": true,
+    "positions_to_close": ["XOM"],
+    "session_context": "Held just above stop all session (137.05 at midday); broke clean below 136.84 at pre-close. Prior-session (06-30) sub-stop read was a stale quote and NOT actionable; today's live tight-spread print IS actionable."
+  },
+  "news_context": "No news lookup performed for this monitoring-only exit; the action is a deterministic stop-loss and does not depend on sentiment. Absence of a news pull is NOT treated as bullish.",
+  "macro_context": "pre_close monitoring routine; regime/sector posture not re-evaluated for a mechanical stop-loss exit. Reinforcing macro risk: NFP scheduled 2026-07-02 ~08:30 ET pre-market (overnight catalyst). EXITs are NEVER throttled by the circuit-breaker regardless of CB state (CB currently FULL, carried forward).",
+  "invalidation_condition": "Exit stands as long as XOM trades below the 136.84 stop on non-dislocated, two-sided pricing. Measurable condition: Alpaca IEX bid AND ask both < 136.84 (stop) => close full position. Currently bid 135.89 / ask 135.93, both below stop with a tight ~0.03% spread, so the stop-loss exit is confirmed. The exit would only be invalidated if XOM reclaimed and held at/above 136.84 on clean prints before execution.",
+  "risk_reward": {
+    "entry": 152.0058,
+    "stop": 136.84,
+    "target": 190.05,
+    "ratio": 0.0
+  },
+  "position_size": {
+    "shares": 26,
+    "usd": 3533.14,
+    "pct_of_account": 0
+  },
+  "close_details": {
+    "close_full_position": true,
+    "close_quantity": 26.0,
+    "execution_price": 135.89,
+    "side_to_close": "BUY",
+    "realized_pl_estimate_usd": -419.01,
+    "realized_pl_estimate_pct": -10.6
+  },
+  "price_source": "Alpaca IEX quote, bid=135.89 / ask=135.93 / last=135.93, quote_ts 2026-07-01T19:33:58Z (market OPEN, fresh: ~2s old, well under the 60s staleness cap). Spread ~0.03% — tight and clean, not a dislocated tick. Conservative bid 135.89 used as the realizable long-side market-sell reference/close price.",
+  "data_quality_caveats": "Quote is fresh (well inside 60s staleness cap) and tight-spread; both bid and ask are below the 136.84 stop, so the breach is durable. Note: the prior-session 06-30 sub-stop read was a STALE quote and was correctly NOT actioned; today's live tight-spread print is actionable. Circuit-breaker refresh was skipped this run due to pending broker orders, which is irrelevant to an EXIT (EXITs are never throttled).",
+  "confidence_score": 0.93,
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_reasoning": "EXIT/stop-loss close of an existing position. XOM is on the watchlist with approved_for_paper_trading=true and is NOT blocked (only INTU is blocked). Strategy large_cap_momentum_top5 is in allowed_strategies (ACTIVE_PAPER_TEST). Position confirmed in trades/paper/positions.json (26 shares BUY, entry 152.0058, stop 136.84, take_profit 190.05); closing the full 26 shares is correctly sized and complete. Deterministic stop-loss fired (135.89 < 136.84) and is corroborated by a fresh two-sided Alpaca IEX quote (bid 135.89 / ask 135.93, ~2s old, both below stop, tight ~0.03% spread) — durable breach, not a dislocated tick. Exposure / position-size / circuit-breaker checks do not apply: a close only reduces exposure and EXITs are never throttled regardless of CB state. Data is fresh (inside the 60s staleness cap). Mode is PAPER_TRADING, so no live human-approval gate applies. All applicable checks pass. Verdict: APPROVED.",
+  "compliance_verdict": "APPROVED",
+  "compliance_reasoning": "Final compliance gate APPROVED. (1) Mode=PAPER_TRADING permits PAPER_CLOSE. (2) XOM is on the watchlist with approved_for_paper_trading=true and is NOT in blocked_symbols (only INTU is blocked). (3) Strategy large_cap_momentum_top5 is in allowed_strategies (ACTIVE_PAPER_TEST) and not disallowed. (4) Risk Manager verdict=APPROVED. (5) thesis_bull, thesis_bear, and invalidation_condition are all present and non-empty; invalidation references a measurable two-sided price condition (bid AND ask < 136.84). (6) Decision validates against tests/schemas/trade_decision.schema.json. (7) Deterministic stop-loss exit; price source cited (fresh Alpaca IEX two-sided quote); no news/fundamentals sourcing required for a mechanical EXIT, and absence of news is not treated as bullish. (8) Not a PROPOSE_LIVE_* decision; human_approval_required=false is correct; no live-execution path is invoked. This is a full 26-share close of a confirmed existing position that reduces risk; no limit raised, no protected config edited. Verdict: APPROVED.",
+  "human_approval_required": false,
+  "final_status": "PAPER_FILLED",
+  "gate_status": "RISK_AND_COMPLIANCE_APPROVED",
+  "gate_chain": "trade_proposal -> risk_manager(APPROVED) -> compliance_safety(APPROVED)",
+  "execution": {
+    "executed": true,
+    "executed_at": "2026-07-01T19:38:30+00:00",
+    "executed_by": "orchestrator (pre_close routine)",
+    "close_price_used": 135.89,
+    "close_quantity": 26.0,
+    "execution_note": "Full 26-share XOM position closed via lib.paper_sim.close_position(quote_price=135.89) under BROKER_PAPER=alpaca. Alpaca order 7f66896f-4342-4c0f-831c-7c61d51c84f9 status=FILLED. Local log row stamped PENDING_BROKER (append-only status not rewritten by reconcile). reconcile() returned discrepancies=[] (alpaca-authoritative), open_count=4; position removed from positions.json and position_meta.json on both local and Alpaca. LOCAL==ALPACA [GOOGL, JNJ, SPY, UNH] (4==4). Est. realized P/L -$419.01 (-10.6%)."
+  }
+}
