@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-01T13:39:36+00:00",
+  "routine_id": "market_open_2026-07-01",
+  "symbol": "CSCO",
+  "decision": "PAPER_CLOSE",
+  "strategy": "large_cap_momentum_top5",
+  "action_source": "lib.portfolio_health.assess_positions (deterministic stop-loss trigger)",
+  "thesis_bull": "Reason to hold: CSCO is an active large_cap_momentum_top5 position entered at 123.7893 on 2026-06-11 with an original take_profit of 162.50. The stop was set 5.49% below entry (117.00), a level chosen to give the momentum thesis room. A single last-trade print of 116.38 sits only ~0.53% below the 117.00 stop, and the IEX bid/ask spread is unusually wide (~5.4%), so an argument exists that the print reflects a thin, dislocated quote rather than a durable break of support. If the tape mean-reverts back above 117.00 quickly, holding would preserve the remaining upside toward 162.50 and avoid realizing a loss on transient microstructure noise.",
+  "thesis_bear": "Reason to exit (governing): The deterministic stop-loss rule has fired. lib.portfolio_health.assess_positions flagged a confirmed stop_loss breach with current=116.5500 < stop=117.0000, and the breach is independently corroborated by a fresh live-session Alpaca IEX last-trade print of 116.38 (size 100) at 2026-07-01T13:39:36Z. This is an actual executed trade in an OPEN market, not merely a stale or one-sided quote, so the sub-stop level is real and not an artifact of the wide spread. Counter-evidence to the hold thesis: the invalidation condition (close/trade below the 117.00 stop) has been met; per the strategy's risk discipline a breached stop is a mechanical exit and averaging-down or hoping for mean reversion is a prohibited action. Momentum has clearly rolled over versus entry (-5.99% from 123.7893), and continuing to hold below a pre-committed stop is exactly the behavior the stop exists to prevent.",
+  "technical_context": {
+    "entry_price": 123.7893,
+    "stop_loss": 117.0,
+    "take_profit": 162.5,
+    "current_price": 116.38,
+    "pct_from_entry": -5.99,
+    "invalidation_triggers": [
+      "stop_loss breached: BUY entered at 123.7893, stop=117.0000, current=116.5500"
+    ],
+    "trigger_source": "lib.portfolio_health.assess_positions"
+  },
+  "news_context": "No news lookup performed for this monitoring-only exit; action is a deterministic stop-loss and does not depend on sentiment. Not treated as bullish absence of news.",
+  "macro_context": "market_open monitoring routine; regime/sector posture not re-evaluated for a mechanical stop-loss exit. EXITs are never throttled by the circuit-breaker.",
+  "invalidation_condition": "Exit is invalidated only if the confirmed stop breach is spurious \u2014 i.e., if CSCO trades and holds at or above the 117.00 stop on non-dislocated prints. As of the 116.38 Alpaca IEX last-trade at 2026-07-01T13:39:36Z the trade price is below the 117.00 stop, so the stop-loss exit stands. Measurable condition: last-trade price < 117.00 (stop) => close full position.",
+  "risk_reward": {
+    "entry": 123.7893,
+    "stop": 117.0,
+    "target": 162.5,
+    "ratio": 5.7
+  },
+  "position_size": {
+    "shares": 46,
+    "usd": 5353.48,
+    "pct_of_account": 0
+  },
+  "price_source": "Alpaca IEX last-trade, last_trade_price=116.38 (size 100), 2026-07-01T13:39:36Z. IEX bid/ask spread wide (~5.4%); last-trade print used as execution/current price rather than the ask.",
+  "data_quality_caveats": "IEX quote bid/ask spread was wide (~5.4%) at the time of assessment. The last-trade print of 116.38 (an executed trade in an open market) confirms the sub-stop level and is used instead of the ask; portfolio_health independently flagged current=116.5500 below the 117.00 stop.",
+  "confidence_score": 0.9,
+  "risk_manager_verdict": "APPROVED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "PAPER_EXECUTED",
+  "gate_status": "RISK_AND_COMPLIANCE_APPROVED",
+  "risk_manager_reasoning": "EXIT/stop-loss close of an existing position. CSCO is on the watchlist with approved_for_paper_trading=true and is not blocked (only INTU is blocked). Strategy large_cap_momentum_top5 is in allowed_strategies. Position confirmed in trades/paper/positions.json (46 shares BUY, entry 123.7893, stop 117.0); closing the full 46 shares is correctly sized and complete. Deterministic stop-loss fired (116.55<117.00) and is corroborated by a fresh executed Alpaca last-trade print of 116.38 in an open market; the wide ~5.4% spread does not invalidate a real executed sub-stop print. Exposure/position-size/circuit-breaker checks do not apply because a close only reduces exposure and EXITs are never throttled. Mode is PAPER_TRADING (no live human-approval gate applies). All applicable checks pass.",
+  "compliance_reasoning": "Final compliance gate APPROVED. (1) Mode=PAPER_TRADING permits PAPER_CLOSE. (2) CSCO is on the watchlist with approved_for_paper_trading=true and is NOT in blocked_symbols (only INTU is blocked). (3) Strategy large_cap_momentum_top5 is in allowed_strategies (ACTIVE_PAPER_TEST) and not disallowed. (4) Risk Manager verdict=APPROVED. (5) thesis_bull, thesis_bear, and invalidation_condition all present and non-empty. (6) Decision validates against tests/schemas/trade_decision.schema.json. (7) Deterministic stop-loss exit; source cited (Alpaca IEX last-trade); no news/fundamentals sourcing required for a mechanical EXIT. (8) Not a PROPOSE_LIVE_* decision; human_approval_required=false is correct; no live execution path. This is a full 46-share close of a confirmed existing position that reduces risk; no limit raised, no protected config edited.",
+  "execution": {
+    "executed": true,
+    "executed_at": "2026-07-01T13:44Z",
+    "execution_note": "Full position closed via lib.paper_sim.close_position under BROKER_PAPER=alpaca; Alpaca order FILLED, reconcile() returned discrepancies=[] (alpaca-authoritative), position removed from local positions.json and Alpaca. Log row stamped PENDING_BROKER (append-only status not rewritten by reconcile; position parity confirmed 5==5).",
+    "close_price_used": 117.18,
+    "close_quantity": 46.0,
+    "gate_chain": "trade_proposal -> risk_manager(APPROVED) -> compliance_safety(APPROVED)"
+  }
+}

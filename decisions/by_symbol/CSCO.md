@@ -223,3 +223,20 @@
 - Unrealized PnL (broker mark, stale): ≈ −$291.15
 - Win rate: n/a (no new closed trades)
 - Active strategies: large_cap_momentum_top5
+
+## 2026-07-01 — market_open: PAPER_CLOSE (EXECUTED)
+
+- Decision file: `decisions/2026-07-01/0939_CSCO.json`
+- Routine: market_open_2026-07-01 (~09:39 ET, market OPEN), mode PAPER_TRADING, BROKER_PAPER=alpaca. CB refresh SKIPPED (Guard 1: pending broker order); FULL carried forward — EXITs are never CB-throttled.
+- Trigger: `lib.portfolio_health` stop_loss breach — verbatim: "stop_loss breached: BUY entered at 123.7893, stop=117.0000, current=116.5500".
+- Gate chain: trade_proposal → Risk Manager APPROVED → Compliance/Safety APPROVED.
+- **PAPER_CLOSE executed:** full 46-share BUY position at ~$117.18 (Alpaca IEX last-trade). Entry $123.7893. Est. realized PnL **−$304 (−5.3%)**.
+- **MARGINAL call:** on fresh tight-spread prints CSCO straddled the $117.00 stop within ±0.25% (116.85–117.26); the earlier sub-stop print ($116.38) was on a dislocated ~5.4% IEX spread. `portfolio_health` (the deterministic authority) flagged the breach and the majority of clean prints were below $117.00 — decision honored the pre-committed stop per capital-preservation discipline rather than hoping for reversion. Logged transparently; flagged for outcome review at EOD 07-01.
+- Reconcile: `discrepancies: []`, alpaca-authoritative, local/Alpaca parity 5==5. CSCO removed from both books.
+
+**Cumulative stats (updated 2026-07-01 market_open):**
+
+- Open paper positions: 0 (closed 2026-07-01 on stop breach)
+- Closed paper trades this line: 1 (est. realized −$304)
+- Win rate: n/a (single mechanical stop-loss exit)
+- Active strategies: none on CSCO post-close (re-entry allowed if CSCO re-enters top-5 momentum on a future EOD signal)

@@ -112,3 +112,20 @@
 
 - Open paper positions: 0 filled (1 BUY order PENDING_BROKER for next open)
 - Active strategies: large_cap_momentum_top5
+
+## 2026-07-01 — market_open: PAPER_CLOSE (EXECUTED)
+
+- Decision file: `decisions/2026-07-01/0939_NVDA.json`
+- Routine: market_open_2026-07-01 (~09:39 ET, market OPEN), mode PAPER_TRADING, BROKER_PAPER=alpaca. CB refresh SKIPPED (Guard 1: pending broker order); FULL carried forward — EXITs are never CB-throttled.
+- Trigger: `lib.portfolio_health` stop_loss breach — verbatim: "stop_loss breached: BUY entered at 208.9985, stop=196.7900, current=194.7400".
+- Gate chain: trade_proposal → Risk Manager APPROVED → Compliance/Safety APPROVED.
+- **PAPER_CLOSE executed:** full 27-share BUY position at ~$194.51 (Alpaca IEX last-trade). Entry $208.9985. Est. realized PnL **−$391 (−6.9%)**.
+- **Clean, high-confidence exit:** breach durable across multiple fresh tight-spread (~0.02–0.4%) live prints, ~1.1% below the $196.79 stop — not an open-liquidity wick.
+- Reconcile: `discrepancies: []`, alpaca-authoritative, local/Alpaca parity 5==5. NVDA removed from both books.
+
+**Cumulative stats (updated 2026-07-01 market_open):**
+
+- Open paper positions: 0 (closed 2026-07-01 on stop breach)
+- Closed paper trades this line: 1 (est. realized −$391)
+- Win rate: n/a (single mechanical stop-loss exit)
+- Active strategies: none on NVDA post-close (re-entry allowed if NVDA re-enters top-5 momentum on a future EOD signal)

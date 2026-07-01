@@ -1,11 +1,4 @@
 {
-  "CSCO": {
-    "entry_basis": 130.026,
-    "opened_at": "2026-06-05T20:46:38.764781+00:00",
-    "rationale_link": "decisions/2026-06-05/1642_CSCO.json",
-    "stop_loss": 117.0,
-    "take_profit": 162.5
-  },
   "GOOGL": {
     "entry_basis": 368.6037,
     "opened_at": "2026-06-08T20:38:00.845574+00:00",
@@ -19,13 +12,6 @@
     "rationale_link": "decisions/2026-06-08/1638_JNJ.json",
     "stop_loss": 209.49,
     "take_profit": 290.96
-  },
-  "NVDA": {
-    "entry_basis": 218.7037,
-    "opened_at": "2026-06-05T20:46:54.637168+00:00",
-    "rationale_link": "decisions/2026-06-05/1642_NVDA.json",
-    "stop_loss": 196.79,
-    "take_profit": 273.33
   },
   "SPY": {
     "entry_basis": 737.6975,

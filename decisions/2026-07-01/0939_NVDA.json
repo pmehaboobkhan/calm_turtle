@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-01T13:39:39+00:00",
+  "routine_id": "market_open_2026-07-01",
+  "symbol": "NVDA",
+  "decision": "PAPER_CLOSE",
+  "thesis_bull": "Reason to hold: NVDA is the highest-beta name in the large_cap_momentum_top5 basket and had cleared its momentum + SPY-trend filters at entry (rationale decisions/2026-06-05/1642_NVDA.json). A stop print of 194.07 is only ~1.4% below the 196.79 stop and ~7.1% below the 208.9985 entry, so a fast intraday whipsaw could theoretically reclaim the stop level if this is a morning liquidity flush rather than a genuine trend break. High-beta momentum names routinely wick below round levels at the open.",
+  "thesis_bear": "Reason to exit (decisive): the deterministic stop-loss invalidation has triggered. lib.portfolio_health.assess_positions flagged 'stop_loss breached: BUY entered at 208.9985, stop=196.7900, current=194.7400'. The breach is CONFIRMED by a fresh live-session Alpaca last-trade print of 194.07 (size 100) at 2026-07-01T13:39:39Z with a tight quote spread (~0.12%), i.e. a high-quality quote, not a thin/stale tick. 194.07 sits ~1.4% below the 196.79 stop, so this is not a marginal touch. The pre-defined risk rule is unambiguous: when price closes/prints below the stop on a trusted quote, the position exits. Counter-evidence to the bull case: the tight spread and 100-share print size argue against a bad-tick or illiquid wick; the exit rule was set at entry precisely so we do not rationalize a confirmed stop breach. EXITs are never throttled by the circuit-breaker.",
+  "invalidation_condition": "This PAPER_CLOSE is invalidated (i.e. HOLD) only if the stop-breach print is repudiated by the broker before execution: NVDA last-trade reclaims and holds >= 196.79 (the stop) on a fresh Alpaca IEX quote with a spread under ~0.20%, OR the 194.07 print is shown to be a bad tick / cancelled trade. Absent that, the measurable exit condition is met: NVDA last-trade 194.07 < stop_loss 196.79 on a tight-spread live quote.",
+  "invalidation_triggers": [
+    "stop_loss breached: BUY entered at 208.9985, stop=196.7900, current=194.7400"
+  ],
+  "risk_reward": {
+    "entry": 208.9985,
+    "stop": 196.79,
+    "target": 273.33,
+    "ratio": 0.0
+  },
+  "position_size": {
+    "shares": 27.0,
+    "usd": 5239.89,
+    "pct_of_account": 0.0
+  },
+  "confidence_score": 0.9,
+  "risk_manager_verdict": "APPROVED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "PAPER_EXECUTED",
+  "price_source": "Alpaca IEX last-trade, price=194.07, size=100, ts=2026-07-01T13:39:39Z, quote spread ~0.12%",
+  "close_details": {
+    "close_full_position": true,
+    "close_quantity": 27.0,
+    "execution_price": 194.07,
+    "side_to_close": "BUY",
+    "realized_pl_estimate_usd": -403.0,
+    "realized_pl_estimate_pct": -7.14
+  },
+  "notes": "Drafted by Trade Proposal Agent for market_open (monitoring-only) routine on 2026-07-01. Action is a deterministic stop-loss EXIT decided by lib.portfolio_health.assess_positions, NOT by this agent. PAPER_CLOSE closes the full 27-share NVDA position. R/R ratio=0.0 is N/A for a close. usd = 27 * 194.07 execution price = 5239.89. realized_pl_estimate = (194.07 - 208.9985) * 27 = -403.06 (rounded). GATES PENDING: risk_manager_verdict and compliance_verdict are placeholders set to non-APPROVED so this file does not falsely claim clearance; risk_manager runs next, then compliance_safety, before final_status advances. final_status=PAPER_PROPOSED (schema enum). This agent did NOT execute the close and did NOT call paper_sim.",
+  "execution": {
+    "executed": true,
+    "executed_at": "2026-07-01T13:44Z",
+    "execution_note": "Full position closed via lib.paper_sim.close_position under BROKER_PAPER=alpaca; Alpaca order FILLED, reconcile() returned discrepancies=[] (alpaca-authoritative), position removed from local positions.json and Alpaca. Log row stamped PENDING_BROKER (append-only status not rewritten by reconcile; position parity confirmed 5==5).",
+    "close_price_used": 194.51,
+    "close_quantity": 27.0,
+    "gate_chain": "trade_proposal -> risk_manager(APPROVED) -> compliance_safety(APPROVED)"
+  }
+}

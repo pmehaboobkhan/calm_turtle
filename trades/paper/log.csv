@@ -30,3 +30,5 @@ timestamp,symbol,side,quantity,simulated_price,rationale_link,stop_loss,take_pro
 2026-06-08T20:38:00.827944+00:00,SPY,BUY,20,0.0,decisions/2026-06-08/1636_SPY.json,663.79,921.94,PENDING_BROKER,0.0,; broker_pending order_id=9625506d-d6f6-48bd-880d-12173bffd0ce status=OrderStatus.ACCEPTED
 2026-06-08T20:38:06.499165+00:00,GOOGL,BUY,16,0.0,decisions/2026-06-08/1637_GOOGL.json,331.68,460.66,PENDING_BROKER,0.0,; broker_pending order_id=aeec8492-edcf-4dc1-b578-a6aec0198691 status=OrderStatus.ACCEPTED
 2026-06-08T20:38:11.979297+00:00,JNJ,BUY,26,0.0,decisions/2026-06-08/1638_JNJ.json,209.49,290.96,PENDING_BROKER,0.0,; broker_pending order_id=6d710238-a026-43c2-8616-abfbd73c16d0 status=OrderStatus.ACCEPTED
+2026-07-01T13:44:30.652511+00:00,CSCO,CLOSE,46.0,0.0,decisions/2026-07-01/0939_CSCO.json,,,PENDING_BROKER,0.0,; broker_close_pending order_id=1c5384ea-6218-4126-b44c-6255dc3fce9b status=OrderStatus.FILLED
+2026-07-01T13:44:36.464005+00:00,NVDA,CLOSE,27.0,0.0,decisions/2026-07-01/0939_NVDA.json,,,PENDING_BROKER,0.0,; broker_close_pending order_id=b70008b7-8425-44e3-9a81-6acd53d800c2 status=OrderStatus.FILLED
