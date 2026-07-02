@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "fetched_at": "2026-07-02T10:43:39.659546+00:00",
+    "routine": "pre_market",
+    "date": "2026-07-02",
+    "source": "alpaca IEX daily (yfinance TLS-blocked via proxy; Alpaca fallback active)",
+    "staleness_note": "Last bars vary by symbol; yfinance connector unavailable; individual limit=5 fetch confirms Alpaca IEX daily-bar lag persists."
+  },
+  "watchlist_summary": {
+    "SPY": {
+      "last_bar_close": 729.35,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": -2.0,
+      "bars_returned": 5
+    },
+    "IEF": {
+      "last_bar_close": 95.03,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": 1.08,
+      "bars_returned": 5
+    },
+    "TLT": {
+      "last_bar_close": 87.335,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": 1.45,
+      "bars_returned": 5
+    },
+    "GLD": {
+      "last_bar_close": 373.725,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": -2.84,
+      "bars_returned": 5
+    },
+    "SHV": {
+      "last_bar_close": 110.33,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": 0.07,
+      "bars_returned": 5
+    },
+    "AAPL": {
+      "last_bar_close": 281.31,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": -5.23,
+      "bars_returned": 5
+    },
+    "MSFT": {
+      "last_bar_close": 371.67,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": 1.21,
+      "bars_returned": 5
+    },
+    "GOOGL": {
+      "last_bar_close": 335.79,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": -3.92,
+      "bars_returned": 5
+    },
+    "AMZN": {
+      "last_bar_close": 230.6,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": -1.03,
+      "bars_returned": 5
+    },
+    "NVDA": {
+      "last_bar_close": 191.97,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": -7.97,
+      "bars_returned": 5
+    },
+    "META": {
+      "last_bar_close": 549.92,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": -2.44,
+      "bars_returned": 5
+    },
+    "TSLA": {
+      "last_bar_close": 379.0,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": -6.43,
+      "bars_returned": 5
+    },
+    "JPM": {
+      "last_bar_close": 327.5,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": -1.31,
+      "bars_returned": 5
+    },
+    "BAC": {
+      "last_bar_close": 57.81,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": 0.78,
+      "bars_returned": 5
+    },
+    "V": {
+      "last_bar_close": 335.445,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": 2.43,
+      "bars_returned": 5
+    },
+    "MA": {
+      "last_bar_close": 498.785,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": 3.02,
+      "bars_returned": 5
+    },
+    "JNJ": {
+      "last_bar_close": 254.36,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": 9.95,
+      "bars_returned": 5
+    },
+    "UNH": {
+      "last_bar_close": 427.44,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": 5.14,
+      "bars_returned": 5
+    },
+    "PFE": {
+      "last_bar_close": 24.28,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": -3.15,
+      "bars_returned": 5
+    },
+    "WMT": {
+      "last_bar_close": 115.3,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": -1.58,
+      "bars_returned": 5
+    },
+    "COST": {
+      "last_bar_close": 950.395,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": -0.09,
+      "bars_returned": 5
+    },
+    "HD": {
+      "last_bar_close": 348.11,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": 6.58,
+      "bars_returned": 5
+    },
+    "XOM": {
+      "last_bar_close": 136.4,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": -1.47,
+      "bars_returned": 5
+    },
+    "ORCL": {
+      "last_bar_close": 148.65,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": -15.25,
+      "bars_returned": 5
+    },
+    "CSCO": {
+      "last_bar_close": 113.45,
+      "last_bar_ts": "2026-06-26T04:00:00+00:00",
+      "pct_change_5d": -6.66,
+      "bars_returned": 5
+    }
+  },
+  "notes": "yfinance TLS-blocked via proxy; Alpaca IEX daily-bar lag persists. Individual limit=5 fetch confirms recent bars from Alpaca IEX feed."
+}
