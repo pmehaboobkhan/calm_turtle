@@ -1,7 +1,7 @@
 {
   "GOOGL": {
     "entry_price": 369.8012,
-    "entry_ts": "2026-07-02T19:40:50.032144+00:00",
+    "entry_ts": "2026-07-02T20:52:32.838921+00:00",
     "quantity": 16.0,
     "rationale_link": "decisions/2026-06-08/1637_GOOGL.json",
     "side": "BUY",
@@ -10,7 +10,7 @@
   },
   "JNJ": {
     "entry_price": 232.75,
-    "entry_ts": "2026-07-02T19:40:50.032169+00:00",
+    "entry_ts": "2026-07-02T20:52:32.838948+00:00",
     "quantity": 26.0,
     "rationale_link": "decisions/2026-06-08/1638_JNJ.json",
     "side": "BUY",
@@ -19,7 +19,7 @@
   },
   "SPY": {
     "entry_price": 743.78,
-    "entry_ts": "2026-07-02T19:40:50.032173+00:00",
+    "entry_ts": "2026-07-02T20:52:32.838952+00:00",
     "quantity": 20.0,
     "rationale_link": "decisions/2026-06-08/1636_SPY.json",
     "side": "BUY",
@@ -28,7 +28,7 @@
   },
   "UNH": {
     "entry_price": 398.674,
-    "entry_ts": "2026-07-02T19:40:50.032176+00:00",
+    "entry_ts": "2026-07-02T20:52:32.838955+00:00",
     "quantity": 15.0,
     "rationale_link": "decisions/2026-06-05/1642_UNH.json",
     "side": "BUY",

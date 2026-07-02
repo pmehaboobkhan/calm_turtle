@@ -240,3 +240,9 @@
 - Closed paper trades this line: 1 (est. realized −$304)
 - Win rate: n/a (single mechanical stop-loss exit)
 - Active strategies: none on CSCO post-close (re-entry allowed if CSCO re-enters top-5 momentum on a future EOD signal)
+
+## 2026-07-02 — NO_TRADE (large_cap_momentum_top5 — data staleness)
+- Decision file: `decisions/2026-07-02/2038_CSCO.json`
+- Fresh ENTRY signal fired but computed on 2026-06-15 daily bars (12 trading days stale; yfinance TLS-blocked, Alpaca free-IEX lag). Per CLAUDE.md rule #5, no entry on stale momentum ranks.
+- Not held (closed 2026-07-01). No capital deployed. Re-evaluate on next fresh session.
+- Routine: end_of_day_2026-07-02, mode PAPER_TRADING, cb_state=FULL (write skipped, 4 pending broker; throttle 1.0). RM APPROVED / Compliance APPROVED. See logs/risk_events/2026-07-02_203800_data_staleness.md.

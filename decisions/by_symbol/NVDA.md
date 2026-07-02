@@ -129,3 +129,9 @@
 - Closed paper trades this line: 1 (est. realized −$391)
 - Win rate: n/a (single mechanical stop-loss exit)
 - Active strategies: none on NVDA post-close (re-entry allowed if NVDA re-enters top-5 momentum on a future EOD signal)
+
+## 2026-07-02 — NO_TRADE (large_cap_momentum_top5 — data staleness)
+- Decision file: `decisions/2026-07-02/2038_NVDA.json`
+- Fresh ENTRY (rank-5) on stale 2026-06-15 bars; pre-market flagged rank-5 as a likely stale-window artifact. Per rule #5, NO_TRADE.
+- Not held (closed 2026-07-01). Re-evaluate on next fresh session.
+- Routine: end_of_day_2026-07-02, PAPER_TRADING, cb_state=FULL. RM APPROVED / Compliance APPROVED.

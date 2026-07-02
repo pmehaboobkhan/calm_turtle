@@ -246,3 +246,10 @@
 - Routine: end_of_day_2026-06-10, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (CB write skipped — 1 pending broker order; throttle 1.0 carried forward).
 - Risk Manager: REJECTED (already-flat / conflict). Compliance: APPROVED.
 - Invalidation / unblock: GLD reclaims its 210d MA, at which point A and C agree and the overlay re-entry is re-evaluated.
+
+## 2026-07-02 — NO_TRADE (gold_permanent_overlay — conflict + data staleness)
+- Decision file: `decisions/2026-07-02/2038_GLD.json`
+- Recurring same-symbol CONFLICT: gold_permanent_overlay ENTRY vs dual_momentum_taa EXIT (GLD still below its 210d/10-month MA). GLD is FLAT, so A-EXIT is a no-op and C-overlay ENTRY is blocked under the v1 conflict rule. Signals additionally stale (2026-06-15 bars).
+- Folded into today's data_staleness risk event rather than a fresh URGENT (both legs non-executable), consistent with 2026-06-30 handling.
+- Routine: end_of_day_2026-07-02, PAPER_TRADING, cb_state=FULL (write skipped, 4 pending broker). RM REJECTED (already-flat/conflict) / Compliance APPROVED.
+- Unblock: GLD reclaims its 210d MA on fresh data.

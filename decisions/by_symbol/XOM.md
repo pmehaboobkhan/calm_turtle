@@ -219,3 +219,9 @@
 - Closed paper trades (post-reset): 2 (2026-05-29 −$1,461 / −9.35% daily-loss halt; 2026-07-01 −$419.01 / −10.6% stop-loss)
 - Win rate: 0% (0 of 2 closed profitable)
 - Active strategies: large_cap_momentum_top5
+
+## 2026-07-02 — NO_TRADE (large_cap_momentum_top5 — data staleness)
+- Decision file: `decisions/2026-07-02/2038_XOM.json`
+- Fresh ENTRY on stale 2026-06-15 bars, one session after XOM's 2026-07-01 stop-out (-10.6%). Re-entering the same name on a stale, pre-stop-out rank is the whipsaw the staleness rule guards against. NO_TRADE.
+- Not held. Re-evaluate only on fresh data that re-confirms rank + trend filter.
+- Routine: end_of_day_2026-07-02, PAPER_TRADING, cb_state=FULL. RM APPROVED / Compliance APPROVED.
