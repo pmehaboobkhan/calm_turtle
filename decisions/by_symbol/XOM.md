@@ -225,3 +225,10 @@
 - Fresh ENTRY on stale 2026-06-15 bars, one session after XOM's 2026-07-01 stop-out (-10.6%). Re-entering the same name on a stale, pre-stop-out rank is the whipsaw the staleness rule guards against. NO_TRADE.
 - Not held. Re-evaluate only on fresh data that re-confirms rank + trend filter.
 - Routine: end_of_day_2026-07-02, PAPER_TRADING, cb_state=FULL. RM APPROVED / Compliance APPROVED.
+
+## 2026-07-03 — NO_TRADE (large_cap_momentum_top5 — market closed + data staleness)
+- Decision file: `decisions/2026-07-03/2042_XOM.json`
+- Routine: end_of_day_2026-07-03 (US market CLOSED — Independence Day observed; no trading session).
+- Signal: large_cap_momentum_top5 ENTRY re-fired (rank 5 buffer, +19.42% 126d momentum). SPY trend filter intact (above 210d MA).
+- Outcome: **NO_TRADE** — stale daily bars (2026-06-16 = ~11 trading days stale) + no session to fill against. Per CLAUDE.md rule #5, no fresh ENTRY on stale momentum ranks without a live session. Re-evaluate on next trading day.
+- Risk Manager: APPROVED (NO_TRADE reduces risk). Compliance: APPROVED.

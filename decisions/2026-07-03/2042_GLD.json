@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-03T20:42:00Z",
+  "routine_id": "end_of_day_2026-07-03",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "thesis_bull": "gold_permanent_overlay fired its policy-based ENTRY (permanent 10% GLD allocation as crisis/inflation diversifier).",
+  "thesis_bear": "Same-symbol CONFLICT: dual_momentum_taa fired EXIT on GLD (below 210d MA, -3.61%). GLD is FLAT so the A-EXIT is a no-op and the C-overlay ENTRY is blocked under the v1 conflict rule. Signals additionally stale; no session today.",
+  "invalidation_condition": "GLD overlay unblocks only when GLD reclaims its 210d MA (resolving the dual_momentum EXIT) on a FRESH-bar session. Until then the permanent overlay leg stays flat.",
+  "risk_reward": {
+    "entry": 0.0,
+    "stop": 0.0,
+    "target": 0.0,
+    "ratio": 0.0
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0.0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "consolidation": {
+    "primary_strategy": "gold_permanent_overlay",
+    "subsumed_strategies": []
+  },
+  "confidence_score": 0.15,
+  "risk_manager_verdict": "APPROVED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "no_trade_reason": "signal_conflict_standing_gld_plus_staleness",
+  "notes": "EOD 2026-07-03: standing GLD same-symbol conflict (gold_permanent_overlay ENTRY vs dual_momentum_taa EXIT, GLD below 210d MA) persists since ~2026-06-11. GLD is FLAT so nothing executes; recorded here (not a fresh URGENT) consistent with 06-30 and 07-02 handling \u2014 novel occurrences were logged 06-08/06-10/06-11. Additionally NO_TRADE on staleness (bars 2026-06-16) and market closed (Independence Day). See logs/risk_events/2026-07-03_204200_data_staleness.md."
+}

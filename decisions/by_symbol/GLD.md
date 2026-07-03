@@ -253,3 +253,10 @@
 - Folded into today's data_staleness risk event rather than a fresh URGENT (both legs non-executable), consistent with 2026-06-30 handling.
 - Routine: end_of_day_2026-07-02, PAPER_TRADING, cb_state=FULL (write skipped, 4 pending broker). RM REJECTED (already-flat/conflict) / Compliance APPROVED.
 - Unblock: GLD reclaims its 210d MA on fresh data.
+
+## 2026-07-03 — NO_TRADE (gold_permanent_overlay — conflict + market closed + data staleness)
+- Decision file: `decisions/2026-07-03/2042_GLD.json`
+- Routine: end_of_day_2026-07-03 (US market CLOSED — Independence Day observed; no trading session).
+- Standing CONFLICT (since ~2026-06-11): gold_permanent_overlay ENTRY (permanent 10% policy) vs dual_momentum_taa EXIT (GLD below 210d MA; SPY top-1). GLD remains FLAT, so A-EXIT is a no-op and C-overlay ENTRY is blocked under v1 conflict rule.
+- Outcome: **NO_TRADE** — standing signal conflict + stale bars (2026-06-16 = ~11 trading days stale) + no session to fill against. Per CLAUDE.md rule #5, no fresh ENTRY on stale data without live session. Conflict unblocks only when GLD reclaims 210d MA on fresh data. Re-evaluate on next trading day.
+- Risk Manager: APPROVED (NO_TRADE reduces risk). Compliance: APPROVED.

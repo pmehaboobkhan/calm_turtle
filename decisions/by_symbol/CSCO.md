@@ -246,3 +246,10 @@
 - Fresh ENTRY signal fired but computed on 2026-06-15 daily bars (12 trading days stale; yfinance TLS-blocked, Alpaca free-IEX lag). Per CLAUDE.md rule #5, no entry on stale momentum ranks.
 - Not held (closed 2026-07-01). No capital deployed. Re-evaluate on next fresh session.
 - Routine: end_of_day_2026-07-02, mode PAPER_TRADING, cb_state=FULL (write skipped, 4 pending broker; throttle 1.0). RM APPROVED / Compliance APPROVED. See logs/risk_events/2026-07-02_203800_data_staleness.md.
+
+## 2026-07-03 — NO_TRADE (large_cap_momentum_top5 — market closed + data staleness)
+- Decision file: `decisions/2026-07-03/2042_CSCO.json`
+- Routine: end_of_day_2026-07-03 (US market CLOSED — Independence Day observed; no trading session).
+- Signal: large_cap_momentum_top5 ENTRY re-fired (rank 1, +53.68% 126d momentum). SPY trend filter intact (above 210d MA).
+- Outcome: **NO_TRADE** — stale daily bars (2026-06-16 = ~11 trading days stale) + no session to fill against. Per CLAUDE.md rule #5, no fresh ENTRY on stale momentum ranks without a live session. Re-evaluate on next trading day.
+- Risk Manager: APPROVED (NO_TRADE reduces risk). Compliance: APPROVED.
