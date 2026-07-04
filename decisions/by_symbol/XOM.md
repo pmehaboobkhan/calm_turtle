@@ -232,3 +232,9 @@
 - Signal: large_cap_momentum_top5 ENTRY re-fired (rank 5 buffer, +19.42% 126d momentum). SPY trend filter intact (above 210d MA).
 - Outcome: **NO_TRADE** — stale daily bars (2026-06-16 = ~11 trading days stale) + no session to fill against. Per CLAUDE.md rule #5, no fresh ENTRY on stale momentum ranks without a live session. Re-evaluate on next trading day.
 - Risk Manager: APPROVED (NO_TRADE reduces risk). Compliance: APPROVED.
+
+## 2026-07-04 — weekly_review self_learning: prediction reconciliation (W27)
+- Reconciles: `memory/prediction_reviews/2026-07-01.md` (pre_close) Prediction 1 — "XOM does NOT reclaim and hold >= 136.84 into the 07-01 close; the clean two-sided sub-stop break (135.89/135.93) was a genuine stop violation." Confidence 0.8.
+- **Outcome: UNRESOLVED / DEFERRED on stale data.** Resolution window was "EOD 07-01 official close"; no trustworthy fresh close printed (bars stale to 06-15/06-16 through 07-02; 07-03 market holiday). The reclaim question cannot be confirmed on stale bars; carried forward to >= 2026-07-06. The exit itself was a clean, correctly-gated stop honor on a tight ~0.03% two-sided sub-stop print.
+- **Cross-reference (sizing lesson, CONFIRMED):** this −$419.01 (−10.6%) stop exit at 26 sh stayed *under* the $500 daily-loss cap and let the per-position stop govern — exactly as `memory/strategy_lessons/2026-w23.md` §Lesson 3 predicted when XOM was sized down from 97 sh to 26 sh. Contrast the 2026-05-29 close (97 sh, −$1,461, liquidated by the daily-loss halt). Supporting evidence for the existing sizing mitigation; see `strategy_lessons/2026-w27.md` §Lesson 7.
+- Note: position already closed 2026-07-01; this block records the prediction outcome only.

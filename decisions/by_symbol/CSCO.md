@@ -253,3 +253,8 @@
 - Signal: large_cap_momentum_top5 ENTRY re-fired (rank 1, +53.68% 126d momentum). SPY trend filter intact (above 210d MA).
 - Outcome: **NO_TRADE** — stale daily bars (2026-06-16 = ~11 trading days stale) + no session to fill against. Per CLAUDE.md rule #5, no fresh ENTRY on stale momentum ranks without a live session. Re-evaluate on next trading day.
 - Risk Manager: APPROVED (NO_TRADE reduces risk). Compliance: APPROVED.
+
+## 2026-07-04 — weekly_review self_learning: prediction reconciliation (W27)
+- Reconciles: `memory/prediction_reviews/2026-07-01.md` (market_open) Prediction 2 — "CSCO does NOT durably reclaim and hold >= 117.00 on clean prints through 07-01; the ~117.18 exit did not close a still-valid position." Confidence 0.6 (borderline; the run's lowest-confidence call, explicitly flagged for outcome review).
+- **Outcome: UNRESOLVED / DEFERRED.** The resolution window was "EOD 07-01 official close," but no trustworthy fresh close ever printed: 07-01 EOD/07-02 EOD daily bars were stale (anchored 06-15/06-16), and 07-03 was the market holiday. There is no clean 07-01+ close against which to confirm whether the marginal ±0.25%-straddle exit was correct. Carried forward to the next fresh close (>= 2026-07-06). The exit itself was correctly gated and honored the pre-committed stop; only its *ex-post* correctness is unresolvable on stale data.
+- Note: the underlying position was already closed on 2026-07-01 (see the market_open block above). This block records only the prediction outcome, not a new trade.

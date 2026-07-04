@@ -15,3 +15,10 @@
 - Order: BUY 27 @ ref price; stop $197.559 (−10%) / TP $274.3875 (+25%); order_id 14d3ade1…, status ACCEPTED. Fill, slippage, and holding-period outcome all resolve next cycle (do not reconcile here).
 - Rank-5 boundary fragility carried over from W20: at the 2026-05-22 scan NVDA (rank 5, 21.05% 6m) sat only 0.42pp above AMZN (rank 6, 20.63%), and UNH had firmed to rank 4 (23.75%). The top-5 cutoff remained a low-persistence, closely-clustered boundary all week.
 - Descriptive note: NVDA continued to be the highest-beta name in the watchlist this window and carries the tightest watchlist position cap (10%). No EXIT signal applicable (no position held during the trading days).
+
+## Week 2026-W27 observations
+- Strategy: large_cap_momentum_top5. Position (BUY 27 @ entry $208.9985, entered 2026-06-05) was **closed 2026-07-01 market_open** on a deterministic stop-loss breach @ ~$194.51. Realized −$391 (−6.9%). Full gate chain APPROVED.
+- Descriptive: a **clean, high-confidence exit** — the breach was durable across multiple fresh tight-spread (~0.02–0.4%) live prints, ~1.1% below the $196.79 stop; not an open-liquidity wick. Contrast CSCO's marginal same-run exit.
+- Consistent with the long-standing profile note that NVDA is the highest-beta name in the watchlist (tightest 10% position cap): it produced the largest single-name adverse move among this week's three exits.
+- Post-exit reclaim question (did NVDA recover >= 196.79 and hold) is **UNRESOLVED** on stale data (07-01→07-03 bars stale + holiday); deferred to >= 2026-07-06.
+- Re-entries blocked 07-02 / 07-03 (NO_TRADE, stale bars). NVDA re-fired only as a rank-5 *buffer* name on the stale 06-15/06-16 window and was flagged in pre-market as a likely stale-window artifact after a −7.97% 5d move — the deferral reads as correct pending fresh data.

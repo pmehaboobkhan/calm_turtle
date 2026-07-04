@@ -142,3 +142,8 @@
 - Signal: large_cap_momentum_top5 ENTRY re-fired (rank 5 buffer, +18.45% 126d momentum). SPY trend filter intact (above 210d MA).
 - Outcome: **NO_TRADE** — stale daily bars (2026-06-16 = ~11 trading days stale) + no session to fill against. Per CLAUDE.md rule #5, no fresh ENTRY on stale momentum ranks without a live session. Re-evaluate on next trading day.
 - Risk Manager: APPROVED (NO_TRADE reduces risk). Compliance: APPROVED.
+
+## 2026-07-04 — weekly_review self_learning: prediction reconciliation (W27)
+- Reconciles: `memory/prediction_reviews/2026-07-01.md` (market_open) Prediction 1 — "NVDA does NOT reclaim 196.79 and hold; the ~194.51 stop exit was a genuine trend break, not an open-liquidity wick." Confidence 0.85.
+- **Outcome: UNRESOLVED / DEFERRED on stale data.** The resolution window was "EOD 07-01 close," but no trustworthy fresh close printed (07-01/07-02 daily bars stale to 06-15/06-16; 07-03 market holiday). Whether NVDA reclaimed 196.79 later cannot be confirmed on stale bars. Carried forward to >= 2026-07-06. Distinct from CSCO: the exit *decision* was high-confidence at the time (breach durable across multiple fresh tight-spread ~0.02-0.4% live prints, ~1.1% below stop — see the market_open block); it is only the post-exit reclaim question that is deferred.
+- Note: position already closed 2026-07-01; this block records the prediction outcome only.

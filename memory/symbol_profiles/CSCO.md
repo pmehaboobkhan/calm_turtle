@@ -25,3 +25,10 @@
 - News: BofA price-target raise to $135 (2026-05-29) confirmed ongoing analyst bullishness — closed mid-upgrade cycle.
 - No earnings catalyst in the W22 window (Q3 FY26 print was 2026-05-13; next ~2026-08-12).
 - Pattern (descriptive): rank-1 persistence is high; CSCO did not rotate out of the top-5 in any W22 session. It held through the crude/energy selloff without adverse impact (CSCO is networking/tech, not energy-correlated) and was one of three W22 winners alongside GLD and the prior NVDA close. The W20/W21 open question on whether CSCO rank-1 momentum durably persists or reverts late in the hold remains open — three weeks of leadership with no mean-reversion toward the stop, but the position was always closed by exogenous events (reset, then halt), never allowed to run to a natural rotation.
+
+## Week 2026-W27 observations
+- Strategy: large_cap_momentum_top5. Position (BUY 46 @ entry $123.7893, W23-era entry) was **closed 2026-07-01 market_open** on a deterministic stop-loss breach @ ~$117.18. Realized −$304 (−5.3%). Full gate chain APPROVED.
+- Descriptive: this was the run's **marginal / lowest-confidence exit** — on fresh tight-spread prints CSCO straddled the $117.00 stop within ±0.25% (116.85–117.26); an earlier $116.38 sub-stop print was on a dislocated ~5.4% IEX spread. `portfolio_health` (the deterministic authority) flagged the breach and the majority of clean prints were below $117.00; the exit honored the pre-committed stop rather than hoping for reversion.
+- Post-exit ex-post correctness of the marginal call is **UNRESOLVED** — no trustworthy fresh close printed 07-01→07-03 (stale bars + holiday); deferred to >= 2026-07-06.
+- Context: CSCO had been the most persistent Strategy-B leader (rank-1 across W21/W22) and was a W22 winner (+$456). This is its first stop-loss exit of the paper period; prior closes were exogenous (reset, daily-loss halt). No CSCO-specific thesis break was cited — a mechanical stop honor amid a broad stale-data-frozen entry environment.
+- Re-entries blocked all week (07-02 / 07-03 NO_TRADE) by stale daily bars (CLAUDE.md #5), despite CSCO re-firing rank-1 momentum (+53.68% 126d).
