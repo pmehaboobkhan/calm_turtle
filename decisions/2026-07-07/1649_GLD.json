@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-07T20:49:49Z",
+  "routine_id": "end_of_day_2026-07-07",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "thesis_bull": "gold_permanent_overlay fired its policy-based ENTRY (permanent 10% GLD allocation as crisis/inflation diversifier and near-zero-correlation diversifier).",
+  "thesis_bear": "The deterministic regime engine returned 'uncertain' / confidence 'low' with ALL indicators null (spy_above_50dma, spy_above_200dma, momentum, vol all null) because today's daily bars failed to load (yfinance TLS-blocked through the proxy; Alpaca free-IEX daily bars stale, same standing condition as 06-30/07-02/07-03). Position quotes are ~2784s (~46 min) stale, well beyond the 60s max_data_staleness_seconds limit. Under these conditions no momentum/MA confirmation can be validated. GLD is FLAT (closed 2026-06-08) and stands below its 210d MA per the last durable regime read (2026-06-12).",
+  "invalidation_condition": "The overlay leg opens only on a FRESH-bar session where the deterministic engine can compute indicators AND quote staleness is within the 60s limit AND GLD's participation does not re-trigger the standing dual_momentum_taa EXIT (GLD reclaiming its 210d MA). Until fresh data is available the permanent-overlay leg stays flat.",
+  "risk_reward": {
+    "entry": 0.0,
+    "stop": 0.0,
+    "target": 0.0,
+    "ratio": 0.0
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0.0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "consolidation": {
+    "primary_strategy": "gold_permanent_overlay",
+    "subsumed_strategies": []
+  },
+  "confidence_score": 0.1,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "APPROVED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "no_trade_reason": "data_staleness_rule5_insufficient_indicators",
+  "notes": "EOD 2026-07-07: CLAUDE.md rule #5 pre-empts entry — stale/insufficient market data. Deterministic engine returned regime 'uncertain'/'low' with null indicators; latest quotes ~2784s stale (>60s cap). Risk Manager would reject any entry on stale data; recorded verdict REJECTED. No same-symbol conflict fired this run (dual_momentum_taa produced no signal because its indicators were null; consolidation conflict=false). Additional operational reason to abstain: BROKER_PAPER=alpaca mirror is degraded (4 stuck PENDING_BROKER orders since ~06-11, broker filled-position view intermittently empty); opening GLD would submit a 5th real Alpaca order and add another unresolved PENDING_BROKER row, worsening the suppression that already disables CB refresh + safe reconcile. See logs/risk_events/2026-07-07_data_staleness and 2026-07-07_pending_broker_mirror events."
+}

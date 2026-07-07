@@ -260,3 +260,11 @@
 - Standing CONFLICT (since ~2026-06-11): gold_permanent_overlay ENTRY (permanent 10% policy) vs dual_momentum_taa EXIT (GLD below 210d MA; SPY top-1). GLD remains FLAT, so A-EXIT is a no-op and C-overlay ENTRY is blocked under v1 conflict rule.
 - Outcome: **NO_TRADE** — standing signal conflict + stale bars (2026-06-16 = ~11 trading days stale) + no session to fill against. Per CLAUDE.md rule #5, no fresh ENTRY on stale data without live session. Conflict unblocks only when GLD reclaims 210d MA on fresh data. Re-evaluate on next trading day.
 - Risk Manager: APPROVED (NO_TRADE reduces risk). Compliance: APPROVED.
+
+## 2026-07-07 — NO_TRADE (gold_permanent_overlay — data staleness / insufficient indicators)
+- Decision file: `decisions/2026-07-07/1649_GLD.json`
+- Routine: end_of_day_2026-07-07, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (CB write skipped — Guard 1, 4 pending broker; throttle 1.0 carried).
+- Signal: only `gold_permanent_overlay` ENTRY fired (permanent 10% policy). `dual_momentum_taa` produced NO signal this run — the deterministic regime engine returned `uncertain`/`low` with ALL indicators null because today's daily bars failed to load (yfinance TLS-blocked; Alpaca IEX daily bars stale). Consolidation `conflict=false`, `subsumed=[]` (no A-EXIT to conflict with today).
+- Outcome: **NO_TRADE** — CLAUDE.md rule #5 (stale/insufficient data): quotes ~2784s stale (>60s cap); no momentum/MA confirmation computable. RM REJECTED (stale data) / Compliance APPROVED. GLD remains FLAT.
+- Operational note: opening would submit a 5th real Alpaca order into an already-degraded mirror (4 stuck PENDING_BROKER rows since ~06-11; `confirm_broker_fills()` found unable to finalize them due to a status-string bug — see `logs/risk_events/2026-07-07_204950_pending_broker_mirror.md`).
+- Unblock: fresh-bar session where indicators compute AND GLD reclaims its 210d MA (resolving the standing dual_momentum EXIT posture).
