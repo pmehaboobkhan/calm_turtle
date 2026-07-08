@@ -1,0 +1,82 @@
+{
+  "data_status": "STALE_UNAVAILABLE",
+  "fetch_attempted_ts": "2026-07-08T06:30:00+00:00",
+  "routine": "premarketdata_collection",
+  "sources_attempted": [
+    {
+      "source": "lib.data.get_latest_quote (yfinance backend)",
+      "status": "FAILED",
+      "error": "TLS verification failed (agent proxy blocked; Connection reset by peer / SSLError)"
+    },
+    {
+      "source": "lib.data.get_bars (yfinance backend)",
+      "status": "FAILED",
+      "error": "TLS verification failed (agent proxy blocked; Connection reset by peer / SSLError)"
+    },
+    {
+      "source": "Alpaca API (lib.broker via get_latest_quote)",
+      "status": "FAILED",
+      "error": "No Alpaca credentials available in sandbox environment"
+    }
+  ],
+  "last_known_snapshot": {
+    "file_path": "/home/user/calm_turtle/data/market/2026-07-06/0630_signals.json",
+    "quote_ts": "2026-07-06T10:46:17.630403+00:00",
+    "bar_source": "alpaca",
+    "regime": {
+      "regime": "bullish_trend",
+      "confidence": "medium",
+      "proxy_vol_20d_annualized_pct": 16.283558583618685,
+      "indicators": {
+        "spy_above_50dma": true,
+        "spy_above_200dma": true,
+        "spy_pct_from_50dma": 0.017601979230494225
+      }
+    }
+  },
+  "open_positions": [
+    {
+      "symbol": "SPY",
+      "last_known_entry_price": 743.78,
+      "entry_ts": "2026-07-07T13:38:18.127460+00:00",
+      "quantity": 20.0,
+      "source": "/home/user/calm_turtle/trades/paper/positions.json"
+    },
+    {
+      "symbol": "GOOGL",
+      "last_known_entry_price": 369.8012,
+      "entry_ts": "2026-07-07T13:38:18.127427+00:00",
+      "quantity": 16.0,
+      "source": "/home/user/calm_turtle/trades/paper/positions.json"
+    },
+    {
+      "symbol": "JNJ",
+      "last_known_entry_price": 232.75,
+      "entry_ts": "2026-07-07T13:38:18.127456+00:00",
+      "quantity": 26.0,
+      "source": "/home/user/calm_turtle/trades/paper/positions.json"
+    },
+    {
+      "symbol": "UNH",
+      "last_known_entry_price": 398.674,
+      "entry_ts": "2026-07-07T13:38:18.127464+00:00",
+      "quantity": 15.0,
+      "source": "/home/user/calm_turtle/trades/paper/positions.json"
+    }
+  ],
+  "staleness_analysis": {
+    "last_data_point_ts": "2026-07-06T10:46:17.630403+00:00",
+    "fetch_attempted_ts": "2026-07-08T06:30:00+00:00",
+    "staleness_seconds": 157422,
+    "max_allowed_staleness_seconds": 60,
+    "exceeds_limit": true,
+    "staleness_note": "Fresh market data unavailable. Last known snapshot is 2 full trading days old (157,422 seconds / ~43.7 hours). Per risk_limits.yaml > data > max_data_staleness_seconds (60s), this regime/vol data is STALE. No fresh price quotes or volume data available for any symbol. Entry prices from yesterday's positions.json provided for position tracking only. Downstream agents must treat all symbols as data-stale and produce NO_TRADE decisions.",
+    "trading_days_since_snapshot": 2,
+    "calendar_hours_since_snapshot": 43.73
+  },
+  "recommendation": {
+    "action": "NO_TRADE",
+    "reason": "Data feed outage. All market data sources blocked (yfinance TLS denied by proxy; Alpaca no credentials). Last known snapshot 2 trading days stale (far exceeds 60-second tolerance). Risk Manager and Compliance/Safety agents must halt all trading decisions for 2026-07-08 until data connectivity restored.",
+    "halt_recommendation": true
+  }
+}
