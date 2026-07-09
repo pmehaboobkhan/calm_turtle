@@ -1,0 +1,107 @@
+{
+  "fetched_ts": "2026-07-09T10:43:08.016146+00:00",
+  "trading_date": "2026-07-09",
+  "session": "pre-market",
+  "routine": "pre_market",
+  "quotes": {
+    "SPY": {
+      "symbol": "SPY",
+      "bid": 744.01,
+      "ask": 0.0,
+      "last_price": 744.01,
+      "volume": 40,
+      "quote_ts": "2026-07-08T20:00:49.862995+00:00",
+      "fetched_ts": "2026-07-09T10:43:08.942521+00:00",
+      "staleness_seconds": 52939.080304,
+      "is_stale": true,
+      "feed": "iex",
+      "source": "alpaca_iex"
+    },
+    "GOOGL": {
+      "symbol": "GOOGL",
+      "bid": 347.06,
+      "ask": 0.0,
+      "last_price": 347.06,
+      "volume": 40,
+      "quote_ts": "2026-07-08T20:00:03.152826+00:00",
+      "fetched_ts": "2026-07-09T10:43:09.390626+00:00",
+      "staleness_seconds": 52986.238646,
+      "is_stale": true,
+      "feed": "iex",
+      "source": "alpaca_iex"
+    },
+    "JNJ": {
+      "symbol": "JNJ",
+      "bid": 252.06,
+      "ask": 280.51,
+      "last_price": 280.51,
+      "volume": 200,
+      "quote_ts": "2026-07-08T20:00:00.003592+00:00",
+      "fetched_ts": "2026-07-09T10:43:09.881135+00:00",
+      "staleness_seconds": 52989.878478,
+      "is_stale": true,
+      "feed": "iex",
+      "source": "alpaca_iex"
+    },
+    "UNH": {
+      "symbol": "UNH",
+      "bid": 404.97,
+      "ask": 449.4,
+      "last_price": 449.4,
+      "volume": 80,
+      "quote_ts": "2026-07-08T20:00:00.004532+00:00",
+      "fetched_ts": "2026-07-09T10:43:10.322669+00:00",
+      "staleness_seconds": 52990.319014,
+      "is_stale": true,
+      "feed": "iex",
+      "source": "alpaca_iex"
+    },
+    "CSCO": {
+      "symbol": "CSCO",
+      "bid": 108.11,
+      "ask": 117.63,
+      "last_price": 117.63,
+      "volume": 200,
+      "quote_ts": "2026-07-08T20:00:00.048100+00:00",
+      "fetched_ts": "2026-07-09T10:43:11.026000+00:00",
+      "staleness_seconds": 52990.978785,
+      "is_stale": true,
+      "feed": "iex",
+      "source": "alpaca_iex"
+    },
+    "XOM": {
+      "symbol": "XOM",
+      "bid": 133.12,
+      "ask": 148.35,
+      "last_price": 148.35,
+      "volume": 200,
+      "quote_ts": "2026-07-08T20:00:00.144102+00:00",
+      "fetched_ts": "2026-07-09T10:43:11.466047+00:00",
+      "staleness_seconds": 52991.322802,
+      "is_stale": true,
+      "feed": "iex",
+      "source": "alpaca_iex"
+    },
+    "NVDA": {
+      "symbol": "NVDA",
+      "bid": 202.76,
+      "ask": 211.65,
+      "last_price": 211.65,
+      "volume": 500,
+      "quote_ts": "2026-07-08T20:57:48.187451+00:00",
+      "fetched_ts": "2026-07-09T10:43:11.953979+00:00",
+      "staleness_seconds": 49523.767418,
+      "is_stale": true,
+      "feed": "iex",
+      "source": "alpaca_iex"
+    }
+  },
+  "metadata": {
+    "bar_source": "alpaca_iex",
+    "last_daily_bar_ts": "2026-06-23T04:00:00+00:00",
+    "daily_bar_staleness_days": 11,
+    "daily_bar_staleness_note": "Last daily bar = 2026-06-23. Free-tier Alpaca IEX daily bars over 300-bar window lag ~11 trading days. Short 5-bar query reaches 2026-07-06.",
+    "quote_staleness_threshold_seconds": 60,
+    "quote_staleness_note": "All quotes stale by 60s threshold. Expected for pre-market (0642 UTC); quotes from 2026-07-08 market close (~20:00 UTC = 4:00 PM ET). Real-time quotes will refresh post-market-open (13:30 UTC = 9:30 AM ET)."
+  }
+}
