@@ -1,133 +1,118 @@
-# Current Market Regime — 2026-07-09
+# Current Market Regime — 2026-07-10 (pre-market)
 
 ## Regime Classification (Deterministic Engine)
 - **Regime:** bullish_trend
 - **Confidence:** medium
-- **Data as of:** 2026-07-09 pre-market signal run (from `data/market/2026-07-09/0640_signals.json`)
+- **Deterministic source:** `data/market/2026-07-10/0640_signals.json` (`lib.signals.detect_regime`, `bar_source: alpaca_iex_fallback`)
+- **Called by:** `pre_market` routine (regime adoption + macro/sector narrative overlay)
 
-## CRITICAL CAVEAT: Data Staleness & Margin Fragility
-
-**Underlying daily bars end 2026-06-23 — data is 11 trading days stale.** The margin of safety has contracted sharply since 2026-06-12:
-
-- **SPY distance from 50dma:** +0.22% (vs +2.31% on 06-12). **Margin eroded 209 basis points in 11 days.**
-  - This is paper-thin. A single 1% gap down or early vol spike could break the trend before trade execution.
-  - Gap risk at market open is HIGH.
-
-- **Proxy volatility:** 16.87% annualized (vs 15.22% on 06-12). **Rise of +165 bps in 11 days.**
-  - Cushion to high_vol regime flip (20% threshold) is now only **3.13pp**.
-  - At the current acceleration rate, we could reach high_vol within 1-2 more trading sessions.
-
-**Implication:** Trend is *technically* intact on the data but *operationally fragile* today. First confirmation comes at market open.
+> All numeric indicator values below are quoted verbatim from today's `0640_signals.json`.
+> External/news claims cite their source inline. Intraday prices and live P&L are **not** stated —
+> the daily-bar feed is stale (see below), so they cannot be computed authoritatively pre-market.
 
 ---
 
-## Three Core Indicators
+## CRITICAL CAVEAT: Data staleness + razor-thin margin
 
-1. **SPY technical structure:**
-   - Above 50-day MA (+0.22%, JSON `spy_pct_from_50dma: 0.002225984869204778`) — BARELY
-   - Above 200-day MA (binary: YES) — longer-term support intact
-   - 12-month return: +23.47% vs cash -0.05% (carry beat by 2352 bps)
-   - **DELTA vs 06-12:** margin above 50dma compressed from +2.31% to +0.22% — trend firming on one metric (still above 200dma) but margin of safety crumbling
+**Underlying daily bars end `2026-06-24T04:00:00Z` (2026-06-23 session close, SPY 733.32).** As of 07-10 pre-market that is **~16 calendar days / ~11–12 trading sessions stale**.
 
-2. **Volatility proxy:**
-   - 20-day annualized realized vol: **16.87%** (up from 15.22% on 2026-06-12)
-   - **Rising vol pattern continues:** 15.22% (06-12) → 16.87% (06-23) — another +165 bps
-   - VIX feed unavailable; proxy backward-looking
-   - Only 3.13pp cushion to high_vol hard-flip at 20%
+- `risk_limits.data.max_data_staleness_seconds = 60`; actual ≈ **1,406,691 s**. **VIOLATED** by ~5 orders of magnitude.
+- Primary feed (yfinance) is TLS-reset through the agent proxy — the recurring "feed down" condition every session since ~06-25. Only the Alpaca IEX fallback returns data, and it lags 6–19 days.
+- **Per CLAUDE.md rule #5:** any trade on stale data → `NO_TRADE`. If the feed is still stale at EOD, all new entries are forced to `HOLD-ALL` (as on 07-02/03/07/08/09).
 
-3. **Macro trend filters (10-month / 210d SMA):**
-   - SPY above 10m MA: YES (used by Strategy B trend filter) — unchanged
-   - **GLD still BELOW 210d MA** — persistent since 06-12; no recovery signal yet
-   - IEF below 210d MA (unchanged)
+**Implication:** the trend read is technically intact on the stale data but *operationally fragile*. Fetch FRESH bars first at EOD; treat overnight gap risk as high.
 
 ---
 
-## Momentum rank snapshot vs 2026-06-12
+## Three core indicators (today's engine output)
 
-| Rank | Symbol | 6m Ret | Sector | Status |
+### 1. SPY technical structure
+- **Above 50-day MA:** YES, but by only **+0.052%** (`spy_pct_from_50dma: 0.0005226`) — **razor-thin.**
+- **Above 200-day MA:** YES (structural support intact).
+- **12-month total return:** **+22.20%** vs cash (SHV) **−0.05%** (Strategy-A `confidence_inputs`).
+- A ~0.5% gap down would break the 50dma read.
+
+### 2. Volatility proxy (no VIX feed)
+- **20-day annualized realized vol:** **16.65%** (`proxy_vol_20d_annualized_pct`; `vix: null` → proxy used as `effective_vix_used`).
+- Cushion to the 20% `high_vol` hard-flip: **~3.35pp**.
+- External corroboration: VIX quoted **16.79** ([CNBC](https://www.cnbc.com/quotes/.VIX), 07-09) — consistent, no panic.
+
+### 3. Macro trend filters (10-month / 210d SMA)
+- **SPY above 10m MA:** YES (Strategy-B trend filter passes).
+- **GLD below 210d MA:** yes → `dual_momentum_taa` EXIT for GLD (permanent overlay still holds the 10% sleeve).
+- **IEF below 210d MA:** yes; 12m return −0.20% ≤ cash → EXIT.
+
+---
+
+## Momentum snapshot — today's engine (126-day / 6m return, rank)
+
+| Rank | Symbol | 6m return | Signal | Note |
 |---|---|---|---|---|
-| 1 | CSCO | +57.50% | Networking / Semiconductors | ENTRY signal (Strategy B) — AI infrastructure |
-| 2 | UNH | +24.83% | Healthcare / Insurance | ENTRY signal (Strategy B) — Defensive rotation |
-| 3 | XOM | +19.89% | Energy | ENTRY signal (Strategy B) — Commodity momentum |
-| 4 | NVDA | +14.99% | Semiconductors | ENTRY signal (Strategy B) — Slightly cooling |
-| 5 | JNJ | +14.83% | Pharma | ENTRY signal (Strategy B) — Defensive bid |
+| 1 | CSCO | **+52.70%** | ENTRY (B) | AI-infrastructure / networking-refresh narrative |
+| 2 | UNH | **+23.99%** | ENTRY (B) | Healthcare; earnings 07-16 |
+| 3 | XOM | **+17.34%** | ENTRY (B) | Energy; US–Iran oil bid |
+| 4 | JNJ | **+16.74%** | ENTRY (B) | Pharma; earnings 07-15 |
+| 5 | GOOGL | **+12.39%** | ENTRY (B) | Cloud; thinnest margin (one slip → buffer) |
+| 6–7 | NVDA, COST | (buffer) | NO_SIGNAL | rank 6–7 top-N+2 buffer — neither entry nor exit |
 
-**Sector posture (persistent from 06-12):**
-- **Healthcare explosive:** UNH (rank 2) + JNJ (rank 5) both top-5. Defensive rotation, not confidence.
-- **Energy sustained:** XOM rank 3 — commodity momentum still attractive.
-- **AI/networking exceptional:** CSCO +57.50% (rank 1) — infrastructure/AI-refresh narrative dominant.
-- **Mega-cap growth under pressure:** MSFT rank 21 (-22.7% 6m), TSLA rank 20 (-21.1% 6m), META rank 19 (-15.3% 6m).
+**Laggards (EXIT, not in top-5):** AAPL (8, +7.10%), JPM (9, +5.18%), BAC (10, +4.54%), WMT (11, +4.02%), AMZN (12, +3.02%), HD (14, −0.66%), PFE (15, −4.53%), V (16, −4.78%), MA (17, −13.57%), META (18, −15.33%), ORCL (19, −18.06%), TSLA (20, −21.97%), MSFT (21, −24.75%), plus TLT.
+
+**Note vs prior file:** GOOGL re-entered the top-5 at rank 5 and NVDA fell to the rank-6 buffer — the reverse of the 07-09 snapshot. This is the authoritative ordering for 07-10.
+
+---
+
+## Sector posture
+
+- **Healthcare leadership:** UNH (2) + JNJ (4) both top-5 — defensive names rising in momentum is a "risk-on without conviction" / late-cycle caution signal, not a regime flip.
+- **Energy sustained:** XOM (3) on the commodity + US–Iran geopolitical bid.
+- **AI/networking exceptional:** CSCO (1) at +52.70%.
+- **Mega-cap growth weak:** MSFT/TSLA/ORCL/META all rank 18–21.
+
+---
+
+## Macro & geopolitical context (news_sentiment 2026-07-10, cited)
+
+- **FOMC:** held 2026-06-17 at 3.5–3.75%, hawkish tilt; year-end 2026 dot ~3.8% (≥1 hike implied); PCE raised to 3.6% ([Federal Reserve](https://www.federalreserve.gov/newsevents/pressreleases/monetary20260617a.htm); [CNBC](https://www.cnbc.com/2026/06/17/fed-interest-rate-decision-june-2026.html)).
+- **US–Iran conflict:** airstrike exchange; oil ~$80–82/bbl; Strait of Hormuz risk (~20% of global oil), partly offset by reported negotiation hopes ([Al Jazeera](https://www.aljazeera.com/); [EIA](https://www.eia.gov/outlooks/steo/)). Two-sided risk for XOM; possible vol catalyst.
+- **VIX benign:** 16.79 ([CNBC](https://www.cnbc.com/quotes/.VIX)).
 
 ---
 
 ## Counter-evidence / what would flip the regime
 
-1. **SPY closes below 50dma** (current margin only +0.22%) → immediate trend break. Cascades to bearish_trend or uncertain.
-2. **Proxy-vol > 20%** → hard regime flip to high_vol. Currently 3.13pp away.
-3. **Three consecutive down days** → technical structure breaks. FOMC (concluded 06-16/17; outcome unknown) could have catalyzed.
-4. **GLD cascade through 200dma** → signals hedging fully rejected; early warning of equity stress.
-5. **Earnings misses on top-5** (CSCO/UNH/XOM/NVDA/JNJ beat cycle breaks).
-6. **Unexpected macro shock** (geopolitical, policy, or systemic) → same-day regime flip.
+1. **SPY closes below 50dma** (margin only +0.052%) → trend break to bearish/uncertain.
+2. **Proxy-vol > 20%** → hard flip to high_vol (currently ~3.35pp away).
+3. **Overnight macro shock** (Fed follow-through, Iran military escalation, credit stress) → same-day flip.
+4. **Earnings miss on JNJ (07-15) / UNH (07-16)** → rotation stop-loss risk on held names.
+5. **GLD cascade through 200dma** → early warning of hedging failure.
 
 ---
 
-## Strategy posture (as of 2026-07-09 pre-market signals)
+## Strategy posture (today's signals)
 
-**Strategy A (dual_momentum_taa):**
-- Signal: SPY ENTRY, IEF EXIT, GLD EXIT, SHV EXIT
-- Interpretation: Full shift to SPY; risk assets leading on 12-month return.
-- GLD-A leg: FLAT (blocked by GLD < 210dma exit signal).
-
-**Strategy B (large_cap_momentum_top5):**
-- SPY trend filter passing (above 10m MA).
-- New entries: CSCO, UNH, XOM, NVDA, JNJ
-- Broad exits from underperformers (MSFT, AAPL, META, TSLA, JPM, BAC, V, MA, PFE, WMT, HD, ORCL, TLT).
-
-**Strategy C (gold_permanent_overlay):**
-- Signal: ENTRY (permanent allocation policy)
-- Status: GLD ENTRY active despite A-EXIT conflict (permanent policy overrides).
+- **Strategy A (dual_momentum_taa, 60%):** SPY ENTRY; IEF/GLD/SHV EXIT. Full risk-on; no bond/gold diversifier seat via A.
+- **Strategy B (large_cap_momentum_top5, 30%):** trend filter passing. Top-5 ENTRY = CSCO, UNH, XOM, JNJ, GOOGL. Held (GOOGL, JNJ, UNH) re-confirm; CSCO + XOM are the only *new* names. Broad EXITs on laggards.
+- **Strategy C (gold_permanent_overlay, 10%):** ENTRY (permanent policy) — governs the 10% GLD sleeve despite the A-leg EXIT. Standing conflict, resolved by policy.
 
 ---
 
-## Caution level
+## Caution level: MEDIUM-HIGH
 
-**MEDIUM-HIGH** (held from 2026-06-12 but fragility deepened):
-
-- Margin above 50dma halved in 11 days (+2.31% → +0.22%). **ONE BAD OPEN BREAKS THE TREND.**
-- Proxy-vol accelerating (+165 bps in 11 days); only 3.13pp to high_vol flip.
-- Data stale 11 trading days; gap risk at open.
-- Defensive sector leadership (UNH/JNJ) signals caution.
-- GLD flat (no diversification recovery).
-- FOMC outcome (06-16/17) unknown; no shock detected yet but rate decision could have shifted expectations.
-
-**Factors not pushing to HIGH yet:**
-- SPY above 200dma (longer-term support).
-- Strategy B trend filter still passing.
-- No circuit-breaker event triggered.
-- Healthcare/energy not collapsing.
-
-**ESCALATION TRIGGERS (→ HIGH or hard flip):**
-- SPY opens > 1% below 50dma.
-- Proxy-vol > 18% at open (yellow flag for 20% imminent).
-- Any sudden macro shock disclosed at open.
+**Up:** margin above 50dma razor-thin (+0.052%); vol 16.65% (~3.35pp to high_vol); 11–12-day-stale data; defensive sector leadership; US–Iran oil risk; earnings cluster (JNJ 07-15, UNH 07-16, GOOGL 07-22).
+**Not yet HIGH:** SPY above 200dma; Strategy-B trend filter passing; no circuit-breaker event (CB state FULL, DD ~0.25%); healthcare/energy constructive.
+**Escalation → HIGH / flip:** SPY < 50dma; proxy-vol > 18%; overnight macro shock; first earnings miss on JNJ/UNH.
 
 ---
 
 ## Recommended posture for downstream agents
 
-- **Risk Manager:** Assume bullish_trend is valid on the data, **subject to immediate reversal risk at open**.
-  - Proxy-vol at 16.87% — monitor for vol > 18% (escalate yellow) or > 20% (hard flip).
-  - SPY margin 0.22% — watch for gap down or volatility at open; if SPY breaks 50dma, switch to SHV immediately.
-
-- **Strategy A:** Execute SPY ENTRY (if not held), GLD EXIT, IEF EXIT, SHV EXIT per signal. **Caution on slippage if vol spiked overnight.**
-
-- **Strategy B:** Execute top-5 ENTRY signals (CSCO/UNH/XOM/NVDA/JNJ) and broad EXITS **only after confirming SPY structure holds at open**. Fills may be wide if market gapped.
-
-- **Compliance:** No blocked symbols triggered.
+- **Risk Manager:** treat bullish_trend as valid *on the data*, subject to reversal risk; the dominant risk is data staleness — do not act on stale bars. If fresh data at EOD shows SPY < 50dma, rotate to SHV.
+- **Strategies A/B/C:** no forcing entries onto stale data; entries are an EOD decision against a fresh close only. Consider de-risking JNJ (near take-profit, earnings 07-15) at EOD if data is fresh.
+- **Compliance:** no blocked symbols in any signal; no margin/options/short/leverage. INTU neither researched nor signalled.
 
 ---
 
-**Date:** 2026-07-09T10:40:46Z (pre-market)
-**Called by:** pre_market routine (deterministic regime engine adoption + macro narrative overlay)
-**Confidence:** medium (technical uptrend on paper; but data stale, margin paper-thin, vol accelerating)
-**Next review:** 2026-07-09 market open (URGENT if gap or vol shock); 2026-07-09 EOD (routine); ESCALATE if proxy-vol > 18% or SPY < 50dma
+**Date:** 2026-07-10 (pre-market) · **Regime:** bullish_trend · **Confidence:** medium
+**Deterministic source:** `data/market/2026-07-10/0640_signals.json`
+**Data freshness:** STALE — bars end 2026-06-23 session (~11–12 trading days; violates 60s limit, CLAUDE.md rule #5)
+**Next review:** 2026-07-10 EOD (fetch fresh bars first). Escalate if SPY < 50dma or proxy-vol > 18%.
