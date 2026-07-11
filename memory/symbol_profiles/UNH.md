@@ -19,3 +19,11 @@
 - Berkshire Q1 13F fully exited UNH (publicly known going into W22) — a smart-money sell signal against the rank-4 momentum thesis. Noted as a bear-thesis entry in all pre_close and EOD records. The UNH mark ended up negative (−$430) but the stop was never close to breaching; the Berkshire exit was a fundamental/sentiment flag, not a near-term price catalyst.
 - DOJ Medicare-Advantage probe (cooperative phase since Jul 2025) + Optum antitrust probe: ongoing background risk, no new 05-26→05-29 development. Bernstein PT raise to $492 on 05-29 was partially offsetting.
 - Pattern (descriptive): UNH's trajectory from rank-5 boundary in W21 to more secure rank-4 in W22 was correct (no rotation exit), yet the position closed in loss. The tension between "signal says hold" (rank 4, above stop) and "smart-money sells" (Berkshire exit) remained unresolved during the paper window — the halt, not either signal, determined the exit.
+
+## Week 2026-W28 observations
+- Strategy: large_cap_momentum_top5. Held all five sessions (07-06 → 07-10); 15 sh from entry @ $398.674. No new trade; no EXIT signal fired. (Note: this profile last carried a W22 block — the 2026-06-08 re-entry and W23–W27 holding history are recorded in `decisions/by_symbol/UNH.md`, not here; this is the W28 review block only.)
+- Green all week: marks ~+8.8% (07-06 open $433.88) to ~+6.2% (07-10 pre_close ~$423.20). Well above its $356.82 stop and below its $495.59 target throughout. 07-10 pre_close mark low-confidence (wide 5.9% bid/ask spread) — health conclusion robust across the spread (bid $410.40 ≫ stop).
+- News backdrop (descriptive): Morgan Stanley PT $468, Overweight (noted 07-06); ongoing regulatory scrutiny + "fully valued" chatter surfaced 07-10 (source cited in `journals/daily/2026-07-10.md` midday) — neither thesis-invalidating. Consistent with the standing DOJ Medicare-Advantage / Optum background risk from prior weeks.
+- Q2 2026 earnings **2026-07-16** — approaching but outside the 1-day caution window at W28 close.
+- Momentum rank not computable on fresh data (bars stale ~06-23); 07-10 stale-bar scan placed UNH at rank 2 (+23.99% 126d), descriptive only.
+

@@ -23,3 +23,11 @@
 - Weakest-held name on 2026-05-28 EOD (−$1,040 unrealized, +3.4% above stop); flagged as the GOOGL-DRAWDOWN-WATCH name. The stop ($356.08) was never breached — at the 05-29 close GOOGL sat +7.5% above the stop.
 - News backdrop: DOJ antitrust behavioral remedies (announced 09-2025) with no new 05-26→05-29 development; Q1 2026 earnings past (April); TPU monetization noted as bullish background. No name-specific invalidation event in W22.
 - Pattern (descriptive): GOOGL has been a persistent rank-2 name across W20–W22. The −3.29% W22 loss is well below the thesis-invalidating level; the stop was never close to breaching. The drawdown-watch flag tracked relative weakness correctly (GOOGL was the 2nd-largest dollar loss this week) but did not become the operative exit trigger — the halt did.
+
+## Week 2026-W28 observations
+- Strategy: large_cap_momentum_top5. Held all five sessions (07-06 → 07-10); 16 sh from the 2026-06-08 entry @ $369.80. No new trade; no EXIT/stop signal fired.
+- Remained the **only underwater held name and the thinnest stop cushion** in the book all week. Reliable tight-spread IEX marks: 07-06 open $360.84 (−2.4%), 07-06 pre_close $367.55 (−0.6%), 07-10 pre_close $356.61 (−3.57%); intraweek low mark ~$354.32 (midday 07-10). Every mark sat +6.8% to +10.9% above the $331.68 stop — never close to a breach.
+- The carried-over W27 market-outcome prediction ("GOOGL holds above its stop through the NFP-driven 07-06 open", conf 0.6) resolved **CORRECT** (see `decisions/by_symbol/GOOGL.md` 2026-07-11 block).
+- News backdrop (descriptive): EU top court upheld the €4.1B ($4.7B) Android antitrust fine, final appeal lost (07-02) — finality removes uncertainty, treated as pre-priced, not a fresh shock. Q2 2026 earnings 2026-07-22 (outside the 1-day caution window all week). No thesis-invalidating event.
+- Momentum re-rank was **not computable on fresh data** all week (daily bars stale ~06-23). The 07-10 pre-market stale-bar scan showed GOOGL re-entering top-5 (rank 5, +12.39% 126d), reversing 07-09 — but on ~06-23 bars, so descriptive only, not an actionable rank.
+

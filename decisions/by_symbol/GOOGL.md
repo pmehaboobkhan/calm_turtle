@@ -163,3 +163,9 @@
 - Stop: $331.68, Target: $460.66, R/R: 2.5:1. Sized ~6% of account (Strategy B equal-weight top-5).
 - Routine: end_of_day_2026-06-08, mode PAPER_TRADING, cb_state=FULL, throttle=1.0.
 - Risk Manager: APPROVED. Compliance: APPROVED.
+
+## 2026-07-11 — weekly_review self_learning: prediction reconciliation (W28)
+- Reconciles carried-over W27 prediction (`reports/learning/weekly_learning_review_2026-07-04.md` §2, item 2): "GOOGL holds above its $331.68 stop through the NFP-driven 07-06 open" (conf 0.6 — a market-outcome call; GOOGL was the thinnest-cushion name in the book, +2.9% above stop at W27 close).
+- **Outcome: RESOLVED — CORRECT.** GOOGL held above its $331.68 stop every session of W28 on live IEX quotes: 07-06 open $360.84 (+8.8% vs stop), 07-10 pre_close mark $356.61 (+7.5% vs stop); intraweek low mark ~$354.32 (midday 07-10) ≈ +6.8% above stop. `positions_to_close()` returned [] all week; no EXIT/stop breach fired. Sources: `journals/daily/2026-07-06.md` (market_open), `journals/daily/2026-07-10.md` (midday/pre_close), `memory/prediction_reviews/2026-07-08.md` P4, `2026-07-09.md` P4.
+- Context (descriptive): GOOGL remained the only underwater held name all week (entry $369.80 vs marks ~$354–360). EU Android €4.1B antitrust fine finalized 07-02 (pre-priced, no fresh shock); Q2 earnings 2026-07-22 (outside window). No fresh EOD momentum re-rank possible — daily bars stale all week.
+- Note: still held at W28 close; no new trade. This block records the prediction outcome only.
