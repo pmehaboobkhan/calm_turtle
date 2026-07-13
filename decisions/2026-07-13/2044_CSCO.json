@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-13T20:44:17+00:00",
+  "routine_id": "end_of_day_2026-07-13",
+  "symbol": "CSCO",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: CSCO rank 1 of 21 by 126d/6m return (+52.25% per 2026-07-13 pre-market engine), SPY above its 10-month MA so the trend filter passes. AI-infrastructure bid.",
+  "thesis_bear": "Signal computed on a STALE daily bar (latest CSCO close 2026-07-09, ~112.7h old at this 16:44 ET EOD run). No fresh close to act on. CSCO is high-beta networking; a rank-1 6m read can decay fast without a confirming fresh close. CSCO was closed 2026-07-01 (pre-close de-risk); no established position to add to.",
+  "invalidation_condition": "CSCO falls out of top-7 by 6m return; OR SPY loses its 10-month MA. Re-evaluate ONLY on a fresh daily close (staleness < 60s).",
+  "risk_reward": {
+    "entry": 118.275,
+    "stop": 106.448,
+    "target": 147.844,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.55,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "data_freshness": {
+    "latest_bar": "2026-07-09",
+    "age_hours": 112.74,
+    "max_staleness_seconds": 60,
+    "status": "STALE"
+  },
+  "consolidation": {
+    "primary_strategy": "large_cap_momentum_top5",
+    "subsumed_strategies": []
+  },
+  "notes": "reason=data_stale. Daily-bar feed is down (yfinance TLS curl 35, 15th+ consecutive session); Alpaca IEX fallback returns a latest CSCO bar of 2026-07-09 (~112.74h / ~405,857s old at this EOD run 2026-07-13 16:44 ET, a trading day). Exceeds risk_limits.data.max_data_staleness_seconds=60 by ~6,764x. The regime driver SPY is even more stale (last bar 2026-06-25). Per CLAUDE.md hard rule #5 (stale data -> NO_TRADE) this new ENTRY is refused. Live IEX quotes exist for held-position stop/target monitoring, but the daily-close signal basis is stale. No paper_sim.open_position called. No LIVE_* path. CB equity write SKIPPED this run (Guard 1: 4 pending broker order(s) in flight); prior FULL state carried, throttle=1.0. RM REJECTED on the freshness hard-check; Compliance REJECTED because RM != APPROVED."
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-13T20:44:17+00:00",
+  "routine_id": "end_of_day_2026-07-13",
+  "symbol": "XOM",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: XOM rank 4 of 21 by 126d/6m return (+16.37% per 2026-07-13 pre-market engine), SPY above its 10-month MA so the trend filter passes. Oil/Iran bid supports energy momentum.",
+  "thesis_bear": "Signal computed on a STALE daily bar (latest XOM close 2026-07-09, ~112.7h old). XOM drove two prior daily-loss breaches (05-26, 05-29) and its stop-loss exit on 07-01; energy/crude beta is the slate's biggest single-name DD source and is now partly a crisis/Iran-priced bid (two-sided). Size LOW-end per XOM memory caution if ever re-entered on fresh data.",
+  "invalidation_condition": "XOM falls out of top-7 by 6m return; OR SPY loses its 10-month MA; OR oil spike reverses on Iran de-escalation. Re-evaluate ONLY on a fresh daily close (staleness < 60s).",
+  "risk_reward": {
+    "entry": 137.27,
+    "stop": 123.543,
+    "target": 171.588,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.5,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "data_freshness": {
+    "latest_bar": "2026-07-09",
+    "age_hours": 112.74,
+    "max_staleness_seconds": 60,
+    "status": "STALE"
+  },
+  "consolidation": {
+    "primary_strategy": "large_cap_momentum_top5",
+    "subsumed_strategies": []
+  },
+  "notes": "reason=data_stale. Daily-bar feed down (yfinance TLS curl 35); Alpaca IEX fallback latest XOM bar 2026-07-09 (~112.74h / ~405,857s old at EOD 2026-07-13 16:44 ET). Exceeds max_data_staleness_seconds=60 by ~6,764x; regime driver SPY even staler (2026-06-25). Per CLAUDE.md rule #5 the new ENTRY is refused. XOM's history (05-26/05-29 daily-loss breaches, 07-01 stop-loss exit) plus the crisis-priced oil bid make a stale-data entry doubly unwarranted. No paper_sim.open_position called. No LIVE_* path. CB write SKIPPED (Guard 1: 4 pending broker orders); FULL carried, throttle=1.0. RM REJECTED on freshness; Compliance REJECTED because RM != APPROVED."
+}

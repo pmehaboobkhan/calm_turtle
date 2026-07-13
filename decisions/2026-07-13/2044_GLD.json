@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-13T20:44:17+00:00",
+  "routine_id": "end_of_day_2026-07-13",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "thesis_bull": "gold_permanent_overlay ENTRY: permanent 10% GLD allocation policy (crisis/inflation insurance, near-zero correlation diversifier). Overlay slot is currently empty (0% vs 10% target) since GLD was closed 2026-06-08.",
+  "thesis_bear": "SAME-SYMBOL CONFLICT: dual_momentum_taa signals EXIT on GLD (below its 210d/10-month MA), while gold_permanent_overlay signals ENTRY. v1 does NOT auto-resolve direction. GLD is NOT a currently open position, so the EXIT is a no-op and the overlay ENTRY is blocked by the Risk Manager's already-flat/conflict check. Separately, the signal is on a STALE daily bar (latest GLD close 2026-07-09, ~112.7h old).",
+  "invalidation_condition": "Conflict clears when GLD reclaims its 210d (10-month) MA, at which point dual_momentum_taa and the overlay agree again. Re-evaluate the overlay re-entry ONLY on a fresh daily close (staleness < 60s) AND once the A/C conflict resolves.",
+  "risk_reward": {
+    "entry": 378.23,
+    "stop": 340.407,
+    "target": 472.788,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.4,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "gold_permanent_overlay",
+  "data_freshness": {
+    "latest_bar": "2026-07-09",
+    "age_hours": 112.74,
+    "max_staleness_seconds": 60,
+    "status": "STALE"
+  },
+  "consolidation": {
+    "primary_strategy": "gold_permanent_overlay",
+    "subsumed_strategies": [],
+    "conflict": true,
+    "conflict_detail": "gold_permanent_overlay ENTRY vs dual_momentum_taa EXIT on GLD (GLD below 210d MA). Recurring policy-resolved conflict; see logs/risk_events/2026-07-13_204417_signal_conflict.md."
+  },
+  "notes": "reason=data_stale + signal_conflict. Two independent refusal grounds: (1) CLAUDE.md rule #5 — Alpaca IEX fallback latest GLD bar 2026-07-09 (~112.74h old at EOD 2026-07-13 16:44 ET), staleness >> 60s limit; regime driver SPY staler still (2026-06-25). (2) Same-symbol ENTRY(gold_permanent_overlay)+EXIT(dual_momentum_taa) conflict — GLD below its 10-month MA so TAA drops it while the overlay policy wants it. GLD is NOT held (closed 2026-06-08), so EXIT is a no-op and ENTRY is blocked by RM already-flat/conflict check. Same recurring conflict as 2026-06-08/06-10/06-11. Risk event written this run; URGENT Telegram to be sent in step 14. No paper_sim.open_position called. No LIVE_* path. CB write SKIPPED (Guard 1: 4 pending broker orders); FULL carried, throttle=1.0. RM REJECTED; Compliance REJECTED because RM != APPROVED."
+}
