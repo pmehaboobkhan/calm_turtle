@@ -55,3 +55,11 @@
 - Stop: $209.49, Target: $290.96, R/R: 2.5:1. Sized ~6% of account (Strategy B equal-weight top-5). Defensive Health_Care diversifier vs energy/tech tilt.
 - Routine: end_of_day_2026-06-08, mode PAPER_TRADING, cb_state=FULL, throttle=1.0.
 - Risk Manager: APPROVED. Compliance: APPROVED.
+
+## 2026-07-14 — PAPER_CLOSE (large_cap_momentum_top5) — overnight_risk
+
+- Decision file: `decisions/2026-07-14/1535_JNJ.json`
+- Reason: **overnight_risk** — JNJ Q2 earnings **2026-07-15 (next trading day)**; BMO/AMC session unconfirmed → treated conservatively as next-trading-day exposure (`holding_earnings_caution_window_days=1`). NOT a stop/target trigger: `lib.portfolio_health` returned no invalidation (stop 209.49 / target 290.96 both far from price).
+- Order: full **26-share close** via `lib.paper_sim.close_position`, conservative long-side bid ref **253.48** (JNJ spread had tightened to ~0.04% at execution vs ~2.26% at proposal time). Est. realized P/L ≈ **+$538 (+8.9%)** vs 232.75 entry; actual set by the Alpaca fill.
+- Broker: `BROKER_PAPER=alpaca`, order `e01c2828-6815-4b22-8529-a5e1aad2f587` status=FILLED; local log row stamped PENDING_BROKER (append-only); `reconcile()` alpaca-authoritative, open_count=3, discrepancies=[]; JNJ removed from positions.json + position_meta.json.
+- Routine: pre_close_2026-07-14, mode PAPER_TRADING, cb_state=FULL (refresh skipped — Guard 1, pending-broker). Gates: **Risk Manager APPROVED → Compliance APPROVED**. EXITs are never CB-throttled.

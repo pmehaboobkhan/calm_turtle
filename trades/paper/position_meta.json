@@ -6,13 +6,6 @@
     "stop_loss": 331.68,
     "take_profit": 460.66
   },
-  "JNJ": {
-    "entry_basis": 232.8166,
-    "opened_at": "2026-06-08T20:38:06.517791+00:00",
-    "rationale_link": "decisions/2026-06-08/1638_JNJ.json",
-    "stop_loss": 209.49,
-    "take_profit": 290.96
-  },
   "SPY": {
     "entry_basis": 737.6975,
     "opened_at": "2026-06-08T20:37:54.578485+00:00",

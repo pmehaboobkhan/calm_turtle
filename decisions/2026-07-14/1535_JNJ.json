@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-14T19:35:00+00:00",
+  "routine_id": "pre_close_2026-07-14",
+  "symbol": "JNJ",
+  "decision": "PAPER_CLOSE",
+  "strategy": "large_cap_momentum_top5",
+  "action_source": "pre_close overnight-risk overlay: fundamental_context earnings scan (JNJ next earnings 2026-07-15, next trading day) + macro_sector next-session calendar. NOT a deterministic stop/target trigger; lib.portfolio_health.assess_positions returned stop_breached=false, target_hit=false, invalidation_triggers=[] and positions_to_close=[] for JNJ. This is a discretionary overnight-risk close under the pre_close routine (reason overnight_risk).",
+  "close_reason": "overnight_risk: JNJ Q2 earnings 2026-07-15 (next trading day); session BMO/AMC uncertain, treated conservatively as next-trading-day exposure per strategy_rules.holding_earnings_caution_window_days=1 and pre_close.md rule 'if uncertain whether earnings are AMC vs next-day BMO, treat as next-trading-day exposure'.",
+  "thesis_bull": "Reason to hold (subordinate): JNJ is a healthy large_cap_momentum_top5 winner, +8.8% vs 232.75 entry (fresh IEX bid 253.28), rank-3 by 6-month momentum (+18.06%), advancing toward its 290.96 take-profit with no stop/target breach and no deterministic invalidation trigger. Broad tape is risk-on after the cooler June CPI print (3.5% YoY vs 3.8% expected) released 2026-07-14 08:30 ET, and JNJ carries a defensive-healthcare role in the book. A strong Q2 print could gap the position toward target and closing now forfeits that upside plus pays spread/slippage to re-enter. The routine itself acknowledges any pre-emptive close pays a small expected-value cost.",
+  "thesis_bear": "Reason to exit (governing): JNJ reports Q2 earnings on the very next trading day (2026-07-15), inside the strategy's 1-day earnings-caution window. fundamental_context could not confirm BMO vs AMC session, so per the routine's conservative rule the event is treated as next-trading-day exposure. A position held overnight into a binary earnings release is exposed to a gap the system cannot react to; pharma earnings routinely gap +/-3-7%. JNJ sits on a momentum rally near target, so an earnings miss would give back a large share of the unrealized gain and could cascade momentum-rank rotation risk into UNH (rank-2, its own earnings 07-16). Capital preservation over a clever hold: the pre_close routine exists to cap exactly this visible overnight tail risk, and CLAUDE.md directs choosing the conservative action when uncertain. The EOD 07-14 routine will re-evaluate a fresh entry on closing prices; nothing is locked out.",
+  "technical_context": {
+    "entry_price": 232.75,
+    "stop_loss": 209.49,
+    "take_profit": 290.96,
+    "current_price": 253.28,
+    "pct_from_entry": 8.82,
+    "invalidation_triggers": [],
+    "trigger_source": "lib.portfolio_health.assess_positions (no stop/target trigger); close driven by overnight-risk overlay, not by a price invalidation",
+    "stop_breached": false,
+    "target_hit": false,
+    "positions_to_close": []
+  },
+  "news_context": "Midday news_sentiment scan (07-14) found no material JNJ news; dividend increase + analyst target raises are routine-positive, not an earnings preannouncement. Absence of an adverse news item is NOT treated as bullish. The governing catalyst is the scheduled 07-15 earnings release, not sentiment.",
+  "macro_context": "pre_close monitoring routine, mode PAPER_TRADING. Regime (07-13 deterministic): range_bound, low confidence; SPY above 10-month MA (Strategy-B trend filter passes) but at 50dma knife-edge on stale daily bars. June CPI 07-14 08:30 ET came in cooler (supportive, same-session, now past). macro_sector found NO tier-A scheduled macro release for 07-15; JNJ earnings is the single-name binary. Ongoing two-sided US-Iran/Strait-of-Hormuz oil tail noted but not a scheduled event. EXITs are NEVER throttled by the circuit-breaker regardless of CB state (CB FULL, carried forward; CB refresh skipped this run due to 4 pending-broker orders, which is irrelevant to an EXIT).",
+  "invalidation_condition": "This overnight-risk exit stands as long as JNJ's Q2 earnings remain scheduled within the next trading day (2026-07-15) with unconfirmed BMO/AMC session. It would only be invalidated if the earnings date were confirmed to fall OUTSIDE the next trading day (e.g. pushed beyond 07-15), which current sources do not support. Measurable condition: next_earnings_date <= 2026-07-15 => close full position pre-close to avoid the overnight binary.",
+  "risk_reward": {
+    "entry": 232.75,
+    "stop": 209.49,
+    "target": 290.96,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 26,
+    "usd": 6585.28,
+    "pct_of_account": 6.55
+  },
+  "close_details": {
+    "close_full_position": true,
+    "close_quantity": 26.0,
+    "execution_price_reference": 253.28,
+    "side_to_close": "SELL",
+    "realized_pl_estimate_usd": 533.78,
+    "realized_pl_estimate_pct": 8.82
+  },
+  "price_source": "Alpaca IEX quote, bid=253.28 / ask=259.00 / last=259.00, quote_ts 2026-07-14T19:34:36Z (market OPEN, fresh ~2s old, inside the 60s staleness cap). Spread ~2.26% is WIDE — the known low-confidence single-stock IEX artifact flagged repeatedly in 07-13/07-14 journals for JNJ/UNH. Conservative long-side bid 253.28 used as the realizable close reference (underestimate edge, per fills policy). Under BROKER_PAPER=alpaca the realized PnL will be set by the actual Alpaca paper fill, not this reference.",
+  "data_quality_caveats": "Fresh quote (inside 60s cap) but WIDE ~2.26% bid/ask spread on JNJ (single-stock IEX last prints are lower-confidence). This affects the exact realized close price, NOT the decision to close: the close is driven by a scheduled binary earnings event, so exit-price uncertainty is not a reason to hold through the binary. Earnings SESSION (BMO vs AMC) is unconfirmed by fundamental_context; treated conservatively as next-trading-day exposure. Circuit-breaker refresh skipped this run (4 pending-broker orders) — irrelevant to an EXIT (EXITs are never throttled).",
+  "confidence_score": 0.7,
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_reasoning": "APPROVED. Full PAPER_CLOSE of a confirmed existing long (JNJ 26sh BUY, entry 232.75, stop 209.49, tp 290.96) verified against trades/paper/positions.json. JNJ is on the watchlist with approved_for_paper_trading=true (Health_Care), not in blocked_symbols (only INTU). Strategy large_cap_momentum_top5 is ACTIVE_PAPER_TEST in allowed_strategies. Quote ~2s old, inside the 60s staleness cap. No permissions flag engaged (not margin/options/short/leverage/averaging-down). Entry-gating checks (R/R, per-position/total exposure, sector-correlation, trades-per-day, max-open-positions) are all relaxed by a full exit. Close realizes a gain (+$533.78, +8.82% est.), so no loss cap / weekly / monthly / consecutive-loss halt is implicated and no risk_event required. Mode PAPER_TRADING => no live human-approval gate. Wide ~2.26% IEX spread is a fill-quality note, not a limit breach; actual PnL from the Alpaca fill. No limit raised.",
+  "compliance_verdict": "APPROVED",
+  "compliance_reasoning": "APPROVED. (1) Mode PAPER_TRADING permits PAPER_CLOSE. (2) JNJ on watchlist with approved_for_paper_trading=true, NOT in blocked_symbols (only INTU); closing a long is inherently risk-reducing. (3) large_cap_momentum_top5 in allowed_strategies, not disallowed. (4) Position exists exactly as described in positions.json. (5) Risk Manager verdict APPROVED. (6) Conservative, well-motivated exit under holding_earnings_caution_window_days=1 + pre_close conservative rule ahead of JNJ 2026-07-15 Q2 earnings; wide ~2.26% spread disclosed but does not gate an earnings-driven exit. (7) Not a PROPOSE_LIVE_* decision; human_approval_required=false; no live-execution path (all live flags off; v1 live disabled). No CLAUDE.md violation: no blocked symbol, no raised limit, no protected-config edit, no live order, no skipped gate.",
+  "human_approval_required": false,
+  "final_status": "PAPER_FILLED",
+  "gate_status": "RISK_AND_COMPLIANCE_APPROVED",
+  "gate_chain": "orchestrator(trade_proposal draft) -> risk_manager(APPROVED) -> compliance_safety(APPROVED)",
+  "execution": {
+    "executed": true,
+    "executed_at": "2026-07-14T19:41:06+00:00",
+    "executed_by": "orchestrator (pre_close routine)",
+    "close_quantity": 26.0,
+    "close_price_reference": 253.48,
+    "execution_note": "Full 26-share JNJ position closed via lib.paper_sim.close_position(quote_price=253.48 conservative bid ref) under BROKER_PAPER=alpaca. Alpaca order e01c2828-6815-4b22-8529-a5e1aad2f587 status=FILLED. Local log row stamped PENDING_BROKER (append-only status not rewritten by reconcile). reconcile() returned discrepancies=[] (alpaca-authoritative), open_count=3; JNJ removed from positions.json and position_meta.json on both local and Alpaca. Remaining held overnight: GOOGL, SPY, UNH. Note: at execution the JNJ spread had tightened to ~0.04% (bid 253.48 / ask 253.58), better than the ~2.26% seen at proposal time. Est. realized P/L approximately +$538 (+8.9%) at the ref bid; actual set by the Alpaca fill.",
+    "reconcile_open_count": 3,
+    "reconcile_discrepancies": 0
+  }
+}
