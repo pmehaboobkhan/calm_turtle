@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-14T20:44:51+00:00",
+  "routine_id": "end_of_day_2026-07-14",
+  "symbol": "XOM",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: XOM ranks #4 by 126-day return (+14.25%), SPY trend filter passes. Energy bid on the two-sided US-Iran/Strait-of-Hormuz oil tail.",
+  "thesis_bear": "STALE data (rule #5): newest bar 2026-07-10 ~112.7h old; regime driver staler. XOM not held; fresh-open refused on freshness. (Prior XOM position was stop-loss-closed 2026-07-01 at 135.89<136.84 stop \u2014 memory flags XOM as a lower-conviction, tighter-sized name.)",
+  "invalidation_condition": "Re-evaluate on a fresh daily close (staleness < 60s) with XOM still top-5 and SPY above its 10m MA; size at the low end per XOM memory caution.",
+  "risk_reward": {
+    "entry": 138.83,
+    "stop": 124.95,
+    "target": 173.54,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.4,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "data_freshness": {
+    "latest_bar": "2026-07-10",
+    "age_hours": 112.7,
+    "max_staleness_seconds": 60,
+    "status": "STALE"
+  },
+  "notes": "reason=data_stale (rank 4 (+14.25% 6m)). CLAUDE.md rule #5: daily-bar feed stale. yfinance primary is TLS-reset (curl 35) through the agent proxy; Alpaca IEX fallback newest daily bar 2026-07-10 (~112.7h old at EOD 16:44 ET), and the regime-driver SPY bar is staler still (2026-06-25/26, ~19 days). Staleness >> 60s limit by ~5 orders of magnitude. No paper_sim.open_position called. No LIVE_* path. CB write SKIPPED (Guard 1: 5 pending broker orders); FULL carried, throttle=1.0. RM REJECTED on freshness; Compliance REJECTED because RM != APPROVED and rule #5 bars the trade."
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-14T20:44:51+00:00",
+  "routine_id": "end_of_day_2026-07-14",
+  "symbol": "COST",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: COST ranks #5 by 126-day return (+11.19%), SPY trend filter passes. Defensive-staples momentum, the thinnest-buffer top-5 slot.",
+  "thesis_bear": "STALE data (rule #5): newest bar 2026-07-10 ~112.7h old. COST is rank-5 (thinnest momentum buffer) so it is the most marginal top-5 entry and the most likely to drop out on a fresh read \u2014 extra reason not to open it on stale bars. Not currently held; fresh-open refused.",
+  "invalidation_condition": "Re-evaluate on a fresh daily close (staleness < 60s); confirm COST is still inside the top-5 buffer before any ENTRY.",
+  "risk_reward": {
+    "entry": 916.05,
+    "stop": 824.44,
+    "target": 1145.06,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.4,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "data_freshness": {
+    "latest_bar": "2026-07-10",
+    "age_hours": 112.7,
+    "max_staleness_seconds": 60,
+    "status": "STALE"
+  },
+  "notes": "reason=data_stale (rank 5 (+11.19% 6m)). CLAUDE.md rule #5: daily-bar feed stale. yfinance primary is TLS-reset (curl 35) through the agent proxy; Alpaca IEX fallback newest daily bar 2026-07-10 (~112.7h old at EOD 16:44 ET), and the regime-driver SPY bar is staler still (2026-06-25/26, ~19 days). Staleness >> 60s limit by ~5 orders of magnitude. No paper_sim.open_position called. No LIVE_* path. CB write SKIPPED (Guard 1: 5 pending broker orders); FULL carried, throttle=1.0. RM REJECTED on freshness; Compliance REJECTED because RM != APPROVED and rule #5 bars the trade."
+}

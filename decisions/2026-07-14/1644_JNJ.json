@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-14T20:44:51+00:00",
+  "routine_id": "end_of_day_2026-07-14",
+  "symbol": "JNJ",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: JNJ ranks #3 by 126-day return (+23.59%), SPY trend filter passes. It was a healthy momentum winner (closed today +8.9% for overnight-risk reasons).",
+  "thesis_bear": "TWO independent refusal grounds. (1) STALE data (rule #5): newest bar 2026-07-10 ~112.7h old. (2) JNJ was closed at pre_close today specifically to avoid its Q2 earnings binary on the NEXT trading day (2026-07-15, BMO/AMC unconfirmed); re-opening the same session directly into that earnings event would reinstate exactly the overnight tail risk the pre_close close was designed to remove \u2014 reckless regardless of data freshness (holding_earnings_caution_window_days=1). Capital preservation governs.",
+  "invalidation_condition": "Reconsider only AFTER JNJ's 2026-07-15 earnings clears AND on a fresh daily close (staleness < 60s), if JNJ remains top-5 with SPY above its 10m MA.",
+  "risk_reward": {
+    "entry": 256.93,
+    "stop": 231.24,
+    "target": 321.16,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.4,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "data_freshness": {
+    "latest_bar": "2026-07-10",
+    "age_hours": 112.7,
+    "max_staleness_seconds": 60,
+    "status": "STALE"
+  },
+  "notes": "reason=data_stale (rank 3 (+23.59% 6m)). CLAUDE.md rule #5: daily-bar feed stale. yfinance primary is TLS-reset (curl 35) through the agent proxy; Alpaca IEX fallback newest daily bar 2026-07-10 (~112.7h old at EOD 16:44 ET), and the regime-driver SPY bar is staler still (2026-06-25/26, ~19 days). Staleness >> 60s limit by ~5 orders of magnitude. No paper_sim.open_position called. No LIVE_* path. CB write SKIPPED (Guard 1: 5 pending broker orders); FULL carried, throttle=1.0. RM REJECTED on freshness; Compliance REJECTED because RM != APPROVED and rule #5 bars the trade."
+}

@@ -63,3 +63,12 @@
 - Order: full **26-share close** via `lib.paper_sim.close_position`, conservative long-side bid ref **253.48** (JNJ spread had tightened to ~0.04% at execution vs ~2.26% at proposal time). Est. realized P/L ≈ **+$538 (+8.9%)** vs 232.75 entry; actual set by the Alpaca fill.
 - Broker: `BROKER_PAPER=alpaca`, order `e01c2828-6815-4b22-8529-a5e1aad2f587` status=FILLED; local log row stamped PENDING_BROKER (append-only); `reconcile()` alpaca-authoritative, open_count=3, discrepancies=[]; JNJ removed from positions.json + position_meta.json.
 - Routine: pre_close_2026-07-14, mode PAPER_TRADING, cb_state=FULL (refresh skipped — Guard 1, pending-broker). Gates: **Risk Manager APPROVED → Compliance APPROVED**. EXITs are never CB-throttled.
+
+**Cumulative stats (updated 2026-07-14 EOD):**
+
+- Open paper positions: 0 (JNJ closed 2026-07-14 pre_close for overnight earnings risk)
+- Closed paper trades: 1 (post-reset)
+- Realized PnL: +$538.98 (est. from close ref 253.48 vs 232.75 entry × 26 sh; actual set by the Alpaca paper fill)
+- Win rate: 100% (1 of 1 closed trades profitable, post-reset)
+- Active strategies: large_cap_momentum_top5 (JNJ remains a top-5 momentum name, rank 3 +23.59% 6m on 2026-07-14 stale bars; a fresh re-entry was refused NO_TRADE at EOD 2026-07-14 on data-staleness + imminent 07-15 earnings — see decisions/2026-07-14/1644_JNJ.json)
+- Note: EOD 2026-07-14 executed no JNJ trade; the 07-14 realized close was a pre_close action. Header updated here by the EOD performance_review step.
