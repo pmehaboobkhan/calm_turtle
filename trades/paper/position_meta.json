@@ -12,12 +12,5 @@
     "rationale_link": "decisions/2026-06-08/1636_SPY.json",
     "stop_loss": 663.79,
     "take_profit": 921.94
-  },
-  "UNH": {
-    "entry_basis": 396.5493,
-    "opened_at": "2026-06-05T20:46:49.367699+00:00",
-    "rationale_link": "decisions/2026-06-05/1642_UNH.json",
-    "stop_loss": 356.82,
-    "take_profit": 495.59
   }
 }

@@ -109,3 +109,11 @@
 
 - Open paper positions: 0 filled (1 BUY order PENDING_BROKER for next open)
 - Active strategies: large_cap_momentum_top5
+
+## 2026-07-15 — pre_close overnight-risk CLOSE (PAPER_CLOSE, large_cap_momentum_top5)
+
+- Decision file: `decisions/2026-07-15/1936_UNH.json` (PAPER_CLOSE, final_status=PAPER_FILLED)
+- Routine: pre_close_2026-07-15, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (refresh skipped, pending-broker Guard 1).
+- Reason: overnight_risk — UNH Q2 2026 earnings **2026-07-16 BMO** (next trading day), within holding_earnings_caution_window_days=1. NOT a stop/target trigger (portfolio_health: no invalidation, pnl +5.0% on last IEX 418.42).
+- Held from 2026-06-08 entry 398.674 (15sh, stop 356.82, tp 495.59). Closed ref 418.42 (wide ~5.4% IEX spread; bid 395.67/ask 418.42); est realized ~+$296 (+5.0%), actual set by Alpaca fill. Alpaca order a0519c5f status=FILLED.
+- Gates: risk_manager APPROVED → compliance_safety APPROVED. reconcile discrepancies=[], open_count=2 (GOOGL, SPY remain). Mirrors the 2026-07-14 JNJ overnight-earnings precedent.

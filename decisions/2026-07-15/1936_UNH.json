@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-15T19:36:05+00:00",
+  "routine_id": "pre_close_2026-07-15",
+  "symbol": "UNH",
+  "decision": "PAPER_CLOSE",
+  "strategy": "large_cap_momentum_top5",
+  "action_source": "pre_close overnight-risk overlay: fundamental_context earnings scan (UNH Q2 2026 earnings 2026-07-16 BMO = next trading day) + macro_sector next-session calendar (no calendar-A macro event scheduled 2026-07-16; UNH earnings is the single binary). NOT a deterministic stop/target trigger; lib.portfolio_health.assess_positions returned stop_breached=false, target_hit=false, invalidation_triggers=[] and to_close=[] for UNH. This is a discretionary overnight-risk close under the pre_close routine (reason overnight_risk).",
+  "close_reason": "overnight_risk: UNH Q2 2026 earnings 2026-07-16 BMO (next trading day). Held into today's 2026-07-15 close, tomorrow's BMO release falls inside the strategy 1-day earnings-caution window (strategy_rules holding_earnings_caution_window_days=1 equivalent) and inside pre_close.md's next-trading-day rule. fundamental_context confirmed the 07-16 BMO date across three internal sources; per the routine's conservative rule, a binary earnings release on the next trading day is treated as material overnight exposure.",
+  "thesis_bull": "Reason to hold (subordinate): UNH is the strongest of the three held names, +5.0% vs 398.674 entry on the last IEX print (418.42), rank-2 by 6-month momentum (+27.81% at last read), advancing toward its 495.59 take-profit with ~11.6% of buffer above its 356.82 stop and no deterministic invalidation. The broad tape is risk-on after the cooler June CPI print (3.5% YoY vs 3.8% expected, released 2026-07-14). Analyst tone is constructive (MS Overweight, ~$468 PT per data/news/2026-07-15/UNH.md). A strong Q2 print could gap the position toward target, and closing now pays spread/slippage to re-enter. The routine itself acknowledges a pre-emptive close pays a small expected-value cost.",
+  "thesis_bear": "Reason to exit (governing): UNH reports Q2 2026 earnings on the very next trading day (2026-07-16, BMO), inside the strategy 1-day earnings-caution window. A position held overnight into a binary earnings release is exposed to a gap the system cannot react to; managed-care earnings routinely gap +/-5-15%, and UNH specifically carries live DOJ Medicare-Advantage / Optum antitrust probe overhang (per UNH symbol history) that raises miss/guidance-cut tail risk. UNH sits on a large momentum gain near the middle of its range, so an earnings miss would give back a substantial share of the unrealized profit. This exactly mirrors the 2026-07-14 JNJ overnight-earnings close. Capital preservation over a clever hold: the pre_close routine exists to cap precisely this visible overnight tail risk, and CLAUDE.md directs the conservative action when uncertain. The EOD 2026-07-15 routine will re-evaluate a fresh UNH entry on closing prices; nothing is locked out.",
+  "technical_context": {
+    "entry_price": 398.674,
+    "stop_loss": 356.82,
+    "take_profit": 495.59,
+    "current_price": 418.42,
+    "pct_from_entry": 4.95,
+    "invalidation_triggers": [],
+    "trigger_source": "lib.portfolio_health.assess_positions (no stop/target trigger; pnl_pct +5.00%, stop_breached=false, target_hit=false, invalidation_triggers=[]); close driven by overnight-risk overlay, not by a price invalidation",
+    "stop_breached": false,
+    "target_hit": false,
+    "positions_to_close": []
+  },
+  "news_context": "Midday news_sentiment scan (07-15) found NO_NEWS on UNH: Q2 earnings 07-16 BMO confirmed, no preannouncement / CMS action (Benzinga 2026-07-15). Absence of an adverse item is NOT treated as bullish. The governing catalyst is the scheduled 07-16 BMO earnings release, not sentiment. Background: ongoing DOJ Medicare-Advantage + Optum antitrust probes (UNH symbol history) are an unhedgeable single-name overhang into a binary print.",
+  "macro_context": "pre_close monitoring routine, mode PAPER_TRADING. Regime (07-13 deterministic, carried): range_bound / bullish_trend read on STALE daily bars (feed ~16d stale; live IEX quotes directional only). macro_sector overnight scan: NO calendar-A macro release scheduled for 2026-07-16 (FOMC 07-28/29; June CPI already released 07-14; no NFP/GDP/PPI/retail sales 07-16). SPY and GOOGL therefore have no next-trading-day catalyst and are held overnight. UNH BMO earnings is the single next-session binary. Two-sided US-Iran / Strait-of-Hormuz oil tail noted (Brent +13%/48h) but not a scheduled event. EXITs are NEVER throttled by the circuit-breaker regardless of CB state (CB FULL, carried forward; CB refresh skipped this run due to 5 pending-broker orders, which is irrelevant to an EXIT).",
+  "invalidation_condition": "This overnight-risk exit stands as long as UNH's Q2 earnings remain scheduled within the next trading day (2026-07-16 BMO). It would be invalidated only if the earnings date were confirmed to fall OUTSIDE the next trading day (e.g. pushed beyond 07-16), which current sources do not support (three internal sources confirm 07-16 BMO). Measurable condition: next_earnings_date <= 2026-07-16 => close full position pre-close to avoid the overnight/BMO binary.",
+  "risk_reward": {
+    "entry": 398.674,
+    "stop": 356.82,
+    "target": 495.59,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 15,
+    "usd": 6276.30,
+    "pct_of_account": 6.25
+  },
+  "close_details": {
+    "close_full_position": true,
+    "close_quantity": 15.0,
+    "execution_price_reference": 418.42,
+    "side_to_close": "SELL",
+    "realized_pl_estimate_usd": 296.19,
+    "realized_pl_estimate_pct": 4.95
+  },
+  "price_source": "Alpaca IEX quote for UNH: bid=395.67 / ask=418.42 / last=418.42, quote_ts 2026-07-15T19:36:05Z (market OPEN, fresh ~1s old, inside the 60s staleness cap). Spread ~5.4% is VERY WIDE — the known low-confidence single-stock IEX artifact repeatedly flagged for UNH/JNJ in 07-13/07-14/07-15 journals (the IEX bid is thin/stale). Last=418.42 used as the execution_price_reference (matches broker.latest_quotes_for_positions and the midday health-check basis); the conservative IEX bid 395.67 would imply ~-$45 vs entry and is treated as an artifact, not the realizable price. Under BROKER_PAPER=alpaca the realized PnL is set by the actual Alpaca paper fill, not this reference.",
+  "data_quality_caveats": "Fresh quote (inside 60s cap) but VERY WIDE ~5.4% bid/ask spread on UNH (thin single-stock IEX bid; low-confidence last prints). This affects the exact realized close price, NOT the decision to close: the close is driven by a scheduled binary earnings event, so exit-price uncertainty is not a reason to hold through the binary. Underlying daily-bar feed remains ~16d stale (rule #5), but this EXIT is not a new-entry action and is not gated by daily-bar staleness — it is a risk-reducing close on a live (directional) IEX quote. Circuit-breaker refresh skipped this run (5 pending-broker orders, Guard 1) — irrelevant to an EXIT (EXITs are never throttled).",
+  "confidence_score": 0.7,
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_reasoning": "APPROVED. Full risk-reducing exit of long UNH (15 sh, strategy large_cap_momentum_top5), verified against positions.json. UNH on watchlist (approved_for_paper_trading), not blocked (only INTU). Closing only reduces exposure/open-position count (3->2) and sector correlation; no size, total-exposure, loss-cap, or consecutive-loss limit implicated (exit is at an est. gain ~+$296). Trades-today 0->1 < max_trades_per_day 5; open positions 3 < max_open_positions 8. Fresh ~1s directional quote inside 60s staleness cap; wide ~5.4% IEX spread and daily-bar staleness are not blockers for a risk-reducing EXIT driven by a scheduled binary (UNH Q2 earnings 07-16 BMO, holding_earnings_caution_window_days=1). No permissions flag engaged (not margin/options/short/leverage/averaging-down). EXITs never CB-throttled. No limit raised; no risk_event required.",
+  "compliance_verdict": "APPROVED",
+  "compliance_reasoning": "APPROVED. (1) Mode PAPER_TRADING (approved_modes.yaml) permits PAPER_CLOSE. (2) UNH on watchlist with approved_for_paper_trading=true and NOT in blocked_symbols (only INTU); closing a long is inherently risk-reducing. (3) Strategy large_cap_momentum_top5 is in allowed_strategies (ACTIVE_PAPER_TEST). (4) Position verified exactly in positions.json: UNH BUY 15 sh, entry 398.674, stop 356.82, tp 495.59. (5) Risk Manager verdict APPROVED accepted. (6) No forbidden action: no blocked-symbol involvement, no raised limit, no protected-config edit, no live-order path (approved_for_live_trading=false; v1 live disabled regardless of BROKER_PAPER), no skipped gate, no new-position open (monitoring routine). (7) human_approval_required=false is correct — PAPER_CLOSE, not PROPOSE_LIVE_*. Overnight-earnings exit ahead of UNH Q2 2026 (07-16 BMO) consistent with holding_earnings_caution_window_days=1 and the 2026-07-14 JNJ precedent. No CLAUDE.md violation.",
+  "human_approval_required": false,
+  "final_status": "PAPER_FILLED",
+  "gate_status": "RISK_AND_COMPLIANCE_APPROVED",
+  "gate_chain": "orchestrator(trade_proposal draft) -> risk_manager(APPROVED) -> compliance_safety(APPROVED)",
+  "execution": {
+    "executed": true,
+    "executed_at": "2026-07-15T19:40:23+00:00",
+    "executed_by": "orchestrator (pre_close routine)",
+    "close_quantity": 15.0,
+    "close_price_reference": 418.42,
+    "execution_note": "Full 15-share UNH position closed via lib.paper_sim.close_position(quote_price=418.42 last IEX ref) under BROKER_PAPER=alpaca. Alpaca close order a0519c5f-52da-4850-902c-11b71969c601 status=FILLED. Local log row stamped PENDING_BROKER (append-only status not rewritten by reconcile). reconcile() returned discrepancies=[] (alpaca-authoritative), open_count=2; UNH removed from positions.json and position_meta.json on both local and Alpaca. Remaining held overnight: GOOGL, SPY. Realized PnL is set by the actual Alpaca fill (est ~+$296 at the 418.42 last ref; wide ~5.4% IEX spread makes the exact fill uncertain).",
+    "reconcile_open_count": 2,
+    "reconcile_discrepancies": 0
+  }
+}
