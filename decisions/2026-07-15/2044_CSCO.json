@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-15T20:44:01+00:00",
+  "routine_id": "end_of_day_2026-07-15",
+  "symbol": "CSCO",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: CSCO ranks #1 by 126-day return (+50.76%) with SPY above its 10-month MA (trend filter passes). AI-infrastructure/networking bid.",
+  "thesis_bear": "Signal computed on STALE daily bars (newest 2026-07-10 ~136.7h; regime-driver SPY 2026-06-29). Opening on stale data is refused per CLAUDE.md rule #5. CSCO not currently held; a fresh open, so refusal has zero position impact.",
+  "invalidation_condition": "Re-evaluate only on a fresh daily close (staleness < 60s). If CSCO remains top-5 and SPY stays above its 10m MA on fresh bars, ENTRY is reconsidered next EOD.",
+  "risk_reward": {
+    "entry": 121.24,
+    "stop": 109.12,
+    "target": 151.55,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.4,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "data_freshness": {
+    "latest_bar": "2026-07-10",
+    "age_hours": 136.7,
+    "max_staleness_seconds": 60,
+    "status": "STALE"
+  },
+  "notes": "reason=data_stale (rank 1, +50.76% 6m). CLAUDE.md rule #5: daily-bar feed stale. yfinance primary is TLS-reset (curl 35) through the agent proxy (fresh-fetch attempted at EOD and failed); Alpaca IEX fallback newest daily bar 2026-07-10 (~136.7h old), and the regime-driver SPY bar is staler still (2026-06-29 on the 300-bar window; feed returns different 'latest' bars by window \u2014 intermittent-lag artifact). Staleness >> 60s limit by ~4-5 orders of magnitude. No paper_sim.open_position called. No LIVE_* path. CB write SKIPPED (Guard 1: 6 pending broker orders); FULL carried, throttle=1.0. RM REJECTED on freshness; Compliance REJECTED because RM != APPROVED and rule #5 bars the trade."
+}

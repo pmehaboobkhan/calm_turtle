@@ -117,3 +117,21 @@
 - Reason: overnight_risk — UNH Q2 2026 earnings **2026-07-16 BMO** (next trading day), within holding_earnings_caution_window_days=1. NOT a stop/target trigger (portfolio_health: no invalidation, pnl +5.0% on last IEX 418.42).
 - Held from 2026-06-08 entry 398.674 (15sh, stop 356.82, tp 495.59). Closed ref 418.42 (wide ~5.4% IEX spread; bid 395.67/ask 418.42); est realized ~+$296 (+5.0%), actual set by Alpaca fill. Alpaca order a0519c5f status=FILLED.
 - Gates: risk_manager APPROVED → compliance_safety APPROVED. reconcile discrepancies=[], open_count=2 (GOOGL, SPY remain). Mirrors the 2026-07-14 JNJ overnight-earnings precedent.
+
+## 2026-07-15 — EOD reconcile of pre_close close + re-entry refusal (NO_TRADE)
+
+- Routine: end_of_day_2026-07-15, mode PAPER_TRADING, BROKER_PAPER=alpaca, cb_state=FULL (refresh skipped, pending-broker Guard 1: 6 pending).
+- Today's pre_close CLOSE now confirmed against Alpaca fill: SELL 15 @ **418.261333** (order a0519c5f, FILLED) vs 2026-06-08 basis 398.674 → **realized +$293.81 (+4.91%)**.
+- EOD re-entry check: UNH signals large_cap_momentum_top5 ENTRY again (rank 2, 6m +28.11%) but is REFUSED — decision `decisions/2026-07-15/2044_UNH.json` (NO_TRADE). Two independent grounds: (1) daily bars STALE (rule #5); (2) UNH Q2 earnings 2026-07-16 BMO still inside the overnight caution window — re-buying now would re-add the exact binary the pre_close exit removed.
+- Gates: risk_manager REJECTED (freshness + earnings caution), compliance_safety REJECTED (RM != APPROVED). No paper_sim.open_position called.
+
+**Cumulative stats (updated 2026-07-15 EOD):**
+
+- Open paper positions: 0 (flat — closed 2026-07-15 pre_close on 07-16 earnings risk)
+- Closed paper trades: 2
+  - 2026-05-20→2026-05-29: BUY 39 @ 391.9044 → SELL 39 @ 380.7038 = **−$436.82** (loss)
+  - 2026-06-08→2026-07-15: BUY 15 @ 398.674 → SELL 15 @ 418.2613 = **+$293.81** (win)
+- Realized PnL (lifetime): **−$143.01**
+- Unrealized PnL: $0.00 (flat)
+- Win rate: 50% (1W / 1L)
+- Active strategies: large_cap_momentum_top5

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-15T20:44:01+00:00",
+  "routine_id": "end_of_day_2026-07-15",
+  "symbol": "JNJ",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: JNJ ranks #3 by 126-day return (+24.34%) with SPY above its 10-month MA. Pharma/defensive momentum.",
+  "thesis_bear": "STALE bars (rule #5). JNJ reported Q2 earnings 2026-07-15 BMO (today); the momentum rank is computed on pre-earnings stale bars and does not reflect today's reaction. JNJ not currently held (closed 07-14 pre-earnings). Fresh open refused on staleness.",
+  "invalidation_condition": "Re-evaluate only on a fresh daily close (staleness < 60s) that incorporates the post-earnings reaction. If JNJ remains top-5 on fresh bars, ENTRY is reconsidered.",
+  "risk_reward": {
+    "entry": 256.93,
+    "stop": 231.24,
+    "target": 321.16,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.4,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "data_freshness": {
+    "latest_bar": "2026-07-10",
+    "age_hours": 136.7,
+    "max_staleness_seconds": 60,
+    "status": "STALE"
+  },
+  "notes": "reason=data_stale (rank 3, +24.34% 6m; JNJ earnings 2026-07-15 BMO already reported, stale bars pre-date reaction). CLAUDE.md rule #5: daily-bar feed stale. yfinance primary is TLS-reset (curl 35) through the agent proxy (fresh-fetch attempted at EOD and failed); Alpaca IEX fallback newest daily bar 2026-07-10 (~136.7h old), and the regime-driver SPY bar is staler still (2026-06-29 on the 300-bar window; feed returns different 'latest' bars by window \u2014 intermittent-lag artifact). Staleness >> 60s limit by ~4-5 orders of magnitude. No paper_sim.open_position called. No LIVE_* path. CB write SKIPPED (Guard 1: 6 pending broker orders); FULL carried, throttle=1.0. RM REJECTED on freshness; Compliance REJECTED because RM != APPROVED and rule #5 bars the trade."
+}

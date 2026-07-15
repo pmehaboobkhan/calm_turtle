@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-15T20:44:01+00:00",
+  "routine_id": "end_of_day_2026-07-15",
+  "symbol": "GLD",
+  "decision": "NO_TRADE",
+  "thesis_bull": "gold_permanent_overlay ENTRY: permanent 10% GLD allocation policy (crisis/inflation insurance, near-zero-correlation diversifier). Overlay slot currently empty (0% vs 10% target) since GLD closed 2026-06-08.",
+  "thesis_bear": "SAME-SYMBOL CONFLICT + STALE data. (1) dual_momentum_taa signals EXIT on GLD (below its 210d/10-month MA) while gold_permanent_overlay signals ENTRY; v1 does NOT auto-resolve. GLD is NOT currently held, so the EXIT is a no-op and the overlay ENTRY is blocked by the Risk Manager already-flat/conflict check. (2) STALE bars (rule #5): newest GLD bar 2026-07-10 ~136.7h. Either ground alone forces NO_TRADE.",
+  "invalidation_condition": "Conflict clears when GLD reclaims its 210d (10-month) MA (TAA and overlay agree again). Re-evaluate overlay re-entry ONLY on a fresh daily close (staleness < 60s) AND once the A/C conflict resolves.",
+  "risk_reward": {
+    "entry": 376.97,
+    "stop": 339.27,
+    "target": 471.21,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.4,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "gold_permanent_overlay",
+  "data_freshness": {
+    "latest_bar": "2026-07-10",
+    "age_hours": 136.7,
+    "max_staleness_seconds": 60,
+    "status": "STALE"
+  },
+  "notes": "reason=data_stale + signal_conflict (permanent 10% overlay; GLD below 210d MA). CLAUDE.md rule #5: daily-bar feed stale. yfinance primary is TLS-reset (curl 35) through the agent proxy (fresh-fetch attempted at EOD and failed); Alpaca IEX fallback newest daily bar 2026-07-10 (~136.7h old), and the regime-driver SPY bar is staler still (2026-06-29 on the 300-bar window; feed returns different 'latest' bars by window \u2014 intermittent-lag artifact). Staleness >> 60s limit by ~4-5 orders of magnitude. No paper_sim.open_position called. No LIVE_* path. CB write SKIPPED (Guard 1: 6 pending broker orders); FULL carried, throttle=1.0. RM REJECTED on freshness; Compliance REJECTED because RM != APPROVED and rule #5 bars the trade.",
+  "consolidation": {
+    "primary_strategy": "gold_permanent_overlay",
+    "subsumed_strategies": [],
+    "conflict": true,
+    "conflict_detail": "gold_permanent_overlay ENTRY vs dual_momentum_taa EXIT on GLD (GLD below 210d MA). Recurring policy-resolved conflict; see logs/risk_events/2026-07-15_204401_signal_conflict.md."
+  }
+}
