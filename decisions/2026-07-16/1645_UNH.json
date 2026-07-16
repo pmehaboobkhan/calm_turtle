@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-16T20:45:00+00:00",
+  "routine_id": "end_of_day_2026-07-16",
+  "symbol": "UNH",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: UNH ranks #2 by 126-day return (+25.19%) with SPY above its 10-month MA. Healthcare-services momentum; would refill the top-5 slot vacated when UNH was closed 07-15 pre_close to avoid the 07-16 BMO earnings print.",
+  "thesis_bear": "Signal computed on STALE daily bars (newest short-window 2026-07-10 ~160.8h; regime window ends 2026-06-29 ~16.7d). Rule #5 refuses the open. Additional caution: UNH reported Q2 2026 earnings 07-16 BMO (this morning) — the reaction is NOT visible on the stale bars, so today's engine rank is pre-earnings and unreliable. Opening pre-confirmation of the post-earnings rank would be doubly premature.",
+  "invalidation_condition": "Re-evaluate only on a fresh daily close (staleness < 60s) that also incorporates the 07-16 post-earnings session. If UNH remains top-5 and SPY stays above its 10m MA on fresh bars, ENTRY is reconsidered next EOD.",
+  "risk_reward": { "entry": 424.57, "stop": 382.11, "target": 530.71, "ratio": 2.5 },
+  "position_size": { "shares": 0, "usd": 0, "pct_of_account": 0.0, "circuit_breaker_state": "FULL", "throttle_applied": 1.0 },
+  "confidence_score": 0.4,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "data_freshness": { "latest_bar": "2026-07-10", "age_hours": 160.8, "regime_window_latest_bar": "2026-06-29", "regime_window_age_hours": 400.8, "max_staleness_seconds": 60, "status": "STALE" },
+  "notes": "reason=data_stale + earnings_today (rank 2, +25.19% 6m; UNH Q2 2026 earnings 07-16 BMO). CLAUDE.md rule #5: daily-bar feed stale. yfinance primary TLS-reset (curl 35) since ~06-25; Alpaca IEX fallback newest short-window bar 2026-07-10 (~160.8h), 300-bar window ends 2026-06-29 (~16.7d). Staleness >> 60s by ~4-5 orders of magnitude; the fresh feed would additionally not yet reflect the 07-16 BMO earnings. No paper_sim.open_position. No LIVE_* path. CB write SKIPPED (Guard 1: 6 pending broker); FULL carried, throttle=1.0. sim reconcile CLEAN; alpaca-mirror CLEAN 2/2. RM REJECTED on freshness; Compliance REJECTED (RM != APPROVED; rule #5)."
+}

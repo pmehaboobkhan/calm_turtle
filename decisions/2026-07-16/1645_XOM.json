@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-16T20:45:00+00:00",
+  "routine_id": "end_of_day_2026-07-16",
+  "symbol": "XOM",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: XOM ranks #4 by 126-day return (+14.57%) with SPY above its 10-month MA. Energy/oil bid (US-Iran / Strait of Hormuz risk premium; oil +5.24% to ~$74.16 on 07-14); Q2 EPS outlook strongly positive YoY.",
+  "thesis_bear": "Signal computed on STALE daily bars (newest short-window 2026-07-10 ~160.8h; regime window ends 2026-06-29 ~16.7d). Rule #5 refuses the open. Momentum is oil-beta-dependent; a Hormuz de-escalation removes the tailwind. XOM not currently held; a fresh open, so refusal has zero position impact.",
+  "invalidation_condition": "Re-evaluate only on a fresh daily close (staleness < 60s). If XOM remains top-5 and SPY stays above its 10m MA on fresh bars, ENTRY is reconsidered next EOD.",
+  "risk_reward": { "entry": 138.83, "stop": 124.95, "target": 173.54, "ratio": 2.5 },
+  "position_size": { "shares": 0, "usd": 0, "pct_of_account": 0.0, "circuit_breaker_state": "FULL", "throttle_applied": 1.0 },
+  "confidence_score": 0.4,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "data_freshness": { "latest_bar": "2026-07-10", "age_hours": 160.8, "regime_window_latest_bar": "2026-06-29", "regime_window_age_hours": 400.8, "max_staleness_seconds": 60, "status": "STALE" },
+  "notes": "reason=data_stale (rank 4, +14.57% 6m). CLAUDE.md rule #5. yfinance TLS-reset since ~06-25; Alpaca IEX newest short-window bar 2026-07-10 (~160.8h), 300-bar window ends 2026-06-29 (~16.7d). Staleness >> 60s. No paper_sim.open_position. No LIVE_* path. CB write SKIPPED (Guard 1: 6 pending broker); FULL carried, throttle=1.0. sim reconcile CLEAN; alpaca-mirror CLEAN 2/2. RM REJECTED on freshness; Compliance REJECTED (RM != APPROVED; rule #5)."
+}

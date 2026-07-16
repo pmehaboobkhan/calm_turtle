@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-16T20:45:00+00:00",
+  "routine_id": "end_of_day_2026-07-16",
+  "symbol": "JNJ",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: JNJ ranks #3 by 126-day return (+22.37%) with SPY above its 10-month MA. Pharma/defensive momentum; slot vacated when JNJ was closed 07-14 pre_close ahead of its 07-15 BMO print.",
+  "thesis_bear": "Signal computed on STALE daily bars (newest short-window 2026-07-10 ~160.8h; regime window ends 2026-06-29 ~16.7d). Rule #5 refuses the open. JNJ reported 07-15 BMO — a beat-and-raise undercut by a medtech-segment miss; stock ~-3% then recovered ~+0.5% (CNBC 07-15). That reaction is NOT on the stale bars, so the current rank is pre-earnings and may drop on fresh data.",
+  "invalidation_condition": "Re-evaluate only on a fresh daily close (staleness < 60s) that incorporates the 07-15 post-earnings sessions. If JNJ remains top-5 and SPY stays above its 10m MA on fresh bars, ENTRY is reconsidered next EOD.",
+  "risk_reward": { "entry": 256.93, "stop": 231.24, "target": 321.16, "ratio": 2.5 },
+  "position_size": { "shares": 0, "usd": 0, "pct_of_account": 0.0, "circuit_breaker_state": "FULL", "throttle_applied": 1.0 },
+  "confidence_score": 0.4,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "data_freshness": { "latest_bar": "2026-07-10", "age_hours": 160.8, "regime_window_latest_bar": "2026-06-29", "regime_window_age_hours": 400.8, "max_staleness_seconds": 60, "status": "STALE" },
+  "notes": "reason=data_stale (rank 3, +22.37% 6m; JNJ reported 07-15 BMO, reaction not on stale bars). CLAUDE.md rule #5. yfinance TLS-reset since ~06-25; Alpaca IEX newest short-window bar 2026-07-10 (~160.8h), 300-bar window ends 2026-06-29 (~16.7d). Staleness >> 60s. No paper_sim.open_position. No LIVE_* path. CB write SKIPPED (Guard 1: 6 pending broker); FULL carried, throttle=1.0. sim reconcile CLEAN; alpaca-mirror CLEAN 2/2. RM REJECTED on freshness; Compliance REJECTED (RM != APPROVED; rule #5)."
+}
