@@ -1,0 +1,255 @@
+{
+  "metadata": {
+    "generated_at": "2026-07-16T10:40:37.999108+00:00",
+    "bar_source": "alpaca_iex_fallback",
+    "data_caveat": "yfinance primary feed down (TLS curl35); Alpaca IEX fallback used. Bars stale vs 60s limit -> rule #5 NO_TRADE on any entry. Pre-market is research-only.",
+    "freshness_status": "SEVERE_STALENESS_VIOLATION",
+    "staleness_seconds": 1406437,
+    "max_staleness_allowed_seconds": 60,
+    "rule_5_status": "NO_TRADE \u2014 data stale beyond limit (CLAUDE.md rule #5). Pre-market research mode (expected)."
+  },
+  "regime": {
+    "spy_above_50dma": true,
+    "spy_above_200dma": true,
+    "spy_pct_from_50dma": 0.014708896169587593,
+    "proxy_vol_20d_annualized_pct": 17.8494222893678,
+    "regime": "bullish_trend",
+    "confidence": "medium"
+  },
+  "entry_signals_count": 7,
+  "entry_signals": [
+    {
+      "symbol": "SPY",
+      "strategy": "dual_momentum_taa",
+      "return_key": "return_12m",
+      "return_value": 0.2144007286567018,
+      "rank": null,
+      "rationale": "dual_momentum_taa: ENTRY \u2014 top-1 risk asset, all filters passed"
+    },
+    {
+      "symbol": "GOOGL",
+      "strategy": "large_cap_momentum_top5",
+      "return_key": "return_6m",
+      "return_value": 0.13927603253069698,
+      "rank": 5,
+      "rationale": "large_cap_momentum_top5: ENTRY \u2014 in top-5, SPY trend up"
+    },
+    {
+      "symbol": "JNJ",
+      "strategy": "large_cap_momentum_top5",
+      "return_key": "return_6m",
+      "return_value": 0.2236569501324981,
+      "rank": 3,
+      "rationale": "large_cap_momentum_top5: ENTRY \u2014 in top-5, SPY trend up"
+    },
+    {
+      "symbol": "UNH",
+      "strategy": "large_cap_momentum_top5",
+      "return_key": "return_6m",
+      "return_value": 0.25194382496534273,
+      "rank": 2,
+      "rationale": "large_cap_momentum_top5: ENTRY \u2014 in top-5, SPY trend up"
+    },
+    {
+      "symbol": "XOM",
+      "strategy": "large_cap_momentum_top5",
+      "return_key": "return_6m",
+      "return_value": 0.14573539288112825,
+      "rank": 4,
+      "rationale": "large_cap_momentum_top5: ENTRY \u2014 in top-5, SPY trend up"
+    },
+    {
+      "symbol": "CSCO",
+      "strategy": "large_cap_momentum_top5",
+      "return_key": "return_6m",
+      "return_value": 0.5024945631316362,
+      "rank": 1,
+      "rationale": "large_cap_momentum_top5: ENTRY \u2014 in top-5, SPY trend up"
+    },
+    {
+      "symbol": "GLD",
+      "strategy": "gold_permanent_overlay",
+      "return_key": "permanent_allocation",
+      "return_value": null,
+      "rank": null,
+      "rationale": "gold_permanent_overlay: ENTRY \u2014 permanent 10% GLD allocation"
+    }
+  ],
+  "per_symbol": {
+    "AAPL": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "AMZN": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "BAC": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "COST": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "CSCO": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "GLD": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "GOOGL": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "HD": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "IEF": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "JNJ": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "JPM": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "MA": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "META": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "MSFT": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "NVDA": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "ORCL": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "PFE": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "SHV": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "SPY": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "TLT": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "TSLA": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "UNH": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "V": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "WMT": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    },
+    "XOM": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-16T10:40:37.999108+00:00",
+      "staleness_seconds": 1406437,
+      "stale": true,
+      "missing": false
+    }
+  }
+}
