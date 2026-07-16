@@ -1,7 +1,7 @@
 {
   "GOOGL": {
     "entry_price": 369.8012,
-    "entry_ts": "2026-07-15T20:51:04.283837+00:00",
+    "entry_ts": "2026-07-16T13:37:30.610375+00:00",
     "quantity": 16.0,
     "rationale_link": "decisions/2026-06-08/1637_GOOGL.json",
     "side": "BUY",
@@ -10,7 +10,7 @@
   },
   "SPY": {
     "entry_price": 743.78,
-    "entry_ts": "2026-07-15T20:51:04.283865+00:00",
+    "entry_ts": "2026-07-16T13:37:30.610398+00:00",
     "quantity": 20.0,
     "rationale_link": "decisions/2026-06-08/1636_SPY.json",
     "side": "BUY",
