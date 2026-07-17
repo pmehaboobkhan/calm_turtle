@@ -169,3 +169,14 @@
 - **Outcome: RESOLVED — CORRECT.** GOOGL held above its $331.68 stop every session of W28 on live IEX quotes: 07-06 open $360.84 (+8.8% vs stop), 07-10 pre_close mark $356.61 (+7.5% vs stop); intraweek low mark ~$354.32 (midday 07-10) ≈ +6.8% above stop. `positions_to_close()` returned [] all week; no EXIT/stop breach fired. Sources: `journals/daily/2026-07-06.md` (market_open), `journals/daily/2026-07-10.md` (midday/pre_close), `memory/prediction_reviews/2026-07-08.md` P4, `2026-07-09.md` P4.
 - Context (descriptive): GOOGL remained the only underwater held name all week (entry $369.80 vs marks ~$354–360). EU Android €4.1B antitrust fine finalized 07-02 (pre-priced, no fresh shock); Q2 earnings 2026-07-22 (outside window). No fresh EOD momentum re-rank possible — daily bars stale all week.
 - Note: still held at W28 close; no new trade. This block records the prediction outcome only.
+
+## 2026-07-17 — PAPER_CLOSE (midday, news-driven discretionary)
+
+- Decision file: `decisions/2026-07-17/1206_GOOGL.json` (trigger_type: news_driven_discretionary).
+- Trigger: NOT stop/target (portfolio_health should_close=FALSE, triggers=[]; stop $331.68 not breached, last ~$346.83). News-driven per midday.md step 9.
+- News: Gemini 3.5 Pro delayed months + underperformed internal coding targets (Bloomberg 07-16, 403 primary; 5 URL-backed secondaries in decision news_context). GOOGL -4% on the news; rank-5 thinnest-buffer name.
+- Order: 16 shares CLOSE @ last IEX $346.83 — PENDING_BROKER (Alpaca 658d3242 FILLED; realized PnL settles on reconcile). Entry was $369.80 → ~-6.2% at exit mark.
+- Routine: midday_2026-07-17, mode PAPER_TRADING. cb_state=FULL (Guard-1 skip; not refreshed). EXITs never CB-throttled.
+- Risk Manager: APPROVED (risk-reducing; -0.27% of account, within daily caps). Compliance: APPROVED (paper close; not a disallowed news_chase ENTRY; GOOGL not blocked).
+- Caveat: daily bars stale (06-29) — deterministic top-7 rank ejection unverifiable; close leaned on discretionary news judgment. Calibration logged in `memory/prediction_reviews/2026-07-17.md` P1.
+- positions.json after: SPY only (1 open).

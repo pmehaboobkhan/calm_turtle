@@ -1,11 +1,4 @@
 {
-  "GOOGL": {
-    "entry_basis": 368.6037,
-    "opened_at": "2026-06-08T20:38:00.845574+00:00",
-    "rationale_link": "decisions/2026-06-08/1637_GOOGL.json",
-    "stop_loss": 331.68,
-    "take_profit": 460.66
-  },
   "SPY": {
     "entry_basis": 737.6975,
     "opened_at": "2026-06-08T20:37:54.578485+00:00",
