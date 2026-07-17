@@ -1,0 +1,192 @@
+{
+  "snapshot_ts": "2026-07-17T10:41:37.946622+00:00",
+  "data_quality": {
+    "stale": true,
+    "staleness_seconds": 1492897.9,
+    "max_allowed_staleness_seconds": 60,
+    "alert": "Data STALE by ~17.3 calendar days. Alpaca IEX limit=300 last bar: 2026-06-30T04:00:00Z. yfinance down (TLS curl(35) since ~06-25). All signals based on stale bars. Flag for Risk Manager NO_TRADE."
+  },
+  "regime": {
+    "spy_above_50dma": true,
+    "spy_pct_from_50dma": 0.0147,
+    "proxy_vol_20d_annualized_pct": 17.8494,
+    "regime_name": "bullish_trend_medium_confidence"
+  },
+  "symbols": {
+    "SPY": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_12m": 0.2144,
+      "action": "ENTRY (dual_momentum_taa)"
+    },
+    "IEF": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_12m": -0.0087,
+      "action": "EXIT (dual_momentum_taa)"
+    },
+    "TLT": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": -0.0150,
+      "action": "EXIT (large_cap_momentum_top5)"
+    },
+    "GLD": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_12m": 0.2228,
+      "ret_6m": null,
+      "action": "ENTRY (gold_permanent_overlay); EXIT (dual_momentum_taa)"
+    },
+    "SHV": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "action": "EXIT (dual_momentum_taa)"
+    },
+    "AAPL": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": 0.0580,
+      "action": "NO_SIGNAL (rank 7, hold zone)"
+    },
+    "MSFT": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": -0.2356,
+      "action": "EXIT (rank 20, stale)"
+    },
+    "GOOGL": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": 0.1393,
+      "action": "ENTRY (rank 5)"
+    },
+    "AMZN": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": 0.0246,
+      "action": "EXIT (rank 9)"
+    },
+    "NVDA": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": 0.0499,
+      "action": "EXIT (rank 8)"
+    },
+    "META": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": -0.1510,
+      "action": "EXIT (rank 19)"
+    },
+    "TSLA": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": -0.1153,
+      "action": "EXIT (rank 18)"
+    },
+    "JPM": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": -0.0017,
+      "action": "EXIT (rank 13)"
+    },
+    "BAC": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": 0.0137,
+      "action": "EXIT (rank 10)"
+    },
+    "V": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": -0.0352,
+      "action": "EXIT (rank 15)"
+    },
+    "MA": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": -0.1137,
+      "action": "EXIT (rank 17)"
+    },
+    "JNJ": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": 0.2237,
+      "action": "ENTRY (rank 3)"
+    },
+    "UNH": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": 0.2519,
+      "action": "ENTRY (rank 2)"
+    },
+    "PFE": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": -0.0418,
+      "action": "EXIT (rank 16)"
+    },
+    "WMT": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": 0.0132,
+      "action": "EXIT (rank 11)"
+    },
+    "COST": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": 0.0709,
+      "action": "NO_SIGNAL (rank 6, hold zone)"
+    },
+    "HD": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": 0.0082,
+      "action": "EXIT (rank 12)"
+    },
+    "XOM": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": 0.1457,
+      "action": "ENTRY (rank 4)"
+    },
+    "ORCL": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": -0.2589,
+      "action": "EXIT (rank 21, worst performer)"
+    },
+    "CSCO": {
+      "quote_ts": "2026-06-30T04:00:00+00:00",
+      "fetched_ts": "2026-07-17T10:41:37.946622+00:00",
+      "staleness_seconds": 1492897.9,
+      "ret_6m": 0.5025,
+      "action": "ENTRY (rank 1, top momentum)"
+    }
+  }
+}
