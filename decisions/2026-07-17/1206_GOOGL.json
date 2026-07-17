@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-17T12:06:00-04:00",
+  "routine_id": "midday_2026-07-17",
+  "symbol": "GOOGL",
+  "decision": "PAPER_CLOSE",
+  "trigger_type": "news_driven_discretionary",
+  "strategy": "large_cap_momentum_top5",
+  "thesis_bull": "Reasons to HOLD (not close): the -10% deterministic stop ($331.68) is NOT breached — last IEX print ~352.75 sits ~6.4% above the stop; the Strategy-B deterministic exit rule is 'falls out of top-7 by 6-month total return OR SPY closes below 10-month MA OR -10% stop hit' and NONE of the three are confirmed; SPY (Strategy-A core) remains fine; the daily-bar feed is STALE (newest regime-window bar 2026-06-29), so momentum rank CANNOT be recomputed to confirm a top-7 ejection; the 07-16 product-delay headline is a single soft signal and price already absorbed the ~4% drop while still holding well above stop; CLAUDE.md lists 'news_chase' and 'single_stock_earnings_play' among DISALLOWED strategies, so discretionary news-driven exits are disfavored and carry the burden of proof.",
+  "thesis_bear": "Reasons to CLOSE (counter-evidence): the momentum/AI-dominance narrative underpinning the GOOGL long is directly undermined by a credible, multi-source report that Google's flagship Gemini 3.5 Pro model is delayed by months and underperformed internal coding targets, with Alphabet shares down >4% on the news (Bloomberg 07-16, verified via five independent secondary sources listed in news_context). GOOGL was already the thinnest-buffer name in Strategy B — held as rank-5 momentum per the 07-16 regime — so it is the most marginal holding to a thesis that just took a direct hit. Capital preservation favors exiting a materially compromised thesis before EOD rather than carrying overnight exposure on a name whose core growth story is now in question.",
+  "invalidation_condition": "Standard Strategy-B GOOGL exit (measurable): GOOGL falls out of top-7 by 6-month total return on a FRESH daily close OR SPY closes below its 10-month moving average OR price hits the -10% stop at $331.68. This midday PAPER_CLOSE is an ADDITIONAL discretionary news-driven trigger layered on top of those conditions; it does not replace them. Re-entry is gated on a fresh daily close (staleness < 60s) restoring GOOGL to top-5 with SPY above its 10-month MA.",
+  "technical_context": {
+    "deterministic_signal_action": "NO_SIGNAL",
+    "portfolio_health_should_close": false,
+    "invalidation_triggers": [],
+    "stop_breached": false,
+    "target_hit": false,
+    "last_price": 352.75,
+    "unrealized_pnl_usd": -272.82,
+    "unrealized_pnl_pct": -4.6,
+    "note": "portfolio_health.assess_positions returned should_close=FALSE, invalidation_triggers=[]. This PAPER_CLOSE is NOT a deterministic signal — it is a midday.md step-9 news-driven discretionary proposal routed through both gates for adjudication."
+  },
+  "news_context": {
+    "freshness": "2026-07-16",
+    "summary": "Bloomberg reports Google's flagship Gemini 3.5 Pro AI model is delayed by months and underperformed internal targets in coding; Alphabet shares fell >4% on the news. Bloomberg primary is paywalled/403; claim verified via five independent secondary sources.",
+    "sources": [
+      {"publisher": "Bloomberg", "publish_date": "2026-07-16", "access": "paywalled_403_primary", "url": null},
+      {"publisher": "U.S. News / Reuters", "publish_date": "2026-07-16", "url": "https://money.usnews.com/investing/news/articles/2026-07-16/google-gemini-launch-delayed-as-tech-falls-short-of-internal-goals-bloomberg-news-reports"},
+      {"publisher": "Seeking Alpha", "publish_date": "2026-07-16", "url": "https://seekingalpha.com/news/4614636-googles-gemini-3_5-pro-release-faces-delay-report"},
+      {"publisher": "Yahoo Finance", "publish_date": "2026-07-16", "url": "https://finance.yahoo.com/technology/ai/articles/google-gemini-launch-delayed-tech-180715298.html"},
+      {"publisher": "PYMNTS", "publish_date": "2026-07-16", "url": "https://www.pymnts.com/google/2026/google-gemini-launch-delayed-as-tech-falls-short-of-internal-goals/"},
+      {"publisher": "Android Authority", "publish_date": "2026-07-16", "url": "https://www.androidauthority.com/google-gemini-3-5-pro-launch-delayed-3688434/"}
+    ]
+  },
+  "macro_context": {
+    "note": "SPY (Strategy-A core) above its 10-month MA and not part of this proposal; no regime shift flagged this run. GOOGL sector: Communication_Services."
+  },
+  "risk_reward": { "entry": 369.8012, "stop": 331.68, "target": 460.66, "ratio": 2.5 },
+  "position_size": { "shares": 16, "usd": 5644.0, "pct_of_account": 5.6, "note": "Full close of the existing 16-share GOOGL position; sizing not freelanced — mirrors the open position. USD valued at last IEX print 352.75." },
+  "confidence_score": 0.45,
+  "risk_manager_verdict": "APPROVED",
+  "risk_manager_notes": "PAPER_CLOSE reduces exposure; no entry-side limit applies. Checks: (1) GOOGL in watchlist, approved_for_paper_trading=true -> PASS. (2) Strategy large_cap_momentum_top5 in allowed_strategies (status ACTIVE_PAPER_TEST), not in disallowed_strategies; the close reason is discretionary capital preservation, not a disallowed entry strategy -> PASS. (3) R/R informational for an EXIT; original 2.5 >= minimum 1.5 -> PASS. (4-6) Closing lowers position/exposure/correlation -> PASS. (7) trades_today=0 < max_trades_per_day=5 -> PASS. (8) open_positions=2 (GOOGL,SPY) < max_open_positions=8; close reduces -> PASS. (9) Realizes ~-$272.82 = -0.27% of $100k account, within max_daily_loss_usd=500 and max_daily_loss_pct=0.5 -> PASS. (10) No 3 consecutive losses (recent closes: XOM stop-loss, JNJ overnight_risk, UNH overnight_risk +5%) -> PASS. (11) Close valued on FRESH IEX quote (2026-07-17T16:03Z, <60s) -> PASS; note daily bars stale but stop/valuation use the fresh quote. (12) Long-only close, no margin/options/short/leverage -> PASS. EXITs are never CB-throttled. Verdict APPROVED: no risk limit is breached and the close is risk-reducing. RM does not adjudicate the news thesis (portfolio discretion), only limits.",
+  "compliance_verdict": "APPROVED",
+  "compliance_notes": "FINAL gate. (1) Mode=PAPER_TRADING permits PAPER_CLOSE -> PASS. (2) GOOGL approved_for_paper_trading=true -> PASS. (3) Strategy large_cap_momentum_top5 allowed, not disallowed; a discretionary news-driven EXIT of an existing paper position is NOT a 'news_chase'/'single_stock_earnings_play' ENTRY -> PASS. (4) risk_manager_verdict=APPROVED -> PASS. (5) thesis_bull, thesis_bear, invalidation_condition all present and non-empty -> PASS. (6) Schema validation against tests/schemas/trade_decision.schema.json OK. (7) News claims each carry a source URL (Bloomberg primary null/403 but corroborated by five URL-backed secondaries) -> PASS. (8) No live-order path; human_approval_required=false correct for paper. Verdict APPROVED.",
+  "human_approval_required": false,
+  "final_status": "PAPER_PROPOSED",
+  "data_freshness": { "quote_ts": "2026-07-17T16:03:00Z", "quote_status": "FRESH", "quote_age_seconds_lt": 60, "daily_bars_latest": "2026-06-29", "daily_bars_status": "STALE", "note": "Stop/target evaluation and close valuation use the fresh IEX quote; momentum rank cannot be recomputed on stale daily bars, which is why top-7 ejection is UNCONFIRMED and the exit is discretionary rather than deterministic." },
+  "notes": "midday_2026-07-17 step-9 NEWS-DRIVEN discretionary invalidation proposal (NOT a deterministic signal; portfolio_health should_close=FALSE, triggers=[]). Deterministic Strategy-B exit rule NOT confirmed: stop $331.68 not breached (last ~352.75), SPY above 10m MA, top-7 ejection unconfirmable on stale bars. Realizes ~-$272.82 (-4.6% on position, -0.27% of account) within daily caps. Gates run in order: risk_manager(APPROVED) -> compliance_safety(APPROVED). Both gates evaluated against config/risk_limits.yaml, config/watchlist.yaml, config/strategy_rules.yaml, config/approved_modes.yaml, trades/paper/positions.json, trades/paper/log.csv. EXITs never CB-throttled. final_status=PAPER_PROPOSED; orchestrator executes the fill separately (paper_sim NOT called by this agent). Confidence modest (0.45) reflecting soft single-headline trigger with the deterministic rule unconfirmed."
+}
