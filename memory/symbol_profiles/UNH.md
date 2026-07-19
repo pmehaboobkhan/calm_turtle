@@ -27,3 +27,10 @@
 - Q2 2026 earnings **2026-07-16** — approaching but outside the 1-day caution window at W28 close.
 - Momentum rank not computable on fresh data (bars stale ~06-23); 07-10 stale-bar scan placed UNH at rank 2 (+23.99% 126d), descriptive only.
 
+## Week 2026-W29 observations
+- Strategy: large_cap_momentum_top5. Held into the week from the 2026-06-08 entry (15 sh @ $398.674). **CLOSED 2026-07-15 pre_close** — overnight earnings-risk action (UNH Q2 07-16 BMO, next trading day, inside the 1-day earnings-caution window), NOT a stop/target trigger (`decisions/2026-07-15/1936_UNH.json`: `stop_breached=false`, `target_hit=false`, `invalidation_triggers=[]`, pnl +5.0% on last IEX print). Exit @ $418.2613; realized **+$293.81 (confirmed vs Alpaca fill)**; mirrors the 07-14 JNJ earnings-caution precedent.
+- Very wide IEX spread at close (~5.4%, thin single-stock IEX bid) — last=418.42 used as the execution reference rather than the artefactual bid 395.67; disclosed as fill-quality, did not gate the earnings-driven exit. Consistent with the standing UNH/JNJ late-day IEX spread observation.
+- Earnings outcome (descriptive): UNH Q2 07-16 BMO **BEAT + raised** — EPS $6.04 vs $4.91, FY guide $19.50–$20.00 (per `journals/daily/2026-07-17.md` pre-market news overlay; CNBC/GuruFocus/SEC 8-K). Closed pre-emptively before the favorable print; DOJ Medicare-Advantage / Optum antitrust overhang cited as bear-thesis background in the close decision (unchanged standing risk).
+- EOD 2026-07-15 REFUSED re-entry (`decisions/2026-07-15/2044_UNH.json`) on both data staleness and the still-open earnings window; re-entry proper deferred to the first fresh post-earnings EOD (still deferred, feed down).
+- Momentum rank not computable on fresh data all week (bars stale ~06-29); stale-bar scans placed UNH rank 2 (~+25.19% 6m), descriptive only.
+

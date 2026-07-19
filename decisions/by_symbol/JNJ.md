@@ -72,3 +72,7 @@
 - Win rate: 100% (1 of 1 closed trades profitable, post-reset)
 - Active strategies: large_cap_momentum_top5 (JNJ remains a top-5 momentum name, rank 3 +23.59% 6m on 2026-07-14 stale bars; a fresh re-entry was refused NO_TRADE at EOD 2026-07-14 on data-staleness + imminent 07-15 earnings — see decisions/2026-07-14/1644_JNJ.json)
 - Note: EOD 2026-07-14 executed no JNJ trade; the 07-14 realized close was a pre_close action. Header updated here by the EOD performance_review step.
+
+## 2026-07-19 — weekly_review self_learning: reconciliation (W29)
+- Reconciles the 2026-07-14 pre_close overnight-earnings CLOSE (`decisions/2026-07-14/1535_JNJ.json`): 26 sh @ $232.75 entry → exit ref ~$253.48, realized **+$538.98 est** (PENDING_BROKER; Alpaca e01c2828 FILLED). Not a stop/target trigger — earnings-caution overlay ahead of JNJ Q2 07-15 BMO.
+- **Outcome (descriptive):** JNJ Q2 07-15 BMO **BEAT + raised** (sales $25.31B +6.6%, adj EPS $2.90, FY ~$101.1B; `journals/daily/2026-07-17.md` news overlay). Position was closed pre-emptively before the favorable print; post-close flat, so post-beat upside is not measurable from paper marks. Gates: RM APPROVED → Compliance APPROVED (no drift). Recorded, not assessed.

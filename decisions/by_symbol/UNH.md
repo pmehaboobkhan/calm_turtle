@@ -135,3 +135,7 @@
 - Unrealized PnL: $0.00 (flat)
 - Win rate: 50% (1W / 1L)
 - Active strategies: large_cap_momentum_top5
+
+## 2026-07-19 — weekly_review self_learning: reconciliation (W29)
+- Reconciles the 2026-07-15 pre_close overnight-earnings CLOSE (`decisions/2026-07-15/1936_UNH.json`): 15 sh @ $398.674 entry → SELL @ $418.2613, realized **+$293.81 (confirmed vs Alpaca fill)**. Not a stop/target trigger — earnings-caution overlay ahead of UNH Q2 07-16 BMO; mirrors the 07-14 JNJ precedent.
+- **Outcome (descriptive):** UNH Q2 07-16 BMO **BEAT + raised** (EPS $6.04 vs $4.91, FY $19.50–$20.00; `journals/daily/2026-07-17.md` news overlay). Closed pre-emptively before the favorable print. EOD 07-15 REFUSED re-entry (`decisions/2026-07-15/2044_UNH.json`) on staleness + open earnings window; re-entry proper still deferred (feed down). Gates: RM APPROVED → Compliance APPROVED (no drift).

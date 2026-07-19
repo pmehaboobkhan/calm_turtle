@@ -180,3 +180,7 @@
 - Risk Manager: APPROVED (risk-reducing; -0.27% of account, within daily caps). Compliance: APPROVED (paper close; not a disallowed news_chase ENTRY; GOOGL not blocked).
 - Caveat: daily bars stale (06-29) — deterministic top-7 rank ejection unverifiable; close leaned on discretionary news judgment. Calibration logged in `memory/prediction_reviews/2026-07-17.md` P1.
 - positions.json after: SPY only (1 open).
+
+## 2026-07-19 — weekly_review self_learning: reconciliation (W29)
+- Reconciles the 2026-07-17 midday NEWS-DRIVEN DISCRETIONARY CLOSE (`decisions/2026-07-17/1206_GOOGL.json`, confidence 0.45): 16 sh @ $369.8012 entry → exit ~$346.83 last IEX, ~−6.2%, realized **−$367.54 est** (PENDING_BROKER; Alpaca 658d3242 FILLED). Trigger: Bloomberg 07-16 Gemini 3.5 Pro delay (5 URL-backed secondaries); deterministic Strategy-B exit UNCONFIRMED (stop $331.68 not breached; top-7 ejection unverifiable on stale bars).
+- **Calibration test STILL DEFERRED:** whether GOOGL would have exited on the deterministic top-7 rank and whether it recovered above $346.83 is unresolvable until a fresh daily close prints (feed stale, bars end 06-29). New window = first fresh daily close. See `memory/prediction_reviews/2026-07-17.md` P1. Gates: RM APPROVED (limits only) → Compliance APPROVED (discretionary EXIT ≠ disallowed news_chase ENTRY). No drift. positions.json after: SPY only.
