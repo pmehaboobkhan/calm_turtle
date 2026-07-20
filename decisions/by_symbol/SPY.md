@@ -18,3 +18,7 @@
 - Sizing rationale: Strategy A intent 60%; per-trade risk cap (1.5% / 10% stop) reduces position to ~15% of account (14.65%), well below the 60% macro-ETF cap.
 - Routine: end_of_day_2026-06-08, mode PAPER_TRADING, cb_state=FULL, throttle=1.0.
 - Risk Manager: APPROVED. Compliance: APPROVED.
+
+## 2026-07-20 midday — HOLD (NO_TRADE)
+
+- Live IEX 746.11 vs entry 743.78 (+0.32%); no stop/target breach, no trend-filter flip. Material-adverse macro/geopolitical news flagged as risk factor but not thesis-invalidating; not corroborated by fresh quote. CB=FULL, DD 0.82%. No gates invoked (no trade proposed).
