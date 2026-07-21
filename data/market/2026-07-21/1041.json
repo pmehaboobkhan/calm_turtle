@@ -1,0 +1,243 @@
+{
+  "computed_at": "2026-07-21T10:41:04.639541+00:00",
+  "fetched_ts": "2026-07-21T10:41:04.639541+00:00",
+  "bar_source": "alpaca_iex",
+  "data_staleness_seconds": 1665792,
+  "data_staleness_days": 19.28,
+  "staleness_alert": true,
+  "staleness_reason": "Alpaca IEX daily bars last updated 2026-07-02T04:00:00+00:00, ~19.3 calendar days old. Exceeds max_data_staleness_seconds limit (60s). All downstream trading decisions subject to data-staleness risk flag per CLAUDE.md rule #5.",
+  "source_attribution": "Alpaca IEX feed (BAR_SOURCE=alpaca), 300-bar daily history per symbol",
+  "freshness_table": [
+    {
+      "symbol": "SPY",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 744.86
+    },
+    {
+      "symbol": "IEF",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 94.135
+    },
+    {
+      "symbol": "TLT",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 85.53
+    },
+    {
+      "symbol": "GLD",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 378.23
+    },
+    {
+      "symbol": "SHV",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 110.095
+    },
+    {
+      "symbol": "AAPL",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 308.235
+    },
+    {
+      "symbol": "MSFT",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 389.79
+    },
+    {
+      "symbol": "GOOGL",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 359.69
+    },
+    {
+      "symbol": "AMZN",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 242.3
+    },
+    {
+      "symbol": "NVDA",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 194.51
+    },
+    {
+      "symbol": "META",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 582.76
+    },
+    {
+      "symbol": "TSLA",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 392.82
+    },
+    {
+      "symbol": "JPM",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 334.26
+    },
+    {
+      "symbol": "BAC",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 58.69
+    },
+    {
+      "symbol": "V",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 361.65
+    },
+    {
+      "symbol": "MA",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 539.355
+    },
+    {
+      "symbol": "JNJ",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 263.04
+    },
+    {
+      "symbol": "UNH",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 424.95
+    },
+    {
+      "symbol": "PFE",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 24.31
+    },
+    {
+      "symbol": "WMT",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 111.72
+    },
+    {
+      "symbol": "COST",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 952.02
+    },
+    {
+      "symbol": "HD",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 357.78
+    },
+    {
+      "symbol": "XOM",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 136.97
+    },
+    {
+      "symbol": "ORCL",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 140.29
+    },
+    {
+      "symbol": "CSCO",
+      "last_ts": "2026-07-02T04:00:00+00:00",
+      "nbars": 300,
+      "age_days": 19.28,
+      "last_close": 112.69
+    }
+  ],
+  "regime_indicators": {
+    "regime": "bullish_trend",
+    "confidence": "medium",
+    "indicators": {
+      "spy_above_50dma": true,
+      "spy_above_200dma": true,
+      "spy_pct_from_50dma": 0.010139502752503304,
+      "proxy_vol_20d_annualized_pct": 17.68770149336732,
+      "effective_vix_used": 17.68770149336732,
+      "vix_available": false
+    },
+    "counter_evidence": [
+      "Trend can break on macro shocks"
+    ]
+  },
+  "entry_signals_snapshot": {
+    "symbol_count": 25,
+    "entry_count": 7,
+    "entry_symbols": [
+      {
+        "symbol": "SPY",
+        "strategy": "dual_momentum_taa",
+        "last_close": 744.86
+      },
+      {
+        "symbol": "CSCO",
+        "strategy": "large_cap_momentum_top5",
+        "last_close": 112.69
+      },
+      {
+        "symbol": "UNH",
+        "strategy": "large_cap_momentum_top5",
+        "last_close": 424.95
+      },
+      {
+        "symbol": "JNJ",
+        "strategy": "large_cap_momentum_top5",
+        "last_close": 263.04
+      },
+      {
+        "symbol": "GOOGL",
+        "strategy": "large_cap_momentum_top5",
+        "last_close": 359.69
+      },
+      {
+        "symbol": "XOM",
+        "strategy": "large_cap_momentum_top5",
+        "last_close": 136.97
+      },
+      {
+        "symbol": "GLD",
+        "strategy": "gold_permanent_overlay",
+        "last_close": 378.23
+      }
+    ]
+  }
+}
