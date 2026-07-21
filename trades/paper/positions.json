@@ -1,7 +1,7 @@
 {
   "SPY": {
     "entry_price": 743.78,
-    "entry_ts": "2026-07-20T19:35:54.016941+00:00",
+    "entry_ts": "2026-07-21T19:35:09.577551+00:00",
     "quantity": 20.0,
     "rationale_link": "decisions/2026-06-08/1636_SPY.json",
     "side": "BUY",
