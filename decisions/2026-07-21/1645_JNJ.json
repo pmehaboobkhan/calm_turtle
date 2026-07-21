@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-07-21T20:45:00+00:00",
+  "routine_id": "end_of_day_2026-07-21",
+  "symbol": "JNJ",
+  "decision": "NO_TRADE",
+  "thesis_bull": "large_cap_momentum_top5 ENTRY: JNJ ranks #3 by 126-day return (+27.1%) with SPY above its 10-month MA. Defensive pharma/healthcare momentum.",
+  "thesis_bear": "Signal computed on STALE daily bars. Latest Alpaca IEX daily bar 2026-07-02 (~19.3 calendar days / ~14 trading sessions old; ~1,665,792s vs the 60s max_data_staleness_seconds limit \u2014 violated by 4+ orders of magnitude). yfinance primary feed remains TLS-reset (curl 35) through the agent proxy since ~06-25; fresh-fetch attempted at EOD and failed, so BAR_SOURCE=alpaca fallback used. Opening on stale data is refused per CLAUDE.md rule #5. Not currently held (closed 2026-07-14 pre-earnings). Q2 earnings 2026-07-15 already occurred but are invisible to the 07-02 bars; rank may be stale.",
+  "invalidation_condition": "Re-evaluate only on a fresh daily close (staleness < 60s). If the symbol remains a qualifying ENTRY on fresh bars and SPY stays above its 10m MA, ENTRY is reconsidered next EOD.",
+  "risk_reward": {
+    "entry": 263.04,
+    "stop": 236.74,
+    "target": 328.8,
+    "ratio": 2.5
+  },
+  "position_size": {
+    "shares": 0,
+    "usd": 0,
+    "pct_of_account": 0.0,
+    "circuit_breaker_state": "FULL",
+    "throttle_applied": 1.0
+  },
+  "confidence_score": 0.4,
+  "risk_manager_verdict": "REJECTED",
+  "compliance_verdict": "REJECTED",
+  "human_approval_required": false,
+  "final_status": "NO_TRADE",
+  "strategy": "large_cap_momentum_top5",
+  "data_freshness": {
+    "latest_bar": "2026-07-02",
+    "age_hours": 462.7,
+    "regime_window_latest_bar": "2026-07-02",
+    "regime_window_age_hours": 462.7,
+    "max_staleness_seconds": 60,
+    "status": "STALE"
+  },
+  "notes": "reason=data_stale. CLAUDE.md rule #5: daily-bar feed stale (yfinance TLS curl35 since ~06-25; Alpaca IEX fallback latest bar 2026-07-02, ~19.3d). No paper_sim.open_position called. No LIVE_* path. CB write SKIPPED (Guard 1: 7 pending broker orders); FULL carried, throttle=1.0. Sim reconcile CLEAN (alpaca-authoritative, 1 pos SPY); alpaca-mirror CLEAN 1/1. RM REJECTED on freshness; Compliance REJECTED (RM != APPROVED and rule #5 bars the trade). Rank 3, +27.1% 6m. Earnings 07-15 already passed, unseen in stale bars."
+}
